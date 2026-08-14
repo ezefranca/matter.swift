@@ -1,176 +1,306 @@
-//
-//  P5Sketch.swift
-//  
-//
-//  Created by Juan Hurtado on 14/06/23.
-//
+import CoreGraphics
 
-import UIKit
-
+/// A native drawing canvas with a lifecycle modeled after a p5.js sketch.
+///
+/// Subclass `P5Sketch`, override ``setup()`` and ``draw()``, then place ``view``
+/// in an AppKit or UIKit view hierarchy.
+@MainActor
 open class P5Sketch {
-    private var internalView: P5SketchInternalView
-    
-    /// This is used only in the demo app to identify each example. So you can ignore this.
+    private let internalView: P5SketchInternalView
+
+    /// A human-readable title that clients can use when presenting the sketch.
     public var title: String?
-    
-    /// Canvas width
-    public var width: CGFloat
-    
-    /// Canvas height
-    public var height: CGFloat
-    
-    /// The actual sketch view.
-    ///
-    /// Just add this view to your view hierarchy
+
+    /// The canvas width in points.
+    public let width: CGFloat
+
+    /// The canvas height in points.
+    public let height: CGFloat
+
+    /// The native view that displays the sketch.
     ///
     /// ```swift
-    /// // inside your view controller
-    /// let sketch = YourSketch(ofSize: view.size)
-    /// view.addSubview(skecth.view)
-    /// // and that's it!
+    /// let sketch = MySketch(size: view.bounds.size)
+    /// view.addSubview(sketch.view)
     /// ```
-    public var view: UIView {
+    public var view: P5CanvasView {
         internalView
     }
-    
-    public init(ofSize size: CGSize) {
+
+    /// Creates a sketch with a fixed canvas size.
+    ///
+    /// The initializer invokes ``setup()`` after the canvas is ready.
+    ///
+    /// - Parameter size: The canvas size in points.
+    public init(size: CGSize) {
         internalView = P5SketchInternalView(size: size)
         width = size.width
         height = size.height
-        internalView.onDraw = onInternalDraw
+        internalView.onDraw = { [weak self] in
+            self?.draw()
+        }
         setup()
     }
-    
-    private func onInternalDraw() {
-        draw()
+
+    /// Creates a sketch with a fixed canvas size.
+    ///
+    /// - Parameter size: The canvas size in points.
+    @available(*, deprecated, renamed: "init(size:)")
+    public convenience init(ofSize size: CGSize) {
+        self.init(size: size)
     }
-    
-    /// Its called once the sketch is initialized
+
+    /// Configures the sketch once after initialization.
+    ///
+    /// Override this method to set the frame rate, drawing styles, and initial
+    /// sketch state. This method corresponds to
+    /// [p5.js `setup()`](https://p5js.org/reference/p5/setup/).
     open func setup() {}
-    
-    /// It gets called every frame. This is where you should perform draw operations.
+
+    /// Updates and draws one frame of the sketch.
+    ///
+    /// This method corresponds to
+    /// [p5.js `draw()`](https://p5js.org/reference/p5/draw/).
     open func draw() {}
 }
 
 // MARK: - Environment
+
 public extension P5Sketch {
-    /// Sets the number of frames to be displayed every second.
-    /// - Parameter fps: Frames per second
-    func frameRate(_ fps: Double) {
-        internalView.framesPerSecond = fps
+    /// Sets the target number of frames drawn each second.
+    ///
+    /// This method corresponds to
+    /// [p5.js `frameRate()`](https://p5js.org/reference/p5/frameRate/).
+    ///
+    /// - Parameter framesPerSecond: A finite value greater than zero.
+    func frameRate(_ framesPerSecond: Double) {
+        precondition(
+            framesPerSecond.isFinite && framesPerSecond > 0,
+            "frameRate(_:) requires a finite value greater than zero."
+        )
+        internalView.framesPerSecond = framesPerSecond
     }
 }
 
 // MARK: - Structure
+
 public extension P5Sketch {
-    /// Saves the current graphics state
+    /// Saves the current drawing style and transformation state.
+    ///
+    /// This method corresponds to
+    /// [p5.js `push()`](https://p5js.org/reference/p5/push/).
     func push() {
         internalView.addOperation(.push)
     }
-    
-    /// Restores the graphics state to the most recently saved one
+
+    /// Restores the most recently saved drawing state.
+    ///
+    /// This method corresponds to
+    /// [p5.js `pop()`](https://p5js.org/reference/p5/pop/).
     func pop() {
         internalView.addOperation(.pop)
     }
-    
-    /// Starts the running loop if it's stopped
+
+    /// Resumes the draw loop.
     ///
-    /// If you call this method and the draw loop is running, it won't have any effect
+    /// This method corresponds to
+    /// [p5.js `loop()`](https://p5js.org/reference/p5/loop/).
     func loop() {
-        internalView.loop = true
+        internalView.isLooping = true
     }
-    
-    /// Stops the draw loop
-    func noLoop() {
-        internalView.loop = false
-    }
-    
-    /// It calls the `draw()` method one single time.
+
+    /// Pauses the draw loop after the current frame.
     ///
-    /// Notice that it only makes sense to call this method when the draw loop is not runnig. If it gets called when the run loop
-    /// is running, it won't have any effect.
+    /// This method corresponds to
+    /// [p5.js `noLoop()`](https://p5js.org/reference/p5/noLoop/).
+    func noLoop() {
+        internalView.isLooping = false
+    }
+
+    /// Requests one frame while the draw loop is paused.
+    ///
+    /// This method corresponds to
+    /// [p5.js `redraw()`](https://p5js.org/reference/p5/redraw/).
     func redraw() {
-        internalView.userWantsRedraw = true
+        if !internalView.isLooping {
+            internalView.userWantsRedraw = true
+        }
     }
 }
 
 // MARK: - 2D primitives
+
 public extension P5Sketch {
-    /// Sets the color for the canvas background
-    /// - Parameter bgColor: The desired color
-    func background(_ bgColor: CGColor) {
-        internalView.addOperation(.background(bgColor))
+    /// Paints the entire canvas with a color.
+    ///
+    /// This method corresponds to
+    /// [p5.js `background()`](https://p5js.org/reference/p5/background/).
+    ///
+    /// - Parameter color: The background color.
+    func background(_ color: CGColor) {
+        internalView.addOperation(.background(color))
     }
-    
-    /// Draws a line on the canvas
+
+    /// Draws a line between two points.
+    ///
+    /// This method corresponds to
+    /// [p5.js `line()`](https://p5js.org/reference/p5/line/).
+    ///
     /// - Parameters:
-    ///   - x1: Initial x position
-    ///   - y1: Initial y position
-    ///   - x2: End x position
-    ///   - y2: End x position
+    ///   - x1: The first point's x-coordinate.
+    ///   - y1: The first point's y-coordinate.
+    ///   - x2: The second point's x-coordinate.
+    ///   - y2: The second point's y-coordinate.
     func line(_ x1: CGFloat, _ y1: CGFloat, _ x2: CGFloat, _ y2: CGFloat) {
-        internalView.addOperation(.line(x1, y1, x2, y2))
+        internalView.addOperation(.line(x1: x1, y1: y1, x2: x2, y2: y2))
     }
-    
-    
-    /// Draws a rectangle on the canvas.
+
+    /// Draws a rectangle from its top-left corner.
+    ///
+    /// This method corresponds to
+    /// [p5.js `rect()`](https://p5js.org/reference/p5/rect/).
+    ///
     /// - Parameters:
-    ///   - x: Upper left x position
-    ///   - y: Upper left y position
-    ///   - w: Rectangle's width
-    ///   - h: Ractangle's height
-    func rect(_ x: CGFloat, _ y: CGFloat, _ w: CGFloat, _ h: CGFloat) {
-        internalView.addOperation(.rect(x, y, w, h))
+    ///   - x: The top-left x-coordinate.
+    ///   - y: The top-left y-coordinate.
+    ///   - width: The rectangle width.
+    ///   - height: The rectangle height.
+    func rect(
+        _ x: CGFloat,
+        _ y: CGFloat,
+        _ width: CGFloat,
+        _ height: CGFloat
+    ) {
+        internalView.addOperation(
+            .rect(x: x, y: y, width: width, height: height)
+        )
     }
-    
-    /// Draws a square on the canvas.
+
+    /// Draws a square from its top-left corner.
+    ///
+    /// This method corresponds to
+    /// [p5.js `square()`](https://p5js.org/reference/p5/square/).
+    ///
     /// - Parameters:
-    ///   - x: The x position
-    ///   - y: The y position
-    ///   - size: The width and hight of the square
-    func square(_ x: CGFloat, _ y: CGFloat, _ size: CGFloat) {
-        internalView.addOperation(.square(x, y, size))
+    ///   - x: The top-left x-coordinate.
+    ///   - y: The top-left y-coordinate.
+    ///   - extent: The width and height.
+    func square(_ x: CGFloat, _ y: CGFloat, _ extent: CGFloat) {
+        internalView.addOperation(.square(x: x, y: y, extent: extent))
     }
-    
-    /// Draws a circle on the canvas
+
+    /// Draws a circle centered at a point.
+    ///
+    /// As in p5.js, `diameter` is the full width of the circle, not its radius.
+    /// This method corresponds to
+    /// [p5.js `circle()`](https://p5js.org/reference/p5/circle/).
+    ///
     /// - Parameters:
-    ///   - x: The x position
-    ///   - y: The y position
-    ///   - r: The radius of the circle
-    func circle(_ x: CGFloat, _ y: CGFloat, _ r: CGFloat) {
-        internalView.addOperation(.circle(x, y, r))
+    ///   - x: The center x-coordinate.
+    ///   - y: The center y-coordinate.
+    ///   - diameter: The circle diameter.
+    func circle(_ x: CGFloat, _ y: CGFloat, _ diameter: CGFloat) {
+        ellipse(x, y, diameter, diameter)
+    }
+
+    /// Draws an ellipse centered at a point.
+    ///
+    /// This method corresponds to
+    /// [p5.js `ellipse()`](https://p5js.org/reference/p5/ellipse/).
+    ///
+    /// - Parameters:
+    ///   - x: The center x-coordinate.
+    ///   - y: The center y-coordinate.
+    ///   - width: The ellipse width.
+    ///   - height: The ellipse height.
+    func ellipse(
+        _ x: CGFloat,
+        _ y: CGFloat,
+        _ width: CGFloat,
+        _ height: CGFloat
+    ) {
+        internalView.addOperation(
+            .ellipse(x: x, y: y, width: width, height: height)
+        )
     }
 }
 
-
 // MARK: - Transformations
+
 public extension P5Sketch {
-    /// Applies a rotation transformation to the current transformation matrix using the provided angle (in radians).
-    /// - Parameter angle: The angle to rotate the current transformation
+    /// Rotates the coordinate system by an angle in radians.
+    ///
+    /// This method corresponds to
+    /// [p5.js `rotate()`](https://p5js.org/reference/p5/rotate/).
+    ///
+    /// - Parameter angle: The clockwise rotation in radians.
     func rotate(_ angle: CGFloat) {
         internalView.addOperation(.rotate(angle))
     }
-    
-    /// Displaces the origin of the coordinate system.
+
+    /// Moves the origin of the coordinate system.
+    ///
+    /// This method corresponds to
+    /// [p5.js `translate()`](https://p5js.org/reference/p5/translate/).
+    ///
     /// - Parameters:
-    ///   - x: The translation in the x axis
-    ///   - y: The translation in the x axis
+    ///   - x: The horizontal translation.
+    ///   - y: The vertical translation.
     func translate(_ x: CGFloat, _ y: CGFloat) {
-        internalView.addOperation(.translate(x, y))
+        internalView.addOperation(.translate(x: x, y: y))
     }
 }
 
 // MARK: - Settings
+
 public extension P5Sketch {
+    /// Sets the fill color used for closed shapes.
+    ///
+    /// This method corresponds to
+    /// [p5.js `fill()`](https://p5js.org/reference/p5/fill/).
+    ///
+    /// - Parameter color: The fill color.
     func fill(_ color: CGColor) {
         internalView.addOperation(.fill(color))
     }
-    
+
+    /// Disables filling for subsequently drawn shapes.
+    ///
+    /// This method corresponds to
+    /// [p5.js `noFill()`](https://p5js.org/reference/p5/noFill/).
     func noFill() {
         internalView.addOperation(.noFill)
     }
-    
+
+    /// Sets the stroke color used for lines and shape outlines.
+    ///
+    /// This method corresponds to
+    /// [p5.js `stroke()`](https://p5js.org/reference/p5/stroke/).
+    ///
+    /// - Parameter color: The stroke color.
     func stroke(_ color: CGColor) {
         internalView.addOperation(.stroke(color))
+    }
+
+    /// Disables strokes for subsequently drawn lines and shapes.
+    ///
+    /// This method corresponds to
+    /// [p5.js `noStroke()`](https://p5js.org/reference/p5/noStroke/).
+    func noStroke() {
+        internalView.addOperation(.noStroke)
+    }
+
+    /// Sets the stroke width in points.
+    ///
+    /// This method corresponds to
+    /// [p5.js `strokeWeight()`](https://p5js.org/reference/p5/strokeWeight/).
+    ///
+    /// - Parameter weight: A finite value greater than zero.
+    func strokeWeight(_ weight: CGFloat) {
+        precondition(
+            weight.isFinite && weight > 0,
+            "strokeWeight(_:) requires a finite value greater than zero."
+        )
+        internalView.addOperation(.strokeWeight(weight))
     }
 }

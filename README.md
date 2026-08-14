@@ -1,58 +1,104 @@
 # P5Swift
 
-A lightweight (?) version of P5 made in Swift.
+P5Swift is a lightweight, native Swift drawing library inspired by
+[p5.js](https://p5js.org). It provides the familiar `setup()` / `draw()`
+lifecycle and a focused set of p5-style drawing functions backed by Core
+Graphics.
 
-Since the pandemic I’ve been watching watching some amazing coding challenges made by [Daniel Shiffman](https://github.com/shiffman) using a framework called [p5.js](https://p5js.org). But, since I don’t really like web dev I thought it’d be cool if I recreated p5 in Swift and followed one of those challenges/tutorials.
+The package uses Swift 6 and supports iOS 17+ and macOS 14+.
 
-I have to admit that I found some other solutions here in Github (obviously better than mine) which are the following: [p5swift](https://github.com/zats/p5swift), [p5-in-swift](https://github.com/alexito4/p5-in-Swift). So, if you find something simular to those, maybe it’s not a coincidence. 
+## Installation
 
-### Why?
+In Xcode, choose **File > Add Package Dependencies** and enter:
 
-To be honest, I could just use of those other solutions that I found, but it’s just not the same to work with something you know you did all by yourself, right?
+```text
+https://github.com/ezefranca/P5Swift
+```
 
-### How?
-
-P5Swfit is just, let’s say, a wrapper of a `CGContext`. All the drawing operations were implemented using the ones that a CoreGraphics context provides us. So… yeah I didn’t do that much.
-
-## Usage
-
-This is a swift package so installation is straight forward. In XCode just go to `File -> Add Package Dependencies` and put the link to this repository.
-
-### Sketch
-
-When you need to create a new canvas o sketch (as the p5 community like to call it) you have to to the following:
+You can also add the package to `Package.swift`:
 
 ```swift
-class MySktech: P5Sketch {
-  func setup() {
-    // it will be called only one time (when it's initialized)
-  }
+.package(
+    url: "https://github.com/ezefranca/P5Swift",
+    from: "0.2.0"
+)
+```
 
-  func draw() {
-    // it will be called every frame
-  }
+## Create a sketch
+
+Subclass `P5Sketch`, override `setup()` for one-time configuration, and
+override `draw()` for frame-by-frame drawing:
+
+```swift
+import P5Swift
+import UIKit
+
+@MainActor
+final class BouncingCircle: P5Sketch {
+    private var x: CGFloat = 0
+
+    override func setup() {
+        frameRate(60)
+        noStroke()
+        fill(UIColor.systemPink.cgColor)
+    }
+
+    override func draw() {
+        background(UIColor.systemBackground.cgColor)
+        circle(x, height / 2, 40)
+
+        x = (x + 2).truncatingRemainder(dividingBy: width)
+    }
 }
 ```
 
-And then, inside your `UIViewController` you add the view (canvas) associated with the sketch
+Add the sketch's native view to your interface:
 
 ```swift
-class MyViewController: UIViewController {
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    let sketch = MySketch(ofSize: view.frame.size)
-    view.addSubview(sketch.view)
-  }
+final class SketchViewController: UIViewController {
+    private var sketch: BouncingCircle?
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        let sketch = BouncingCircle(size: view.bounds.size)
+        sketch.view.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.addSubview(sketch.view)
+        self.sketch = sketch
+    }
 }
 ```
 
-That’s it!
+Keep a strong reference to the sketch for as long as it is displayed.
 
-## Some examples
+## p5.js compatibility
 
-I made a little demo app that you can run to see some examples of what you can achieve with P5.
+P5Swift intentionally follows p5.js terminology and geometry:
 
-| Game of life | Starfield | Fourier Series |
-|:--:|:--:|:--:|
-| ![246639163-0fd1f710-a26f-4ed8-a88f-4a7475e39fe0](https://github.com/juandahurt/P5Swift/assets/26754335/771f5f25-e736-48f5-a042-b91cfa87125c) | ![246866221-fc850022-898d-4808-80ce-18ce688b703b](https://github.com/juandahurt/P5Swift/assets/26754335/40610ea7-694a-43a0-883e-a5cd984bb754) | ![247984017-0efc0ce0-5139-4c6b-a27f-c053a6e9433b](https://github.com/juandahurt/P5Swift/assets/26754335/0db5e54b-c239-4234-bd81-3b023e8cc81d) |
+| P5Swift | p5.js reference | Notes |
+| --- | --- | --- |
+| `setup()`, `draw()` | [`setup()`](https://p5js.org/reference/p5/setup/), [`draw()`](https://p5js.org/reference/p5/draw/) | Same lifecycle roles |
+| `frameRate(_:)` | [`frameRate()`](https://p5js.org/reference/p5/frameRate/) | Sets a target rate |
+| `loop()`, `noLoop()`, `redraw()` | [`loop()`](https://p5js.org/reference/p5/loop/), [`noLoop()`](https://p5js.org/reference/p5/noLoop/), [`redraw()`](https://p5js.org/reference/p5/redraw/) | Controls frame production |
+| `line`, `rect`, `square` | [2D primitives](https://p5js.org/reference/#Shape) | Core Graphics coordinates, in points |
+| `circle` | [`circle()`](https://p5js.org/reference/p5/circle/) | Third argument is the **diameter** |
+| `ellipse` | [`ellipse()`](https://p5js.org/reference/p5/ellipse/) | Center-based by default |
+| `fill`, `noFill`, `stroke`, `noStroke`, `strokeWeight` | [Color](https://p5js.org/reference/#Color) | Uses `CGColor` rather than p5 color values |
+| `translate`, `rotate`, `push`, `pop` | [Transform](https://p5js.org/reference/#Transform) | Angles are radians |
 
+The default style matches p5.js: white fill, black one-point stroke.
+`push()` and `pop()` preserve both transformations and drawing styles.
+
+P5Swift is not a JavaScript runtime or a complete p5.js port. Browser APIs,
+DOM helpers, WebGL, media capture, and the full p5.js function catalog are
+outside the current scope.
+
+## Documentation
+
+Public symbols include DocC comments with links to their p5.js counterparts.
+In Xcode, choose **Product > Build Documentation** to browse the complete API.
+
+## Demo
+
+`P5Demo` includes Game of Life, Starfield, Fourier series, and fractal tree
+examples.

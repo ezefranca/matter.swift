@@ -1,14 +1,8 @@
-//
-//  P5SketchInternal.swift
-//  
-//
-//  Created by Juan Hurtado on 13/06/23.
-//
-
-import CoreGraphics
-
+@MainActor
 protocol P5SketchInternal {
-    var renderer: P5Renderer { get set }
+    var isLooping: Bool { get set }
+    var framesPerSecond: Double { get set }
+    var userWantsRedraw: Bool { get set }
 
-    var loop: Bool { get }
+    func addOperation(_ operation: P5Operation)
 }

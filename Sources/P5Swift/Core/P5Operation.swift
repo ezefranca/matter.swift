@@ -1,25 +1,21 @@
-//
-//  P5Operation.swift
-//
-//
-//  Created by Juan Hurtado on 14/06/23.
-//
-
 import CoreGraphics
 
 enum P5Operation {
     case fill(CGColor)
     case noFill
     case stroke(CGColor)
+    case noStroke
+    case strokeWeight(CGFloat)
     
     case background(CGColor)
-    case line(CGFloat, CGFloat, CGFloat, CGFloat)
-    case rect(CGFloat, CGFloat, CGFloat, CGFloat)
-    case square(CGFloat, CGFloat, CGFloat)
-    case circle(CGFloat, CGFloat, CGFloat)
+    case line(x1: CGFloat, y1: CGFloat, x2: CGFloat, y2: CGFloat)
+    case rect(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat)
+    case square(x: CGFloat, y: CGFloat, extent: CGFloat)
+    case ellipse(x: CGFloat, y: CGFloat, width: CGFloat, height: CGFloat)
     
     case rotate(CGFloat)
-    case translate(CGFloat, CGFloat)
+    case translate(x: CGFloat, y: CGFloat)
     
-    case push, pop
+    case push
+    case pop
 }
