@@ -6,12 +6,12 @@
 > The original project established the Core Graphics sketch model that this
 > package continues to develop.
 
-[![Tests](https://github.com/ezefranca/p5.swift/actions/workflows/tests.yml/badge.svg)](https://github.com/ezefranca/p5.swift/actions/workflows/tests.yml)
-[![Documentation](https://img.shields.io/badge/documentation-DocC-0A84FF.svg?logo=swift&logoColor=white)](https://ezefranca.com/p5.swift/documentation/p5/)
-[![Release](https://github.com/ezefranca/p5.swift/actions/workflows/release.yml/badge.svg)](https://github.com/ezefranca/p5.swift/actions/workflows/release.yml)
-[![Latest release](https://img.shields.io/github/v/release/ezefranca/p5.swift)](https://github.com/ezefranca/p5.swift/releases)
-[![Swift versions](https://img.shields.io/endpoint?url=https://swiftpackageindex.com/api/packages/ezefranca/p5.swift/badge?type=swift-versions)](https://swiftpackageindex.com/ezefranca/p5.swift)
-[![Platforms](https://img.shields.io/endpoint?url=https://swiftpackageindex.com/api/packages/ezefranca/p5.swift/badge?type=platforms)](https://swiftpackageindex.com/ezefranca/p5.swift)
+[![Tests](https://github.com/ezefranca/P5Swift/actions/workflows/tests.yml/badge.svg)](https://github.com/ezefranca/P5Swift/actions/workflows/tests.yml)
+[![Documentation](https://img.shields.io/badge/documentation-DocC-0A84FF.svg?logo=swift&logoColor=white)](https://ezefranca.com/P5Swift/documentation/p5/)
+[![Release](https://github.com/ezefranca/P5Swift/actions/workflows/release.yml/badge.svg)](https://github.com/ezefranca/P5Swift/actions/workflows/release.yml)
+[![Latest release](https://img.shields.io/github/v/release/ezefranca/P5Swift)](https://github.com/ezefranca/P5Swift/releases)
+![Swift 6.2](https://img.shields.io/badge/Swift-6.2-F05138?logo=swift&logoColor=white)
+![Platforms](https://img.shields.io/badge/Platforms-iOS%2017%2B%20%7C%20macOS%2014%2B-000000?logo=apple&logoColor=white)
 ![Swift Package Manager](https://img.shields.io/badge/Swift_Package_Manager-compatible-brightgreen)
 [![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen)](Scripts/check_coverage.py)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
@@ -35,7 +35,7 @@ UIKit canvases.
 In Xcode, choose **File > Add Package Dependencies** and enter:
 
 ```text
-https://github.com/ezefranca/p5.swift
+https://github.com/ezefranca/P5Swift
 ```
 
 For another Swift package:
@@ -43,8 +43,8 @@ For another Swift package:
 ```swift
 dependencies: [
     .package(
-        url: "https://github.com/ezefranca/p5.swift",
-        from: "0.3.0"
+        url: "https://github.com/ezefranca/P5Swift",
+        from: "0.3.1"
     )
 ]
 ```
@@ -122,7 +122,7 @@ Keep a strong reference to the sketch while displaying its view.
 
 Create an App project, add this repository as a package dependency, import
 `P5`, and use `P5SketchView` as the root SwiftUI content. The
-[SwiftUI and Swift Playgrounds](https://ezefranca.com/p5.swift/documentation/p5/swiftuiandplaygrounds/)
+[SwiftUI and Swift Playgrounds](https://ezefranca.com/P5Swift/documentation/p5/swiftuiandplaygrounds/)
 article includes complete App and Xcode playground examples.
 
 ## p5.js compatibility
@@ -147,23 +147,23 @@ on Apple platforms. Their underlying capabilities can still receive native
 APIs.
 
 See the
-[parity roadmap](https://ezefranca.com/p5.swift/documentation/p5/p5parityroadmap/)
+[parity roadmap](https://ezefranca.com/P5Swift/documentation/p5/p5parityroadmap/)
 for the planned implementation sequence.
 
 ## Documentation
 
 The DocC documentation is published at
-[ezefranca.com/p5.swift](https://ezefranca.com/p5.swift/documentation/p5/).
+[ezefranca.com/P5Swift](https://ezefranca.com/P5Swift/documentation/p5/).
 GitHub Actions rebuilds it from `main`.
 
 Swift Package Index also builds and hosts versioned
-[DocC documentation](https://swiftpackageindex.com/ezefranca/p5.swift/documentation)
+[DocC documentation](https://swiftpackageindex.com/ezefranca/P5Swift/documentation)
 from the `P5` target configured in `.spi.yml`.
 
 The public site also publishes
-[agent-readable documentation](https://ezefranca.com/p5.swift/llms.txt),
-[complete source context](https://ezefranca.com/p5.swift/llms-full.txt), and
-[structured package metadata](https://ezefranca.com/p5.swift/agent-context.json).
+[agent-readable documentation](https://ezefranca.com/P5Swift/llms.txt),
+[complete source context](https://ezefranca.com/P5Swift/llms-full.txt), and
+[structured package metadata](https://ezefranca.com/P5Swift/agent-context.json).
 
 In Xcode, choose **Product > Build Documentation** to build it locally.
 
@@ -189,7 +189,7 @@ Semantic version tags are published as GitHub Releases by the release
 workflow.
 
 The repository includes `.spi.yml` metadata for
-[Swift Package Index](https://swiftpackageindex.com/ezefranca/p5.swift).
+[Swift Package Index](https://swiftpackageindex.com/ezefranca/P5Swift).
 After the GitHub repository is renamed and public, submit its URL through
 [Add a Package](https://swiftpackageindex.com/add-a-package).
 

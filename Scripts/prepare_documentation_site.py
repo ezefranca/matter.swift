@@ -14,7 +14,6 @@ from urllib.parse import quote
 
 PACKAGE_NAME = "p5.swift"
 MODULE_NAME = "p5"
-REPOSITORY_URL = "https://github.com/ezefranca/p5.swift"
 
 
 def arguments() -> argparse.Namespace:
@@ -23,6 +22,7 @@ def arguments() -> argparse.Namespace:
     parser.add_argument("--base-url", required=True)
     parser.add_argument("--version", required=True)
     parser.add_argument("--repository-root", default=Path.cwd(), type=Path)
+    parser.add_argument("--repository-url", required=True)
     return parser.parse_args()
 
 
@@ -178,6 +178,7 @@ def write_agent_resources(
     base_url: str,
     version: str,
     repository: Path,
+    repository_url: str,
 ) -> None:
     docs_url = f"{base_url}/documentation/{MODULE_NAME}/"
     llms = f"""# {PACKAGE_NAME}
@@ -203,7 +204,7 @@ Current documented release: {version}
 - [Complete documentation context]({base_url}/llms-full.txt)
 - [Structured project context]({base_url}/agent-context.json)
 - [DocC render data]({base_url}/data/documentation/{MODULE_NAME}.json)
-- [Source repository]({REPOSITORY_URL})
+- [Source repository]({repository_url})
 """
     (site / "llms.txt").write_text(llms, encoding="utf-8")
 
@@ -254,7 +255,7 @@ Current documented release: {version}
             "Native p5 creative coding for Swift, SwiftUI, UIKit, and AppKit."
         ),
         "canonicalDocumentation": docs_url,
-        "repository": REPOSITORY_URL,
+        "repository": repository_url,
         "license": "MIT",
         "platforms": [
             {"name": "iOS", "minimumVersion": "17.0"},
@@ -324,6 +325,7 @@ def main() -> None:
         base_url,
         options.version,
         repository,
+        options.repository_url,
     )
 
 
