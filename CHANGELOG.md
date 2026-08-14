@@ -2,6 +2,14 @@
 
 All notable changes to p5.swift are documented in this file.
 
+## [0.3.2] - 2026-08-14
+
+### Fixed
+
+- Exclude the macOS-only test target from normal iOS scheme builds.
+- Build and upload DocC even before GitHub Pages is enabled.
+- Restore canonical links after the GitHub repository rename.
+
 ## [0.3.1] - 2026-08-14
 
 ### Fixed
@@ -54,6 +62,7 @@ All notable changes to p5.swift are documented in this file.
 
 - `init(ofSize:)` in favor of `init(size:)`.
 
-[0.3.1]: https://github.com/ezefranca/P5Swift/compare/0.3.0...0.3.1
-[0.3.0]: https://github.com/ezefranca/P5Swift/compare/0.2.0...0.3.0
-[0.2.0]: https://github.com/ezefranca/P5Swift/compare/0.1.0...0.2.0
+[0.3.2]: https://github.com/ezefranca/p5.swift/compare/0.3.1...0.3.2
+[0.3.1]: https://github.com/ezefranca/p5.swift/compare/0.3.0...0.3.1
+[0.3.0]: https://github.com/ezefranca/p5.swift/compare/0.2.0...0.3.0
+[0.2.0]: https://github.com/ezefranca/p5.swift/compare/0.1.0...0.2.0
