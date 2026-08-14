@@ -1,0 +1,12 @@
+version: 1
+
+metadata:
+  authors: "Expanded from Juan Hurtado's P5Swift"
+
+builder:
+  configs:
+    - platform: macos
+      scheme: P5
+      documentation_targets: [P5]
+    - platform: ios
+      scheme: P5

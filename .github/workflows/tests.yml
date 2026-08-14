@@ -22,10 +22,24 @@ jobs:
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
 
       - name: Show Swift version
         run: swift --version
 
       - name: Build and test
-        run: swift test --parallel
+        run: swift test --parallel --enable-code-coverage
+
+      - name: Require 100% line coverage
+        run: |
+          COVERAGE_JSON=$(swift test --show-codecov-path)
+          python3 Scripts/check_coverage.py \
+            --coverage "$COVERAGE_JSON" \
+            --source-root Sources/P5
+
+      - name: Build iOS library
+        run: >
+          xcodebuild build
+          -scheme P5
+          -destination 'generic/platform=iOS Simulator'
+          CODE_SIGNING_ALLOWED=NO

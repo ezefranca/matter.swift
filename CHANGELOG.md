@@ -1,6 +1,28 @@
-# Changelog
+# p5.swift Changelog
 
-All notable changes to P5Swift are documented in this file.
+All notable changes to p5.swift are documented in this file.
+
+## [0.3.0] - 2026-08-14
+
+### Added
+
+- `P5SketchView`, a lifecycle-safe SwiftUI wrapper for iOS and macOS.
+- Swift Playgrounds App and Xcode playground documentation.
+- Automatic sketch recreation when a SwiftUI canvas changes size.
+- GitHub Pages deployment for the DocC documentation.
+- Search-engine route pages, sitemap, robots policy, and canonical metadata.
+- Agent-readable `llms.txt`, complete context, and structured package metadata.
+- A roadmap toward near-complete native p5.js capability parity.
+- The `p5.swift` package name and `P5` importable module.
+- Automated semantic-version publishing through GitHub Releases.
+- Platform, language, test, documentation, and release badges.
+- Twenty deterministic Swift Testing tests with a 100% line-coverage gate.
+- MIT licensing, contribution guidelines, and a security policy.
+
+### Attribution
+
+- This project is an expanded fork of
+  [Juan Hurtado's P5Swift](https://github.com/juandahurt/P5Swift).
 
 ## [0.2.0] - 2026-08-14
 
@@ -24,4 +46,5 @@ All notable changes to P5Swift are documented in this file.
 
 - `init(ofSize:)` in favor of `init(size:)`.
 
-[0.2.0]: https://github.com/ezefranca/P5Swift/compare/0.1.0...0.2.0
+[0.3.0]: https://github.com/ezefranca/p5.swift/compare/0.2.0...0.3.0
+[0.2.0]: https://github.com/ezefranca/p5.swift/compare/0.1.0...0.2.0
