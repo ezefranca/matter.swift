@@ -146,9 +146,67 @@ Literal browser objects such as `window`, HTML elements, and CSS do not exist
 on Apple platforms. Their underlying capabilities can still receive native
 APIs.
 
-See the
-[parity roadmap](https://ezefranca.com/p5.swift/documentation/p5/p5parityroadmap/)
-for the planned implementation sequence.
+## P5 parity roadmap
+
+The project is currently in **Phase 1**. Checked items are available in the
+latest release; unchecked items are planned. Every new API must include
+behavioral tests, p5.js reference links, and documentation of intentional
+native differences.
+
+### Phase 1: Complete the 2D foundation
+
+- [x] Sketch lifecycle with `setup()` and `draw()`
+- [x] Frame-rate, loop, no-loop, and redraw controls
+- [x] Core primitives: lines, rectangles, squares, circles, and ellipses
+- [x] Fill, stroke, stroke weight, and disabled fill or stroke
+- [x] Translation, rotation, and drawing-state stacks
+- [ ] Numeric and grayscale colors, alpha overloads, and color modes
+- [ ] Points, triangles, quads, arcs, rounded rectangles, and shape modes
+- [ ] `beginShape()`, vertices, curves, Bézier paths, contours, and
+  `endShape()`
+- [ ] Scale, shear, matrix operations, angle modes, line caps, and line joins
+- [ ] Text loading, measurement, alignment, wrapping, and drawing
+- [ ] Image loading, drawing, resizing, tinting, masking, and blend modes
+- [ ] Mouse, touch, keyboard, focus, timing, and canvas-resize events
+
+### Phase 2: Creative-coding utilities
+
+- [ ] `P5Vector` and vector arithmetic
+- [ ] Seeded random values, Gaussian generation, and noise
+- [ ] Mapping, interpolation, constraints, normalization, and trigonometry
+- [ ] Date, time, frame count, delta time, and display information
+- [ ] Pixel access, filters, image sampling, and color interpolation
+- [ ] Offscreen graphics buffers and reusable drawing contexts
+- [ ] Image and animation export
+
+### Phase 3: Native media and audio
+
+- [ ] Camera and microphone capture with AVFoundation
+- [ ] Video playback, frame extraction, and recording
+- [ ] Audio files, oscillators, amplitude analysis, and FFT data
+- [ ] Permission-aware asynchronous APIs and lifecycle management
+- [ ] Photos and file importer/exporter integration
+
+### Phase 4: Metal-backed 3D
+
+- [ ] 3D primitives, meshes, cameras, projections, materials, and lights
+- [ ] Textures and offscreen render targets
+- [ ] Shader APIs adapted for Metal Shading Language
+- [ ] Model loading and normal generation
+- [ ] Depth, stencil, blending, and antialiasing controls
+
+### Phase 5: Native interface integrations
+
+- [x] SwiftUI sketch presentation
+- [x] UIKit and AppKit canvas adapters
+- [ ] Observable sketch state and native controls
+- [ ] Accessibility descriptions and reduced-motion behavior
+- [ ] Drag and drop, clipboard, file dialogs, and sharing
+- [ ] URLSession networking and native persistence helpers
+
+Read the complete
+[parity and compatibility policy](https://ezefranca.com/p5.swift/documentation/p5/p5parityroadmap/)
+in the DocC documentation.
 
 ## Documentation
 
