@@ -21,6 +21,19 @@ p5.swift brings the lifecycle and creative-coding vocabulary of
 model, Core Graphics rendering, SwiftUI integration, and native AppKit and
 UIKit canvases.
 
+This repository is a single Swift package that ships three independent
+library products, each mapped to a well-known JavaScript creative-coding or
+ML library:
+
+| Product | Inspired by | Status |
+| --- | --- | --- |
+| [`P5`](#create-a-sketch) | [p5.js](https://p5js.org) | Active, see the [parity roadmap](#p5-parity-roadmap) |
+| [`Matter`](#matter-physics) | [Matter.js](https://brm.io/matter-js/) | Early, Metal-first physics core |
+| [`ML5`](#ml5-on-device-machine-learning) | [ml5.js](https://ml5js.org/) | Early, Core ML classification/regression |
+
+Each product is a separate SwiftPM target with its own tests and DocC
+catalog. Add only the products you need to your target's dependencies.
+
 ## Requirements
 
 | Tool or platform | Minimum version |
@@ -54,6 +67,10 @@ Add the `P5` product to your target, then import the module:
 ```swift
 import P5
 ```
+
+To use the physics or machine-learning packages instead, add `Matter` or
+`ML5` and import the corresponding module. All three products live in this
+one repository and share the same version tag.
 
 ## Create a sketch
 
@@ -208,6 +225,70 @@ Read the complete
 [parity and compatibility policy](https://ezefranca.com/p5.swift/documentation/p5/p5parityroadmap/)
 in the DocC documentation.
 
+## Matter: physics
+
+`Matter` is a native Swift, Metal-first conceptual port of
+[Matter.js](https://brm.io/matter-js/). It has no SpriteKit dependency and
+does not include Matter.js source code.
+
+The current slice provides `Sendable` vectors, identifiers, body
+definitions, bodies, and worlds; Matter-style circle and rectangle
+factories; force accumulation with fixed-step semi-implicit Euler
+integration; an actor-owned `Engine` with a required Metal execution path
+and a bundled Metal kernel; and a deterministic CPU
+`ReferenceIntegrator` for tests and numerical comparison. Collision
+detection, constraints, sleeping, compound bodies, and rendering are
+intentionally outside this initial slice.
+
+```swift
+import Matter
+
+let engine = try Engine(gravity: Vector(x: 0, y: 9.81))
+let ball = try await engine.add(Bodies.circle(at: .zero, radius: 12, mass: 1))
+try await engine.applyForce(Vector(x: 20, y: 0), to: ball)
+let world = try await engine.step()
+```
+
+`Engine` never falls back to CPU work. Catch `MetalBackendError` to handle an
+unavailable device, kernel compilation failure, or failed command buffer.
+`Matter` requires a Metal-capable device.
+
+## ML5: on-device machine learning
+
+`ML5` provides native Swift foundations for approachable, on-device machine
+learning built directly on Core ML. It is an independent implementation
+inspired by the conceptual ergonomics of [ml5.js](https://ml5js.org/).
+
+The current slice supports scalar Core ML inputs and outputs, typed
+classification and regression decoding, and async actor-isolated
+prediction. Image, tensor, sequence, dictionary features, and training
+adapters are not yet implemented.
+
+```swift
+import ML5
+
+let task = ClassificationTask<String>(
+    configuration: try ClassificationConfiguration(
+        labelOutput: "label",
+        confidenceOutput: "confidence"
+    )
+)
+
+let network = try NeuralNetwork(task: task, modelAt: compiledModelURL)
+let prediction = try await network.predict(
+    try FeatureVector(["feature": .number(0.5)])
+)
+
+print(prediction.label, prediction.confidence as Any)
+```
+
+`NeuralNetwork` is actor-isolated and checks cancellation before and after
+model prediction. `ML5` does not claim arbitrary-model, on-device training:
+calling `train(_:)` currently throws
+`ML5Error.unsupportedOperation(.onDeviceTraining)`.
+`NeuralNetworkTrainingAdapter` is the extension point for a future Create ML
+adapter that can return a `ModelPredicting` backend.
+
 ## Documentation
 
 The DocC documentation is published at
@@ -216,7 +297,7 @@ GitHub Actions rebuilds it from `main`.
 
 Swift Package Index also builds and hosts versioned
 [DocC documentation](https://swiftpackageindex.com/ezefranca/p5.swift/documentation)
-from the `P5` target configured in `.spi.yml`.
+from the `P5`, `Matter`, and `ML5` targets configured in `.spi.yml`.
 
 The public site also publishes
 [agent-readable documentation](https://ezefranca.com/p5.swift/llms.txt),

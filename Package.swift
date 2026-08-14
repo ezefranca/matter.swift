@@ -7,6 +7,8 @@ let usesSwiftTestingPackage =
 
 var packageDependencies: [Package.Dependency] = []
 var testDependencies: [Target.Dependency] = ["P5"]
+var matterTestDependencies: [Target.Dependency] = ["Matter"]
+var ml5TestDependencies: [Target.Dependency] = ["ML5"]
 
 if usesSwiftTestingPackage {
     packageDependencies.append(
@@ -15,9 +17,13 @@ if usesSwiftTestingPackage {
             revision: "swift-6.2.3-RELEASE"
         )
     )
-    testDependencies.append(
-        .product(name: "Testing", package: "swift-testing")
+    let testingProduct: Target.Dependency = .product(
+        name: "Testing",
+        package: "swift-testing"
     )
+    testDependencies.append(testingProduct)
+    matterTestDependencies.append(testingProduct)
+    ml5TestDependencies.append(testingProduct)
 }
 
 let package = Package(
@@ -31,6 +37,14 @@ let package = Package(
             name: "P5",
             targets: ["P5"]
         ),
+        .library(
+            name: "Matter",
+            targets: ["Matter"]
+        ),
+        .library(
+            name: "ML5",
+            targets: ["ML5"]
+        ),
     ],
     dependencies: packageDependencies,
     targets: [
@@ -40,6 +54,23 @@ let package = Package(
         .testTarget(
             name: "P5Tests",
             dependencies: testDependencies
+        ),
+        .target(
+            name: "Matter",
+            resources: [
+                .copy("Resources/Integration.metal"),
+            ]
+        ),
+        .testTarget(
+            name: "MatterTests",
+            dependencies: matterTestDependencies
+        ),
+        .target(
+            name: "ML5"
+        ),
+        .testTarget(
+            name: "ML5Tests",
+            dependencies: ml5TestDependencies
         ),
     ],
     swiftLanguageModes: [.v6]

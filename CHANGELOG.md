@@ -2,6 +2,21 @@
 
 All notable changes to p5.swift are documented in this file.
 
+## [Unreleased]
+
+### Added
+
+- `Matter`, a native Swift, Metal-first conceptual port of Matter.js,
+  including `Vector`, `Body`, `World`, Matter-style body factories, an
+  actor-owned Metal `Engine`, a bundled integration kernel, and a
+  deterministic CPU `ReferenceIntegrator`.
+- `ML5`, native Swift foundations for on-device machine learning inspired by
+  ml5.js, including an actor-isolated `NeuralNetwork`, typed
+  classification/regression tasks, `FeatureVector`, and a Core ML backed
+  `ModelPredicting` implementation.
+- This repository now ships all three packages (`P5`, `Matter`, `ML5`) as
+  separate SwiftPM library products from one `Package.swift`.
+
 ## [0.3.2] - 2026-08-14
 
 ### Fixed

@@ -7,6 +7,6 @@ builder:
   configs:
     - platform: macos
       scheme: P5
-      documentation_targets: [P5]
+      documentation_targets: [P5, Matter, ML5]
     - platform: ios
       scheme: P5
