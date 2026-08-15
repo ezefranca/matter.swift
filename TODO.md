@@ -326,7 +326,7 @@ release.
 - [x] Add ordered feature schemas, tensor shapes, arrays, dictionaries, sequences,
   images, pixel buffers, and missing/default-value policies.
 - [x] Add dataset accumulation/removal/shuffle/split APIs corresponding to `addData`.
-- [ ] Add fitted normalization statistics, `normalizeData`, denormalization, and
+- [x] Add fitted normalization statistics, `normalizeData`, denormalization, and
   serializable preprocessing pipelines.
 - [ ] Add batch prediction and a low-latency immutable synchronous inference
   snapshot suitable for a draw loop.

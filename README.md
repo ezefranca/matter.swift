@@ -291,6 +291,11 @@ and `CVPixelBuffer`, including an explicit RGBA-to-BGRA conversion for Core Vide
 atomic batch insertion, reproducible seeded shuffling, train/validation/test
 splits, and validated Codable snapshots for checkpointing.
 
+`FeaturePreprocessingPipeline` fits reversible standard-score and configurable
+min-max normalization for numbers, arrays, numeric dictionaries, and tensors.
+Fitted statistics and pipeline stages are immutable, Sendable, Codable, and
+validated again when decoded.
+
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. `ML5` does not claim arbitrary-model, on-device training:
 calling `train(_:)` currently throws
