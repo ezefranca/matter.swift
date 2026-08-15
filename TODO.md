@@ -15,8 +15,8 @@ release.
 
 - [x] `import P5`, `import Matter`, and `import ML5` are independently usable;
   none of the three library targets depends on either of the others.
-- [x] Decide and document the distribution topology before 1.0: one coordinated
-  semantic version for three products, or separately versioned repositories.
+- [x] Decide and document the distribution topology before 1.0: three separately
+  versioned repositories, superseding the initial staging-monorepo decision.
 - [ ] Every supported public symbol has a complete DocC comment, availability,
   thread-safety semantics, validation behavior, and a native-difference note
   where JavaScript behavior cannot map literally.
@@ -27,9 +27,8 @@ release.
 - [ ] Swift Package Index builds all three products and documentation catalogs.
 - [ ] GitHub Pages publishes versioned, searchable documentation for all three
   products plus complete `llms.txt` and symbol metadata.
-- [ ] Every official Nature of Code example has a compatibility-manifest entry;
-  every canonical numbered example has a runnable Swift port or an explicitly
-  tested native adaptation.
+- [ ] The pinned Nature of Code audit is used as an API-requirements reference;
+  exhaustive example manifests and ports are explicitly outside release scope.
 - [ ] Accessibility, cancellation, resource lifetime, memory behavior, GPU/CPU
   failure behavior, and privacy requirements are documented and tested.
 - [ ] A clean checkout passes the documented build, test, documentation, example,
@@ -42,8 +41,8 @@ release.
 - [x] One SwiftPM manifest exposes `P5`, `Matter`, and `ML5` library products.
 - [x] Each product has its own source target, test target, and DocC catalog.
 - [x] The three production targets have no dependencies on one another.
-- [x] Record an Architecture Decision Record for monorepo versus separate release
-  repositories, including versioning, SPI URLs, documentation URLs, and migration.
+- [x] Record ADR 0002 for separate release repositories, including ownership,
+  versioning, infrastructure, cross-links, and migration requirements.
 - [x] Define supported Swift, Xcode, macOS, iOS, simulator, and Metal feature-set
   policy in one machine-readable source of truth.
 - [x] Add ownership boundaries and dependency rules that CI can validate.
@@ -177,9 +176,9 @@ release.
 
 - [x] Core Graphics color fill/stroke/background and disabled fill/stroke.
 - [x] Stroke weight and push/pop drawing state.
-- [ ] Add numeric grayscale, grayscale/alpha, RGB/RGBA, and hexadecimal colors.
-- [ ] Add RGB, HSB/HSV, and Display P3 color modes with configurable ranges.
-- [ ] Add reusable `P5Color`, component extraction, interpolation, and accessibility
+- [x] Add numeric grayscale, grayscale/alpha, RGB/RGBA, and hexadecimal colors.
+- [x] Add RGB, HSB/HSV, and Display P3 color modes with configurable ranges.
+- [x] Add reusable value-semantic `P5Color`, component extraction, interpolation, and accessibility
   contrast helpers.
 - [ ] Add stroke caps, joins, miter limits, dash patterns, fill rules, and antialiasing
   controls.
@@ -341,35 +340,15 @@ release.
 - [ ] Document Create ML/macOS-only workflows separately from on-device APIs.
 - [ ] Add privacy, memory, thermal, and Neural Engine availability guidance.
 
-## 7. Nature of Code compatibility suite
+## 7. Nature of Code API reference
 
-- [ ] Generate and version a manifest for every upstream example directory and its
-  JavaScript source files, chapter, dependencies, status, and native adaptation.
-- [ ] Define statuses: exact API port, idiomatic native port, adapted dependency,
-  browser-only replacement, superseded duplicate, or unsupported with rationale.
-- [ ] Make CI reject missing upstream examples after a compatibility re-audit.
-- [ ] Create a polished multiplatform SwiftUI example browser with chapter/example
-  navigation, source links, reset/pause controls, accessibility, and screenshots.
-- [ ] Keep example state isolated and deterministic where the original permits it.
-- [ ] Add compile smoke tests for every example and runtime smoke tests for canonical
-  examples.
-- [ ] Add visual regression fixtures for deterministic representative examples.
-- [ ] Port Chapter 0: randomness, Gaussian distributions, and coherent noise.
-- [ ] Port Chapter 1: vectors and motion.
-- [ ] Port Chapter 2: forces, friction, drag, and attraction.
-- [ ] Port Chapter 3: angular motion, waves, springs, and pendulums.
-- [ ] Port Chapter 4: particles, emitters, images, and additive blending.
-- [ ] Port Chapter 5: steering, path following, flow fields, flocking, and spatial
-  subdivision.
-- [ ] Port Chapter 6: Matter bodies, collisions, polygons, compounds, constraints,
-  interaction, events, and attraction; adapt Toxiclibs examples to native Matter.
-- [ ] Port Chapter 7: elementary cellular automata and Game of Life variants.
-- [ ] Port Chapter 8: recursion, fractals, stochastic trees, and L-systems.
-- [ ] Port Chapter 9: genetic algorithms, selection, mutation, crossover, and fitness.
-- [ ] Port Chapter 10: perceptron and trainable gesture classifier.
-- [ ] Port Chapter 11: neural-network agents and neuroevolution.
-- [ ] Add a book-version compatibility page and clearly attribute Daniel Shiffman,
-  the Nature of Code project, and upstream example licenses.
+- [x] Remove exhaustive example manifests, browser work, and 344 example ports from
+  release scope at the project owner's direction.
+- [ ] Keep the pinned upstream audit as a requirements checklist for library APIs.
+- [ ] Add a small focused smoke sample for each major library capability; samples
+  demonstrate the API but are not line-by-line book ports.
+- [ ] Add a book-version compatibility page and clearly attribute Daniel Shiffman
+  and the Nature of Code project without implying official affiliation.
 
 ## 8. Apple-platform product polish
 
@@ -397,8 +376,8 @@ release.
 - [ ] All three products pass clean Debug/Release builds and tests on every supported
   platform/toolchain matrix entry.
 - [ ] Coverage and documentation completeness gates report 100% for all products.
-- [ ] All canonical Nature of Code examples compile; required runtime and visual
-  suites pass.
+- [ ] Focused package smoke samples compile and their required runtime/visual suites
+  pass; exhaustive Nature of Code ports are not a release gate.
 - [ ] API digester reports no unreviewed breaking changes.
 - [ ] Performance and memory regressions remain within documented budgets.
 - [ ] SPI and hosted documentation smoke tests pass for the release candidate.
@@ -407,3 +386,21 @@ release.
 - [ ] Changelog, migration notes, semantic version, release notes, checksums,
   attribution, and support status are accurate.
 - [ ] Tag and publish 1.0 only after the complete release-validation script passes.
+
+## 10. Independent repository migration
+
+- [ ] Create history-preserving local `p5.swift`, `matter.swift`, and `ml5.swift`
+  repositories after implementation work is complete.
+- [ ] Give each repository a single-product `Package.swift`, lock state, source,
+  tests, DocC catalog, shared scheme, test plan, examples, and API baseline.
+- [ ] Give each repository independent format, lint, coverage, documentation,
+  compatibility, benchmark, and release-validation scripts.
+- [ ] Give each repository independent GitHub Actions for supported macOS/iOS
+  builds, tests, coverage, DocC publishing, API checks, and releases.
+- [ ] Give each repository its own `.spi.yml`, badges, documentation routes,
+  semantic-version policy, changelog, release manifest, and provenance flow.
+- [ ] Add reciprocal, tested links among all three READMEs and DocC landing pages.
+- [ ] Ensure no repository's validation depends on sibling checkout paths or state.
+- [ ] Validate each repository from a clean clone and from an external SwiftPM client.
+- [ ] Leave an archival migration notice in the combined repository that points to
+  the three independently maintained successors.

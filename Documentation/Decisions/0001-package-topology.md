@@ -1,6 +1,6 @@
 # ADR 0001: One package with three independent library products
 
-- Status: Accepted
+- Status: Superseded by ADR 0002
 - Date: 2026-08-15
 
 ## Context
