@@ -287,6 +287,10 @@ All structured boundary values are `Sendable` and `Codable`; decoding runs the
 same validation as ordinary construction. `ML5Image` copies between owned bytes
 and `CVPixelBuffer`, including an explicit RGBA-to-BGRA conversion for Core Video.
 
+`ML5Dataset` provides actor-isolated `add`/remove operations, stable sample IDs,
+atomic batch insertion, reproducible seeded shuffling, train/validation/test
+splits, and validated Codable snapshots for checkpointing.
+
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. `ML5` does not claim arbitrary-model, on-device training:
 calling `train(_:)` currently throws

@@ -325,7 +325,7 @@ release.
   Core ML prediction, cancellation checks, and compute-unit configuration.
 - [x] Add ordered feature schemas, tensor shapes, arrays, dictionaries, sequences,
   images, pixel buffers, and missing/default-value policies.
-- [ ] Add dataset accumulation/removal/shuffle/split APIs corresponding to `addData`.
+- [x] Add dataset accumulation/removal/shuffle/split APIs corresponding to `addData`.
 - [ ] Add fitted normalization statistics, `normalizeData`, denormalization, and
   serializable preprocessing pipelines.
 - [ ] Add batch prediction and a low-latency immutable synchronous inference
