@@ -75,6 +75,15 @@ public actor Engine {
         try world.applyTorque(torque, to: body)
     }
 
+    /// Accumulates an attractor's stable force applications for the next tick.
+    @discardableResult
+    public func apply(
+        _ attractor: Attractor,
+        to targets: [BodyID]? = nil
+    ) throws -> [ForceApplication] {
+        try attractor.apply(to: targets, in: &world)
+    }
+
     /// Mutates one actor-owned body using a synchronous value closure.
     public func updateBody(
         withID identifier: BodyID,

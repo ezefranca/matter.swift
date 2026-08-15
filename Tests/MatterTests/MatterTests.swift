@@ -140,6 +140,8 @@ struct MatterTests {
         var mouse = try MouseConstraint()
         #expect(try mouse.press(at: Vector(x: 1, y: 0), in: &world) != nil)
         #expect(mouse.release(in: &world) != nil)
+        let attractor = try Attractor(source: .point(position: .zero, mass: 1))
+        #expect(try attractor.applications(in: world).isEmpty == false)
     }
 
     #if canImport(Metal)

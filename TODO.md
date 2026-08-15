@@ -298,7 +298,7 @@ release.
   with atomic world and engine insertion.
 - [x] Add rotational locks and torque-limited angular motors for windmill examples.
 - [x] Add mouse/touch constraints with P5 pointer-coordinate adapters.
-- [ ] Add attraction/force behaviors used by Chapter 6.
+- [x] Add attraction/force behaviors used by Chapter 6.
 
 ### Execution and rendering
 

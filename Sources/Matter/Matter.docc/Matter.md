@@ -85,6 +85,9 @@ For reproducible reference calculations and tests only, use
 ### Simulation
 
 - ``Vector``
+- ``Attractor``
+- ``AttractionSource``
+- ``ForceApplication``
 - ``ReferenceIntegrator``
 - ``ReferencePhysics``
 - ``MetalBackend``
@@ -94,6 +97,7 @@ For reproducible reference calculations and tests only, use
 - ``FixedStepAccumulator``
 - ``FixedStepAdvance``
 - <doc:RunningSimulation>
+- <doc:ForceBehaviors>
 
 ### Architecture
 
