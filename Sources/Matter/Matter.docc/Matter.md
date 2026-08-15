@@ -56,7 +56,10 @@ For reproducible reference calculations and tests only, use
 - ``Constraints``
 - ``ConstraintSolver``
 - ``ConstraintSolverConfiguration``
+- ``MouseConstraint``
+- ``MouseConstraintConfiguration``
 - <doc:ConstraintsAndSprings>
+- <doc:PointerInteraction>
 
 ### Collision queries
 

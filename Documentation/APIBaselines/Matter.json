@@ -6,6 +6,13 @@
     "children": [
       {
         "kind": "Import",
+        "name": "CoreGraphics",
+        "printedName": "CoreGraphics",
+        "declKind": "Import",
+        "moduleName": "Matter"
+      },
+      {
+        "kind": "Import",
         "name": "Foundation",
         "printedName": "Foundation",
         "declKind": "Import",
@@ -12394,9 +12401,9 @@
             "mangledName": "$s6Matter10ConstraintV5firstAA0B6AnchorOvp",
             "moduleName": "Matter",
             "declAttributes": [
+              "SetterAccess",
               "HasStorage"
             ],
-            "isLet": true,
             "hasStorage": true,
             "accessors": [
               {
@@ -12440,9 +12447,9 @@
             "mangledName": "$s6Matter10ConstraintV6secondAA0B6AnchorOvp",
             "moduleName": "Matter",
             "declAttributes": [
+              "SetterAccess",
               "HasStorage"
             ],
-            "isLet": true,
             "hasStorage": true,
             "accessors": [
               {
@@ -15279,25 +15286,18 @@
             "children": [
               {
                 "kind": "TypeNominal",
-                "name": "Void",
-                "printedName": "()"
+                "name": "GenericTypeParam",
+                "printedName": "Result"
               },
               {
                 "kind": "TypeFunc",
                 "name": "Function",
-                "printedName": "(inout Matter.World) throws -> Swift.Void",
+                "printedName": "(inout Matter.World) throws -> Result",
                 "children": [
                   {
-                    "kind": "TypeNameAlias",
-                    "name": "Void",
-                    "printedName": "Swift.Void",
-                    "children": [
-                      {
-                        "kind": "TypeNominal",
-                        "name": "Void",
-                        "printedName": "()"
-                      }
-                    ]
+                    "kind": "TypeNominal",
+                    "name": "GenericTypeParam",
+                    "printedName": "Result"
                   },
                   {
                     "kind": "TypeNominal",
@@ -15312,9 +15312,13 @@
               }
             ],
             "declKind": "Func",
-            "usr": "s:6Matter6EngineC11updateWorldyyyAA0D0VzYbKXEKF",
-            "mangledName": "$s6Matter6EngineC11updateWorldyyyAA0D0VzYbKXEKF",
+            "usr": "s:6Matter6EngineC11updateWorldyxxAA0D0VzYbKXEKs8SendableRzlF",
+            "mangledName": "$s6Matter6EngineC11updateWorldyxxAA0D0VzYbKXEKs8SendableRzlF",
             "moduleName": "Matter",
+            "genericSig": "<Result where Result : Swift.Sendable>",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
             "throwing": true,
             "funcSelfKind": "NonMutating"
           },
@@ -16753,6 +16757,1351 @@
             "printedName": "Actor",
             "usr": "s:ScA",
             "mangledName": "$sScA"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MouseConstraintConfiguration",
+        "printedName": "MouseConstraintConfiguration",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "stiffness",
+            "printedName": "stiffness",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter28MouseConstraintConfigurationV9stiffnessSfvp",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV9stiffnessSfvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV9stiffnessSfvg",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV9stiffnessSfvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV9stiffnessSfvs",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV9stiffnessSfvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "damping",
+            "printedName": "damping",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter28MouseConstraintConfigurationV7dampingSfvp",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV7dampingSfvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV7dampingSfvg",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV7dampingSfvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV7dampingSfvs",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV7dampingSfvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "angularStiffness",
+            "printedName": "angularStiffness",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter28MouseConstraintConfigurationV16angularStiffnessSfvp",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV16angularStiffnessSfvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV16angularStiffnessSfvg",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV16angularStiffnessSfvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV16angularStiffnessSfvs",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV16angularStiffnessSfvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "collisionFilter",
+            "printedName": "collisionFilter",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CollisionFilter",
+                "printedName": "Matter.CollisionFilter",
+                "usr": "s:6Matter15CollisionFilterV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter28MouseConstraintConfigurationV15collisionFilterAA09CollisionF0Vvp",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV15collisionFilterAA09CollisionF0Vvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CollisionFilter",
+                    "printedName": "Matter.CollisionFilter",
+                    "usr": "s:6Matter15CollisionFilterV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV15collisionFilterAA09CollisionF0Vvg",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV15collisionFilterAA09CollisionF0Vvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CollisionFilter",
+                    "printedName": "Matter.CollisionFilter",
+                    "usr": "s:6Matter15CollisionFilterV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV15collisionFilterAA09CollisionF0Vvs",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV15collisionFilterAA09CollisionF0Vvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "includesStaticBodies",
+            "printedName": "includesStaticBodies",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter28MouseConstraintConfigurationV20includesStaticBodiesSbvp",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV20includesStaticBodiesSbvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV20includesStaticBodiesSbvg",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV20includesStaticBodiesSbvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV20includesStaticBodiesSbvs",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV20includesStaticBodiesSbvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(stiffness:damping:angularStiffness:collisionFilter:includesStaticBodies:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MouseConstraintConfiguration",
+                "printedName": "Matter.MouseConstraintConfiguration",
+                "usr": "s:6Matter28MouseConstraintConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CollisionFilter",
+                "printedName": "Matter.CollisionFilter",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter15CollisionFilterV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter28MouseConstraintConfigurationV9stiffness7damping16angularStiffness15collisionFilter20includesStaticBodiesACSf_S2fAA09CollisionJ0VSbtKcfc",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV9stiffness7damping16angularStiffness15collisionFilter20includesStaticBodiesACSf_S2fAA09CollisionJ0VSbtKcfc",
+            "moduleName": "Matter",
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "standard",
+            "printedName": "standard",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MouseConstraintConfiguration",
+                "printedName": "Matter.MouseConstraintConfiguration",
+                "usr": "s:6Matter28MouseConstraintConfigurationV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter28MouseConstraintConfigurationV8standardACvpZ",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV8standardACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MouseConstraintConfiguration",
+                    "printedName": "Matter.MouseConstraintConfiguration",
+                    "usr": "s:6Matter28MouseConstraintConfigurationV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV8standardACvgZ",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV8standardACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MouseConstraintConfiguration",
+                "printedName": "Matter.MouseConstraintConfiguration",
+                "usr": "s:6Matter28MouseConstraintConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MouseConstraintConfiguration",
+                "printedName": "Matter.MouseConstraintConfiguration",
+                "usr": "s:6Matter28MouseConstraintConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter28MouseConstraintConfigurationV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter28MouseConstraintConfigurationV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter28MouseConstraintConfigurationV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter28MouseConstraintConfigurationV9hashValueSivp",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter28MouseConstraintConfigurationV9hashValueSivg",
+                "mangledName": "$s6Matter28MouseConstraintConfigurationV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MouseConstraintConfiguration",
+                "printedName": "Matter.MouseConstraintConfiguration",
+                "usr": "s:6Matter28MouseConstraintConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter28MouseConstraintConfigurationV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter28MouseConstraintConfigurationV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter28MouseConstraintConfigurationV",
+        "mangledName": "$s6Matter28MouseConstraintConfigurationV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MouseConstraint",
+        "printedName": "MouseConstraint",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "point",
+            "printedName": "point",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter15MouseConstraintV5pointAA6VectorVvp",
+            "mangledName": "$s6Matter15MouseConstraintV5pointAA6VectorVvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "SetterAccess",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Vector",
+                    "printedName": "Matter.Vector",
+                    "usr": "s:6Matter6VectorV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter15MouseConstraintV5pointAA6VectorVvg",
+                "mangledName": "$s6Matter15MouseConstraintV5pointAA6VectorVvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "bodyID",
+            "printedName": "bodyID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.BodyID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter15MouseConstraintV6bodyIDAA04BodyE0VSgvp",
+            "mangledName": "$s6Matter15MouseConstraintV6bodyIDAA04BodyE0VSgvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasInitialValue",
+              "SetterAccess",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Matter.BodyID?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyID",
+                        "printedName": "Matter.BodyID",
+                        "usr": "s:6Matter6BodyIDV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter15MouseConstraintV6bodyIDAA04BodyE0VSgvg",
+                "mangledName": "$s6Matter15MouseConstraintV6bodyIDAA04BodyE0VSgvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "constraintID",
+            "printedName": "constraintID",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.ConstraintID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConstraintID",
+                    "printedName": "Matter.ConstraintID",
+                    "usr": "s:6Matter12ConstraintIDV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter15MouseConstraintV12constraintIDAA0cE0VSgvp",
+            "mangledName": "$s6Matter15MouseConstraintV12constraintIDAA0cE0VSgvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasInitialValue",
+              "SetterAccess",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Matter.ConstraintID?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ConstraintID",
+                        "printedName": "Matter.ConstraintID",
+                        "usr": "s:6Matter12ConstraintIDV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter15MouseConstraintV12constraintIDAA0cE0VSgvg",
+                "mangledName": "$s6Matter15MouseConstraintV12constraintIDAA0cE0VSgvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "configuration",
+            "printedName": "configuration",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MouseConstraintConfiguration",
+                "printedName": "Matter.MouseConstraintConfiguration",
+                "usr": "s:6Matter28MouseConstraintConfigurationV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter15MouseConstraintV13configurationAA0bC13ConfigurationVvp",
+            "mangledName": "$s6Matter15MouseConstraintV13configurationAA0bC13ConfigurationVvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MouseConstraintConfiguration",
+                    "printedName": "Matter.MouseConstraintConfiguration",
+                    "usr": "s:6Matter28MouseConstraintConfigurationV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter15MouseConstraintV13configurationAA0bC13ConfigurationVvg",
+                "mangledName": "$s6Matter15MouseConstraintV13configurationAA0bC13ConfigurationVvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MouseConstraintConfiguration",
+                    "printedName": "Matter.MouseConstraintConfiguration",
+                    "usr": "s:6Matter28MouseConstraintConfigurationV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter15MouseConstraintV13configurationAA0bC13ConfigurationVvs",
+                "mangledName": "$s6Matter15MouseConstraintV13configurationAA0bC13ConfigurationVvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isActive",
+            "printedName": "isActive",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter15MouseConstraintV8isActiveSbvp",
+            "mangledName": "$s6Matter15MouseConstraintV8isActiveSbvp",
+            "moduleName": "Matter",
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter15MouseConstraintV8isActiveSbvg",
+                "mangledName": "$s6Matter15MouseConstraintV8isActiveSbvg",
+                "moduleName": "Matter",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(point:configuration:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MouseConstraint",
+                "printedName": "Matter.MouseConstraint",
+                "usr": "s:6Matter15MouseConstraintV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MouseConstraintConfiguration",
+                "printedName": "Matter.MouseConstraintConfiguration",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter28MouseConstraintConfigurationV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter15MouseConstraintV5point13configurationAcA6VectorV_AA0bC13ConfigurationVtKcfc",
+            "mangledName": "$s6Matter15MouseConstraintV5point13configurationAcA6VectorV_AA0bC13ConfigurationVtKcfc",
+            "moduleName": "Matter",
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "press",
+            "printedName": "press(at:in:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.BodyID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "World",
+                "printedName": "Matter.World",
+                "paramValueOwnership": "InOut",
+                "usr": "s:6Matter5WorldV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter15MouseConstraintV5press2at2inAA6BodyIDVSgAA6VectorV_AA5WorldVztKF",
+            "mangledName": "$s6Matter15MouseConstraintV5press2at2inAA6BodyIDVSgAA6VectorV_AA5WorldVztKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "move",
+            "printedName": "move(to:in:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "World",
+                "printedName": "Matter.World",
+                "paramValueOwnership": "InOut",
+                "usr": "s:6Matter5WorldV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter15MouseConstraintV4move2to2inyAA6VectorV_AA5WorldVztKF",
+            "mangledName": "$s6Matter15MouseConstraintV4move2to2inyAA6VectorV_AA5WorldVztKF",
+            "moduleName": "Matter",
+            "throwing": true,
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "release",
+            "printedName": "release(in:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.Constraint?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Constraint",
+                    "printedName": "Matter.Constraint",
+                    "usr": "s:6Matter10ConstraintV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "World",
+                "printedName": "Matter.World",
+                "paramValueOwnership": "InOut",
+                "usr": "s:6Matter5WorldV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter15MouseConstraintV7release2inAA0C0VSgAA5WorldVz_tF",
+            "mangledName": "$s6Matter15MouseConstraintV7release2inAA0C0VSgAA5WorldVz_tF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MouseConstraint",
+                "printedName": "Matter.MouseConstraint",
+                "usr": "s:6Matter15MouseConstraintV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MouseConstraint",
+                "printedName": "Matter.MouseConstraint",
+                "usr": "s:6Matter15MouseConstraintV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter15MouseConstraintV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter15MouseConstraintV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter15MouseConstraintV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter15MouseConstraintV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter15MouseConstraintV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter15MouseConstraintV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter15MouseConstraintV9hashValueSivp",
+            "mangledName": "$s6Matter15MouseConstraintV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter15MouseConstraintV9hashValueSivg",
+                "mangledName": "$s6Matter15MouseConstraintV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MouseConstraint",
+                "printedName": "Matter.MouseConstraint",
+                "usr": "s:6Matter15MouseConstraintV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter15MouseConstraintV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter15MouseConstraintV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter15MouseConstraintV",
+        "mangledName": "$s6Matter15MouseConstraintV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -18718,6 +20067,68 @@
             "mangledName": "$s6Matter6VectorV1x1yACSf_Sftcfc",
             "moduleName": "Matter",
             "init_kind": "Designated"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter6VectorVyACSo7CGPointVKcfc",
+            "mangledName": "$s6Matter6VectorVyACSo7CGPointVKcfc",
+            "moduleName": "Matter",
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "cgPoint",
+            "printedName": "cgPoint",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CGPoint",
+                "printedName": "CoreFoundation.CGPoint",
+                "usr": "c:@S@CGPoint"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter6VectorV7cgPointSo7CGPointVvp",
+            "mangledName": "$s6Matter6VectorV7cgPointSo7CGPointVvp",
+            "moduleName": "Matter",
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CGPoint",
+                    "printedName": "CoreFoundation.CGPoint",
+                    "usr": "c:@S@CGPoint"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter6VectorV7cgPointSo7CGPointVvg",
+                "mangledName": "$s6Matter6VectorV7cgPointSo7CGPointVvg",
+                "moduleName": "Matter",
+                "accessorKind": "get"
+              }
+            ]
           },
           {
             "kind": "Var",
@@ -21387,6 +22798,36 @@
             "mangledName": "$s6Matter5WorldV10constraint6withIDAA10ConstraintVSgAA0fE0V_tF",
             "moduleName": "Matter",
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setFixedPoint",
+            "printedName": "setFixedPoint(_:forConstraintWithID:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ConstraintID",
+                "printedName": "Matter.ConstraintID",
+                "usr": "s:6Matter12ConstraintIDV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV13setFixedPoint_19forConstraintWithIDyAA6VectorV_AA0gI0VtKF",
+            "mangledName": "$s6Matter5WorldV13setFixedPoint_19forConstraintWithIDyAA6VectorV_AA0gI0VtKF",
+            "moduleName": "Matter",
+            "throwing": true,
+            "funcSelfKind": "Mutating"
           },
           {
             "kind": "Function",

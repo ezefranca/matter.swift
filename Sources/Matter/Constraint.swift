@@ -145,10 +145,10 @@ public struct Constraint: Sendable, Hashable, Codable {
     public let id: ConstraintID
 
     /// The first fixed or body-local anchor.
-    public let first: ConstraintAnchor
+    public private(set) var first: ConstraintAnchor
 
     /// The second fixed or body-local anchor.
-    public let second: ConstraintAnchor
+    public private(set) var second: ConstraintAnchor
 
     /// The finite, nonnegative target anchor distance.
     public let length: Float
@@ -204,6 +204,17 @@ public struct Constraint: Sendable, Hashable, Codable {
     /// Whether either endpoint references a body identifier.
     public func references(_ body: BodyID) -> Bool {
         first.bodyID == body || second.bodyID == body
+    }
+
+    mutating func setFixedPoint(_ point: Vector) throws {
+        switch (first, second) {
+        case (.fixed, _):
+            first = .fixed(point)
+        case (_, .fixed):
+            second = .fixed(point)
+        default:
+            throw MatterError.invalidConstraint
+        }
     }
 }
 

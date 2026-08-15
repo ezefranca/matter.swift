@@ -94,12 +94,14 @@ public actor Engine {
     /// Applies an arbitrary transactional mutation in one actor round trip.
     ///
     /// If the closure throws, the actor-owned world remains unchanged.
-    public func updateWorld(
-        _ update: @Sendable (inout World) throws -> Void
-    ) throws {
+    @discardableResult
+    public func updateWorld<Result: Sendable>(
+        _ update: @Sendable (inout World) throws -> Result
+    ) throws -> Result {
         var candidate = world
-        try update(&candidate)
+        let result = try update(&candidate)
         world = candidate
+        return result
     }
 
     /// Removes and returns an actor-owned body when it exists.

@@ -332,6 +332,22 @@ public struct World: Sendable, Hashable, Codable {
         constraints.first { $0.id == identifier }
     }
 
+    /// Moves the fixed endpoint of an existing point-to-body constraint.
+    ///
+    /// - Throws: ``MatterError/invalidVector`` for a nonfinite point,
+    ///   ``MatterError/unknownConstraint(_:)`` for a missing identifier, or
+    ///   ``MatterError/invalidConstraint`` when neither endpoint is fixed.
+    public mutating func setFixedPoint(
+        _ point: Vector,
+        forConstraintWithID identifier: ConstraintID
+    ) throws {
+        guard point.isFinite else { throw MatterError.invalidVector }
+        guard let index = constraints.firstIndex(where: { $0.id == identifier }) else {
+            throw MatterError.unknownConstraint(identifier)
+        }
+        try constraints[index].setFixedPoint(point)
+    }
+
     /// Removes and returns a constraint, cleaning composite membership.
     @discardableResult
     public mutating func removeConstraint(withID identifier: ConstraintID) -> Constraint? {

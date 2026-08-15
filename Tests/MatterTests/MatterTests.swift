@@ -137,6 +137,9 @@ struct MatterTests {
         #expect(try world.addConstraints(assembly, to: group).count == 1)
         let motor = try Constraints.motor(first, pivot: .zero, targetSpeed: 1)
         #expect(motor.motorSpeed == 1)
+        var mouse = try MouseConstraint()
+        #expect(try mouse.press(at: Vector(x: 1, y: 0), in: &world) != nil)
+        #expect(mouse.release(in: &world) != nil)
     }
 
     #if canImport(Metal)

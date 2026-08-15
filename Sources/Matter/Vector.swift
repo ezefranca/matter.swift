@@ -1,5 +1,9 @@
 import Foundation
 
+#if canImport(CoreGraphics)
+    import CoreGraphics
+#endif
+
 /// A two-dimensional vector used by Matter's physics state.
 @frozen
 public struct Vector: Sendable, Hashable, Codable {
@@ -13,6 +17,24 @@ public struct Vector: Sendable, Hashable, Codable {
         self.x = x
         self.y = y
     }
+
+    #if canImport(CoreGraphics)
+        /// Creates a finite physics vector from a native point.
+        ///
+        /// This checked bridge accepts P5 pointer-event locations without making
+        /// either package depend on the other.
+        public init(_ point: CGPoint) throws {
+            let x = Float(point.x)
+            let y = Float(point.y)
+            guard x.isFinite, y.isFinite else { throw MatterError.invalidVector }
+            self.init(x: x, y: y)
+        }
+
+        /// The native Core Graphics representation of this vector.
+        public var cgPoint: CGPoint {
+            CGPoint(x: CGFloat(x), y: CGFloat(y))
+        }
+    #endif
 
     /// The vector whose two components are zero.
     public static let zero = Self(x: 0, y: 0)
