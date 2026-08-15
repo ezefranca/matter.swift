@@ -108,6 +108,9 @@ struct MatterTests {
             positionIterations: 1
         )
         #expect(try CollisionSolver.resolve(world: &world, configuration: configuration).count == 1)
+
+        var timing = try FixedStepAccumulator(fixedTimeStep: 0.1)
+        #expect(try timing.advance(by: 0.1).tickCount == 1)
     }
 
     #if canImport(Metal)

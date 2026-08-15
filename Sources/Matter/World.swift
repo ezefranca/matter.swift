@@ -25,6 +25,10 @@ public enum MatterError: Error, Sendable, Equatable {
     case invalidTimeStep
     /// An engine was asked to perform fewer than one tick.
     case invalidTickCount
+    /// A runner or accumulator catch-up limit was not positive.
+    case invalidMaximumTicks
+    /// Elapsed runner time was negative or nonfinite.
+    case invalidElapsedTime
     /// Solver iterations or numerical tuning values were outside supported ranges.
     case invalidSolverConfiguration
     /// A mutation referenced an identifier absent from the world.

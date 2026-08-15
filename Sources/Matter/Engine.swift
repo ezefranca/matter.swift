@@ -75,6 +75,12 @@ public actor Engine {
         world.removeBody(withID: identifier)
     }
 
+    /// Replaces the actor-owned world and clears collision lifecycle state.
+    public func reset(to world: World = .init()) {
+        self.world = world
+        collisionTracker.reset()
+    }
+
     /// Runs one or more fixed Metal simulation ticks and returns the resulting snapshot.
     public func step(ticks: Int = 1) async throws -> World {
         try await stepWithEvents(ticks: ticks).world

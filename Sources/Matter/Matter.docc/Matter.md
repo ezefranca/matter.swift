@@ -63,6 +63,11 @@ For reproducible reference calculations and tests only, use
 - ``ReferencePhysics``
 - ``MetalBackend``
 - ``MetalBackendError``
+- ``Runner``
+- ``RunnerUpdate``
+- ``FixedStepAccumulator``
+- ``FixedStepAdvance``
+- <doc:RunningSimulation>
 
 ### Architecture
 

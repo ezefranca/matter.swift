@@ -35,6 +35,10 @@ CPU collision implementation is also shared with ``ReferencePhysics`` so tests
 can compare complete deterministic ticks without duplicating response behavior.
 The actor-owned ``CollisionTracker`` persists canonical pair state between ticks
 and produces value-semantic events returned by ``Engine/stepWithEvents(ticks:)``.
+``Runner`` is a second actor boundary that owns only wall-clock accumulation and
+delegates fixed work to an engine. Its capped ``FixedStepAccumulator`` makes
+interpolation and dropped catch-up time explicit rather than tying simulation
+speed to display callbacks.
 
 ## CPU reference path
 

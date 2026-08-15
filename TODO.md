@@ -304,9 +304,10 @@ release.
   solving, and integration stages where benchmarks justify them.
 - [x] Preserve a deterministic CPU reference engine and verify linear/angular
   integration against the Metal kernel within documented tolerances.
-- [ ] Add runner/manual-step APIs, fixed-step accumulation, interpolation, pause,
-  reset, and cancellation.
-- [ ] Add immutable render snapshots safe to consume from the main actor.
+- [x] Add runner/manual-step APIs, capped fixed-step accumulation, interpolation,
+  pause, reset, and cancellation.
+- [x] Add immutable `Sendable` world, simulation-result, and runner-update
+  snapshots safe to consume from the main actor.
 - [ ] Add P5 drawing adapters for bodies, vertices, constraints, contacts, bounds,
   and debug overlays without coupling the Matter target to P5.
 - [ ] Meet Chapter 6 API needs: `Engine`, `Runner`, `Bodies`, `Body`, `Composite`,
