@@ -22749,6 +22749,2504 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "MatterDrawingLayer",
+        "printedName": "MatterDrawingLayer",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "bodies",
+            "printedName": "bodies",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingLayer.Type) -> Matter.MatterDrawingLayer",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingLayer",
+                    "printedName": "Matter.MatterDrawingLayer",
+                    "usr": "s:6Matter0A12DrawingLayerO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingLayer.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingLayer",
+                        "printedName": "Matter.MatterDrawingLayer",
+                        "usr": "s:6Matter0A12DrawingLayerO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A12DrawingLayerO6bodiesyA2CmF",
+            "mangledName": "$s6Matter0A12DrawingLayerO6bodiesyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "vertices",
+            "printedName": "vertices",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingLayer.Type) -> Matter.MatterDrawingLayer",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingLayer",
+                    "printedName": "Matter.MatterDrawingLayer",
+                    "usr": "s:6Matter0A12DrawingLayerO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingLayer.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingLayer",
+                        "printedName": "Matter.MatterDrawingLayer",
+                        "usr": "s:6Matter0A12DrawingLayerO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A12DrawingLayerO8verticesyA2CmF",
+            "mangledName": "$s6Matter0A12DrawingLayerO8verticesyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "constraints",
+            "printedName": "constraints",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingLayer.Type) -> Matter.MatterDrawingLayer",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingLayer",
+                    "printedName": "Matter.MatterDrawingLayer",
+                    "usr": "s:6Matter0A12DrawingLayerO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingLayer.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingLayer",
+                        "printedName": "Matter.MatterDrawingLayer",
+                        "usr": "s:6Matter0A12DrawingLayerO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A12DrawingLayerO11constraintsyA2CmF",
+            "mangledName": "$s6Matter0A12DrawingLayerO11constraintsyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "contacts",
+            "printedName": "contacts",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingLayer.Type) -> Matter.MatterDrawingLayer",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingLayer",
+                    "printedName": "Matter.MatterDrawingLayer",
+                    "usr": "s:6Matter0A12DrawingLayerO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingLayer.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingLayer",
+                        "printedName": "Matter.MatterDrawingLayer",
+                        "usr": "s:6Matter0A12DrawingLayerO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A12DrawingLayerO8contactsyA2CmF",
+            "mangledName": "$s6Matter0A12DrawingLayerO8contactsyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "bounds",
+            "printedName": "bounds",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingLayer.Type) -> Matter.MatterDrawingLayer",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingLayer",
+                    "printedName": "Matter.MatterDrawingLayer",
+                    "usr": "s:6Matter0A12DrawingLayerO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingLayer.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingLayer",
+                        "printedName": "Matter.MatterDrawingLayer",
+                        "usr": "s:6Matter0A12DrawingLayerO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A12DrawingLayerO6boundsyA2CmF",
+            "mangledName": "$s6Matter0A12DrawingLayerO6boundsyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.MatterDrawingLayer?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingLayer",
+                    "printedName": "Matter.MatterDrawingLayer",
+                    "usr": "s:6Matter0A12DrawingLayerO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter0A12DrawingLayerO8rawValueACSgSS_tcfc",
+            "mangledName": "$s6Matter0A12DrawingLayerO8rawValueACSgSS_tcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "declAttributes": [
+              "Inlinable"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "TypeAlias",
+            "name": "AllCases",
+            "printedName": "AllCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.MatterDrawingLayer]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingLayer",
+                    "printedName": "Matter.MatterDrawingLayer",
+                    "usr": "s:6Matter0A12DrawingLayerO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "TypeAlias",
+            "usr": "s:6Matter0A12DrawingLayerO8AllCasesa",
+            "mangledName": "$s6Matter0A12DrawingLayerO8AllCasesa",
+            "moduleName": "Matter",
+            "implicit": true
+          },
+          {
+            "kind": "TypeAlias",
+            "name": "RawValue",
+            "printedName": "RawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "TypeAlias",
+            "usr": "s:6Matter0A12DrawingLayerO8RawValuea",
+            "mangledName": "$s6Matter0A12DrawingLayerO8RawValuea",
+            "moduleName": "Matter",
+            "implicit": true
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.MatterDrawingLayer]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingLayer",
+                    "printedName": "Matter.MatterDrawingLayer",
+                    "usr": "s:6Matter0A12DrawingLayerO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A12DrawingLayerO8allCasesSayACGvpZ",
+            "mangledName": "$s6Matter0A12DrawingLayerO8allCasesSayACGvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.MatterDrawingLayer]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingLayer",
+                        "printedName": "Matter.MatterDrawingLayer",
+                        "usr": "s:6Matter0A12DrawingLayerO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A12DrawingLayerO8allCasesSayACGvgZ",
+                "mangledName": "$s6Matter0A12DrawingLayerO8allCasesSayACGvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A12DrawingLayerO8rawValueSSvp",
+            "mangledName": "$s6Matter0A12DrawingLayerO8rawValueSSvp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A12DrawingLayerO8rawValueSSvg",
+                "mangledName": "$s6Matter0A12DrawingLayerO8rawValueSSvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Inlinable"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter0A12DrawingLayerO",
+        "mangledName": "$s6Matter0A12DrawingLayerO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "enumRawTypeName": "String",
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.MatterDrawingLayer]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingLayer",
+                        "printedName": "Matter.MatterDrawingLayer",
+                        "usr": "s:6Matter0A12DrawingLayerO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MatterDrawingOptions",
+        "printedName": "MatterDrawingOptions",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UInt8",
+                "printedName": "Swift.UInt8",
+                "usr": "s:s5UInt8V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingOptionsV8rawValues5UInt8Vvp",
+            "mangledName": "$s6Matter0A14DrawingOptionsV8rawValues5UInt8Vvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt8",
+                    "printedName": "Swift.UInt8",
+                    "usr": "s:s5UInt8V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingOptionsV8rawValues5UInt8Vvg",
+                "mangledName": "$s6Matter0A14DrawingOptionsV8rawValues5UInt8Vvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingOptions",
+                "printedName": "Matter.MatterDrawingOptions",
+                "usr": "s:6Matter0A14DrawingOptionsV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt8",
+                "printedName": "Swift.UInt8",
+                "usr": "s:s5UInt8V"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter0A14DrawingOptionsV8rawValueACs5UInt8V_tcfc",
+            "mangledName": "$s6Matter0A14DrawingOptionsV8rawValueACs5UInt8V_tcfc",
+            "moduleName": "Matter",
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "bodies",
+            "printedName": "bodies",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingOptions",
+                "printedName": "Matter.MatterDrawingOptions",
+                "usr": "s:6Matter0A14DrawingOptionsV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingOptionsV6bodiesACvpZ",
+            "mangledName": "$s6Matter0A14DrawingOptionsV6bodiesACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingOptions",
+                    "printedName": "Matter.MatterDrawingOptions",
+                    "usr": "s:6Matter0A14DrawingOptionsV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingOptionsV6bodiesACvgZ",
+                "mangledName": "$s6Matter0A14DrawingOptionsV6bodiesACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "vertices",
+            "printedName": "vertices",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingOptions",
+                "printedName": "Matter.MatterDrawingOptions",
+                "usr": "s:6Matter0A14DrawingOptionsV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingOptionsV8verticesACvpZ",
+            "mangledName": "$s6Matter0A14DrawingOptionsV8verticesACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingOptions",
+                    "printedName": "Matter.MatterDrawingOptions",
+                    "usr": "s:6Matter0A14DrawingOptionsV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingOptionsV8verticesACvgZ",
+                "mangledName": "$s6Matter0A14DrawingOptionsV8verticesACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "constraints",
+            "printedName": "constraints",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingOptions",
+                "printedName": "Matter.MatterDrawingOptions",
+                "usr": "s:6Matter0A14DrawingOptionsV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingOptionsV11constraintsACvpZ",
+            "mangledName": "$s6Matter0A14DrawingOptionsV11constraintsACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingOptions",
+                    "printedName": "Matter.MatterDrawingOptions",
+                    "usr": "s:6Matter0A14DrawingOptionsV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingOptionsV11constraintsACvgZ",
+                "mangledName": "$s6Matter0A14DrawingOptionsV11constraintsACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "contacts",
+            "printedName": "contacts",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingOptions",
+                "printedName": "Matter.MatterDrawingOptions",
+                "usr": "s:6Matter0A14DrawingOptionsV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingOptionsV8contactsACvpZ",
+            "mangledName": "$s6Matter0A14DrawingOptionsV8contactsACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingOptions",
+                    "printedName": "Matter.MatterDrawingOptions",
+                    "usr": "s:6Matter0A14DrawingOptionsV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingOptionsV8contactsACvgZ",
+                "mangledName": "$s6Matter0A14DrawingOptionsV8contactsACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "bounds",
+            "printedName": "bounds",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingOptions",
+                "printedName": "Matter.MatterDrawingOptions",
+                "usr": "s:6Matter0A14DrawingOptionsV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingOptionsV6boundsACvpZ",
+            "mangledName": "$s6Matter0A14DrawingOptionsV6boundsACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingOptions",
+                    "printedName": "Matter.MatterDrawingOptions",
+                    "usr": "s:6Matter0A14DrawingOptionsV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingOptionsV6boundsACvgZ",
+                "mangledName": "$s6Matter0A14DrawingOptionsV6boundsACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "standard",
+            "printedName": "standard",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingOptions",
+                "printedName": "Matter.MatterDrawingOptions",
+                "usr": "s:6Matter0A14DrawingOptionsV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingOptionsV8standardACvpZ",
+            "mangledName": "$s6Matter0A14DrawingOptionsV8standardACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingOptions",
+                    "printedName": "Matter.MatterDrawingOptions",
+                    "usr": "s:6Matter0A14DrawingOptionsV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingOptionsV8standardACvgZ",
+                "mangledName": "$s6Matter0A14DrawingOptionsV8standardACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "debug",
+            "printedName": "debug",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingOptions",
+                "printedName": "Matter.MatterDrawingOptions",
+                "usr": "s:6Matter0A14DrawingOptionsV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingOptionsV5debugACvpZ",
+            "mangledName": "$s6Matter0A14DrawingOptionsV5debugACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingOptions",
+                    "printedName": "Matter.MatterDrawingOptions",
+                    "usr": "s:6Matter0A14DrawingOptionsV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingOptionsV5debugACvgZ",
+                "mangledName": "$s6Matter0A14DrawingOptionsV5debugACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "TypeAlias",
+            "name": "ArrayLiteralElement",
+            "printedName": "ArrayLiteralElement",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingOptions",
+                "printedName": "Matter.MatterDrawingOptions",
+                "usr": "s:6Matter0A14DrawingOptionsV"
+              }
+            ],
+            "declKind": "TypeAlias",
+            "usr": "s:6Matter0A14DrawingOptionsV19ArrayLiteralElementa",
+            "mangledName": "$s6Matter0A14DrawingOptionsV19ArrayLiteralElementa",
+            "moduleName": "Matter",
+            "implicit": true
+          },
+          {
+            "kind": "TypeAlias",
+            "name": "Element",
+            "printedName": "Element",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingOptions",
+                "printedName": "Matter.MatterDrawingOptions",
+                "usr": "s:6Matter0A14DrawingOptionsV"
+              }
+            ],
+            "declKind": "TypeAlias",
+            "usr": "s:6Matter0A14DrawingOptionsV7Elementa",
+            "mangledName": "$s6Matter0A14DrawingOptionsV7Elementa",
+            "moduleName": "Matter",
+            "implicit": true
+          },
+          {
+            "kind": "TypeAlias",
+            "name": "RawValue",
+            "printedName": "RawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UInt8",
+                "printedName": "Swift.UInt8",
+                "usr": "s:s5UInt8V"
+              }
+            ],
+            "declKind": "TypeAlias",
+            "usr": "s:6Matter0A14DrawingOptionsV8RawValuea",
+            "mangledName": "$s6Matter0A14DrawingOptionsV8RawValuea",
+            "moduleName": "Matter",
+            "implicit": true
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter0A14DrawingOptionsV",
+        "mangledName": "$s6Matter0A14DrawingOptionsV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "ExpressibleByArrayLiteral",
+            "printedName": "ExpressibleByArrayLiteral",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "ArrayLiteralElement",
+                "printedName": "ArrayLiteralElement",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingOptions",
+                    "printedName": "Matter.MatterDrawingOptions",
+                    "usr": "s:6Matter0A14DrawingOptionsV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s25ExpressibleByArrayLiteralP",
+            "mangledName": "$ss25ExpressibleByArrayLiteralP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "OptionSet",
+            "printedName": "OptionSet",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Element",
+                "printedName": "Element",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingOptions",
+                    "printedName": "Matter.MatterDrawingOptions",
+                    "usr": "s:6Matter0A14DrawingOptionsV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s9OptionSetP",
+            "mangledName": "$ss9OptionSetP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt8",
+                    "printedName": "Swift.UInt8",
+                    "usr": "s:s5UInt8V"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SetAlgebra",
+            "printedName": "SetAlgebra",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "Element",
+                "printedName": "Element",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingOptions",
+                    "printedName": "Matter.MatterDrawingOptions",
+                    "usr": "s:6Matter0A14DrawingOptionsV"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s10SetAlgebraP",
+            "mangledName": "$ss10SetAlgebraP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MatterDrawingSource",
+        "printedName": "MatterDrawingSource",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "body",
+            "printedName": "body",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingSource.Type) -> (Matter.BodyID) -> Matter.MatterDrawingSource",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Matter.BodyID) -> Matter.MatterDrawingSource",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingSource",
+                        "printedName": "Matter.MatterDrawingSource",
+                        "usr": "s:6Matter0A13DrawingSourceO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyID",
+                        "printedName": "Matter.BodyID",
+                        "usr": "s:6Matter6BodyIDV"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingSource.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingSource",
+                        "printedName": "Matter.MatterDrawingSource",
+                        "usr": "s:6Matter0A13DrawingSourceO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A13DrawingSourceO4bodyyAcA6BodyIDVcACmF",
+            "mangledName": "$s6Matter0A13DrawingSourceO4bodyyAcA6BodyIDVcACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "constraint",
+            "printedName": "constraint",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingSource.Type) -> (Matter.ConstraintID) -> Matter.MatterDrawingSource",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Matter.ConstraintID) -> Matter.MatterDrawingSource",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingSource",
+                        "printedName": "Matter.MatterDrawingSource",
+                        "usr": "s:6Matter0A13DrawingSourceO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ConstraintID",
+                        "printedName": "Matter.ConstraintID",
+                        "usr": "s:6Matter12ConstraintIDV"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingSource.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingSource",
+                        "printedName": "Matter.MatterDrawingSource",
+                        "usr": "s:6Matter0A13DrawingSourceO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A13DrawingSourceO10constraintyAcA12ConstraintIDVcACmF",
+            "mangledName": "$s6Matter0A13DrawingSourceO10constraintyAcA12ConstraintIDVcACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "collision",
+            "printedName": "collision",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingSource.Type) -> (Matter.BodyPair) -> Matter.MatterDrawingSource",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Matter.BodyPair) -> Matter.MatterDrawingSource",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingSource",
+                        "printedName": "Matter.MatterDrawingSource",
+                        "usr": "s:6Matter0A13DrawingSourceO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyPair",
+                        "printedName": "Matter.BodyPair",
+                        "usr": "s:6Matter8BodyPairV"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingSource.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingSource",
+                        "printedName": "Matter.MatterDrawingSource",
+                        "usr": "s:6Matter0A13DrawingSourceO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A13DrawingSourceO9collisionyAcA8BodyPairVcACmF",
+            "mangledName": "$s6Matter0A13DrawingSourceO9collisionyAcA8BodyPairVcACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_enum_equals",
+            "printedName": "__derived_enum_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingSource",
+                "printedName": "Matter.MatterDrawingSource",
+                "usr": "s:6Matter0A13DrawingSourceO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingSource",
+                "printedName": "Matter.MatterDrawingSource",
+                "usr": "s:6Matter0A13DrawingSourceO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A13DrawingSourceO21__derived_enum_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter0A13DrawingSourceO21__derived_enum_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements",
+              "Semantics"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A13DrawingSourceO6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter0A13DrawingSourceO6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A13DrawingSourceO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter0A13DrawingSourceO4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A13DrawingSourceO9hashValueSivp",
+            "mangledName": "$s6Matter0A13DrawingSourceO9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A13DrawingSourceO9hashValueSivg",
+                "mangledName": "$s6Matter0A13DrawingSourceO9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingSource",
+                "printedName": "Matter.MatterDrawingSource",
+                "usr": "s:6Matter0A13DrawingSourceO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter0A13DrawingSourceO4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter0A13DrawingSourceO4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter0A13DrawingSourceO",
+        "mangledName": "$s6Matter0A13DrawingSourceO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MatterDrawingPrimitive",
+        "printedName": "MatterDrawingPrimitive",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "circle",
+            "printedName": "circle",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingPrimitive.Type) -> (Matter.Vector, Swift.Float) -> Matter.MatterDrawingPrimitive",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Matter.Vector, Swift.Float) -> Matter.MatterDrawingPrimitive",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingPrimitive",
+                        "printedName": "Matter.MatterDrawingPrimitive",
+                        "usr": "s:6Matter0A16DrawingPrimitiveO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(center: Matter.Vector, radius: Swift.Float)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Vector",
+                            "printedName": "Matter.Vector",
+                            "usr": "s:6Matter6VectorV"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Float",
+                            "printedName": "Swift.Float",
+                            "usr": "s:Sf"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingPrimitive.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingPrimitive",
+                        "printedName": "Matter.MatterDrawingPrimitive",
+                        "usr": "s:6Matter0A16DrawingPrimitiveO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A16DrawingPrimitiveO6circleyAcA6VectorV_SftcACmF",
+            "mangledName": "$s6Matter0A16DrawingPrimitiveO6circleyAcA6VectorV_SftcACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "polygon",
+            "printedName": "polygon",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingPrimitive.Type) -> ([Matter.Vector]) -> Matter.MatterDrawingPrimitive",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "([Matter.Vector]) -> Matter.MatterDrawingPrimitive",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingPrimitive",
+                        "printedName": "Matter.MatterDrawingPrimitive",
+                        "usr": "s:6Matter0A16DrawingPrimitiveO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(vertices: [Matter.Vector])",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Array",
+                            "printedName": "[Matter.Vector]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "Vector",
+                                "printedName": "Matter.Vector",
+                                "usr": "s:6Matter6VectorV"
+                              }
+                            ],
+                            "usr": "s:Sa"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingPrimitive.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingPrimitive",
+                        "printedName": "Matter.MatterDrawingPrimitive",
+                        "usr": "s:6Matter0A16DrawingPrimitiveO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A16DrawingPrimitiveO7polygonyACSayAA6VectorVG_tcACmF",
+            "mangledName": "$s6Matter0A16DrawingPrimitiveO7polygonyACSayAA6VectorVG_tcACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "segment",
+            "printedName": "segment",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingPrimitive.Type) -> (Matter.Vector, Matter.Vector) -> Matter.MatterDrawingPrimitive",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Matter.Vector, Matter.Vector) -> Matter.MatterDrawingPrimitive",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingPrimitive",
+                        "printedName": "Matter.MatterDrawingPrimitive",
+                        "usr": "s:6Matter0A16DrawingPrimitiveO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(start: Matter.Vector, end: Matter.Vector)",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Vector",
+                            "printedName": "Matter.Vector",
+                            "usr": "s:6Matter6VectorV"
+                          },
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Vector",
+                            "printedName": "Matter.Vector",
+                            "usr": "s:6Matter6VectorV"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingPrimitive.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingPrimitive",
+                        "printedName": "Matter.MatterDrawingPrimitive",
+                        "usr": "s:6Matter0A16DrawingPrimitiveO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A16DrawingPrimitiveO7segmentyAcA6VectorV_AFtcACmF",
+            "mangledName": "$s6Matter0A16DrawingPrimitiveO7segmentyAcA6VectorV_AFtcACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "point",
+            "printedName": "point",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingPrimitive.Type) -> (Matter.Vector) -> Matter.MatterDrawingPrimitive",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Matter.Vector) -> Matter.MatterDrawingPrimitive",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingPrimitive",
+                        "printedName": "Matter.MatterDrawingPrimitive",
+                        "usr": "s:6Matter0A16DrawingPrimitiveO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Vector",
+                        "printedName": "Matter.Vector",
+                        "usr": "s:6Matter6VectorV"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingPrimitive.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingPrimitive",
+                        "printedName": "Matter.MatterDrawingPrimitive",
+                        "usr": "s:6Matter0A16DrawingPrimitiveO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A16DrawingPrimitiveO5pointyAcA6VectorVcACmF",
+            "mangledName": "$s6Matter0A16DrawingPrimitiveO5pointyAcA6VectorVcACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "bounds",
+            "printedName": "bounds",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterDrawingPrimitive.Type) -> (Matter.Bounds) -> Matter.MatterDrawingPrimitive",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Matter.Bounds) -> Matter.MatterDrawingPrimitive",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingPrimitive",
+                        "printedName": "Matter.MatterDrawingPrimitive",
+                        "usr": "s:6Matter0A16DrawingPrimitiveO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Bounds",
+                        "printedName": "Matter.Bounds",
+                        "usr": "s:6Matter6BoundsV"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterDrawingPrimitive.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterDrawingPrimitive",
+                        "printedName": "Matter.MatterDrawingPrimitive",
+                        "usr": "s:6Matter0A16DrawingPrimitiveO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A16DrawingPrimitiveO6boundsyAcA6BoundsVcACmF",
+            "mangledName": "$s6Matter0A16DrawingPrimitiveO6boundsyAcA6BoundsVcACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_enum_equals",
+            "printedName": "__derived_enum_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingPrimitive",
+                "printedName": "Matter.MatterDrawingPrimitive",
+                "usr": "s:6Matter0A16DrawingPrimitiveO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingPrimitive",
+                "printedName": "Matter.MatterDrawingPrimitive",
+                "usr": "s:6Matter0A16DrawingPrimitiveO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A16DrawingPrimitiveO21__derived_enum_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter0A16DrawingPrimitiveO21__derived_enum_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements",
+              "Semantics"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A16DrawingPrimitiveO6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter0A16DrawingPrimitiveO6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A16DrawingPrimitiveO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter0A16DrawingPrimitiveO4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A16DrawingPrimitiveO9hashValueSivp",
+            "mangledName": "$s6Matter0A16DrawingPrimitiveO9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A16DrawingPrimitiveO9hashValueSivg",
+                "mangledName": "$s6Matter0A16DrawingPrimitiveO9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingPrimitive",
+                "printedName": "Matter.MatterDrawingPrimitive",
+                "usr": "s:6Matter0A16DrawingPrimitiveO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter0A16DrawingPrimitiveO4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter0A16DrawingPrimitiveO4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter0A16DrawingPrimitiveO",
+        "mangledName": "$s6Matter0A16DrawingPrimitiveO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MatterDrawingCommand",
+        "printedName": "MatterDrawingCommand",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "layer",
+            "printedName": "layer",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingLayer",
+                "printedName": "Matter.MatterDrawingLayer",
+                "usr": "s:6Matter0A12DrawingLayerO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingCommandV5layerAA0aB5LayerOvp",
+            "mangledName": "$s6Matter0A14DrawingCommandV5layerAA0aB5LayerOvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingLayer",
+                    "printedName": "Matter.MatterDrawingLayer",
+                    "usr": "s:6Matter0A12DrawingLayerO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingCommandV5layerAA0aB5LayerOvg",
+                "mangledName": "$s6Matter0A14DrawingCommandV5layerAA0aB5LayerOvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "source",
+            "printedName": "source",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingSource",
+                "printedName": "Matter.MatterDrawingSource",
+                "usr": "s:6Matter0A13DrawingSourceO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingCommandV6sourceAA0aB6SourceOvp",
+            "mangledName": "$s6Matter0A14DrawingCommandV6sourceAA0aB6SourceOvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingSource",
+                    "printedName": "Matter.MatterDrawingSource",
+                    "usr": "s:6Matter0A13DrawingSourceO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingCommandV6sourceAA0aB6SourceOvg",
+                "mangledName": "$s6Matter0A14DrawingCommandV6sourceAA0aB6SourceOvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "primitive",
+            "printedName": "primitive",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingPrimitive",
+                "printedName": "Matter.MatterDrawingPrimitive",
+                "usr": "s:6Matter0A16DrawingPrimitiveO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingCommandV9primitiveAA0aB9PrimitiveOvp",
+            "mangledName": "$s6Matter0A14DrawingCommandV9primitiveAA0aB9PrimitiveOvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingPrimitive",
+                    "printedName": "Matter.MatterDrawingPrimitive",
+                    "usr": "s:6Matter0A16DrawingPrimitiveO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingCommandV9primitiveAA0aB9PrimitiveOvg",
+                "mangledName": "$s6Matter0A14DrawingCommandV9primitiveAA0aB9PrimitiveOvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingCommand",
+                "printedName": "Matter.MatterDrawingCommand",
+                "usr": "s:6Matter0A14DrawingCommandV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingCommand",
+                "printedName": "Matter.MatterDrawingCommand",
+                "usr": "s:6Matter0A14DrawingCommandV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A14DrawingCommandV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter0A14DrawingCommandV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A14DrawingCommandV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter0A14DrawingCommandV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A14DrawingCommandV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter0A14DrawingCommandV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A14DrawingCommandV9hashValueSivp",
+            "mangledName": "$s6Matter0A14DrawingCommandV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A14DrawingCommandV9hashValueSivg",
+                "mangledName": "$s6Matter0A14DrawingCommandV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingCommand",
+                "printedName": "Matter.MatterDrawingCommand",
+                "usr": "s:6Matter0A14DrawingCommandV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter0A14DrawingCommandV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter0A14DrawingCommandV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter0A14DrawingCommandV",
+        "mangledName": "$s6Matter0A14DrawingCommandV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MatterDrawingAdapter",
+        "printedName": "MatterDrawingAdapter",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "commands",
+            "printedName": "commands(for:collisions:options:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.MatterDrawingCommand]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterDrawingCommand",
+                    "printedName": "Matter.MatterDrawingCommand",
+                    "usr": "s:6Matter0A14DrawingCommandV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "World",
+                "printedName": "Matter.World",
+                "usr": "s:6Matter5WorldV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.Collision]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Collision",
+                    "printedName": "Matter.Collision",
+                    "usr": "s:6Matter9CollisionV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MatterDrawingOptions",
+                "printedName": "Matter.MatterDrawingOptions",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter0A14DrawingOptionsV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A14DrawingAdapterO8commands3for10collisions7optionsSayAA0aB7CommandVGAA5WorldV_SayAA9CollisionVGAA0aB7OptionsVtKFZ",
+            "mangledName": "$s6Matter0A14DrawingAdapterO8commands3for10collisions7optionsSayAA0aB7CommandVGAA5WorldV_SayAA9CollisionVGAA0aB7OptionsVtKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter0A14DrawingAdapterO",
+        "mangledName": "$s6Matter0A14DrawingAdapterO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "MetalBackendError",
         "printedName": "MetalBackendError",
         "children": [

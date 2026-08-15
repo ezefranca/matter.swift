@@ -104,6 +104,16 @@ For reproducible reference calculations and tests only, use
 - ``RaycastHit``
 - <doc:SpatialQueries>
 
+### Drawing adapters
+
+- ``MatterDrawingAdapter``
+- ``MatterDrawingCommand``
+- ``MatterDrawingPrimitive``
+- ``MatterDrawingSource``
+- ``MatterDrawingLayer``
+- ``MatterDrawingOptions``
+- <doc:DrawingWithP5>
+
 ### Simulation
 
 - ``Vector``

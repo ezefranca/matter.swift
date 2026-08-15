@@ -312,7 +312,7 @@ release.
   pause, reset, and cancellation.
 - [x] Add immutable `Sendable` world, simulation-result, and runner-update
   snapshots safe to consume from the main actor.
-- [ ] Add P5 drawing adapters for bodies, vertices, constraints, contacts, bounds,
+- [x] Add P5 drawing adapters for bodies, vertices, constraints, contacts, bounds,
   and debug overlays without coupling the Matter target to P5.
 - [ ] Meet Chapter 6 API needs: `Engine`, `Runner`, `Bodies`, `Body`, `Composite`,
   `Constraint`, `Events`, `MouseConstraint`, and vector operations.
