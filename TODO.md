@@ -284,7 +284,8 @@ release.
 - [x] Apply sensors and collision filtering to deterministic collision queries.
 - [ ] Implement sleeping/waking and island management.
 - [ ] Add continuous collision detection or explicitly bounded tunneling behavior.
-- [ ] Emit collision start, active, and end events with stable body identifiers.
+- [x] Emit ordered collision start, active, and end events with stable body
+  identifiers and last-known end manifolds.
 
 ### Constraints and interaction
 

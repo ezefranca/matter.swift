@@ -33,6 +33,8 @@ This division is fixed configuration, not a silent fallback: Metal remains
 mandatory for production integration, and all Metal failures are surfaced. The
 CPU collision implementation is also shared with ``ReferencePhysics`` so tests
 can compare complete deterministic ticks without duplicating response behavior.
+The actor-owned ``CollisionTracker`` persists canonical pair state between ticks
+and produces value-semantic events returned by ``Engine/stepWithEvents(ticks:)``.
 
 ## CPU reference path
 

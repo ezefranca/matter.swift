@@ -6,6 +6,7 @@
 /// surfaces ``MetalBackendError`` when Metal cannot perform the requested work.
 public actor Engine {
     private var world: World
+    private var collisionTracker: CollisionTracker
     private let backend: MetalBackend
     /// The constant acceleration applied to every dynamic body each tick.
     public let gravity: Vector
@@ -30,6 +31,7 @@ public actor Engine {
         self.gravity = gravity
         self.fixedTimeStep = fixedTimeStep
         self.solverConfiguration = solverConfiguration
+        self.collisionTracker = CollisionTracker()
         self.backend = try MetalBackend()
     }
 
@@ -75,10 +77,20 @@ public actor Engine {
 
     /// Runs one or more fixed Metal simulation ticks and returns the resulting snapshot.
     public func step(ticks: Int = 1) async throws -> World {
+        try await stepWithEvents(ticks: ticks).world
+    }
+
+    /// Runs fixed ticks and returns world, collision, and lifecycle-event snapshots.
+    ///
+    /// - Throws: ``MatterError/invalidTickCount``, cancellation, or a Metal
+    ///   integration failure.
+    public func stepWithEvents(ticks: Int = 1) async throws -> SimulationResult {
         guard ticks > 0 else {
             throw MatterError.invalidTickCount
         }
 
+        var collisionEvents: [CollisionEvent] = []
+        var collisions: [Collision] = []
         for _ in 0..<ticks {
             try Task.checkCancellation()
             let integrated = try await backend.integrate(
@@ -87,9 +99,18 @@ public actor Engine {
                 timeStep: fixedTimeStep
             )
             world.replaceBodies(integrated)
-            try CollisionSolver.resolve(world: &world, configuration: solverConfiguration)
+            collisions = try CollisionSolver.resolve(
+                world: &world,
+                configuration: solverConfiguration
+            )
+            collisionEvents.append(contentsOf: collisionTracker.update(with: collisions))
         }
 
-        return world
+        return SimulationResult(
+            world: world,
+            tickCount: ticks,
+            collisions: collisions,
+            collisionEvents: collisionEvents
+        )
     }
 }

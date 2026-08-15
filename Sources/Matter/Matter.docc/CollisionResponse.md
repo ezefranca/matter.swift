@@ -52,6 +52,14 @@ detection and response are deliberately CPU-owned phases; they are not a
 fallback selected after a Metal failure. Metal initialization or integration
 failures remain visible as ``MetalBackendError`` values.
 
+Call ``Engine/stepWithEvents(ticks:)`` when a client needs the complete
+``SimulationResult``. It includes final-tick collisions and an ordered stream of
+``CollisionEvent`` values accumulated across all requested ticks. A
+``CollisionTracker`` classifies canonical pairs as ``CollisionPhase/started``,
+``CollisionPhase/active``, or ``CollisionPhase/ended``; ended events retain the
+last known manifold. The tracker is a standalone `Codable` value for custom
+manual-step pipelines as well.
+
 This release uses discrete detection. Fast bodies can tunnel when they cross an
 entire collider within one fixed step; continuous collision detection remains a
 separate capability rather than an implicit heuristic.

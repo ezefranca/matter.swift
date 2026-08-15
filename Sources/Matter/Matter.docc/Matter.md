@@ -49,6 +49,10 @@ For reproducible reference calculations and tests only, use
 - ``BodyPair``
 - ``CollisionSolver``
 - ``SolverConfiguration``
+- ``CollisionTracker``
+- ``CollisionEvent``
+- ``CollisionPhase``
+- ``SimulationResult``
 - <doc:CollisionDetection>
 - <doc:CollisionResponse>
 
