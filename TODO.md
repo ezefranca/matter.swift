@@ -76,7 +76,9 @@ release.
   every public `Codable` model.
 - [ ] Add invalid-input, boundary-value, floating-point, cancellation, and actor
   isolation tests for every public API.
-- [ ] Add deterministic seeded tests for randomized and noisy algorithms.
+- [x] Add deterministic seeded tests for the current randomized and noisy
+  algorithms, including a fixed SplitMix64 golden sequence and repeatable Perlin
+  fields.
 - [ ] Add macOS and iOS snapshot/golden-image tests for rendering behavior.
 - [ ] Add CPU-versus-GPU numerical conformance tests with documented tolerances.
 - [ ] Add Metal-unavailable, shader-compilation, allocation, encoder, command
@@ -157,13 +159,17 @@ release.
   random 2D direction, Swift operators, and Core Graphics bridges.
 - [ ] Complete remaining vector parity needed by the book: component overloads,
   equality helpers, remainder, reflect, spherical interpolation, and random 3D.
-- [ ] Add `map`, `constrain`, `lerp`, `norm`, distance, magnitude, min/max, rounding,
-  powers, roots, and angle conversion helpers.
+- [x] Add `map`, `constrain`, `lerp`, `norm`, 2D/3D distance and magnitude, and
+  angle conversion helpers on both `P5Math` and `P5Sketch`.
+- [ ] Add the remaining min/max, rounding, powers, and roots helpers.
 - [ ] Add radians/degrees angle mode and propagate it consistently to drawing and
   vector APIs.
-- [ ] Add seedable uniform random values, collection selection, weighted selection,
-  Gaussian values, exponential values, and reproducible generator injection.
-- [ ] Add seedable 1D/2D/3D coherent noise and noise detail controls.
+- [x] Add a stable seedable uniform generator, range sampling, collection selection,
+  Gaussian values, and per-sketch deterministic random state.
+- [ ] Add weighted selection, exponential values, and reproducible generator
+  injection.
+- [x] Add seedable 1D/2D/3D coherent Perlin noise, octave/falloff detail controls,
+  and per-sketch deterministic noise state.
 - [ ] Validate statistical properties and deterministic golden sequences.
 - [ ] Evaluate Accelerate/BNNS/native SIMD implementations and document choices.
 
