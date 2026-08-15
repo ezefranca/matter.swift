@@ -203,13 +203,16 @@ release.
 
 ### Input and interaction
 
-- [ ] Add pointer position, previous position, delta, buttons, pressed state, enter,
+- [x] Add pointer position, previous position, delta, buttons, pressed state, enter,
   exit, move, drag, press, release, and click callbacks.
 - [ ] Add multi-touch tracking with stable identifiers and gesture coexistence.
 - [ ] Add keyboard key/code/modifier state and press/release/type callbacks.
 - [ ] Add focus, hover, scroll, accessibility actions, drag/drop, and clipboard hooks.
-- [ ] Map mouse interaction to Apple Pencil, trackpad, and indirect pointer behavior.
-- [ ] Make event delivery main-actor safe, ordered, testable, and documented.
+- [x] Map the shared pointer model to mouse, Apple Pencil, trackpad, and indirect
+  pointer behavior; retain specialized gesture semantics as follow-up work.
+- [x] Make pointer-event delivery main-actor safe, ordered, injectable, and documented.
+- [ ] Apply the same delivery guarantees to keyboard, multi-touch collection,
+  gestures, scroll, drag/drop, clipboard, and accessibility input.
 
 ### Text, images, pixels, and export
 
