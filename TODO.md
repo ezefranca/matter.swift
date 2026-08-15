@@ -273,12 +273,14 @@ release.
 
 - [x] Implement deterministic AABB generation and updates.
 - [ ] Implement a scalable broad phase with benchmarks and worst-case tests.
-- [ ] Implement circle-circle, circle-polygon, and polygon-polygon narrow phases.
-- [ ] Implement SAT/support features, contact manifolds, persistent pairs, and warm
-  starting.
+- [x] Implement circle-circle, circle-polygon, and polygon-polygon narrow phases.
+- [x] Implement SAT/support features and deterministic one- or two-point contact
+  manifolds.
+- [ ] Add persistent pairs, contact feature identifiers, and warm starting.
 - [ ] Implement impulse resolution, friction, restitution, positional correction,
   stacking stability, and configurable iteration counts.
-- [ ] Implement sensors, collision filtering, sleeping/waking, and island management.
+- [x] Apply sensors and collision filtering to deterministic collision queries.
+- [ ] Implement sleeping/waking and island management.
 - [ ] Add continuous collision detection or explicitly bounded tunneling behavior.
 - [ ] Emit collision start, active, and end events with stable body identifiers.
 

@@ -41,6 +41,14 @@ For reproducible reference calculations and tests only, use
 - ``Bounds``
 - <doc:BodiesAndMaterials>
 
+### Collision queries
+
+- ``CollisionDetector``
+- ``Collision``
+- ``CollisionContact``
+- ``BodyPair``
+- <doc:CollisionDetection>
+
 ### Simulation
 
 - ``Vector``

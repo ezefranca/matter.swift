@@ -90,6 +90,20 @@ struct MatterTests {
         #expect(body.velocity == .zero)
     }
 
+    @Test("Collision queries are available to ordinary package clients")
+    func publicCollisionQueries() throws {
+        var world = World()
+        let first = try world.add(Bodies.circle(at: .zero, radius: 2))
+        let second = try world.add(Bodies.circle(at: Vector(x: 3, y: 0), radius: 2))
+
+        let pair = try #require(BodyPair(second, first))
+        let collision = try #require(CollisionDetector.collisions(in: world).first)
+        #expect(pair.first == first)
+        #expect(pair.second == second)
+        #expect(collision.pair == pair)
+        #expect(collision.contacts.count == 1)
+    }
+
     #if canImport(Metal)
         @Test("Metal integration advances a body when a system device is available")
         func metalIntegration() async throws {
