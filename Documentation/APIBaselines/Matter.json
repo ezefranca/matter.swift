@@ -10097,6 +10097,1307 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "BroadPhaseAxis",
+        "printedName": "BroadPhaseAxis",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "horizontal",
+            "printedName": "horizontal",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.BroadPhaseAxis.Type) -> Matter.BroadPhaseAxis",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BroadPhaseAxis",
+                    "printedName": "Matter.BroadPhaseAxis",
+                    "usr": "s:6Matter14BroadPhaseAxisO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.BroadPhaseAxis.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BroadPhaseAxis",
+                        "printedName": "Matter.BroadPhaseAxis",
+                        "usr": "s:6Matter14BroadPhaseAxisO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter14BroadPhaseAxisO10horizontalyA2CmF",
+            "mangledName": "$s6Matter14BroadPhaseAxisO10horizontalyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "vertical",
+            "printedName": "vertical",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.BroadPhaseAxis.Type) -> Matter.BroadPhaseAxis",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BroadPhaseAxis",
+                    "printedName": "Matter.BroadPhaseAxis",
+                    "usr": "s:6Matter14BroadPhaseAxisO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.BroadPhaseAxis.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BroadPhaseAxis",
+                        "printedName": "Matter.BroadPhaseAxis",
+                        "usr": "s:6Matter14BroadPhaseAxisO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter14BroadPhaseAxisO8verticalyA2CmF",
+            "mangledName": "$s6Matter14BroadPhaseAxisO8verticalyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.BroadPhaseAxis?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BroadPhaseAxis",
+                    "printedName": "Matter.BroadPhaseAxis",
+                    "usr": "s:6Matter14BroadPhaseAxisO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter14BroadPhaseAxisO8rawValueACSgSS_tcfc",
+            "mangledName": "$s6Matter14BroadPhaseAxisO8rawValueACSgSS_tcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "declAttributes": [
+              "Inlinable"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "TypeAlias",
+            "name": "AllCases",
+            "printedName": "AllCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BroadPhaseAxis]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BroadPhaseAxis",
+                    "printedName": "Matter.BroadPhaseAxis",
+                    "usr": "s:6Matter14BroadPhaseAxisO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "TypeAlias",
+            "usr": "s:6Matter14BroadPhaseAxisO8AllCasesa",
+            "mangledName": "$s6Matter14BroadPhaseAxisO8AllCasesa",
+            "moduleName": "Matter",
+            "implicit": true
+          },
+          {
+            "kind": "TypeAlias",
+            "name": "RawValue",
+            "printedName": "RawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "TypeAlias",
+            "usr": "s:6Matter14BroadPhaseAxisO8RawValuea",
+            "mangledName": "$s6Matter14BroadPhaseAxisO8RawValuea",
+            "moduleName": "Matter",
+            "implicit": true
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BroadPhaseAxis]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BroadPhaseAxis",
+                    "printedName": "Matter.BroadPhaseAxis",
+                    "usr": "s:6Matter14BroadPhaseAxisO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter14BroadPhaseAxisO8allCasesSayACGvpZ",
+            "mangledName": "$s6Matter14BroadPhaseAxisO8allCasesSayACGvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.BroadPhaseAxis]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BroadPhaseAxis",
+                        "printedName": "Matter.BroadPhaseAxis",
+                        "usr": "s:6Matter14BroadPhaseAxisO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter14BroadPhaseAxisO8allCasesSayACGvgZ",
+                "mangledName": "$s6Matter14BroadPhaseAxisO8allCasesSayACGvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter14BroadPhaseAxisO8rawValueSSvp",
+            "mangledName": "$s6Matter14BroadPhaseAxisO8rawValueSSvp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter14BroadPhaseAxisO8rawValueSSvg",
+                "mangledName": "$s6Matter14BroadPhaseAxisO8rawValueSSvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Inlinable"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter14BroadPhaseAxisO",
+        "mangledName": "$s6Matter14BroadPhaseAxisO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "enumRawTypeName": "String",
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.BroadPhaseAxis]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BroadPhaseAxis",
+                        "printedName": "Matter.BroadPhaseAxis",
+                        "usr": "s:6Matter14BroadPhaseAxisO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "BroadPhaseMetrics",
+        "printedName": "BroadPhaseMetrics",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "axis",
+            "printedName": "axis",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BroadPhaseAxis",
+                "printedName": "Matter.BroadPhaseAxis",
+                "usr": "s:6Matter14BroadPhaseAxisO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter17BroadPhaseMetricsV4axisAA0bC4AxisOvp",
+            "mangledName": "$s6Matter17BroadPhaseMetricsV4axisAA0bC4AxisOvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BroadPhaseAxis",
+                    "printedName": "Matter.BroadPhaseAxis",
+                    "usr": "s:6Matter14BroadPhaseAxisO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter17BroadPhaseMetricsV4axisAA0bC4AxisOvg",
+                "mangledName": "$s6Matter17BroadPhaseMetricsV4axisAA0bC4AxisOvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "bodyCount",
+            "printedName": "bodyCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter17BroadPhaseMetricsV9bodyCountSivp",
+            "mangledName": "$s6Matter17BroadPhaseMetricsV9bodyCountSivp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter17BroadPhaseMetricsV9bodyCountSivg",
+                "mangledName": "$s6Matter17BroadPhaseMetricsV9bodyCountSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "primaryAxisTests",
+            "printedName": "primaryAxisTests",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter17BroadPhaseMetricsV16primaryAxisTestsSivp",
+            "mangledName": "$s6Matter17BroadPhaseMetricsV16primaryAxisTestsSivp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter17BroadPhaseMetricsV16primaryAxisTestsSivg",
+                "mangledName": "$s6Matter17BroadPhaseMetricsV16primaryAxisTestsSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "boundsTests",
+            "printedName": "boundsTests",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter17BroadPhaseMetricsV11boundsTestsSivp",
+            "mangledName": "$s6Matter17BroadPhaseMetricsV11boundsTestsSivp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter17BroadPhaseMetricsV11boundsTestsSivg",
+                "mangledName": "$s6Matter17BroadPhaseMetricsV11boundsTestsSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "collisionFilterTests",
+            "printedName": "collisionFilterTests",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter17BroadPhaseMetricsV20collisionFilterTestsSivp",
+            "mangledName": "$s6Matter17BroadPhaseMetricsV20collisionFilterTestsSivp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter17BroadPhaseMetricsV20collisionFilterTestsSivg",
+                "mangledName": "$s6Matter17BroadPhaseMetricsV20collisionFilterTestsSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "candidateCount",
+            "printedName": "candidateCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter17BroadPhaseMetricsV14candidateCountSivp",
+            "mangledName": "$s6Matter17BroadPhaseMetricsV14candidateCountSivp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter17BroadPhaseMetricsV14candidateCountSivg",
+                "mangledName": "$s6Matter17BroadPhaseMetricsV14candidateCountSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BroadPhaseMetrics",
+                "printedName": "Matter.BroadPhaseMetrics",
+                "usr": "s:6Matter17BroadPhaseMetricsV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BroadPhaseMetrics",
+                "printedName": "Matter.BroadPhaseMetrics",
+                "usr": "s:6Matter17BroadPhaseMetricsV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter17BroadPhaseMetricsV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter17BroadPhaseMetricsV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter17BroadPhaseMetricsV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter17BroadPhaseMetricsV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter17BroadPhaseMetricsV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter17BroadPhaseMetricsV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter17BroadPhaseMetricsV9hashValueSivp",
+            "mangledName": "$s6Matter17BroadPhaseMetricsV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter17BroadPhaseMetricsV9hashValueSivg",
+                "mangledName": "$s6Matter17BroadPhaseMetricsV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BroadPhaseMetrics",
+                "printedName": "Matter.BroadPhaseMetrics",
+                "usr": "s:6Matter17BroadPhaseMetricsV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter17BroadPhaseMetricsV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter17BroadPhaseMetricsV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter17BroadPhaseMetricsV",
+        "mangledName": "$s6Matter17BroadPhaseMetricsV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "BroadPhaseResult",
+        "printedName": "BroadPhaseResult",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "pairs",
+            "printedName": "pairs",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyPair]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyPair",
+                    "printedName": "Matter.BodyPair",
+                    "usr": "s:6Matter8BodyPairV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter16BroadPhaseResultV5pairsSayAA8BodyPairVGvp",
+            "mangledName": "$s6Matter16BroadPhaseResultV5pairsSayAA8BodyPairVGvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.BodyPair]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyPair",
+                        "printedName": "Matter.BodyPair",
+                        "usr": "s:6Matter8BodyPairV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter16BroadPhaseResultV5pairsSayAA8BodyPairVGvg",
+                "mangledName": "$s6Matter16BroadPhaseResultV5pairsSayAA8BodyPairVGvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "metrics",
+            "printedName": "metrics",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BroadPhaseMetrics",
+                "printedName": "Matter.BroadPhaseMetrics",
+                "usr": "s:6Matter17BroadPhaseMetricsV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter16BroadPhaseResultV7metricsAA0bC7MetricsVvp",
+            "mangledName": "$s6Matter16BroadPhaseResultV7metricsAA0bC7MetricsVvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BroadPhaseMetrics",
+                    "printedName": "Matter.BroadPhaseMetrics",
+                    "usr": "s:6Matter17BroadPhaseMetricsV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter16BroadPhaseResultV7metricsAA0bC7MetricsVvg",
+                "mangledName": "$s6Matter16BroadPhaseResultV7metricsAA0bC7MetricsVvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BroadPhaseResult",
+                "printedName": "Matter.BroadPhaseResult",
+                "usr": "s:6Matter16BroadPhaseResultV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BroadPhaseResult",
+                "printedName": "Matter.BroadPhaseResult",
+                "usr": "s:6Matter16BroadPhaseResultV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter16BroadPhaseResultV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter16BroadPhaseResultV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter16BroadPhaseResultV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter16BroadPhaseResultV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter16BroadPhaseResultV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter16BroadPhaseResultV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter16BroadPhaseResultV9hashValueSivp",
+            "mangledName": "$s6Matter16BroadPhaseResultV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter16BroadPhaseResultV9hashValueSivg",
+                "mangledName": "$s6Matter16BroadPhaseResultV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BroadPhaseResult",
+                "printedName": "Matter.BroadPhaseResult",
+                "usr": "s:6Matter16BroadPhaseResultV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter16BroadPhaseResultV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter16BroadPhaseResultV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter16BroadPhaseResultV",
+        "mangledName": "$s6Matter16BroadPhaseResultV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SweepAndPruneBroadPhase",
+        "printedName": "SweepAndPruneBroadPhase",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "query",
+            "printedName": "query(in:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BroadPhaseResult",
+                "printedName": "Matter.BroadPhaseResult",
+                "usr": "s:6Matter16BroadPhaseResultV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "World",
+                "printedName": "Matter.World",
+                "usr": "s:6Matter5WorldV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter23SweepAndPruneBroadPhaseO5query2inAA0eF6ResultVAA5WorldV_tFZ",
+            "mangledName": "$s6Matter23SweepAndPruneBroadPhaseO5query2inAA0eF6ResultVAA5WorldV_tFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter23SweepAndPruneBroadPhaseO",
+        "mangledName": "$s6Matter23SweepAndPruneBroadPhaseO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "CollisionDetector",
         "printedName": "CollisionDetector",
         "children": [

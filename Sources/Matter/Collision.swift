@@ -103,6 +103,159 @@ public struct Collision: Sendable, Hashable, Codable {
     }
 }
 
+/// The primary coordinate used by an adaptive sweep-and-prune query.
+@frozen
+public enum BroadPhaseAxis: String, Sendable, Hashable, Codable, CaseIterable {
+    /// Sort and reject candidates along the horizontal coordinate.
+    case horizontal
+
+    /// Sort and reject candidates along the vertical coordinate.
+    case vertical
+}
+
+/// Deterministic work counters from one broad-phase query.
+@frozen
+public struct BroadPhaseMetrics: Sendable, Hashable, Codable {
+    /// The axis selected from the current world extent.
+    public let axis: BroadPhaseAxis
+
+    /// The number of body bounds cached for the query.
+    public let bodyCount: Int
+
+    /// Ordered proxy pairs tested for separation on the primary axis.
+    public let primaryAxisTests: Int
+
+    /// Primary-axis survivors tested for full bounds overlap.
+    public let boundsTests: Int
+
+    /// Bounds-overlapping pairs tested against collision filters.
+    public let collisionFilterTests: Int
+
+    /// Filter-compatible bounds pairs returned for narrow-phase detection.
+    public let candidateCount: Int
+
+    init(
+        axis: BroadPhaseAxis,
+        bodyCount: Int,
+        primaryAxisTests: Int,
+        boundsTests: Int,
+        collisionFilterTests: Int,
+        candidateCount: Int
+    ) {
+        self.axis = axis
+        self.bodyCount = bodyCount
+        self.primaryAxisTests = primaryAxisTests
+        self.boundsTests = boundsTests
+        self.collisionFilterTests = collisionFilterTests
+        self.candidateCount = candidateCount
+    }
+}
+
+/// Stable candidate pairs and diagnostics from one broad-phase query.
+@frozen
+public struct BroadPhaseResult: Sendable, Hashable, Codable {
+    /// Canonical candidate pairs in ascending identifier order.
+    public let pairs: [BodyPair]
+
+    /// Deterministic work counters for regression benchmarks.
+    public let metrics: BroadPhaseMetrics
+
+    init(pairs: [BodyPair], metrics: BroadPhaseMetrics) {
+        self.pairs = pairs
+        self.metrics = metrics
+    }
+}
+
+/// Adaptive output-sensitive sweep-and-prune broad phase.
+///
+/// Body bounds are evaluated once, then sorted along the widest world axis.
+/// Sparse ordered worlds approach linear pair testing after the sort. Fully
+/// overlapping worlds necessarily return the quadratic set of candidate pairs.
+@frozen
+public enum SweepAndPruneBroadPhase {
+    /// Returns stable filtered candidates and deterministic work metrics.
+    public static func query(in world: World) -> BroadPhaseResult {
+        let proxies = world.bodies.map(Proxy.init)
+        let axis = preferredAxis(for: proxies)
+        let sorted = proxies.sorted { first, second in
+            let firstMinimum = first.minimum(on: axis)
+            let secondMinimum = second.minimum(on: axis)
+            return firstMinimum == secondMinimum
+                ? first.id < second.id : firstMinimum < secondMinimum
+        }
+
+        var primaryAxisTests = 0
+        var boundsTests = 0
+        var collisionFilterTests = 0
+        var pairs: [BodyPair] = []
+        for firstIndex in sorted.indices {
+            let first = sorted[firstIndex]
+            for secondIndex in sorted.indices where secondIndex > firstIndex {
+                primaryAxisTests += 1
+                let second = sorted[secondIndex]
+                if second.minimum(on: axis) > first.maximum(on: axis) {
+                    break
+                }
+                boundsTests += 1
+                guard first.bounds.overlaps(second.bounds) else { continue }
+                collisionFilterTests += 1
+                guard
+                    first.collisionFilter.allowsCollision(with: second.collisionFilter),
+                    let pair = BodyPair(first.id, second.id)
+                else { continue }
+                pairs.append(pair)
+            }
+        }
+        pairs.sort()
+        return BroadPhaseResult(
+            pairs: pairs,
+            metrics: BroadPhaseMetrics(
+                axis: axis,
+                bodyCount: proxies.count,
+                primaryAxisTests: primaryAxisTests,
+                boundsTests: boundsTests,
+                collisionFilterTests: collisionFilterTests,
+                candidateCount: pairs.count
+            )
+        )
+    }
+}
+
+private extension SweepAndPruneBroadPhase {
+    struct Proxy {
+        let id: BodyID
+        let bounds: Bounds
+        let collisionFilter: CollisionFilter
+
+        init(body: Body) {
+            id = body.id
+            bounds = body.bounds
+            collisionFilter = body.collisionFilter
+        }
+
+        func minimum(on axis: BroadPhaseAxis) -> Float {
+            axis == .horizontal ? bounds.minimum.x : bounds.minimum.y
+        }
+
+        func maximum(on axis: BroadPhaseAxis) -> Float {
+            axis == .horizontal ? bounds.maximum.x : bounds.maximum.y
+        }
+    }
+
+    static func preferredAxis(for proxies: [Proxy]) -> BroadPhaseAxis {
+        guard let first = proxies.first else { return .horizontal }
+        var minimum = first.bounds.minimum
+        var maximum = first.bounds.maximum
+        for proxy in proxies.dropFirst() {
+            minimum.x = min(minimum.x, proxy.bounds.minimum.x)
+            minimum.y = min(minimum.y, proxy.bounds.minimum.y)
+            maximum.x = max(maximum.x, proxy.bounds.maximum.x)
+            maximum.y = max(maximum.y, proxy.bounds.maximum.y)
+        }
+        return maximum.y - minimum.y > maximum.x - minimum.x ? .vertical : .horizontal
+    }
+}
+
 /// Deterministic broad- and narrow-phase collision queries.
 ///
 /// The broad phase uses an x-axis sweep over current ``Body/bounds``. The
@@ -113,41 +266,21 @@ public struct Collision: Sendable, Hashable, Codable {
 public enum CollisionDetector {
     /// Returns filtered AABB-overlapping pairs in stable identifier order.
     public static func potentialPairs(in world: World) -> [BodyPair] {
-        let sortedBodies = world.bodies.sorted { lhs, rhs in
-            if lhs.bounds.minimum.x == rhs.bounds.minimum.x {
-                return lhs.id < rhs.id
-            }
-            return lhs.bounds.minimum.x < rhs.bounds.minimum.x
-        }
-
-        var pairs: [BodyPair] = []
-        for firstIndex in sortedBodies.indices {
-            let first = sortedBodies[firstIndex]
-            for secondIndex in sortedBodies.indices where secondIndex > firstIndex {
-                let second = sortedBodies[secondIndex]
-                if second.bounds.minimum.x > first.bounds.maximum.x {
-                    break
-                }
-                guard
-                    first.bounds.overlaps(second.bounds),
-                    first.collisionFilter.allowsCollision(with: second.collisionFilter),
-                    let pair = BodyPair(first.id, second.id)
-                else {
-                    continue
-                }
-                pairs.append(pair)
-            }
-        }
-        return pairs.sorted()
+        SweepAndPruneBroadPhase.query(in: world).pairs
     }
 
     /// Returns all current collisions in stable identifier order.
     public static func collisions(in world: World) -> [Collision] {
-        return potentialPairs(in: world).compactMap { pair in
-            let bodies = world.bodies
-                .filter { $0.id == pair.first || $0.id == pair.second }
-                .sorted { $0.id < $1.id }
-            return collision(between: bodies[0], and: bodies[1])
+        collisions(in: world, potentialPairs: potentialPairs(in: world))
+    }
+
+    static func collisions(in world: World, potentialPairs: [BodyPair]) -> [Collision] {
+        let bodies = Dictionary(uniqueKeysWithValues: world.bodies.map { ($0.id, $0) })
+        return potentialPairs.compactMap { pair in
+            guard let first = bodies[pair.first], let second = bodies[pair.second] else {
+                return nil
+            }
+            return collision(between: first, and: second)
         }
     }
 

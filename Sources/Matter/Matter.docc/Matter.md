@@ -67,6 +67,10 @@ For reproducible reference calculations and tests only, use
 ### Collision queries
 
 - ``CollisionDetector``
+- ``SweepAndPruneBroadPhase``
+- ``BroadPhaseResult``
+- ``BroadPhaseMetrics``
+- ``BroadPhaseAxis``
 - ``Collision``
 - ``CollisionContact``
 - ``ContactFeatureID``

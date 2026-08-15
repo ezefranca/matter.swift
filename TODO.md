@@ -274,7 +274,7 @@ release.
 ### Collision system
 
 - [x] Implement deterministic AABB generation and updates.
-- [ ] Implement a scalable broad phase with benchmarks and worst-case tests.
+- [x] Implement a scalable broad phase with benchmarks and worst-case tests.
 - [x] Implement circle-circle, circle-polygon, and polygon-polygon narrow phases.
 - [x] Implement SAT/support features and deterministic one- or two-point contact
   manifolds.

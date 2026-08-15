@@ -5,8 +5,9 @@ Inspect broad-phase candidates and exact contacts without mutating a world.
 ## Query a snapshot
 
 ``CollisionDetector`` operates entirely on `Sendable` value snapshots. Its
-x-axis sweep rejects bodies whose ``Body/bounds`` cannot overlap, then applies
-both bodies' ``CollisionFilter`` values before the narrow phase.
+adaptive sweep caches every ``Body/bounds`` once, chooses the widest world axis,
+rejects separated intervals, and then applies both bodies'
+``CollisionFilter`` values before the narrow phase.
 
 ```swift
 let candidates = CollisionDetector.potentialPairs(in: world)
@@ -42,3 +43,26 @@ group override and bidirectional category-mask rules.
 The detector is a CPU query API, not a fallback for ``MetalBackend``. It has no
 hidden mutable cache and returns identical ordered results for identical world
 snapshots.
+
+## Measure broad-phase work
+
+Call ``SweepAndPruneBroadPhase/query(in:)`` directly when diagnostics or
+performance regression data are needed:
+
+```swift
+let result = SweepAndPruneBroadPhase.query(in: world)
+print(result.metrics.axis)
+print(result.metrics.primaryAxisTests, result.metrics.candidateCount)
+```
+
+``BroadPhaseResult`` contains the same canonical pairs returned by
+``CollisionDetector/potentialPairs(in:)`` plus ``BroadPhaseMetrics``. The
+counters measure primary-axis comparisons, full bounds tests, filter tests, and
+emitted candidates without timing noise.
+
+After sorting, separated horizontal or vertical sequences require exactly
+`bodyCount - 1` primary-axis tests. A fully overlapping world emits
+`bodyCount * (bodyCount - 1) / 2` pairs and necessarily performs that much work;
+no exact broad phase can avoid the size of its output. The benchmark suite locks
+both cases at 2,048 sparse bodies and 128 dense bodies, and compares 300 seeded
+random bodies against an exhaustive oracle.

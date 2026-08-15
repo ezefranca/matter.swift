@@ -24,10 +24,12 @@ The only mutable production ownership boundary is the ``Engine`` actor.
 
 ## Collision ownership
 
-``CollisionDetector`` is a deterministic CPU snapshot query. Its sweep-and-prune
-broad phase, separating-axis narrow phase, and contact generation do not mutate
-the world. ``CollisionSolver`` applies sequential contact impulses and positional
-correction on the CPU. After each Metal integration command completes,
+``CollisionDetector`` is a deterministic CPU snapshot query. Its adaptive
+sweep-and-prune broad phase caches bounds, chooses the widest axis, and exposes
+stable work metrics; its separating-axis narrow phase and contact generation do
+not mutate the world. Narrow-phase lookup uses one body-ID index per snapshot
+instead of rescanning the world for each candidate. ``CollisionSolver`` applies
+sequential contact impulses and positional correction on the CPU. After each Metal integration command completes,
 ``Engine`` runs those CPU-owned collision phases on its actor-isolated world.
 
 This division is fixed configuration, not a silent fallback: Metal remains
