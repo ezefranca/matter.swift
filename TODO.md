@@ -314,7 +314,7 @@ release.
   snapshots safe to consume from the main actor.
 - [x] Add P5 drawing adapters for bodies, vertices, constraints, contacts, bounds,
   and debug overlays without coupling the Matter target to P5.
-- [ ] Meet Chapter 6 API needs: `Engine`, `Runner`, `Bodies`, `Body`, `Composite`,
+- [x] Meet Chapter 6 API needs: `Engine`, `Runner`, `Bodies`, `Body`, `Composite`,
   `Constraint`, `Events`, `MouseConstraint`, and vector operations.
 
 ## 6. ML5: trainable native machine learning

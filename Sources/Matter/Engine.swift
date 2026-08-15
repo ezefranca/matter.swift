@@ -1,3 +1,5 @@
+import Foundation
+
 /// A Metal-integrated, fixed-timestep physics engine with CPU collision response.
 ///
 /// An engine serializes access to its ``World`` and never silently switches to
@@ -9,6 +11,7 @@ public actor Engine {
     private var collisionTracker: CollisionTracker
     private var collisionSolverState: CollisionSolverState
     private var sleepingState: SleepingState
+    private var eventContinuations: [UUID: AsyncStream<SimulationResult>.Continuation]
     private let backend: MetalBackend
     /// The constant acceleration applied to every dynamic body each tick.
     public let gravity: Vector
@@ -52,6 +55,7 @@ public actor Engine {
         self.collisionTracker = CollisionTracker()
         self.collisionSolverState = CollisionSolverState()
         self.sleepingState = SleepingState()
+        self.eventContinuations = [:]
         self.backend = try MetalBackend()
     }
 
@@ -78,6 +82,44 @@ public actor Engine {
     /// Releases the Metal backend's retained shared body buffer between ticks.
     public func purgeReusableMetalResources() async {
         await backend.purgeReusableResources()
+    }
+
+    func makeEventSubscription(
+        bufferingPolicy: MatterEventBufferingPolicy
+    ) throws -> MatterEventSubscription {
+        let policy = try bufferingPolicy.asyncStreamPolicy()
+        let pair = AsyncStream.makeStream(
+            of: SimulationResult.self,
+            bufferingPolicy: policy
+        )
+        let identifier = UUID()
+        eventContinuations[identifier] = pair.continuation
+        pair.continuation.onTermination = { _ in
+            Task {
+                await self.cancelEventSubscription(identifier)
+            }
+        }
+        return MatterEventSubscription(
+            identifier: identifier,
+            engine: self,
+            stream: pair.stream
+        )
+    }
+
+    func cancelEventSubscription(_ identifier: UUID) {
+        eventContinuations.removeValue(forKey: identifier)?.finish()
+    }
+
+    func cancelAllEventSubscriptions() {
+        let continuations = eventContinuations.values
+        eventContinuations.removeAll(keepingCapacity: true)
+        for continuation in continuations {
+            continuation.finish()
+        }
+    }
+
+    func eventSubscriptionCount() -> Int {
+        eventContinuations.count
     }
 
     /// Adds a body to the actor-owned world.
@@ -317,7 +359,7 @@ public actor Engine {
             )
         }
 
-        return SimulationResult(
+        let result = SimulationResult(
             world: world,
             tickCount: ticks,
             collisions: collisions,
@@ -326,5 +368,9 @@ public actor Engine {
             sleepingEvents: sleepingEvents,
             continuousCollisionPlans: continuousCollisionPlans
         )
+        for continuation in eventContinuations.values {
+            continuation.yield(result)
+        }
+        return result
     }
 }

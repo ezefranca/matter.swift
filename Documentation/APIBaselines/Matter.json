@@ -22749,6 +22749,603 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "MatterEventBufferingPolicy",
+        "printedName": "MatterEventBufferingPolicy",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "unbounded",
+            "printedName": "unbounded",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterEventBufferingPolicy.Type) -> Matter.MatterEventBufferingPolicy",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterEventBufferingPolicy",
+                    "printedName": "Matter.MatterEventBufferingPolicy",
+                    "usr": "s:6Matter0A20EventBufferingPolicyO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterEventBufferingPolicy.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterEventBufferingPolicy",
+                        "printedName": "Matter.MatterEventBufferingPolicy",
+                        "usr": "s:6Matter0A20EventBufferingPolicyO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A20EventBufferingPolicyO9unboundedyA2CmF",
+            "mangledName": "$s6Matter0A20EventBufferingPolicyO9unboundedyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "bufferingNewest",
+            "printedName": "bufferingNewest",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterEventBufferingPolicy.Type) -> (Swift.Int) -> Matter.MatterEventBufferingPolicy",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Int) -> Matter.MatterEventBufferingPolicy",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterEventBufferingPolicy",
+                        "printedName": "Matter.MatterEventBufferingPolicy",
+                        "usr": "s:6Matter0A20EventBufferingPolicyO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterEventBufferingPolicy.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterEventBufferingPolicy",
+                        "printedName": "Matter.MatterEventBufferingPolicy",
+                        "usr": "s:6Matter0A20EventBufferingPolicyO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A20EventBufferingPolicyO15bufferingNewestyACSicACmF",
+            "mangledName": "$s6Matter0A20EventBufferingPolicyO15bufferingNewestyACSicACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "bufferingOldest",
+            "printedName": "bufferingOldest",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterEventBufferingPolicy.Type) -> (Swift.Int) -> Matter.MatterEventBufferingPolicy",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Swift.Int) -> Matter.MatterEventBufferingPolicy",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterEventBufferingPolicy",
+                        "printedName": "Matter.MatterEventBufferingPolicy",
+                        "usr": "s:6Matter0A20EventBufferingPolicyO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Int",
+                        "printedName": "Swift.Int",
+                        "usr": "s:Si"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterEventBufferingPolicy.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterEventBufferingPolicy",
+                        "printedName": "Matter.MatterEventBufferingPolicy",
+                        "usr": "s:6Matter0A20EventBufferingPolicyO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A20EventBufferingPolicyO15bufferingOldestyACSicACmF",
+            "mangledName": "$s6Matter0A20EventBufferingPolicyO15bufferingOldestyACSicACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_enum_equals",
+            "printedName": "__derived_enum_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MatterEventBufferingPolicy",
+                "printedName": "Matter.MatterEventBufferingPolicy",
+                "usr": "s:6Matter0A20EventBufferingPolicyO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MatterEventBufferingPolicy",
+                "printedName": "Matter.MatterEventBufferingPolicy",
+                "usr": "s:6Matter0A20EventBufferingPolicyO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A20EventBufferingPolicyO21__derived_enum_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter0A20EventBufferingPolicyO21__derived_enum_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements",
+              "Semantics"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A20EventBufferingPolicyO6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter0A20EventBufferingPolicyO6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A20EventBufferingPolicyO4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter0A20EventBufferingPolicyO4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A20EventBufferingPolicyO9hashValueSivp",
+            "mangledName": "$s6Matter0A20EventBufferingPolicyO9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A20EventBufferingPolicyO9hashValueSivg",
+                "mangledName": "$s6Matter0A20EventBufferingPolicyO9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterEventBufferingPolicy",
+                "printedName": "Matter.MatterEventBufferingPolicy",
+                "usr": "s:6Matter0A20EventBufferingPolicyO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter0A20EventBufferingPolicyO4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter0A20EventBufferingPolicyO4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter0A20EventBufferingPolicyO",
+        "mangledName": "$s6Matter0A20EventBufferingPolicyO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "MatterEventSubscription",
+        "printedName": "MatterEventSubscription",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "stream",
+            "printedName": "stream",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "AsyncStream",
+                "printedName": "_Concurrency.AsyncStream<Matter.SimulationResult>",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SimulationResult",
+                    "printedName": "Matter.SimulationResult",
+                    "usr": "s:6Matter16SimulationResultV"
+                  }
+                ],
+                "usr": "s:ScS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter0A17EventSubscriptionV6streamScSyAA16SimulationResultVGvp",
+            "mangledName": "$s6Matter0A17EventSubscriptionV6streamScSyAA16SimulationResultVGvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "AsyncStream",
+                    "printedName": "_Concurrency.AsyncStream<Matter.SimulationResult>",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SimulationResult",
+                        "printedName": "Matter.SimulationResult",
+                        "usr": "s:6Matter16SimulationResultV"
+                      }
+                    ],
+                    "usr": "s:ScS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter0A17EventSubscriptionV6streamScSyAA16SimulationResultVGvg",
+                "mangledName": "$s6Matter0A17EventSubscriptionV6streamScSyAA16SimulationResultVGvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "cancel",
+            "printedName": "cancel()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter0A17EventSubscriptionV6cancelyyYaF",
+            "mangledName": "$s6Matter0A17EventSubscriptionV6cancelyyYaF",
+            "moduleName": "Matter",
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter0A17EventSubscriptionV",
+        "mangledName": "$s6Matter0A17EventSubscriptionV",
+        "moduleName": "Matter",
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Events",
+        "printedName": "Events",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "subscribe",
+            "printedName": "subscribe(to:bufferingPolicy:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "MatterEventSubscription",
+                "printedName": "Matter.MatterEventSubscription",
+                "usr": "s:6Matter0A17EventSubscriptionV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Engine",
+                "printedName": "Matter.Engine",
+                "usr": "s:6Matter6EngineC"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "MatterEventBufferingPolicy",
+                "printedName": "Matter.MatterEventBufferingPolicy",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter0A20EventBufferingPolicyO"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EventsO9subscribe2to15bufferingPolicyAA0A17EventSubscriptionVAA6EngineC_AA0ag9BufferingF0OtYaKFZ",
+            "mangledName": "$s6Matter6EventsO9subscribe2to15bufferingPolicyAA0A17EventSubscriptionVAA6EngineC_AA0ag9BufferingF0OtYaKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeAll",
+            "printedName": "removeAll(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Engine",
+                "printedName": "Matter.Engine",
+                "usr": "s:6Matter6EngineC"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EventsO9removeAll4fromyAA6EngineC_tYaFZ",
+            "mangledName": "$s6Matter6EventsO9removeAll4fromyAA6EngineC_tYaFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter6EventsO",
+        "mangledName": "$s6Matter6EventsO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "MatterDrawingLayer",
         "printedName": "MatterDrawingLayer",
         "children": [
@@ -34888,6 +35485,43 @@
             "declKind": "EnumElement",
             "usr": "s:6Matter0A5ErrorO18invalidElapsedTimeyA2CmF",
             "mangledName": "$s6Matter0A5ErrorO18invalidElapsedTimeyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "invalidEventBufferCapacity",
+            "printedName": "invalidEventBufferCapacity",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterError.Type) -> Matter.MatterError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterError",
+                    "printedName": "Matter.MatterError",
+                    "usr": "s:6Matter0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterError",
+                        "printedName": "Matter.MatterError",
+                        "usr": "s:6Matter0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A5ErrorO26invalidEventBufferCapacityyA2CmF",
+            "mangledName": "$s6Matter0A5ErrorO26invalidEventBufferCapacityyA2CmF",
             "moduleName": "Matter"
           },
           {

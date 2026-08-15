@@ -84,6 +84,10 @@ For reproducible reference calculations and tests only, use
 - ``CollisionEvent``
 - ``CollisionPhase``
 - ``SimulationResult``
+- ``Events``
+- ``MatterEventSubscription``
+- ``MatterEventBufferingPolicy``
+- <doc:Events>
 - <doc:CollisionDetection>
 - <doc:CollisionResponse>
 
