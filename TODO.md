@@ -266,7 +266,8 @@ release.
 - [x] Add body position/angle/velocity/angular-velocity setters and transforms.
 - [x] Add world body add, remove, clear, lookup, stable enumeration, and in-place
   mutation APIs.
-- [ ] Add hierarchical composites and spatial query APIs.
+- [x] Add exact point, bounds-region, and finite-segment spatial query APIs.
+- [ ] Add hierarchical composites.
 - [ ] Add batch mutation APIs that avoid actor round trips.
 
 ### Collision system

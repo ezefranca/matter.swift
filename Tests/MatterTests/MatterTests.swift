@@ -111,6 +111,15 @@ struct MatterTests {
 
         var timing = try FixedStepAccumulator(fixedTimeStep: 0.1)
         #expect(try timing.advance(by: 0.1).tickCount == 1)
+
+        #expect(try WorldQuery.bodies(at: .zero, in: world).map(\.id).contains(first))
+        let hits = try WorldQuery.raycast(
+            from: Vector(x: -3, y: 0),
+            to: Vector(x: 6, y: 0),
+            in: world
+        )
+        #expect(hits.first?.body == first)
+        #expect(hits.first?.distance ?? -1 >= 0)
     }
 
     #if canImport(Metal)

@@ -40,6 +40,10 @@ delegates fixed work to an engine. Its capped ``FixedStepAccumulator`` makes
 interpolation and dropped catch-up time explicit rather than tying simulation
 speed to display callbacks.
 
+``WorldQuery`` operates exclusively on a caller-provided ``World`` value. Point,
+region, and ray queries therefore observe one coherent snapshot, require no
+actor hop, and never mutate engine-owned state.
+
 ## CPU reference path
 
 ``ReferenceIntegrator`` implements the same integrator using value semantics.

@@ -56,6 +56,12 @@ For reproducible reference calculations and tests only, use
 - <doc:CollisionDetection>
 - <doc:CollisionResponse>
 
+### Spatial queries
+
+- ``WorldQuery``
+- ``RaycastHit``
+- <doc:SpatialQueries>
+
 ### Simulation
 
 - ``Vector``

@@ -29,6 +29,8 @@ public enum MatterError: Error, Sendable, Equatable {
     case invalidMaximumTicks
     /// Elapsed runner time was negative or nonfinite.
     case invalidElapsedTime
+    /// A ray segment had nonfinite or equal endpoints.
+    case invalidRay
     /// Solver iterations or numerical tuning values were outside supported ranges.
     case invalidSolverConfiguration
     /// A mutation referenced an identifier absent from the world.
