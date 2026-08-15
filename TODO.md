@@ -188,12 +188,14 @@ release.
 ### 2D geometry and paths
 
 - [x] Lines, rectangles, squares, circles, and ellipses.
-- [ ] Add points, triangles, quads, arcs, rounded rectangles, and regular polygons.
+- [x] Add points, triangles, quads, all arc closures, rounded rectangles, and
+  regular polygons.
 - [ ] Add rect, ellipse, image, and shape coordinate modes.
-- [ ] Add `beginShape`, vertex, curve vertex, Bézier vertex, quadratic vertex,
+- [x] Add `beginShape`, vertex, Catmull-Rom curve vertex, Bézier vertex, quadratic vertex,
   contours, and `endShape` close behavior.
 - [ ] Add Core Graphics path import/export and reusable shape objects.
-- [ ] Add scale, shear, apply/reset matrix, matrix inspection, and transform helpers.
+- [x] Add scale, shear, apply-matrix, and reset-matrix transform helpers.
+- [ ] Add public matrix inspection and reusable transform values.
 - [ ] Add geometry tests for flipped native canvas coordinates and pixel alignment.
 
 ### Input and interaction
