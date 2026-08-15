@@ -123,8 +123,9 @@ release.
 - [x] Document every ML5 public symbol; current symbol graph is 114/114 documented.
 - [ ] Add executable usage snippets for every major feature and error path.
 - [ ] Add tutorials for first P5 sketch, first Matter world, and first ML5 model.
-- [ ] Add conceptual articles for coordinates, color, timing, determinism,
-  concurrency, Metal execution, Core ML, MPSGraph training, and resource ownership.
+- [x] Add a conceptual article for P5 monotonic timing and deterministic manual frames.
+- [ ] Add conceptual articles for coordinates, color, concurrency, Metal execution,
+  Core ML, MPSGraph training, and resource ownership.
 - [ ] Publish explicit p5.js, Matter.js, and ml5.js compatibility tables.
 - [ ] Link each compatibility API to its authoritative upstream reference.
 - [ ] Document all intentional differences from JavaScript and browser behavior.
@@ -144,11 +145,11 @@ release.
 
 - [x] `setup()`, `draw()`, frame rate, loop, no-loop, and redraw lifecycle.
 - [x] Native AppKit/UIKit canvas and SwiftUI presentation.
-- [ ] Add `frameCount`, `deltaTime`, measured frame rate, `millis()`, and monotonic
+- [x] Add `frameCount`, `deltaTime`, measured frame rate, `millis()`, and monotonic
   clock behavior.
 - [ ] Add canvas resizing, display scale, pixel density, fullscreen/display metadata,
   and safe-area behavior.
-- [ ] Define deterministic manual-clock and manual-frame drivers for tests/examples.
+- [x] Define deterministic manual-clock and manual-frame drivers for tests/examples.
 - [ ] Add pause/resume behavior for app scene and window lifecycle transitions.
 - [ ] Add offscreen graphics buffers and reusable rendering contexts.
 
