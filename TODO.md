@@ -157,13 +157,13 @@ release.
 
 - [x] `P5Vector` construction, arithmetic, magnitude, direction, interpolation,
   random 2D direction, Swift operators, and Core Graphics bridges.
-- [ ] Complete remaining vector parity needed by the book: component overloads,
+- [x] Complete remaining vector parity needed by the book: component overloads,
   equality helpers, remainder, reflect, spherical interpolation, and random 3D.
 - [x] Add `map`, `constrain`, `lerp`, `norm`, 2D/3D distance and magnitude, and
   angle conversion helpers on both `P5Math` and `P5Sketch`.
-- [ ] Add the remaining min/max, rounding, powers, and roots helpers.
-- [ ] Add radians/degrees angle mode and propagate it consistently to drawing and
-  vector APIs.
+- [x] Add the remaining min/max, rounding, powers, roots, and trigonometric helpers.
+- [x] Add radians/degrees angle mode and propagate it to drawing, trigonometric,
+  and explicit context-free vector APIs.
 - [x] Add a stable seedable uniform generator, range sampling, collection selection,
   Gaussian values, and per-sketch deterministic random state.
 - [ ] Add weighted selection, exponential values, and reproducible generator
