@@ -39,6 +39,8 @@ public enum MatterError: Error, Sendable, Equatable {
     case invalidConstraintSolverConfiguration
     /// An attraction or force-field parameter was unsupported.
     case invalidForceBehavior
+    /// Compound parts were missing, nested, or had an invalid local transform.
+    case invalidCompound
     /// A mutation referenced an identifier absent from the world.
     case unknownBody(BodyID)
     /// A mutation referenced a composite absent from the world.

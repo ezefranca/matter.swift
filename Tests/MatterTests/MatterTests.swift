@@ -142,6 +142,14 @@ struct MatterTests {
         #expect(mouse.release(in: &world) != nil)
         let attractor = try Attractor(source: .point(position: .zero, mass: 1))
         #expect(try attractor.applications(in: world).isEmpty == false)
+        let compound = try Bodies.compound(
+            at: .zero,
+            parts: [
+                CompoundPart(shape: .circle(radius: 1), position: Vector(x: -1, y: 0)),
+                CompoundPart(shape: .circle(radius: 1), position: Vector(x: 1, y: 0)),
+            ]
+        )
+        #expect(compound.shape.area > 0)
     }
 
     #if canImport(Metal)

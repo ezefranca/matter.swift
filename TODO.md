@@ -262,7 +262,7 @@ release.
 - [x] Add body labels, plugin/user metadata, sensor state, collision groups/categories,
   masks, and immutable identifiers.
 - [x] Add validated circle, rectangle, polygon, trapezoid, and vertices factories.
-- [ ] Add compound bodies and concave decomposition with documented limitations.
+- [x] Add compound bodies and concave decomposition with documented limitations.
 - [x] Add body position/angle/velocity/angular-velocity setters and transforms.
 - [x] Add world body add, remove, clear, lookup, stable enumeration, and in-place
   mutation APIs.

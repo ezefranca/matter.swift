@@ -36,10 +36,13 @@ For reproducible reference calculations and tests only, use
 - ``BodyDefinition``
 - ``Bodies``
 - ``BodyShape``
+- ``CompoundPart``
+- ``ConcaveDecomposer``
 - ``BodyMaterial``
 - ``CollisionFilter``
 - ``Bounds``
 - <doc:BodiesAndMaterials>
+- <doc:CompoundBodies>
 
 ### World organization
 

@@ -77,7 +77,8 @@ public struct Collision: Sendable, Hashable, Codable {
 ///
 /// The broad phase uses an x-axis sweep over current ``Body/bounds``. The
 /// narrow phase uses exact circle intersection and separating-axis tests for
-/// every polygonal ``BodyShape``. Results are canonical and sorted by body ID.
+/// every convex primitive, including decomposed compound parts. Results are
+/// canonical and sorted by body ID.
 @frozen
 public enum CollisionDetector {
     /// Returns filtered AABB-overlapping pairs in stable identifier order.
@@ -136,12 +137,14 @@ public enum CollisionDetector {
         let bodyB = pair.second == second.id ? second : first
         guard bodyA.bounds.overlaps(bodyB.bounds) else { return nil }
 
-        let result: NarrowPhaseResult?
-        switch (bodyA.shape, bodyB.shape) {
-        case let (.circle(radiusA), .circle(radiusB)):
-            result = circleCircle(bodyA, radiusA: radiusA, bodyB, radiusB: radiusB)
-        default:
-            result = separatingAxis(bodyA, bodyB)
+        var result: NarrowPhaseResult?
+        for partA in bodyA.collisionParts {
+            for partB in bodyB.collisionParts where partA.bounds.overlaps(partB.bounds) {
+                guard let candidate = simpleCollision(partA, partB) else { continue }
+                if result.map({ candidate.penetration > $0.penetration + tolerance }) ?? true {
+                    result = candidate
+                }
+            }
         }
 
         guard let result else { return nil }
@@ -166,6 +169,15 @@ private struct NarrowPhaseResult {
 
 private extension CollisionDetector {
     static let tolerance: Float = 0.000_01
+
+    static func simpleCollision(_ bodyA: Body, _ bodyB: Body) -> NarrowPhaseResult? {
+        switch (bodyA.shape, bodyB.shape) {
+        case let (.circle(radiusA), .circle(radiusB)):
+            circleCircle(bodyA, radiusA: radiusA, bodyB, radiusB: radiusB)
+        default:
+            separatingAxis(bodyA, bodyB)
+        }
+    }
 
     static func circleCircle(
         _ bodyA: Body,

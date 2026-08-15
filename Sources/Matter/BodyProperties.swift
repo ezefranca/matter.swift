@@ -299,4 +299,45 @@ public enum Bodies {
             label: "Polygon"
         )
     }
+
+    /// Creates one rigid body from two or more transformed convex parts.
+    public static func compound(
+        at position: Vector,
+        parts: [CompoundPart],
+        angle: Float = 0,
+        mass: Float = 1,
+        isStatic: Bool = false
+    ) throws -> BodyDefinition {
+        try BodyDefinition(
+            shape: .compound(parts: parts),
+            position: position,
+            angle: angle,
+            mass: mass,
+            isStatic: isStatic,
+            label: "Compound"
+        )
+    }
+
+    /// Creates a convex or decomposed concave body from simple local vertices.
+    ///
+    /// Convex input retains one polygon shape. Concave input uses
+    /// ``ConcaveDecomposer`` and stores its triangles as one compound body.
+    public static func fromVertices(
+        at position: Vector,
+        vertices: [Vector],
+        angle: Float = 0,
+        mass: Float = 1,
+        isStatic: Bool = false
+    ) throws -> BodyDefinition {
+        let parts = try ConcaveDecomposer.decompose(vertices)
+        let shape = parts.count == 1 ? parts[0].shape : BodyShape.compound(parts: parts)
+        return try BodyDefinition(
+            shape: shape,
+            position: position,
+            angle: angle,
+            mass: mass,
+            isStatic: isStatic,
+            label: parts.count == 1 ? "Polygon" : "Concave Compound"
+        )
+    }
 }

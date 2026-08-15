@@ -56,18 +56,9 @@ public enum WorldQuery {
         }
         let length = direction.length
         return world.bodies.compactMap { body in
-            let result: (fraction: Float, point: Vector, normal: Vector)?
-            switch body.shape {
-            case let .circle(radius):
-                result = circleHit(
-                    start: start,
-                    direction: direction,
-                    body: body,
-                    radius: radius
-                )
-            default:
-                result = polygonHit(start: start, direction: direction, body: body)
-            }
+            let result = body.collisionParts.compactMap { part in
+                hit(start: start, direction: direction, body: part)
+            }.min { $0.fraction < $1.fraction }
             return result.map {
                 RaycastHit(
                     body: body.id,
@@ -87,6 +78,9 @@ private extension WorldQuery {
     static let tolerance: Float = 0.000_01
 
     static func contains(_ point: Vector, body: Body) -> Bool {
+        if case .compound = body.shape {
+            return body.collisionParts.contains { contains(point, body: $0) }
+        }
         switch body.shape {
         case let .circle(radius):
             return (point - body.position).lengthSquared <= radius * radius
@@ -107,6 +101,19 @@ private extension WorldQuery {
                 }
             }
             return true
+        }
+    }
+
+    static func hit(
+        start: Vector,
+        direction: Vector,
+        body: Body
+    ) -> (fraction: Float, point: Vector, normal: Vector)? {
+        switch body.shape {
+        case let .circle(radius):
+            circleHit(start: start, direction: direction, body: body, radius: radius)
+        default:
+            polygonHit(start: start, direction: direction, body: body)
         }
     }
 

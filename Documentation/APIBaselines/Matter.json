@@ -6094,6 +6094,128 @@
             "static": true,
             "throwing": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "compound",
+            "printedName": "compound(at:parts:angle:mass:isStatic:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BodyDefinition",
+                "printedName": "Matter.BodyDefinition",
+                "usr": "s:6Matter14BodyDefinitionV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.CompoundPart]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompoundPart",
+                    "printedName": "Matter.CompoundPart",
+                    "usr": "s:6Matter12CompoundPartV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6BodiesO8compound2at5parts5angle4mass8isStaticAA14BodyDefinitionVAA6VectorV_SayAA12CompoundPartVGS2fSbtKFZ",
+            "mangledName": "$s6Matter6BodiesO8compound2at5parts5angle4mass8isStaticAA14BodyDefinitionVAA6VectorV_SayAA12CompoundPartVGS2fSbtKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "fromVertices",
+            "printedName": "fromVertices(at:vertices:angle:mass:isStatic:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BodyDefinition",
+                "printedName": "Matter.BodyDefinition",
+                "usr": "s:6Matter14BodyDefinitionV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.Vector]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Vector",
+                    "printedName": "Matter.Vector",
+                    "usr": "s:6Matter6VectorV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6BodiesO12fromVertices2at8vertices5angle4mass8isStaticAA14BodyDefinitionVAA6VectorV_SayAMGS2fSbtKFZ",
+            "mangledName": "$s6Matter6BodiesO12fromVertices2at8vertices5angle4mass8isStaticAA14BodyDefinitionVAA6VectorV_SayAMGS2fSbtKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Enum",
@@ -6352,6 +6474,483 @@
             ],
             "usr": "s:SY",
             "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "CompoundPart",
+        "printedName": "CompoundPart",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "shape",
+            "printedName": "shape",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BodyShape",
+                "printedName": "Matter.BodyShape",
+                "usr": "s:6Matter9BodyShapeO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter12CompoundPartV5shapeAA9BodyShapeOvp",
+            "mangledName": "$s6Matter12CompoundPartV5shapeAA9BodyShapeOvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyShape",
+                    "printedName": "Matter.BodyShape",
+                    "usr": "s:6Matter9BodyShapeO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter12CompoundPartV5shapeAA9BodyShapeOvg",
+                "mangledName": "$s6Matter12CompoundPartV5shapeAA9BodyShapeOvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyShape",
+                    "printedName": "Matter.BodyShape",
+                    "usr": "s:6Matter9BodyShapeO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter12CompoundPartV5shapeAA9BodyShapeOvs",
+                "mangledName": "$s6Matter12CompoundPartV5shapeAA9BodyShapeOvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "position",
+            "printedName": "position",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter12CompoundPartV8positionAA6VectorVvp",
+            "mangledName": "$s6Matter12CompoundPartV8positionAA6VectorVvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Vector",
+                    "printedName": "Matter.Vector",
+                    "usr": "s:6Matter6VectorV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter12CompoundPartV8positionAA6VectorVvg",
+                "mangledName": "$s6Matter12CompoundPartV8positionAA6VectorVvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Vector",
+                    "printedName": "Matter.Vector",
+                    "usr": "s:6Matter6VectorV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter12CompoundPartV8positionAA6VectorVvs",
+                "mangledName": "$s6Matter12CompoundPartV8positionAA6VectorVvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "angle",
+            "printedName": "angle",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter12CompoundPartV5angleSfvp",
+            "mangledName": "$s6Matter12CompoundPartV5angleSfvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter12CompoundPartV5angleSfvg",
+                "mangledName": "$s6Matter12CompoundPartV5angleSfvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter12CompoundPartV5angleSfvs",
+                "mangledName": "$s6Matter12CompoundPartV5angleSfvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(shape:position:angle:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompoundPart",
+                "printedName": "Matter.CompoundPart",
+                "usr": "s:6Matter12CompoundPartV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BodyShape",
+                "printedName": "Matter.BodyShape",
+                "usr": "s:6Matter9BodyShapeO"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter12CompoundPartV5shape8position5angleAcA9BodyShapeO_AA6VectorVSftKcfc",
+            "mangledName": "$s6Matter12CompoundPartV5shape8position5angleAcA9BodyShapeO_AA6VectorVSftKcfc",
+            "moduleName": "Matter",
+            "throwing": true,
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompoundPart",
+                "printedName": "Matter.CompoundPart",
+                "usr": "s:6Matter12CompoundPartV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompoundPart",
+                "printedName": "Matter.CompoundPart",
+                "usr": "s:6Matter12CompoundPartV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter12CompoundPartV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter12CompoundPartV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter12CompoundPartV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter12CompoundPartV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter12CompoundPartV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter12CompoundPartV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter12CompoundPartV9hashValueSivp",
+            "mangledName": "$s6Matter12CompoundPartV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter12CompoundPartV9hashValueSivg",
+                "mangledName": "$s6Matter12CompoundPartV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompoundPart",
+                "printedName": "Matter.CompoundPart",
+                "usr": "s:6Matter12CompoundPartV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter12CompoundPartV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter12CompoundPartV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter12CompoundPartV",
+        "mangledName": "$s6Matter12CompoundPartV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
           },
           {
             "kind": "Conformance",
@@ -6630,6 +7229,71 @@
           },
           {
             "kind": "Var",
+            "name": "compound",
+            "printedName": "compound",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.BodyShape.Type) -> ([Matter.CompoundPart]) -> Matter.BodyShape",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "([Matter.CompoundPart]) -> Matter.BodyShape",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyShape",
+                        "printedName": "Matter.BodyShape",
+                        "usr": "s:6Matter9BodyShapeO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Tuple",
+                        "printedName": "(parts: [Matter.CompoundPart])",
+                        "children": [
+                          {
+                            "kind": "TypeNominal",
+                            "name": "Array",
+                            "printedName": "[Matter.CompoundPart]",
+                            "children": [
+                              {
+                                "kind": "TypeNominal",
+                                "name": "CompoundPart",
+                                "printedName": "Matter.CompoundPart",
+                                "usr": "s:6Matter12CompoundPartV"
+                              }
+                            ],
+                            "usr": "s:Sa"
+                          }
+                        ]
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.BodyShape.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyShape",
+                        "printedName": "Matter.BodyShape",
+                        "usr": "s:6Matter9BodyShapeO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter9BodyShapeO8compoundyACSayAA12CompoundPartVG_tcACmF",
+            "mangledName": "$s6Matter9BodyShapeO8compoundyACSayAA12CompoundPartVG_tcACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
             "name": "area",
             "printedName": "area",
             "children": [
@@ -6899,6 +7563,7 @@
         "mangledName": "$s6Matter9BodyShapeO",
         "moduleName": "Matter",
         "declAttributes": [
+          "Indirect",
           "Frozen"
         ],
         "isEnumExhaustive": true,
@@ -6944,6 +7609,100 @@
             "printedName": "Hashable",
             "usr": "s:SH",
             "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ConcaveDecomposer",
+        "printedName": "ConcaveDecomposer",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "decompose",
+            "printedName": "decompose(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.CompoundPart]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompoundPart",
+                    "printedName": "Matter.CompoundPart",
+                    "usr": "s:6Matter12CompoundPartV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.Vector]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Vector",
+                    "printedName": "Matter.Vector",
+                    "usr": "s:6Matter6VectorV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter17ConcaveDecomposerO9decomposeySayAA12CompoundPartVGSayAA6VectorVGKFZ",
+            "mangledName": "$s6Matter17ConcaveDecomposerO9decomposeySayAA12CompoundPartVGSayAA6VectorVGKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter17ConcaveDecomposerO",
+        "mangledName": "$s6Matter17ConcaveDecomposerO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
           },
           {
             "kind": "Conformance",
@@ -23204,6 +23963,43 @@
             "declKind": "EnumElement",
             "usr": "s:6Matter0A5ErrorO20invalidForceBehavioryA2CmF",
             "mangledName": "$s6Matter0A5ErrorO20invalidForceBehavioryA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "invalidCompound",
+            "printedName": "invalidCompound",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterError.Type) -> Matter.MatterError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterError",
+                    "printedName": "Matter.MatterError",
+                    "usr": "s:6Matter0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterError",
+                        "printedName": "Matter.MatterError",
+                        "usr": "s:6Matter0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A5ErrorO15invalidCompoundyA2CmF",
+            "mangledName": "$s6Matter0A5ErrorO15invalidCompoundyA2CmF",
             "moduleName": "Matter"
           },
           {

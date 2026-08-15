@@ -12,7 +12,8 @@ public struct Body: Sendable, Hashable, Codable {
 
     /// The current center of mass in world coordinates.
     ///
-    /// Simple bodies use their local origin as center of mass.
+    /// Bodies use their local origin as center of mass. Compound callers should
+    /// arrange part geometry around that origin.
     public var centerOfMass: Vector {
         position
     }
@@ -103,21 +104,53 @@ public struct Body: Sendable, Hashable, Codable {
 
     /// Polygon vertices transformed into world coordinates.
     ///
-    /// Circles return an empty array.
+    /// Circles return an empty array. Compound bodies flatten polygonal part
+    /// vertices in part order and omit exact circular boundaries.
     public var vertices: [Vector] {
-        shape.localVertices.map { $0.rotated(by: angle) + position }
+        switch shape {
+        case .compound:
+            collisionParts.flatMap(\.vertices)
+        default:
+            shape.localVertices.map { $0.rotated(by: angle) + position }
+        }
     }
 
     /// The current axis-aligned broad-phase bounds.
     public var bounds: Bounds {
         switch shape {
         case let .circle(radius):
-            Bounds(
+            return Bounds(
                 minimum: position - Vector(x: radius, y: radius),
                 maximum: position + Vector(x: radius, y: radius)
             )
+        case .compound:
+            let partBounds = collisionParts.map(\.bounds)
+            var minimum = partBounds[0].minimum
+            var maximum = partBounds[0].maximum
+            for bounds in partBounds.dropFirst() {
+                minimum.x = min(minimum.x, bounds.minimum.x)
+                minimum.y = min(minimum.y, bounds.minimum.y)
+                maximum.x = max(maximum.x, bounds.maximum.x)
+                maximum.y = max(maximum.y, bounds.maximum.y)
+            }
+            return Bounds(
+                minimum: minimum,
+                maximum: maximum
+            )
         default:
-            Bounds(containing: vertices)
+            return Bounds(containing: vertices)
+        }
+    }
+
+    var collisionParts: [Body] {
+        guard case let .compound(parts) = shape else { return [self] }
+        return parts.map { part in
+            Body(
+                partOf: self,
+                shape: part.shape,
+                position: position + part.position.rotated(by: angle),
+                angle: angle + part.angle
+            )
         }
     }
 
@@ -140,6 +173,27 @@ public struct Body: Sendable, Hashable, Codable {
         self.metadata = definition.metadata
         self.material = definition.material
         self.collisionFilter = definition.collisionFilter
+    }
+
+    private init(partOf parent: Body, shape: BodyShape, position: Vector, angle: Float) {
+        self.id = parent.id
+        self.shape = shape
+        self.position = position
+        self.angle = angle
+        self.velocity = parent.velocity
+        self.angularVelocity = parent.angularVelocity
+        self.force = parent.force
+        self.torque = parent.torque
+        self.mass = parent.mass
+        self.area = shape.area
+        self.density = parent.density
+        self.inertia = parent.inertia
+        self.isStatic = parent.isStatic
+        self.isSensor = parent.isSensor
+        self.label = parent.label
+        self.metadata = parent.metadata
+        self.material = parent.material
+        self.collisionFilter = parent.collisionFilter
     }
 
     /// Accumulates a force to be consumed at the next fixed simulation tick.

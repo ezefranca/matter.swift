@@ -17,9 +17,43 @@ public struct BodyID: RawRepresentable, Sendable, Hashable, Codable, Comparable 
     }
 }
 
+/// One primitive shape and transform within a compound body.
+@frozen
+public struct CompoundPart: Sendable, Hashable, Codable {
+    /// Convex primitive geometry expressed in the part's local coordinates.
+    public var shape: BodyShape
+
+    /// The part origin relative to the owning body origin.
+    public var position: Vector
+
+    /// The part's clockwise rotation relative to the owning body angle.
+    public var angle: Float
+
+    /// Creates a validated compound part.
+    ///
+    /// Nested compound shapes are deliberately unsupported.
+    public init(shape: BodyShape, position: Vector = .zero, angle: Float = 0) throws {
+        self.shape = shape
+        self.position = position
+        self.angle = angle
+        try validate()
+    }
+
+    func validate() throws {
+        guard position.isFinite, angle.isFinite else {
+            throw MatterError.invalidCompound
+        }
+        guard case .compound = shape else {
+            try shape.validate()
+            return
+        }
+        throw MatterError.invalidCompound
+    }
+}
+
 /// Collision geometry expressed in body-local coordinates.
 @frozen
-public enum BodyShape: Sendable, Hashable, Codable {
+public indirect enum BodyShape: Sendable, Hashable, Codable {
     /// A circle with a finite radius greater than zero.
     case circle(radius: Float)
 
@@ -32,6 +66,9 @@ public enum BodyShape: Sendable, Hashable, Codable {
     /// An isosceles trapezoid whose slope is in `0..<1`.
     case trapezoid(width: Float, height: Float, slope: Float)
 
+    /// Two or more transformed convex primitive parts sharing one rigid body.
+    case compound(parts: [CompoundPart])
+
     /// The local-space area enclosed by this shape.
     public var area: Float {
         switch self {
@@ -43,6 +80,8 @@ public enum BodyShape: Sendable, Hashable, Codable {
             abs(Self.signedDoubleArea(of: vertices)) / 2
         case let .trapezoid(width, height, slope):
             width * height * (1 - slope / 2)
+        case let .compound(parts):
+            parts.reduce(into: 0) { $0 += $1.shape.area }
         }
     }
 
@@ -60,6 +99,12 @@ public enum BodyShape: Sendable, Hashable, Codable {
             vertices
         case let .trapezoid(width, height, slope):
             Self.trapezoidVertices(width: width, height: height, slope: slope)
+        case let .compound(parts):
+            parts.flatMap { part in
+                part.shape.localVertices.map {
+                    $0.rotated(by: part.angle) + part.position
+                }
+            }
         }
     }
 
@@ -88,6 +133,14 @@ public enum BodyShape: Sendable, Hashable, Codable {
                 denominator += cross
             }
             return abs(mass * numerator / (6 * denominator))
+        case let .compound(parts):
+            let totalArea = area
+            return parts.reduce(into: 0) { result, part in
+                let partMass = mass * part.shape.area / totalArea
+                result +=
+                    part.shape.inertia(forMass: partMass)
+                    + partMass * part.position.lengthSquared
+            }
         }
     }
 
@@ -114,6 +167,9 @@ public enum BodyShape: Sendable, Hashable, Codable {
             else {
                 throw MatterError.invalidShapeDimension
             }
+        case let .compound(parts):
+            guard parts.count >= 2 else { throw MatterError.invalidCompound }
+            try parts.forEach { try $0.validate() }
         }
     }
 
@@ -174,6 +230,175 @@ public enum BodyShape: Sendable, Hashable, Codable {
             Vector(x: halfWidth, y: halfHeight),
             Vector(x: -halfWidth, y: halfHeight),
         ]
+    }
+}
+
+/// Deterministic ear-clipping decomposition for simple concave polygons.
+@frozen
+public enum ConcaveDecomposer {
+    /// Splits a simple polygon into stable convex parts.
+    ///
+    /// Convex input returns one part. Concave input returns triangles in the
+    /// deterministic order in which ears are removed. Holes, duplicate points,
+    /// collinear adjacent edges, and self-intersections are rejected.
+    public static func decompose(_ vertices: [Vector]) throws -> [CompoundPart] {
+        try validateSimplePolygon(vertices)
+        if isConvex(vertices) {
+            return [try CompoundPart(shape: .polygon(vertices: vertices))]
+        }
+
+        let orientation: Float = signedDoubleArea(vertices) > 0 ? 1 : -1
+        var indices = Array(vertices.indices)
+        var triangles: [CompoundPart] = []
+        while indices.count > 3 {
+            // The two-ears theorem guarantees a result after simple-polygon
+            // validation, and every removal preserves that invariant.
+            let earOffset = indices.indices.dropFirst().reduce(indices.startIndex) {
+                selected, candidate in
+                if isEar(
+                    at: selected,
+                    indices: indices,
+                    vertices: vertices,
+                    orientation: orientation
+                ) {
+                    return selected
+                }
+                return candidate
+            }
+            let previous = indices[(earOffset + indices.count - 1) % indices.count]
+            let current = indices[earOffset]
+            let next = indices[(earOffset + 1) % indices.count]
+            triangles.append(
+                try CompoundPart(
+                    shape: .polygon(vertices: [
+                        vertices[previous], vertices[current], vertices[next],
+                    ])
+                )
+            )
+            indices.remove(at: earOffset)
+        }
+        triangles.append(
+            try CompoundPart(shape: .polygon(vertices: indices.map { vertices[$0] }))
+        )
+        return triangles
+    }
+}
+
+private extension ConcaveDecomposer {
+    static let tolerance: Float = 0.000_001
+
+    static func validateSimplePolygon(_ vertices: [Vector]) throws {
+        guard vertices.count >= 3, vertices.allSatisfy(\.isFinite) else {
+            throw MatterError.invalidPolygon
+        }
+        guard abs(signedDoubleArea(vertices)) > tolerance else {
+            throw MatterError.invalidPolygon
+        }
+        for first in vertices.indices {
+            let second = (first + 1) % vertices.count
+            guard (vertices[second] - vertices[first]).lengthSquared > tolerance * tolerance else {
+                throw MatterError.invalidPolygon
+            }
+        }
+        for first in vertices.indices {
+            let second = (first + 1) % vertices.count
+            let third = (first + 2) % vertices.count
+            guard
+                abs((vertices[second] - vertices[first]).cross(vertices[third] - vertices[second]))
+                    > tolerance
+            else {
+                throw MatterError.invalidPolygon
+            }
+            for otherFirst in vertices.indices where otherFirst > first {
+                let otherSecond = (otherFirst + 1) % vertices.count
+                guard
+                    first != otherSecond,
+                    second != otherFirst,
+                    !segmentsIntersect(
+                        vertices[first],
+                        vertices[second],
+                        vertices[otherFirst],
+                        vertices[otherSecond]
+                    )
+                else {
+                    if first != otherSecond, second != otherFirst {
+                        throw MatterError.invalidPolygon
+                    }
+                    continue
+                }
+            }
+        }
+    }
+
+    static func isConvex(_ vertices: [Vector]) -> Bool {
+        let orientation: Float = signedDoubleArea(vertices) > 0 ? 1 : -1
+        return vertices.indices.allSatisfy { index in
+            let first = vertices[index]
+            let second = vertices[(index + 1) % vertices.count]
+            let third = vertices[(index + 2) % vertices.count]
+            return (second - first).cross(third - second) * orientation > tolerance
+        }
+    }
+
+    static func isEar(
+        at offset: Int,
+        indices: [Int],
+        vertices: [Vector],
+        orientation: Float
+    ) -> Bool {
+        let previous = indices[(offset + indices.count - 1) % indices.count]
+        let current = indices[offset]
+        let next = indices[(offset + 1) % indices.count]
+        let first = vertices[previous]
+        let second = vertices[current]
+        let third = vertices[next]
+        guard (second - first).cross(third - second) * orientation > tolerance else {
+            return false
+        }
+        return !indices.contains { index in
+            guard index != previous, index != current, index != next else { return false }
+            return point(
+                vertices[index], liesInTriangle: first, second, third, orientation: orientation)
+        }
+    }
+
+    static func point(
+        _ point: Vector,
+        liesInTriangle first: Vector,
+        _ second: Vector,
+        _ third: Vector,
+        orientation: Float
+    ) -> Bool {
+        let edges = [
+            (second - first).cross(point - first),
+            (third - second).cross(point - second),
+            (first - third).cross(point - third),
+        ]
+        return edges.allSatisfy { $0 * orientation >= -tolerance }
+    }
+
+    static func segmentsIntersect(
+        _ first: Vector,
+        _ second: Vector,
+        _ otherFirst: Vector,
+        _ otherSecond: Vector
+    ) -> Bool {
+        let firstDirection = orientation(first, second, otherFirst)
+        let secondDirection = orientation(first, second, otherSecond)
+        let thirdDirection = orientation(otherFirst, otherSecond, first)
+        let fourthDirection = orientation(otherFirst, otherSecond, second)
+        return firstDirection * secondDirection <= tolerance
+            && thirdDirection * fourthDirection <= tolerance
+    }
+
+    static func orientation(_ first: Vector, _ second: Vector, _ third: Vector) -> Float {
+        (second - first).cross(third - first)
+    }
+
+    static func signedDoubleArea(_ vertices: [Vector]) -> Float {
+        vertices.indices.reduce(into: 0) { result, index in
+            result += vertices[index].cross(vertices[(index + 1) % vertices.count])
+        }
     }
 }
 
