@@ -66,3 +66,39 @@ mass, and configured stiffness; it is deterministic but is not a force sensor.
 
 Removing a body automatically removes every constraint that references it.
 Removing a constraint also cleans its composite membership.
+
+## Build larger assemblies
+
+Use the factory helpers to produce deterministic arrays of validated
+``ConstraintDefinition`` values:
+
+- ``Constraints/chain(_:length:stiffness:damping:angularStiffness:maximumImpulse:)``
+  connects adjacent body identifiers.
+- ``Constraints/pendulum(_:pivot:localAnchor:length:stiffness:damping:maximumImpulse:)``
+  configures a world pin with pendulum defaults.
+- ``Constraints/bridge(_:from:to:segmentLength:stiffness:damping:maximumImpulse:)``
+  adds endpoint pins around a chain.
+- ``Constraints/mesh(_:length:stiffness:damping:crossBrace:maximumImpulse:)``
+  connects rectangular body-ID grids horizontally and vertically, with optional
+  diagonal cross braces.
+- ``Constraints/softBody(_:length:stiffness:damping:maximumImpulse:)`` creates a
+  compliant, cross-braced grid.
+
+Commit the resulting assembly atomically with ``World/addConstraints(_:to:)``
+or ``Engine/addConstraints(_:to:)``:
+
+```swift
+let clothDefinitions = try Constraints.mesh(
+    bodyGrid,
+    stiffness: 0.6,
+    damping: 0.12,
+    crossBrace: true
+)
+let clothConstraints = try world.addConstraints(
+    clothDefinitions,
+    to: clothComposite
+)
+```
+
+Meshes require a nonempty rectangular grid. A one-row or one-column mesh is
+valid; a chain or bridge requires at least two bodies.

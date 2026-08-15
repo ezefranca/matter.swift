@@ -13165,6 +13165,475 @@
             "static": true,
             "throwing": true,
             "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "chain",
+            "printedName": "chain(_:length:stiffness:damping:angularStiffness:maximumImpulse:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.ConstraintDefinition]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConstraintDefinition",
+                    "printedName": "Matter.ConstraintDefinition",
+                    "usr": "s:6Matter20ConstraintDefinitionV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter11ConstraintsO5chain_6length9stiffness7damping16angularStiffness14maximumImpulseSayAA20ConstraintDefinitionVGSayAA6BodyIDVG_SfSgS3fAPtKFZ",
+            "mangledName": "$s6Matter11ConstraintsO5chain_6length9stiffness7damping16angularStiffness14maximumImpulseSayAA20ConstraintDefinitionVGSayAA6BodyIDVG_SfSgS3fAPtKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "pendulum",
+            "printedName": "pendulum(_:pivot:localAnchor:length:stiffness:damping:maximumImpulse:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ConstraintDefinition",
+                "printedName": "Matter.ConstraintDefinition",
+                "usr": "s:6Matter20ConstraintDefinitionV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BodyID",
+                "printedName": "Matter.BodyID",
+                "usr": "s:6Matter6BodyIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter11ConstraintsO8pendulum_5pivot11localAnchor6length9stiffness7damping14maximumImpulseAA20ConstraintDefinitionVAA6BodyIDV_AA6VectorVAPSfSgS2fAQtKFZ",
+            "mangledName": "$s6Matter11ConstraintsO8pendulum_5pivot11localAnchor6length9stiffness7damping14maximumImpulseAA20ConstraintDefinitionVAA6BodyIDV_AA6VectorVAPSfSgS2fAQtKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "bridge",
+            "printedName": "bridge(_:from:to:segmentLength:stiffness:damping:maximumImpulse:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.ConstraintDefinition]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConstraintDefinition",
+                    "printedName": "Matter.ConstraintDefinition",
+                    "usr": "s:6Matter20ConstraintDefinitionV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter11ConstraintsO6bridge_4from2to13segmentLength9stiffness7damping14maximumImpulseSayAA20ConstraintDefinitionVGSayAA6BodyIDVG_AA6VectorVARSfSgS2fAStKFZ",
+            "mangledName": "$s6Matter11ConstraintsO6bridge_4from2to13segmentLength9stiffness7damping14maximumImpulseSayAA20ConstraintDefinitionVGSayAA6BodyIDVG_AA6VectorVARSfSgS2fAStKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "mesh",
+            "printedName": "mesh(_:length:stiffness:damping:crossBrace:maximumImpulse:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.ConstraintDefinition]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConstraintDefinition",
+                    "printedName": "Matter.ConstraintDefinition",
+                    "usr": "s:6Matter20ConstraintDefinitionV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[Matter.BodyID]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.BodyID]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyID",
+                        "printedName": "Matter.BodyID",
+                        "usr": "s:6Matter6BodyIDV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter11ConstraintsO4mesh_6length9stiffness7damping10crossBrace14maximumImpulseSayAA20ConstraintDefinitionVGSaySayAA6BodyIDVGG_SfSgS2fSbAQtKFZ",
+            "mangledName": "$s6Matter11ConstraintsO4mesh_6length9stiffness7damping10crossBrace14maximumImpulseSayAA20ConstraintDefinitionVGSaySayAA6BodyIDVGG_SfSgS2fSbAQtKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "softBody",
+            "printedName": "softBody(_:length:stiffness:damping:maximumImpulse:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.ConstraintDefinition]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConstraintDefinition",
+                    "printedName": "Matter.ConstraintDefinition",
+                    "usr": "s:6Matter20ConstraintDefinitionV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[[Matter.BodyID]]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.BodyID]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyID",
+                        "printedName": "Matter.BodyID",
+                        "usr": "s:6Matter6BodyIDV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter11ConstraintsO8softBody_6length9stiffness7damping14maximumImpulseSayAA20ConstraintDefinitionVGSaySayAA0D2IDVGG_SfSgS2fAPtKFZ",
+            "mangledName": "$s6Matter11ConstraintsO8softBody_6length9stiffness7damping14maximumImpulseSayAA20ConstraintDefinitionVGSaySayAA0D2IDVGG_SfSgS2fAPtKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
           }
         ],
         "declKind": "Enum",
@@ -14495,6 +14964,65 @@
             "declKind": "Func",
             "usr": "s:6Matter6EngineC13addConstraint_2toAA0D2IDVAA0D10DefinitionV_AA09CompositeF0VSgtKF",
             "mangledName": "$s6Matter6EngineC13addConstraint_2toAA0D2IDVAA0D10DefinitionV_AA09CompositeF0VSgtKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addConstraints",
+            "printedName": "addConstraints(_:to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.ConstraintID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConstraintID",
+                    "printedName": "Matter.ConstraintID",
+                    "usr": "s:6Matter12ConstraintIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.ConstraintDefinition]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConstraintDefinition",
+                    "printedName": "Matter.ConstraintDefinition",
+                    "usr": "s:6Matter20ConstraintDefinitionV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.CompositeID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EngineC14addConstraints_2toSayAA12ConstraintIDVGSayAA0F10DefinitionVG_AA09CompositeG0VSgtKF",
+            "mangledName": "$s6Matter6EngineC14addConstraints_2toSayAA12ConstraintIDVGSayAA0F10DefinitionVG_AA09CompositeG0VSgtKF",
             "moduleName": "Matter",
             "declAttributes": [
               "DiscardableResult"
@@ -20293,6 +20821,65 @@
             "declKind": "Func",
             "usr": "s:6Matter5WorldV13addConstraint_2toAA0D2IDVAA0D10DefinitionV_AA09CompositeF0VSgtKF",
             "mangledName": "$s6Matter5WorldV13addConstraint_2toAA0D2IDVAA0D10DefinitionV_AA09CompositeF0VSgtKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addConstraints",
+            "printedName": "addConstraints(_:to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.ConstraintID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConstraintID",
+                    "printedName": "Matter.ConstraintID",
+                    "usr": "s:6Matter12ConstraintIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.ConstraintDefinition]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ConstraintDefinition",
+                    "printedName": "Matter.ConstraintDefinition",
+                    "usr": "s:6Matter20ConstraintDefinitionV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.CompositeID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV14addConstraints_2toSayAA12ConstraintIDVGSayAA0F10DefinitionVG_AA09CompositeG0VSgtKF",
+            "mangledName": "$s6Matter5WorldV14addConstraints_2toSayAA12ConstraintIDVGSayAA0F10DefinitionVG_AA09CompositeG0VSgtKF",
             "moduleName": "Matter",
             "declAttributes": [
               "DiscardableResult"

@@ -277,6 +277,58 @@ public struct World: Sendable, Hashable, Codable {
         return identifier
     }
 
+    /// Adds validated constraints atomically and optionally assigns them to a composite.
+    ///
+    /// Validation, missing bodies, or identifier exhaustion leaves the world unchanged.
+    @discardableResult
+    public mutating func addConstraints(
+        _ definitions: [ConstraintDefinition],
+        to composite: CompositeID? = nil
+    ) throws -> [ConstraintID] {
+        let destinationIndex: Int?
+        if let composite {
+            destinationIndex = try compositeIndex(for: composite)
+        } else {
+            destinationIndex = nil
+        }
+        try definitions.forEach { try $0.validate() }
+        let states = try definitions.map { definition in
+            let firstState = try state(for: definition.first)
+            let secondState = try state(for: definition.second)
+            let angles = [firstState.angle, secondState.angle].compactMap { $0 }
+            return (
+                length: definition.length ?? firstState.point.distance(to: secondState.point),
+                referenceAngle: angles.count == 2 ? angles[1] - angles[0] : angles[0]
+            )
+        }
+        guard UInt64(definitions.count) <= UInt64.max - nextConstraintIdentifier else {
+            throw MatterError.constraintIdentifierExhausted
+        }
+        guard !definitions.isEmpty else { return [] }
+
+        let firstIdentifier = nextConstraintIdentifier + 1
+        let identifiers = definitions.indices.map {
+            ConstraintID(rawValue: firstIdentifier + UInt64($0))
+        }
+        constraints.append(
+            contentsOf: zip(zip(identifiers, definitions), states).map { pair, state in
+                Constraint(
+                    id: pair.0,
+                    definition: pair.1,
+                    length: state.length,
+                    referenceAngle: state.referenceAngle
+                )
+            }
+        )
+        nextConstraintIdentifier += UInt64(definitions.count)
+        if let destinationIndex {
+            for identifier in identifiers {
+                composites[destinationIndex].append(identifier)
+            }
+        }
+        return identifiers
+    }
+
     /// Returns the constraint with a stable identifier, or `nil` when absent.
     public func constraint(withID identifier: ConstraintID) -> Constraint? {
         constraints.first { $0.id == identifier }

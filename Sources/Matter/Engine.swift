@@ -123,6 +123,15 @@ public actor Engine {
         try world.addConstraint(definition, to: composite)
     }
 
+    /// Adds validated constraints atomically to the actor-owned world.
+    @discardableResult
+    public func addConstraints(
+        _ definitions: [ConstraintDefinition],
+        to composite: CompositeID? = nil
+    ) throws -> [ConstraintID] {
+        try world.addConstraints(definitions, to: composite)
+    }
+
     /// Assigns an actor-owned constraint directly to a composite.
     public func assignConstraint(_ constraint: ConstraintID, to composite: CompositeID) throws {
         try world.assignConstraint(constraint, to: composite)

@@ -294,7 +294,8 @@ release.
 - [x] Add point-to-body and body-to-body distance constraints.
 - [x] Add stiffness, damping, length, local/world anchors, angular stiffness,
   deterministic solver iterations, and break-impulse limits.
-- [ ] Add chains, meshes/cloth, bridges, pendulums, springs, and soft-body helpers.
+- [x] Add chains, meshes/cloth, bridges, pendulums, springs, and soft-body helpers
+  with atomic world and engine insertion.
 - [ ] Add rotational constraints and motors for windmill examples.
 - [ ] Add mouse/touch constraints with P5 pointer-coordinate adapters.
 - [ ] Add attraction/force behaviors used by Chapter 6.

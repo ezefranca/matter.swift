@@ -254,4 +254,192 @@ public enum Constraints {
             maximumImpulse: maximumImpulse
         )
     }
+
+    /// Creates adjacent distance constraints for an ordered body chain.
+    public static func chain(
+        _ bodies: [BodyID],
+        length: Float? = nil,
+        stiffness: Float = 1,
+        damping: Float = 0,
+        angularStiffness: Float = 0,
+        maximumImpulse: Float? = nil
+    ) throws -> [ConstraintDefinition] {
+        guard bodies.count >= 2 else { throw MatterError.invalidConstraint }
+        return try zip(bodies, bodies.dropFirst()).map { first, second in
+            var definition = try distance(
+                between: first,
+                and: second,
+                length: length,
+                stiffness: stiffness,
+                damping: damping,
+                angularStiffness: angularStiffness,
+                maximumImpulse: maximumImpulse
+            )
+            definition.label = "Chain"
+            return definition
+        }
+    }
+
+    /// Creates a pin configured as a pendulum arm.
+    public static func pendulum(
+        _ body: BodyID,
+        pivot: Vector,
+        localAnchor: Vector = .zero,
+        length: Float? = nil,
+        stiffness: Float = 1,
+        damping: Float = 0.05,
+        maximumImpulse: Float? = nil
+    ) throws -> ConstraintDefinition {
+        var definition = try pin(
+            body,
+            localAnchor: localAnchor,
+            to: pivot,
+            length: length,
+            stiffness: stiffness,
+            damping: damping,
+            maximumImpulse: maximumImpulse
+        )
+        definition.label = "Pendulum"
+        return definition
+    }
+
+    /// Creates a chain whose first and last bodies are pinned to bridge anchors.
+    public static func bridge(
+        _ bodies: [BodyID],
+        from start: Vector,
+        to end: Vector,
+        segmentLength: Float? = nil,
+        stiffness: Float = 0.9,
+        damping: Float = 0.1,
+        maximumImpulse: Float? = nil
+    ) throws -> [ConstraintDefinition] {
+        var definitions = try chain(
+            bodies,
+            length: segmentLength,
+            stiffness: stiffness,
+            damping: damping,
+            maximumImpulse: maximumImpulse
+        )
+        var firstPin = try pin(
+            bodies[0],
+            to: start,
+            length: segmentLength,
+            stiffness: stiffness,
+            damping: damping,
+            maximumImpulse: maximumImpulse
+        )
+        firstPin.label = "Bridge Anchor"
+        var lastPin = try pin(
+            bodies[bodies.count - 1],
+            to: end,
+            length: segmentLength,
+            stiffness: stiffness,
+            damping: damping,
+            maximumImpulse: maximumImpulse
+        )
+        lastPin.label = "Bridge Anchor"
+        definitions.append(firstPin)
+        definitions.append(lastPin)
+        return definitions
+    }
+
+    /// Creates horizontal, vertical, and optional diagonal constraints for a grid.
+    public static func mesh(
+        _ rows: [[BodyID]],
+        length: Float? = nil,
+        stiffness: Float = 0.8,
+        damping: Float = 0.1,
+        crossBrace: Bool = true,
+        maximumImpulse: Float? = nil
+    ) throws -> [ConstraintDefinition] {
+        let columnCount = try validatedColumnCount(in: rows)
+        var definitions: [ConstraintDefinition] = []
+        for row in rows {
+            if row.count > 1 {
+                definitions.append(
+                    contentsOf: try chain(
+                        row,
+                        length: length,
+                        stiffness: stiffness,
+                        damping: damping,
+                        maximumImpulse: maximumImpulse
+                    )
+                )
+            }
+        }
+        if rows.count > 1 {
+            for rowIndex in 0..<(rows.count - 1) {
+                for columnIndex in 0..<columnCount {
+                    definitions.append(
+                        try distance(
+                            between: rows[rowIndex][columnIndex],
+                            and: rows[rowIndex + 1][columnIndex],
+                            length: length,
+                            stiffness: stiffness,
+                            damping: damping,
+                            maximumImpulse: maximumImpulse
+                        )
+                    )
+                    if crossBrace, columnIndex + 1 < columnCount {
+                        definitions.append(
+                            try distance(
+                                between: rows[rowIndex][columnIndex],
+                                and: rows[rowIndex + 1][columnIndex + 1],
+                                length: length,
+                                stiffness: stiffness,
+                                damping: damping,
+                                maximumImpulse: maximumImpulse
+                            )
+                        )
+                        definitions.append(
+                            try distance(
+                                between: rows[rowIndex][columnIndex + 1],
+                                and: rows[rowIndex + 1][columnIndex],
+                                length: length,
+                                stiffness: stiffness,
+                                damping: damping,
+                                maximumImpulse: maximumImpulse
+                            )
+                        )
+                    }
+                }
+            }
+        }
+        for index in definitions.indices {
+            definitions[index].label = "Mesh"
+        }
+        return definitions
+    }
+
+    /// Creates a cross-braced mesh configured for a compliant soft body.
+    public static func softBody(
+        _ rows: [[BodyID]],
+        length: Float? = nil,
+        stiffness: Float = 0.5,
+        damping: Float = 0.15,
+        maximumImpulse: Float? = nil
+    ) throws -> [ConstraintDefinition] {
+        var definitions = try mesh(
+            rows,
+            length: length,
+            stiffness: stiffness,
+            damping: damping,
+            crossBrace: true,
+            maximumImpulse: maximumImpulse
+        )
+        for index in definitions.indices {
+            definitions[index].label = "Soft Body"
+        }
+        return definitions
+    }
+
+    private static func validatedColumnCount(in rows: [[BodyID]]) throws -> Int {
+        guard let columnCount = rows.first?.count, columnCount > 0 else {
+            throw MatterError.invalidConstraint
+        }
+        guard rows.allSatisfy({ $0.count == columnCount }) else {
+            throw MatterError.invalidConstraint
+        }
+        return columnCount
+    }
 }

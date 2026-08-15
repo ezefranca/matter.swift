@@ -133,6 +133,8 @@ struct MatterTests {
         )
         #expect(world.constraint(withID: constraint)?.label == "Distance")
         #expect(try ConstraintSolver.resolve(world: &world, timeStep: 0.1).isEmpty)
+        let assembly = try Constraints.chain([first, second], stiffness: 0.5)
+        #expect(try world.addConstraints(assembly, to: group).count == 1)
     }
 
     #if canImport(Metal)
