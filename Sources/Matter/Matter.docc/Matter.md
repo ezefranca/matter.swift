@@ -69,6 +69,10 @@ For reproducible reference calculations and tests only, use
 - ``CollisionDetector``
 - ``Collision``
 - ``CollisionContact``
+- ``ContactFeatureID``
+- ``ContactKey``
+- ``ContactImpulse``
+- ``CollisionSolverState``
 - ``BodyPair``
 - ``CollisionSolver``
 - ``SolverConfiguration``

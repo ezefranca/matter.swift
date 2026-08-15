@@ -27,14 +27,44 @@ public struct BodyPair: Sendable, Hashable, Codable, Comparable {
 
 /// One deterministic point in a collision contact manifold.
 @frozen
+public struct ContactFeatureID: Sendable, Hashable, Codable, Comparable {
+    /// The selected primitive-part index on ``BodyPair/first``.
+    public let firstPart: Int
+
+    /// The selected primitive-part index on ``BodyPair/second``.
+    public let secondPart: Int
+
+    /// The stable contact index within that primitive manifold.
+    public let contact: Int
+
+    init(firstPart: Int, secondPart: Int, contact: Int) {
+        self.firstPart = firstPart
+        self.secondPart = secondPart
+        self.contact = contact
+    }
+
+    /// Orders features lexicographically by primitive and contact indices.
+    public static func < (lhs: Self, rhs: Self) -> Bool {
+        if lhs.firstPart != rhs.firstPart { return lhs.firstPart < rhs.firstPart }
+        if lhs.secondPart != rhs.secondPart { return lhs.secondPart < rhs.secondPart }
+        return lhs.contact < rhs.contact
+    }
+}
+
+/// One deterministic point in a collision contact manifold.
+@frozen
 public struct CollisionContact: Sendable, Hashable, Codable {
+    /// Stable primitive and manifold indices used to persist solver impulses.
+    public let featureID: ContactFeatureID
+
     /// The world-space contact position.
     public let position: Vector
 
     /// The nonnegative overlap depth represented by the manifold.
     public let penetration: Float
 
-    init(position: Vector, penetration: Float) {
+    init(featureID: ContactFeatureID, position: Vector, penetration: Float) {
+        self.featureID = featureID
         self.position = position
         self.penetration = penetration
     }
@@ -137,24 +167,35 @@ public enum CollisionDetector {
         let bodyB = pair.second == second.id ? second : first
         guard bodyA.bounds.overlaps(bodyB.bounds) else { return nil }
 
-        var result: NarrowPhaseResult?
-        for partA in bodyA.collisionParts {
-            for partB in bodyB.collisionParts where partA.bounds.overlaps(partB.bounds) {
+        var selected: (firstPart: Int, secondPart: Int, result: NarrowPhaseResult)?
+        for (firstPart, partA) in bodyA.collisionParts.enumerated() {
+            for (secondPart, partB) in bodyB.collisionParts.enumerated()
+            where partA.bounds.overlaps(partB.bounds) {
                 guard let candidate = simpleCollision(partA, partB) else { continue }
-                if result.map({ candidate.penetration > $0.penetration + tolerance }) ?? true {
-                    result = candidate
+                if selected.map({ candidate.penetration > $0.result.penetration + tolerance })
+                    ?? true
+                {
+                    selected = (firstPart, secondPart, candidate)
                 }
             }
         }
 
-        guard let result else { return nil }
-        let contacts = result.positions.map {
-            CollisionContact(position: $0, penetration: result.penetration)
+        guard let selected else { return nil }
+        let contacts = selected.result.positions.enumerated().map { contact, position in
+            CollisionContact(
+                featureID: ContactFeatureID(
+                    firstPart: selected.firstPart,
+                    secondPart: selected.secondPart,
+                    contact: contact
+                ),
+                position: position,
+                penetration: selected.result.penetration
+            )
         }
         return Collision(
             pair: pair,
-            normal: result.normal,
-            penetration: result.penetration,
+            normal: selected.result.normal,
+            penetration: selected.result.penetration,
             contacts: contacts,
             isSensor: bodyA.isSensor || bodyB.isSensor
         )

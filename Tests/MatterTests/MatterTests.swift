@@ -150,6 +150,8 @@ struct MatterTests {
             ]
         )
         #expect(compound.shape.area > 0)
+        var solverState = CollisionSolverState()
+        #expect(try CollisionSolver.resolve(world: &world, state: &solverState).count >= 0)
     }
 
     #if canImport(Metal)

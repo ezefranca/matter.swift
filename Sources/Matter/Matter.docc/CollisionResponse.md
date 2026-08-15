@@ -33,6 +33,38 @@ let contacts = try CollisionSolver.resolve(
 )
 ```
 
+## Persist and warm-start contacts
+
+Reuse ``CollisionSolverState`` across fixed ticks to retain accumulated normal
+and friction impulses:
+
+```swift
+var solverState = CollisionSolverState()
+
+try ReferenceIntegrator.step(
+    world: &world,
+    gravity: Vector(x: 0, y: 9.81),
+    timeStep: 1 / 60
+)
+let contacts = try CollisionSolver.resolve(
+    world: &world,
+    state: &solverState,
+    configuration: .standard
+)
+```
+
+Each ``CollisionContact`` carries a ``ContactFeatureID`` composed of selected
+primitive-part indices and the stable contact index within that manifold. A
+``ContactKey`` combines it with the canonical body pair. The solver applies the
+previous tick's ``ContactImpulse`` before its sequential iterations, accumulates
+new impulses with nonnegative normal and Coulomb-friction bounds, and removes
+ended or sensor contacts.
+
+``Engine`` owns this cache automatically and exposes an immutable
+``Engine/solverStateSnapshot()`` for diagnostics. Replacing the engine world
+clears it. Call ``CollisionSolverState/reset()`` when a manually managed state
+will be reused with an unrelated world.
+
 The returned collisions represent the state before positional correction.
 Velocity passes apply normal impulses, restitution, geometric-mean static and
 dynamic friction, and angular impulse at every contact point. Position passes

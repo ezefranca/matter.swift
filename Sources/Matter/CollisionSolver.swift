@@ -45,6 +45,84 @@ public struct SolverConfiguration: Sendable, Hashable, Codable {
     }
 }
 
+/// A stable collision pair and primitive contact feature.
+@frozen
+public struct ContactKey: Sendable, Hashable, Codable, Comparable {
+    /// The canonical bodies owning the contact.
+    public let pair: BodyPair
+
+    /// The primitive-part and manifold indices within the pair.
+    public let featureID: ContactFeatureID
+
+    /// Creates a key from a detected collision pair and contact feature.
+    public init(pair: BodyPair, featureID: ContactFeatureID) {
+        self.pair = pair
+        self.featureID = featureID
+    }
+
+    /// Orders keys by body pair and then feature identity.
+    public static func < (lhs: Self, rhs: Self) -> Bool {
+        lhs.pair == rhs.pair ? lhs.featureID < rhs.featureID : lhs.pair < rhs.pair
+    }
+}
+
+/// Accumulated normal and tangent impulses for one persistent contact.
+@frozen
+public struct ContactImpulse: Sendable, Hashable, Codable {
+    /// Nonnegative impulse magnitude along the collision normal.
+    public let normal: Float
+
+    /// Signed impulse magnitude along the normal's counterclockwise tangent.
+    public let tangent: Float
+
+    init(normal: Float, tangent: Float) {
+        self.normal = normal
+        self.tangent = tangent
+    }
+
+    static let zero = Self(normal: 0, tangent: 0)
+}
+
+/// Value-semantic persistent contact state used for warm starting.
+@frozen
+public struct CollisionSolverState: Sendable, Hashable, Codable {
+    private var impulses: [ContactKey: ContactImpulse]
+
+    /// Creates an empty cache whose first solve starts cold.
+    public init() {
+        impulses = [:]
+    }
+
+    /// Active cached contacts in stable key order.
+    public var activeContacts: [ContactKey] {
+        impulses.keys.sorted()
+    }
+
+    /// The number of contacts retained from the most recent solve.
+    public var contactCount: Int {
+        impulses.count
+    }
+
+    /// Returns the accumulated impulse for a contact, when it remains active.
+    public func impulse(for key: ContactKey) -> ContactImpulse? {
+        impulses[key]
+    }
+
+    /// Removes every cached contact so the next solve starts cold.
+    public mutating func reset() {
+        impulses.removeAll(keepingCapacity: true)
+    }
+
+    subscript(key: ContactKey) -> ContactImpulse? {
+        get { impulses[key] }
+        set { impulses[key] = newValue }
+    }
+
+    mutating func retain(_ keys: Set<ContactKey>) {
+        impulses = impulses.filter { keys.contains($0.key) }
+    }
+}
+
 /// Deterministic sequential-impulse collision response.
 ///
 /// The solver mutates a value-semantic ``World`` synchronously on the caller's
@@ -64,16 +142,46 @@ public enum CollisionSolver {
         world: inout World,
         configuration: SolverConfiguration = .standard
     ) throws -> [Collision] {
+        var state = CollisionSolverState()
+        return try resolve(world: &world, state: &state, configuration: configuration)
+    }
+
+    /// Resolves collisions and persists accumulated impulses for warm starting.
+    ///
+    /// The state prunes ended and sensor contacts after every solve. Reuse the
+    /// same value across fixed ticks; call ``CollisionSolverState/reset()`` after
+    /// an unrelated world replacement.
+    @discardableResult
+    public static func resolve(
+        world: inout World,
+        state: inout CollisionSolverState,
+        configuration: SolverConfiguration = .standard
+    ) throws -> [Collision] {
         try configuration.validate()
         let initialCollisions = CollisionDetector.collisions(in: world)
         var bodies = world.bodies
+        let activeKeys = Set(
+            initialCollisions.lazy.filter { !$0.isSensor }.flatMap { collision in
+                collision.contacts.map {
+                    ContactKey(pair: collision.pair, featureID: $0.featureID)
+                }
+            }
+        )
+        state.retain(activeKeys)
+        let restitutionTargets = restitutionTargets(
+            initialCollisions,
+            bodies: bodies,
+            threshold: configuration.restitutionVelocityThreshold
+        )
+        warmStart(initialCollisions, bodies: &bodies, state: state)
 
         for _ in 0..<configuration.velocityIterations {
             for collision in initialCollisions where !collision.isSensor {
                 resolveVelocity(
                     collision,
                     bodies: &bodies,
-                    restitutionThreshold: configuration.restitutionVelocityThreshold
+                    restitutionTargets: restitutionTargets,
+                    state: &state
                 )
             }
         }
@@ -99,10 +207,59 @@ public enum CollisionSolver {
 private extension CollisionSolver {
     static let velocityTolerance: Float = 0.000_001
 
+    static func restitutionTargets(
+        _ collisions: [Collision],
+        bodies: [Body],
+        threshold: Float
+    ) -> [ContactKey: Float] {
+        var targets: [ContactKey: Float] = [:]
+        for collision in collisions where !collision.isSensor {
+            let indices = bodyIndices(for: collision.pair, in: bodies)
+            let bodyA = bodies[indices.first]
+            let bodyB = bodies[indices.second]
+            for contact in collision.contacts {
+                let radiusA = contact.position - bodyA.position
+                let radiusB = contact.position - bodyB.position
+                let relativeVelocity =
+                    velocity(at: radiusB, on: bodyB)
+                    - velocity(at: radiusA, on: bodyA)
+                let normalSpeed = relativeVelocity.dot(collision.normal)
+                guard normalSpeed < -threshold else { continue }
+                let key = ContactKey(pair: collision.pair, featureID: contact.featureID)
+                targets[key] = -max(bodyA.restitution, bodyB.restitution) * normalSpeed
+            }
+        }
+        return targets
+    }
+
+    static func warmStart(
+        _ collisions: [Collision],
+        bodies: inout [Body],
+        state: CollisionSolverState
+    ) {
+        for collision in collisions where !collision.isSensor {
+            let indices = bodyIndices(for: collision.pair, in: bodies)
+            var bodyA = bodies[indices.first]
+            var bodyB = bodies[indices.second]
+            guard bodyA.inverseMass + bodyB.inverseMass > 0 else { continue }
+            let tangent = Vector(x: -collision.normal.y, y: collision.normal.x)
+            for contact in collision.contacts {
+                let key = ContactKey(pair: collision.pair, featureID: contact.featureID)
+                guard let cached = state.impulse(for: key) else { continue }
+                let impulse = collision.normal * cached.normal + tangent * cached.tangent
+                bodyA.applyImpulse(-impulse, at: contact.position)
+                bodyB.applyImpulse(impulse, at: contact.position)
+            }
+            bodies[indices.first] = bodyA
+            bodies[indices.second] = bodyB
+        }
+    }
+
     static func resolveVelocity(
         _ collision: Collision,
         bodies: inout [Body],
-        restitutionThreshold: Float
+        restitutionTargets: [ContactKey: Float],
+        state: inout CollisionSolverState
     ) {
         let indices = bodyIndices(for: collision.pair, in: bodies)
         var bodyA = bodies[indices.first]
@@ -116,11 +273,6 @@ private extension CollisionSolver {
                 velocity(at: radiusB, on: bodyB)
                 - velocity(at: radiusA, on: bodyA)
             let normalSpeed = relativeVelocity.dot(collision.normal)
-            guard normalSpeed <= 0 else { continue }
-
-            let restitution =
-                abs(normalSpeed) < restitutionThreshold
-                ? 0 : max(bodyA.restitution, bodyB.restitution)
             let normalMass = effectiveMass(
                 bodyA,
                 radius: radiusA,
@@ -128,22 +280,20 @@ private extension CollisionSolver {
                 radius: radiusB,
                 direction: collision.normal
             )
-            let normalMagnitude =
-                -(1 + restitution) * normalSpeed
+            let key = ContactKey(pair: collision.pair, featureID: contact.featureID)
+            let previous = state[key] ?? .zero
+            let normalDelta =
+                ((restitutionTargets[key] ?? 0) - normalSpeed)
                 / (normalMass * Float(collision.contacts.count))
-            let normalImpulse = collision.normal * normalMagnitude
+            let normalMagnitude = max(previous.normal + normalDelta, 0)
+            let normalImpulse = collision.normal * (normalMagnitude - previous.normal)
             bodyA.applyImpulse(-normalImpulse, at: contact.position)
             bodyB.applyImpulse(normalImpulse, at: contact.position)
 
             relativeVelocity =
                 velocity(at: radiusB, on: bodyB)
                 - velocity(at: radiusA, on: bodyA)
-            let tangentVelocity =
-                relativeVelocity
-                - collision.normal * relativeVelocity.dot(collision.normal)
-            guard tangentVelocity.lengthSquared > velocityTolerance else { continue }
-
-            let tangent = tangentVelocity.normalized()
+            let tangent = Vector(x: -collision.normal.y, y: collision.normal.x)
             let tangentMass = effectiveMass(
                 bodyA,
                 radius: radiusA,
@@ -151,21 +301,28 @@ private extension CollisionSolver {
                 radius: radiusB,
                 direction: tangent
             )
-            let unconstrainedMagnitude =
+            let tangentDelta =
                 -relativeVelocity.dot(tangent)
                 / (tangentMass * Float(collision.contacts.count))
             let staticFriction =
                 (bodyA.staticFriction * bodyB.staticFriction).squareRoot()
             let dynamicFriction = (bodyA.friction * bodyB.friction).squareRoot()
-            let frictionMagnitude: Float
-            if abs(unconstrainedMagnitude) <= normalMagnitude * staticFriction {
-                frictionMagnitude = unconstrainedMagnitude
+            let candidateTangent = previous.tangent + tangentDelta
+            let staticLimit = normalMagnitude * staticFriction
+            let tangentMagnitude: Float
+            if abs(candidateTangent) <= staticLimit {
+                tangentMagnitude = candidateTangent
             } else {
-                frictionMagnitude = -normalMagnitude * dynamicFriction
+                let dynamicLimit = normalMagnitude * dynamicFriction
+                tangentMagnitude = min(max(candidateTangent, -dynamicLimit), dynamicLimit)
             }
-            let frictionImpulse = tangent * frictionMagnitude
+            let frictionImpulse = tangent * (tangentMagnitude - previous.tangent)
             bodyA.applyImpulse(-frictionImpulse, at: contact.position)
             bodyB.applyImpulse(frictionImpulse, at: contact.position)
+            let impulse = ContactImpulse(normal: normalMagnitude, tangent: tangentMagnitude)
+            state[key] =
+                impulse.normal > velocityTolerance || abs(impulse.tangent) > velocityTolerance
+                ? impulse : nil
         }
 
         bodies[indices.first] = bodyA

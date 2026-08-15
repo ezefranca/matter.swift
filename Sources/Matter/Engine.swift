@@ -7,6 +7,7 @@
 public actor Engine {
     private var world: World
     private var collisionTracker: CollisionTracker
+    private var collisionSolverState: CollisionSolverState
     private let backend: MetalBackend
     /// The constant acceleration applied to every dynamic body each tick.
     public let gravity: Vector
@@ -37,12 +38,18 @@ public actor Engine {
         self.solverConfiguration = solverConfiguration
         self.constraintSolverConfiguration = constraintSolverConfiguration
         self.collisionTracker = CollisionTracker()
+        self.collisionSolverState = CollisionSolverState()
         self.backend = try MetalBackend()
     }
 
     /// Returns an immutable snapshot of the world at this instant.
     public func snapshot() -> World {
         world
+    }
+
+    /// Returns the current value-semantic warm-start contact cache.
+    public func solverStateSnapshot() -> CollisionSolverState {
+        collisionSolverState
     }
 
     /// Adds a body to the actor-owned world.
@@ -192,6 +199,7 @@ public actor Engine {
     public func reset(to world: World = .init()) {
         self.world = world
         collisionTracker.reset()
+        collisionSolverState.reset()
     }
 
     /// Runs one or more fixed Metal simulation ticks and returns the resulting snapshot.
@@ -228,6 +236,7 @@ public actor Engine {
             )
             collisions = try CollisionSolver.resolve(
                 world: &world,
+                state: &collisionSolverState,
                 configuration: solverConfiguration
             )
             collisionEvents.append(contentsOf: collisionTracker.update(with: collisions))

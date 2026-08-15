@@ -278,10 +278,10 @@ release.
 - [x] Implement circle-circle, circle-polygon, and polygon-polygon narrow phases.
 - [x] Implement SAT/support features and deterministic one- or two-point contact
   manifolds.
-- [ ] Add persistent pairs, contact feature identifiers, and warm starting.
+- [x] Add persistent pairs, contact feature identifiers, and warm starting.
 - [x] Implement impulse resolution, static/dynamic friction, restitution,
   positional correction, and configurable velocity/position iteration counts.
-- [ ] Add persistent warm starting and prove stacking stability under documented
+- [x] Add persistent warm starting and prove stacking stability under documented
   stress-test tolerances.
 - [x] Apply sensors and collision filtering to deterministic collision queries.
 - [ ] Implement sleeping/waking and island management.

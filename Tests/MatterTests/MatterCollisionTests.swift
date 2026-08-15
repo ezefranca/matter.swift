@@ -70,7 +70,13 @@ struct MatterCollisionTests {
         #expect(overlap.normal == Vector(x: 1, y: 0))
         #expect(overlap.penetration == 1)
         #expect(
-            overlap.contacts == [CollisionContact(position: Vector(x: 1.5, y: 0), penetration: 1)])
+            overlap.contacts == [
+                CollisionContact(
+                    featureID: ContactFeatureID(firstPart: 0, secondPart: 0, contact: 0),
+                    position: Vector(x: 1.5, y: 0),
+                    penetration: 1
+                )
+            ])
         #expect(!overlap.isSensor)
         #expect(
             CollisionDetector.collision(
