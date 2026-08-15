@@ -216,6 +216,17 @@ public struct Body: Sendable, Hashable, Codable {
         clearForces()
     }
 
+    mutating func applyImpulse(_ impulse: Vector, at point: Vector) {
+        guard !isStatic else { return }
+        velocity += impulse * inverseMass
+        angularVelocity += (point - position).cross(impulse) * inverseInertia
+    }
+
+    mutating func applyPositionCorrection(_ correction: Vector) {
+        guard !isStatic else { return }
+        position += correction
+    }
+
     mutating func integrate(gravity: Vector, timeStep: Float) {
         guard !isStatic else {
             clearForces()

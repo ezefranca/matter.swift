@@ -1,8 +1,9 @@
-/// A Metal-first fixed-timestep physics engine.
+/// A Metal-integrated, fixed-timestep physics engine with CPU collision response.
 ///
 /// An engine serializes access to its ``World`` and never silently switches to
-/// the CPU reference integrator. Constructing it or stepping it surfaces
-/// ``MetalBackendError`` when Metal cannot perform the requested work.
+/// the CPU reference integrator. Integration runs on Metal; collision detection
+/// and response are explicitly CPU-owned phases. Constructing it or stepping it
+/// surfaces ``MetalBackendError`` when Metal cannot perform the requested work.
 public actor Engine {
     private var world: World
     private let backend: MetalBackend
@@ -10,20 +11,25 @@ public actor Engine {
     public let gravity: Vector
     /// The finite, positive duration of one deterministic simulation tick.
     public let fixedTimeStep: Float
+    /// The validated CPU collision-response configuration used after Metal integration.
+    public let solverConfiguration: SolverConfiguration
 
     /// Creates an engine backed by Metal.
     public init(
         world: World = .init(),
         gravity: Vector = Vector(x: 0, y: 9.81),
-        fixedTimeStep: Float = 1.0 / 60.0
+        fixedTimeStep: Float = 1.0 / 60.0,
+        solverConfiguration: SolverConfiguration = .standard
     ) throws {
         guard fixedTimeStep.isFinite, fixedTimeStep > 0 else {
             throw MatterError.invalidTimeStep
         }
+        try solverConfiguration.validate()
 
         self.world = world
         self.gravity = gravity
         self.fixedTimeStep = fixedTimeStep
+        self.solverConfiguration = solverConfiguration
         self.backend = try MetalBackend()
     }
 
@@ -81,6 +87,7 @@ public actor Engine {
                 timeStep: fixedTimeStep
             )
             world.replaceBodies(integrated)
+            try CollisionSolver.resolve(world: &world, configuration: solverConfiguration)
         }
 
         return world

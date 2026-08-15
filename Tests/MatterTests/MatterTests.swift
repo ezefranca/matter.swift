@@ -102,6 +102,12 @@ struct MatterTests {
         #expect(pair.second == second)
         #expect(collision.pair == pair)
         #expect(collision.contacts.count == 1)
+
+        let configuration = SolverConfiguration(
+            velocityIterations: 1,
+            positionIterations: 1
+        )
+        #expect(try CollisionSolver.resolve(world: &world, configuration: configuration).count == 1)
     }
 
     #if canImport(Metal)

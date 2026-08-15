@@ -25,6 +25,8 @@ public enum MatterError: Error, Sendable, Equatable {
     case invalidTimeStep
     /// An engine was asked to perform fewer than one tick.
     case invalidTickCount
+    /// Solver iterations or numerical tuning values were outside supported ranges.
+    case invalidSolverConfiguration
     /// A mutation referenced an identifier absent from the world.
     case unknownBody(BodyID)
     /// The world's monotonically increasing identifier sequence reached `UInt64.max`.
@@ -156,5 +158,28 @@ public enum ReferenceIntegrator {
     /// Advances one body using semi-implicit Euler integration.
     public static func step(body: inout Body, gravity: Vector, timeStep: Float) {
         body.integrate(gravity: gravity, timeStep: timeStep)
+    }
+}
+
+/// Deterministic CPU integration and collision response for tests and tooling.
+///
+/// Production ``Engine`` uses Metal for integration and the same
+/// ``CollisionSolver`` for the explicitly CPU-owned response phase.
+public enum ReferencePhysics {
+    /// Integrates one tick and resolves its discrete collisions.
+    ///
+    /// - Returns: Collisions detected after integration and before positional
+    ///   correction.
+    /// - Throws: ``MatterError/invalidTimeStep`` or
+    ///   ``MatterError/invalidSolverConfiguration`` for invalid tuning.
+    @discardableResult
+    public static func step(
+        world: inout World,
+        gravity: Vector,
+        timeStep: Float,
+        solver configuration: SolverConfiguration = .standard
+    ) throws -> [Collision] {
+        try ReferenceIntegrator.step(world: &world, gravity: gravity, timeStep: timeStep)
+        return try CollisionSolver.resolve(world: &world, configuration: configuration)
     }
 }

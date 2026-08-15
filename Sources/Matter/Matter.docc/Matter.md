@@ -47,12 +47,16 @@ For reproducible reference calculations and tests only, use
 - ``Collision``
 - ``CollisionContact``
 - ``BodyPair``
+- ``CollisionSolver``
+- ``SolverConfiguration``
 - <doc:CollisionDetection>
+- <doc:CollisionResponse>
 
 ### Simulation
 
 - ``Vector``
 - ``ReferenceIntegrator``
+- ``ReferencePhysics``
 - ``MetalBackend``
 - ``MetalBackendError``
 

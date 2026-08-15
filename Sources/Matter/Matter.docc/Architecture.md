@@ -21,13 +21,18 @@ definitions, bodies, and worlds are `Sendable` value types. A caller can safely 
 ``Engine/snapshot()`` or ``Engine/step(ticks:)`` without sharing engine state.
 The only mutable production ownership boundary is the ``Engine`` actor.
 
-## Collision-query ownership
+## Collision ownership
 
 ``CollisionDetector`` is a deterministic CPU snapshot query. Its sweep-and-prune
 broad phase, separating-axis narrow phase, and contact generation do not mutate
-the world and are not an integration fallback. This explicit CPU ownership keeps
-collision inspection available on any Swift runtime while ``Engine`` continues
-to require Metal for production integration.
+the world. ``CollisionSolver`` applies sequential contact impulses and positional
+correction on the CPU. After each Metal integration command completes,
+``Engine`` runs those CPU-owned collision phases on its actor-isolated world.
+
+This division is fixed configuration, not a silent fallback: Metal remains
+mandatory for production integration, and all Metal failures are surfaced. The
+CPU collision implementation is also shared with ``ReferencePhysics`` so tests
+can compare complete deterministic ticks without duplicating response behavior.
 
 ## CPU reference path
 

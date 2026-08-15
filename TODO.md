@@ -277,8 +277,10 @@ release.
 - [x] Implement SAT/support features and deterministic one- or two-point contact
   manifolds.
 - [ ] Add persistent pairs, contact feature identifiers, and warm starting.
-- [ ] Implement impulse resolution, friction, restitution, positional correction,
-  stacking stability, and configurable iteration counts.
+- [x] Implement impulse resolution, static/dynamic friction, restitution,
+  positional correction, and configurable velocity/position iteration counts.
+- [ ] Add persistent warm starting and prove stacking stability under documented
+  stress-test tolerances.
 - [x] Apply sensors and collision filtering to deterministic collision queries.
 - [ ] Implement sleeping/waking and island management.
 - [ ] Add continuous collision detection or explicitly bounded tunneling behavior.
@@ -295,8 +297,8 @@ release.
 
 ### Execution and rendering
 
-- [ ] Define which phases run on Metal and which run on CPU, with no ambiguous
-  silent fallback.
+- [x] Define Metal integration and deterministic CPU collision-query/response
+  ownership, with no ambiguous silent fallback.
 - [ ] Add GPU buffers and kernels for the selected broad phase, narrow phase,
   solving, and integration stages where benchmarks justify them.
 - [x] Preserve a deterministic CPU reference engine and verify linear/angular
