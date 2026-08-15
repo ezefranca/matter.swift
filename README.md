@@ -29,7 +29,7 @@ ML library:
 | --- | --- | --- |
 | [`P5`](#create-a-sketch) | [p5.js](https://p5js.org) | Active, see the [parity roadmap](#p5-parity-roadmap) |
 | [`Matter`](#matter-physics) | [Matter.js](https://brm.io/matter-js/) | Early, Metal-first physics core |
-| [`ML5`](#ml5-on-device-machine-learning) | [ml5.js](https://ml5js.org/) | Early, Core ML classification/regression |
+| [`ML5`](#ml5-on-device-machine-learning) | [ml5.js](https://ml5js.org/) | Active, typed Core ML inference foundation |
 
 Each product is a separate SwiftPM target with its own tests and DocC
 catalog. Add only the products you need to your target's dependencies.
@@ -259,10 +259,11 @@ unavailable device, kernel compilation failure, or failed command buffer.
 learning built directly on Core ML. It is an independent implementation
 inspired by the conceptual ergonomics of [ml5.js](https://ml5js.org/).
 
-The current slice supports scalar Core ML inputs and outputs, typed
-classification and regression decoding, and async actor-isolated
-prediction. Image, tensor, sequence, dictionary features, and training
-adapters are not yet implemented.
+The current inference foundation supports validated scalars, numeric arrays,
+dictionaries, shaped tensors, homogeneous sequences, and immutable image pixels.
+It also provides ordered schemas with exact tensor-shape checks and explicit
+missing/default/unknown-field policies, typed classification and regression
+decoding, and async actor-isolated prediction.
 
 ```swift
 import ML5
@@ -281,6 +282,10 @@ let prediction = try await network.predict(
 
 print(prediction.label, prediction.confidence as Any)
 ```
+
+All structured boundary values are `Sendable` and `Codable`; decoding runs the
+same validation as ordinary construction. `ML5Image` copies between owned bytes
+and `CVPixelBuffer`, including an explicit RGBA-to-BGRA conversion for Core Video.
 
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. `ML5` does not claim arbitrary-model, on-device training:

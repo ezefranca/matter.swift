@@ -323,7 +323,7 @@ release.
 
 - [x] Typed scalar features/outputs, classification/regression decoding, actor-based
   Core ML prediction, cancellation checks, and compute-unit configuration.
-- [ ] Add ordered feature schemas, tensor shapes, arrays, dictionaries, sequences,
+- [x] Add ordered feature schemas, tensor shapes, arrays, dictionaries, sequences,
   images, pixel buffers, and missing/default-value policies.
 - [ ] Add dataset accumulation/removal/shuffle/split APIs corresponding to `addData`.
 - [ ] Add fitted normalization statistics, `normalizeData`, denormalization, and
