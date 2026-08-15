@@ -70,6 +70,16 @@ public actor Engine {
         sleepingState
     }
 
+    /// Returns immutable lifetime statistics from the actor-owned Metal backend.
+    public func metalStatisticsSnapshot() async -> MetalBackendStatistics {
+        await backend.statistics()
+    }
+
+    /// Releases the Metal backend's retained shared body buffer between ticks.
+    public func purgeReusableMetalResources() async {
+        await backend.purgeReusableResources()
+    }
+
     /// Adds a body to the actor-owned world.
     @discardableResult
     public func add(_ definition: BodyDefinition) throws -> BodyID {

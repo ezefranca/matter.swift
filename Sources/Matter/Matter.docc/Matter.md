@@ -115,8 +115,12 @@ For reproducible reference calculations and tests only, use
 - ``ContinuousCollisionConfiguration``
 - ``ContinuousCollisionPlan``
 - ``ContinuousCollisionPlanner``
+- ``MatterExecutionPolicy``
+- ``MatterExecutionStage``
+- ``MatterExecutionBackend``
 - ``MetalBackend``
 - ``MetalBackendError``
+- ``MetalBackendStatistics``
 - ``Runner``
 - ``RunnerUpdate``
 - ``FixedStepAccumulator``

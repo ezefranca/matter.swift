@@ -141,6 +141,26 @@ struct MatterValidationTests {
         }
     }
 
+    @Test("Execution policy keeps data-parallel integration on Metal")
+    func executionPolicy() throws {
+        let policy = MatterExecutionPolicy.native
+        #expect(
+            MatterExecutionStage.allCases == [
+                .integration,
+                .broadPhase,
+                .narrowPhase,
+                .constraintSolving,
+                .collisionResponse,
+            ]
+        )
+        #expect(policy.backend(for: .integration) == .metal)
+        for stage in MatterExecutionStage.allCases.dropFirst() {
+            #expect(policy.backend(for: stage) == .cpu)
+        }
+        let data = try JSONEncoder().encode(policy)
+        #expect(try JSONDecoder().decode(MatterExecutionPolicy.self, from: data) == policy)
+    }
+
     @Test("Integration entry points reject nonfinite gravity before mutation")
     func invalidGravity() async throws {
         var world = World()
@@ -185,6 +205,10 @@ struct MatterValidationTests {
             await #expect(throws: MatterError.invalidTickCount) {
                 try await engine.step(ticks: 0)
             }
+            _ = try await engine.step()
+            #expect(await engine.metalStatisticsSnapshot().completedPassCount == 1)
+            await engine.purgeReusableMetalResources()
+            #expect(await engine.metalStatisticsSnapshot().retainedBodyCapacity == 0)
         }
 
         @Test("Metal validates time steps and accepts empty batches")
@@ -201,6 +225,68 @@ struct MatterValidationTests {
                 timeStep: 1.0 / 60.0
             )
             #expect(output.isEmpty)
+        }
+
+        @Test("Metal reuses shared buffers and reports immutable lifetime statistics")
+        func metalBufferReuseStatistics() async throws {
+            guard MetalBackend.isAvailable else { return }
+            let backend = try MetalBackend()
+            let body = Body(
+                id: BodyID(rawValue: 0),
+                definition: try Bodies.circle(at: .zero, radius: 1)
+            )
+
+            var statistics = await backend.statistics()
+            #expect(statistics.completedPassCount == 0)
+            #expect(statistics.integratedBodyCount == 0)
+            #expect(statistics.bufferAllocationCount == 0)
+            #expect(statistics.bufferReuseCount == 0)
+            #expect(statistics.retainedBodyCapacity == 0)
+            #expect(statistics.peakBodyCapacity == 0)
+
+            _ = try await backend.integrate(
+                bodies: [body],
+                gravity: .zero,
+                timeStep: 0.01
+            )
+            _ = try await backend.integrate(
+                bodies: [body],
+                gravity: .zero,
+                timeStep: 0.01
+            )
+            statistics = await backend.statistics()
+            #expect(statistics.completedPassCount == 2)
+            #expect(statistics.integratedBodyCount == 2)
+            #expect(statistics.bufferAllocationCount == 1)
+            #expect(statistics.bufferReuseCount == 1)
+            #expect(statistics.retainedBodyCapacity >= 1)
+            #expect(statistics.peakBodyCapacity == statistics.retainedBodyCapacity)
+
+            let largerBatch = Array(
+                repeating: body,
+                count: statistics.retainedBodyCapacity + 1
+            )
+            _ = try await backend.integrate(
+                bodies: largerBatch,
+                gravity: .zero,
+                timeStep: 0.01
+            )
+            statistics = await backend.statistics()
+            #expect(statistics.completedPassCount == 3)
+            #expect(statistics.integratedBodyCount == largerBatch.count + 2)
+            #expect(statistics.bufferAllocationCount == 2)
+            #expect(statistics.bufferReuseCount == 1)
+            #expect(statistics.retainedBodyCapacity >= largerBatch.count)
+            #expect(statistics.peakBodyCapacity == statistics.retainedBodyCapacity)
+
+            let data = try JSONEncoder().encode(statistics)
+            #expect(try JSONDecoder().decode(MetalBackendStatistics.self, from: data) == statistics)
+
+            await backend.purgeReusableResources()
+            let purged = await backend.statistics()
+            #expect(purged.retainedBodyCapacity == 0)
+            #expect(purged.peakBodyCapacity == statistics.peakBodyCapacity)
+            #expect(purged.bufferAllocationCount == 2)
         }
 
         @Test("A cancelled engine step reports cancellation")

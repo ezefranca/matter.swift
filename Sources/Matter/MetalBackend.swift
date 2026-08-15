@@ -210,6 +210,8 @@
         private let commandQueue: any MTLCommandQueue
         private let pipeline: any MTLComputePipelineState
         private let executionHooks: MetalExecutionHooks
+        private var reusableBodyBuffer: (any MTLBuffer)?
+        private var statisticsValue: MetalBackendStatistics
 
         /// Whether this process can create a default Metal device.
         public static var isAvailable: Bool {
@@ -223,6 +225,8 @@
             self.pipeline = resources.pipeline
             self.commandQueue = resources.commandQueue
             self.executionHooks = .system
+            self.reusableBodyBuffer = nil
+            self.statisticsValue = MetalBackendStatistics()
         }
 
         init(
@@ -234,6 +238,8 @@
             self.pipeline = resources.pipeline
             self.commandQueue = resources.commandQueue
             self.executionHooks = executionHooks
+            self.reusableBodyBuffer = nil
+            self.statisticsValue = MetalBackendStatistics()
         }
 
         private static func makeResources(
@@ -295,9 +301,7 @@
 
             var states = bodies.map(GPUBodyState.init)
             let byteCount = states.count * MemoryLayout<GPUBodyState>.stride
-            guard let bodyBuffer = executionHooks.makeBodyBuffer(device, byteCount) else {
-                throw MetalBackendError.bodyBufferCreationFailed
-            }
+            let bodyBuffer = try reusableBuffer(byteCount: byteCount)
             states.withUnsafeBytes { source in
                 _ = source.copyBytes(
                     to: UnsafeMutableRawBufferPointer(
@@ -338,7 +342,42 @@
                 capacity: states.count
             )
             states = Array(UnsafeBufferPointer(start: output, count: states.count))
+            statisticsValue.completedPassCount += 1
+            statisticsValue.integratedBodyCount += states.count
             return zip(bodies, states).map { $1.applied(to: $0) }
+        }
+
+        /// Returns current integration and reusable-resource statistics.
+        public func statistics() -> MetalBackendStatistics {
+            statisticsValue
+        }
+
+        /// Releases retained shared body storage without resetting lifetime counters.
+        ///
+        /// Call this between simulation ticks when reclaiming memory is more important
+        /// than avoiding an allocation on the next nonempty integration pass.
+        public func purgeReusableResources() {
+            reusableBodyBuffer = nil
+            statisticsValue.retainedBodyCapacity = 0
+        }
+
+        private func reusableBuffer(byteCount: Int) throws -> any MTLBuffer {
+            if let reusableBodyBuffer, reusableBodyBuffer.length >= byteCount {
+                statisticsValue.bufferReuseCount += 1
+                return reusableBodyBuffer
+            }
+            guard let bodyBuffer = executionHooks.makeBodyBuffer(device, byteCount) else {
+                throw MetalBackendError.bodyBufferCreationFailed
+            }
+            reusableBodyBuffer = bodyBuffer
+            let capacity = bodyBuffer.length / MemoryLayout<GPUBodyState>.stride
+            statisticsValue.bufferAllocationCount += 1
+            statisticsValue.retainedBodyCapacity = capacity
+            statisticsValue.peakBodyCapacity = max(
+                statisticsValue.peakBodyCapacity,
+                capacity
+            )
+            return bodyBuffer
         }
 
         /// Metal cannot cancel an already committed command buffer.
@@ -385,5 +424,94 @@
         ) async throws -> [Body] {
             throw MetalBackendError.unavailable
         }
+
+        /// Reports zero work because this platform cannot construct a backend.
+        public func statistics() -> MetalBackendStatistics {
+            MetalBackendStatistics()
+        }
+
+        /// Has no retained resources on platforms without Metal.
+        public func purgeReusableResources() {}
     }
 #endif
+
+/// An immutable snapshot of Metal integration work and reusable-buffer usage.
+@frozen
+public struct MetalBackendStatistics: Sendable, Hashable, Codable {
+    /// Integration passes that completed successfully.
+    public internal(set) var completedPassCount: Int
+    /// Body records processed by completed integration passes.
+    public internal(set) var integratedBodyCount: Int
+    /// Shared body-buffer allocations made during the backend lifetime.
+    public internal(set) var bufferAllocationCount: Int
+    /// Passes that reused an existing shared body buffer.
+    public internal(set) var bufferReuseCount: Int
+    /// Body records that fit in the currently retained shared buffer.
+    public internal(set) var retainedBodyCapacity: Int
+    /// Largest retained body capacity observed during the backend lifetime.
+    public internal(set) var peakBodyCapacity: Int
+
+    init(
+        completedPassCount: Int = 0,
+        integratedBodyCount: Int = 0,
+        bufferAllocationCount: Int = 0,
+        bufferReuseCount: Int = 0,
+        retainedBodyCapacity: Int = 0,
+        peakBodyCapacity: Int = 0
+    ) {
+        self.completedPassCount = completedPassCount
+        self.integratedBodyCount = integratedBodyCount
+        self.bufferAllocationCount = bufferAllocationCount
+        self.bufferReuseCount = bufferReuseCount
+        self.retainedBodyCapacity = retainedBodyCapacity
+        self.peakBodyCapacity = peakBodyCapacity
+    }
+}
+
+/// A stable simulation stage whose execution ownership affects performance.
+@frozen
+public enum MatterExecutionStage: String, CaseIterable, Sendable, Hashable, Codable {
+    /// Semi-implicit linear and angular body integration.
+    case integration
+    /// Candidate-pair generation from cached world-space bounds.
+    case broadPhase
+    /// Exact manifold and contact generation for candidate pairs.
+    case narrowPhase
+    /// Iterative distance, angular, and pointer-constraint solving.
+    case constraintSolving
+    /// Warm-started contact impulses and positional correction.
+    case collisionResponse
+}
+
+/// The processor that owns a stage in Matter's production execution plan.
+@frozen
+public enum MatterExecutionBackend: String, Sendable, Hashable, Codable {
+    /// A Metal compute kernel and shared Metal resources.
+    case metal
+    /// Deterministic actor-isolated native Swift code on the CPU.
+    case cpu
+}
+
+/// Matter's explicit, non-fallback production execution policy.
+///
+/// Integration is regular per-body data-parallel work and runs on Metal. The
+/// adaptive broad phase, exact narrow phase, constraints, and collision response
+/// remain CPU-owned because they are branch-heavy, topology-dependent stages with
+/// deterministic value-semantic implementations and benchmarked scaling.
+@frozen
+public struct MatterExecutionPolicy: Sendable, Hashable, Codable {
+    /// The production policy used by ``Engine``.
+    public static let native = Self()
+
+    private init() {}
+
+    /// Returns the processor that always owns `stage` in the production engine.
+    public func backend(for stage: MatterExecutionStage) -> MatterExecutionBackend {
+        switch stage {
+        case .integration:
+            .metal
+        case .broadPhase, .narrowPhase, .constraintSolving, .collisionResponse:
+            .cpu
+        }
+    }
+}

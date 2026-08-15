@@ -14,6 +14,11 @@ linear and angular motion: it applies gravity, force, torque, inverse mass, and
 inverse inertia; applies configured air damping; advances position and angle;
 then clears force and torque. Sleeping bodies use the same immovable kernel path
 as static bodies for that tick, while preserving their distinct public state.
+The actor retains its largest shared body buffer and reuses it across ordinary
+ticks and bounded-motion substeps. ``MetalBackend/statistics()`` makes allocation,
+reuse, completed-pass, and retained-capacity behavior observable. Applications
+with a temporary large world can call ``MetalBackend/purgeReusableResources()``
+or ``Engine/purgeReusableMetalResources()`` between ticks to release that storage.
 
 ## Value boundaries
 
@@ -34,6 +39,11 @@ sequential contact impulses and positional correction on the CPU. After each Met
 
 This division is fixed configuration, not a silent fallback: Metal remains
 mandatory for production integration, and all Metal failures are surfaced. The
+public ``MatterExecutionPolicy/native`` value makes each stage's ownership
+machine-readable. Broad-phase scaling tests exercise sparse linear work, dense
+output-sized worst cases, and exhaustive candidate parity; those results keep
+the topology-dependent broad/narrow/solve pipeline on the CPU rather than adding
+GPU synchronization and duplicate world representations without evidence. The
 CPU constraint and collision implementations are also shared with
 ``ReferencePhysics`` so tests can compare complete deterministic ticks without
 duplicating response behavior. An enabled sleeping pass first propagates wake

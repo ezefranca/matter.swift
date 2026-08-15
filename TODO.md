@@ -304,7 +304,7 @@ release.
 
 - [x] Define Metal integration and deterministic CPU collision-query/response
   ownership, with no ambiguous silent fallback.
-- [ ] Add GPU buffers and kernels for the selected broad phase, narrow phase,
+- [x] Add GPU buffers and kernels for the selected broad phase, narrow phase,
   solving, and integration stages where benchmarks justify them.
 - [x] Preserve a deterministic CPU reference engine and verify linear/angular
   integration against the Metal kernel within documented tolerances.
