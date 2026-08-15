@@ -180,16 +180,19 @@ release.
 - [x] Add RGB, HSB/HSV, and Display P3 color modes with configurable ranges.
 - [x] Add reusable value-semantic `P5Color`, component extraction, interpolation, and accessibility
   contrast helpers.
-- [ ] Add stroke caps, joins, miter limits, dash patterns, fill rules, and antialiasing
+- [x] Add stroke caps, joins, miter limits, dash patterns, fill rules, and antialiasing
   controls.
-- [ ] Add blend modes, tint/no-tint, opacity, and Core Image compositing mappings.
+- [x] Add native normal, multiply, screen, and additive blend modes plus global opacity.
+- [ ] Add tint/no-tint and broader Core Image compositing mappings.
 
 ### 2D geometry and paths
 
 - [x] Lines, rectangles, squares, circles, and ellipses.
 - [x] Add points, triangles, quads, all arc closures, rounded rectangles, and
   regular polygons.
-- [ ] Add rect, ellipse, image, and shape coordinate modes.
+- [x] Add rectangle and ellipse coordinate modes, including their square, rounded-rectangle,
+  circle, and arc forms.
+- [ ] Add image coordinate modes after the image subsystem exists.
 - [x] Add `beginShape`, vertex, Catmull-Rom curve vertex, Bézier vertex, quadratic vertex,
   contours, and `endShape` close behavior.
 - [ ] Add Core Graphics path import/export and reusable shape objects.
