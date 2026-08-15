@@ -31,8 +31,10 @@ correction on the CPU. After each Metal integration command completes,
 
 This division is fixed configuration, not a silent fallback: Metal remains
 mandatory for production integration, and all Metal failures are surfaced. The
-CPU collision implementation is also shared with ``ReferencePhysics`` so tests
-can compare complete deterministic ticks without duplicating response behavior.
+CPU constraint and collision implementations are also shared with
+``ReferencePhysics`` so tests can compare complete deterministic ticks without
+duplicating response behavior. Each tick integrates first, solves constraints,
+then detects and resolves collisions.
 The actor-owned ``CollisionTracker`` persists canonical pair state between ticks
 and produces value-semantic events returned by ``Engine/stepWithEvents(ticks:)``.
 ``Runner`` is a second actor boundary that owns only wall-clock accumulation and
@@ -45,9 +47,10 @@ region, and ray queries therefore observe one coherent snapshot, require no
 actor hop, and never mutate engine-owned state.
 
 Composites are stable references into that same world value. A ``Composite``
-stores body identifiers and one optional parent identifier; it never duplicates
-mutable ``Body`` state. ``World`` owns hierarchy validation, prevents cycles,
-and cleans membership when bodies or composite subtrees are removed.
+stores body and constraint identifiers plus one optional parent identifier; it
+never duplicates mutable physics state. ``World`` owns hierarchy validation,
+prevents cycles, and cleans membership when bodies, constraints, or composite
+subtrees are removed.
 
 Multi-body operations validate and prepare replacements before committing them.
 ``Engine/updateWorld(_:)`` extends that transactional value boundary to an

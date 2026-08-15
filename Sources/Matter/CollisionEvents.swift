@@ -94,15 +94,20 @@ public struct SimulationResult: Sendable, Hashable, Codable {
     /// Ordered lifecycle events accumulated across every requested tick.
     public let collisionEvents: [CollisionEvent]
 
+    /// Constraints broken and removed across every requested tick.
+    public let brokenConstraints: [ConstraintID]
+
     init(
         world: World,
         tickCount: Int,
         collisions: [Collision],
-        collisionEvents: [CollisionEvent]
+        collisionEvents: [CollisionEvent],
+        brokenConstraints: [ConstraintID]
     ) {
         self.world = world
         self.tickCount = tickCount
         self.collisions = collisions
         self.collisionEvents = collisionEvents
+        self.brokenConstraints = brokenConstraints
     }
 }

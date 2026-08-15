@@ -291,8 +291,9 @@ release.
 
 ### Constraints and interaction
 
-- [ ] Add point-to-body and body-to-body distance constraints.
-- [ ] Add stiffness, damping, length, anchors, angular stiffness, and break limits.
+- [x] Add point-to-body and body-to-body distance constraints.
+- [x] Add stiffness, damping, length, local/world anchors, angular stiffness,
+  deterministic solver iterations, and break-impulse limits.
 - [ ] Add chains, meshes/cloth, bridges, pendulums, springs, and soft-body helpers.
 - [ ] Add rotational constraints and motors for windmill examples.
 - [ ] Add mouse/touch constraints with P5 pointer-coordinate adapters.

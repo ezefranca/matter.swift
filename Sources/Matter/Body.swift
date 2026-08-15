@@ -227,6 +227,23 @@ public struct Body: Sendable, Hashable, Codable {
         position += correction
     }
 
+    mutating func applyPositionImpulse(_ impulse: Vector, at point: Vector) {
+        guard !isStatic else { return }
+        let radius = point - position
+        position += impulse * inverseMass
+        angle += radius.cross(impulse) * inverseInertia
+    }
+
+    mutating func applyAngularPositionImpulse(_ impulse: Float) {
+        guard !isStatic else { return }
+        angle += impulse * inverseInertia
+    }
+
+    mutating func applyAngularImpulse(_ impulse: Float) {
+        guard !isStatic else { return }
+        angularVelocity += impulse * inverseInertia
+    }
+
     mutating func integrate(gravity: Vector, timeStep: Float) {
         guard !isStatic else {
             clearForces()

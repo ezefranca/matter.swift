@@ -1,8 +1,9 @@
 # Composites and Batch Mutations
 
-Organize a world's bodies without creating a second owner for physics state.
-``Composite`` values contain stable ``BodyID`` references and an optional parent
-``CompositeID``; the ``World`` remains the only owner of each ``Body``.
+Organize a world's bodies and constraints without creating a second owner for
+physics state. ``Composite`` values contain stable ``BodyID`` and
+``ConstraintID`` references plus an optional parent ``CompositeID``; the
+``World`` remains the only owner of each value.
 
 ## Build a hierarchy
 
@@ -27,6 +28,8 @@ let birds = try world.add(
 ``World/childComposites(of:)`` returns roots when its argument is `nil` and
 direct children otherwise. ``World/bodies(in:includingDescendants:)`` includes
 descendants by default and always returns bodies in stable world order.
+``World/constraints(in:includingDescendants:)`` provides the matching operation
+for constraints.
 
 A body belongs directly to at most one composite. Calling
 ``World/assignBody(_:to:)`` moves it from any previous owner, while
@@ -34,20 +37,26 @@ A body belongs directly to at most one composite. Calling
 Reparenting with ``World/reparentComposite(_:to:)`` rejects self-parenting and
 ancestor cycles.
 
+Constraints follow the same single-composite rule through
+``World/assignConstraint(_:to:)`` and ``World/unassignConstraint(_:)``.
+
 ## Remove groups explicitly
 
-Removing a composite removes its entire descendant hierarchy. Bodies remain in
-the world unless `removeBodies` is `true`:
+Removing a composite removes its entire descendant hierarchy. Bodies and
+constraints remain in the world unless their corresponding removal options are
+`true`:
 
 ```swift
 let removedGroups = try world.removeComposite(
     withID: scene,
-    removeBodies: false
+    removeBodies: false,
+    removeConstraints: false
 )
 ```
 
-The returned composites follow stable world insertion order. Direct body
-removal always cleans composite membership.
+The returned composites follow stable world insertion order. Direct body or
+constraint removal always cleans composite membership, and removing a body also
+removes every constraint that references it.
 
 ## Commit batches atomically
 

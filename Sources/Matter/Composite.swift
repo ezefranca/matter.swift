@@ -39,6 +39,9 @@ public struct Composite: Sendable, Hashable, Codable {
     /// Bodies assigned directly to this composite in stable assignment order.
     public private(set) var bodyIDs: [BodyID]
 
+    /// Constraints assigned directly to this composite in stable assignment order.
+    public private(set) var constraintIDs: [ConstraintID]
+
     init(
         id: CompositeID,
         label: String,
@@ -50,6 +53,7 @@ public struct Composite: Sendable, Hashable, Codable {
         self.metadata = metadata
         self.parent = parent
         self.bodyIDs = []
+        self.constraintIDs = []
     }
 
     mutating func append(_ body: BodyID) {
@@ -66,6 +70,22 @@ public struct Composite: Sendable, Hashable, Codable {
 
     mutating func removeAllBodies() {
         bodyIDs.removeAll(keepingCapacity: true)
+    }
+
+    mutating func append(_ constraint: ConstraintID) {
+        constraintIDs.append(constraint)
+    }
+
+    mutating func remove(_ constraint: ConstraintID) {
+        constraintIDs.removeAll { $0 == constraint }
+    }
+
+    mutating func remove(_ constraints: Set<ConstraintID>) {
+        constraintIDs.removeAll { constraints.contains($0) }
+    }
+
+    mutating func removeAllConstraints() {
+        constraintIDs.removeAll(keepingCapacity: true)
     }
 
     mutating func reparent(to parent: CompositeID?) {

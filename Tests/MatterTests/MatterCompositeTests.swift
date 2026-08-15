@@ -227,7 +227,7 @@ struct MatterCompositeTests {
         #expect(decoded.composite(containing: body)?.id == composite)
 
         let exhaustedComposite = Data(
-            #"{"bodies":[],"composites":[],"nextBodyIdentifier":0,"nextCompositeIdentifier":18446744073709551615}"#
+            #"{"bodies":[],"composites":[],"constraints":[],"nextBodyIdentifier":0,"nextCompositeIdentifier":18446744073709551615,"nextConstraintIdentifier":0}"#
                 .utf8
         )
         var noCompositeIdentifiers = try JSONDecoder().decode(World.self, from: exhaustedComposite)
@@ -236,7 +236,7 @@ struct MatterCompositeTests {
         }
 
         let exhaustedBody = Data(
-            #"{"bodies":[],"composites":[],"nextBodyIdentifier":18446744073709551615,"nextCompositeIdentifier":0}"#
+            #"{"bodies":[],"composites":[],"constraints":[],"nextBodyIdentifier":18446744073709551615,"nextCompositeIdentifier":0,"nextConstraintIdentifier":0}"#
                 .utf8
         )
         var noBodyIdentifiers = try JSONDecoder().decode(World.self, from: exhaustedBody)

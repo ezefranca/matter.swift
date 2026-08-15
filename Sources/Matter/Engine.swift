@@ -14,23 +14,28 @@ public actor Engine {
     public let fixedTimeStep: Float
     /// The validated CPU collision-response configuration used after Metal integration.
     public let solverConfiguration: SolverConfiguration
+    /// The validated CPU constraint configuration used after Metal integration.
+    public let constraintSolverConfiguration: ConstraintSolverConfiguration
 
     /// Creates an engine backed by Metal.
     public init(
         world: World = .init(),
         gravity: Vector = Vector(x: 0, y: 9.81),
         fixedTimeStep: Float = 1.0 / 60.0,
-        solverConfiguration: SolverConfiguration = .standard
+        solverConfiguration: SolverConfiguration = .standard,
+        constraintSolverConfiguration: ConstraintSolverConfiguration = .standard
     ) throws {
         guard fixedTimeStep.isFinite, fixedTimeStep > 0 else {
             throw MatterError.invalidTimeStep
         }
         try solverConfiguration.validate()
+        try constraintSolverConfiguration.validate()
 
         self.world = world
         self.gravity = gravity
         self.fixedTimeStep = fixedTimeStep
         self.solverConfiguration = solverConfiguration
+        self.constraintSolverConfiguration = constraintSolverConfiguration
         self.collisionTracker = CollisionTracker()
         self.backend = try MetalBackend()
     }
@@ -109,6 +114,26 @@ public actor Engine {
         try world.removeBodies(withIDs: identifiers)
     }
 
+    /// Adds a constraint to the actor-owned world.
+    @discardableResult
+    public func addConstraint(
+        _ definition: ConstraintDefinition,
+        to composite: CompositeID? = nil
+    ) throws -> ConstraintID {
+        try world.addConstraint(definition, to: composite)
+    }
+
+    /// Assigns an actor-owned constraint directly to a composite.
+    public func assignConstraint(_ constraint: ConstraintID, to composite: CompositeID) throws {
+        try world.assignConstraint(constraint, to: composite)
+    }
+
+    /// Removes and returns an actor-owned constraint when it exists.
+    @discardableResult
+    public func removeConstraint(withID identifier: ConstraintID) -> Constraint? {
+        world.removeConstraint(withID: identifier)
+    }
+
     /// Adds a composite to the actor-owned world hierarchy.
     @discardableResult
     public func addComposite(
@@ -133,9 +158,14 @@ public actor Engine {
     @discardableResult
     public func removeComposite(
         withID identifier: CompositeID,
-        removeBodies: Bool = false
+        removeBodies: Bool = false,
+        removeConstraints: Bool = false
     ) throws -> [Composite] {
-        try world.removeComposite(withID: identifier, removeBodies: removeBodies)
+        try world.removeComposite(
+            withID: identifier,
+            removeBodies: removeBodies,
+            removeConstraints: removeConstraints
+        )
     }
 
     /// Replaces the actor-owned world and clears collision lifecycle state.
@@ -160,6 +190,7 @@ public actor Engine {
 
         var collisionEvents: [CollisionEvent] = []
         var collisions: [Collision] = []
+        var brokenConstraints: [ConstraintID] = []
         for _ in 0..<ticks {
             try Task.checkCancellation()
             let integrated = try await backend.integrate(
@@ -168,6 +199,13 @@ public actor Engine {
                 timeStep: fixedTimeStep
             )
             world.replaceBodies(integrated)
+            brokenConstraints.append(
+                contentsOf: try ConstraintSolver.resolve(
+                    world: &world,
+                    timeStep: fixedTimeStep,
+                    configuration: constraintSolverConfiguration
+                )
+            )
             collisions = try CollisionSolver.resolve(
                 world: &world,
                 configuration: solverConfiguration
@@ -179,7 +217,8 @@ public actor Engine {
             world: world,
             tickCount: ticks,
             collisions: collisions,
-            collisionEvents: collisionEvents
+            collisionEvents: collisionEvents,
+            brokenConstraints: brokenConstraints
         )
     }
 }

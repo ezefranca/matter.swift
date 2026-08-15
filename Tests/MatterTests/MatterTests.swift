@@ -127,6 +127,12 @@ struct MatterTests {
         try world.updateBodies(withIDs: [first, second]) { body in
             try body.translate(by: Vector(x: 1, y: 0))
         }
+        let constraint = try world.addConstraint(
+            Constraints.distance(between: first, and: second),
+            to: group
+        )
+        #expect(world.constraint(withID: constraint)?.label == "Distance")
+        #expect(try ConstraintSolver.resolve(world: &world, timeStep: 0.1).isEmpty)
     }
 
     #if canImport(Metal)

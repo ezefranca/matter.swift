@@ -47,6 +47,17 @@ For reproducible reference calculations and tests only, use
 - ``CompositeID``
 - <doc:CompositesAndBatches>
 
+### Constraints
+
+- ``Constraint``
+- ``ConstraintID``
+- ``ConstraintAnchor``
+- ``ConstraintDefinition``
+- ``Constraints``
+- ``ConstraintSolver``
+- ``ConstraintSolverConfiguration``
+- <doc:ConstraintsAndSprings>
+
 ### Collision queries
 
 - ``CollisionDetector``

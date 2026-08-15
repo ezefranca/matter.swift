@@ -33,10 +33,16 @@ public enum MatterError: Error, Sendable, Equatable {
     case invalidRay
     /// Solver iterations or numerical tuning values were outside supported ranges.
     case invalidSolverConfiguration
+    /// Constraint anchors or numerical tuning values were unsupported.
+    case invalidConstraint
+    /// Constraint solver iterations were not positive.
+    case invalidConstraintSolverConfiguration
     /// A mutation referenced an identifier absent from the world.
     case unknownBody(BodyID)
     /// A mutation referenced a composite absent from the world.
     case unknownComposite(CompositeID)
+    /// A mutation referenced a constraint absent from the world.
+    case unknownConstraint(ConstraintID)
     /// A batch supplied the same body identifier more than once.
     case duplicateBody(BodyID)
     /// Reparenting would make a composite its own ancestor.
@@ -45,24 +51,31 @@ public enum MatterError: Error, Sendable, Equatable {
     case bodyIdentifierExhausted
     /// The world's monotonically increasing composite identifier reached `UInt64.max`.
     case compositeIdentifierExhausted
+    /// The world's monotonically increasing constraint identifier reached `UInt64.max`.
+    case constraintIdentifierExhausted
 }
 
-/// Owns a collection of value-type bodies and their identifiers.
+/// Owns value-type bodies, constraints, composites, and their stable identifiers.
 @frozen
 public struct World: Sendable, Hashable, Codable {
     /// Value snapshots of the bodies in deterministic insertion order.
     public private(set) var bodies: [Body]
     /// Value snapshots of composites in deterministic insertion order.
     public private(set) var composites: [Composite]
+    /// Value snapshots of constraints in deterministic insertion order.
+    public private(set) var constraints: [Constraint]
     private var nextBodyIdentifier: UInt64
     private var nextCompositeIdentifier: UInt64
+    private var nextConstraintIdentifier: UInt64
 
-    /// Creates an empty world whose first assigned body identifier is one.
+    /// Creates an empty world whose first identifier in each namespace is one.
     public init() {
         self.bodies = []
         self.composites = []
+        self.constraints = []
         self.nextBodyIdentifier = 0
         self.nextCompositeIdentifier = 0
+        self.nextConstraintIdentifier = 0
     }
 
     /// Adds a body and assigns its stable identifier.
@@ -190,6 +203,7 @@ public struct World: Sendable, Hashable, Codable {
         for compositeIndex in composites.indices {
             composites[compositeIndex].remove(identifier)
         }
+        removeConstraints(referencing: [identifier])
         return bodies.remove(at: index)
     }
 
@@ -206,6 +220,7 @@ public struct World: Sendable, Hashable, Codable {
         for index in composites.indices {
             composites[index].remove(removedIDs)
         }
+        removeConstraints(referencing: removedIDs)
         return removed
     }
 
@@ -215,6 +230,7 @@ public struct World: Sendable, Hashable, Codable {
         for index in composites.indices {
             composites[index].removeAllBodies()
         }
+        removeAllConstraints()
         if resetIdentifiers {
             nextBodyIdentifier = 0
         }
@@ -223,6 +239,75 @@ public struct World: Sendable, Hashable, Codable {
     /// The number of bodies owned by the world.
     public var bodyCount: Int {
         bodies.count
+    }
+
+    /// Adds a validated constraint and captures omitted rest state from the world.
+    @discardableResult
+    public mutating func addConstraint(
+        _ definition: ConstraintDefinition,
+        to composite: CompositeID? = nil
+    ) throws -> ConstraintID {
+        try definition.validate()
+        let destinationIndex: Int?
+        if let composite {
+            destinationIndex = try compositeIndex(for: composite)
+        } else {
+            destinationIndex = nil
+        }
+        let firstState = try state(for: definition.first)
+        let secondState = try state(for: definition.second)
+        let angles = [firstState.angle, secondState.angle].compactMap { $0 }
+        guard nextConstraintIdentifier < .max else {
+            throw MatterError.constraintIdentifierExhausted
+        }
+
+        nextConstraintIdentifier += 1
+        let identifier = ConstraintID(rawValue: nextConstraintIdentifier)
+        constraints.append(
+            Constraint(
+                id: identifier,
+                definition: definition,
+                length: definition.length ?? firstState.point.distance(to: secondState.point),
+                referenceAngle: angles.count == 2 ? angles[1] - angles[0] : angles[0]
+            )
+        )
+        if let destinationIndex {
+            composites[destinationIndex].append(identifier)
+        }
+        return identifier
+    }
+
+    /// Returns the constraint with a stable identifier, or `nil` when absent.
+    public func constraint(withID identifier: ConstraintID) -> Constraint? {
+        constraints.first { $0.id == identifier }
+    }
+
+    /// Removes and returns a constraint, cleaning composite membership.
+    @discardableResult
+    public mutating func removeConstraint(withID identifier: ConstraintID) -> Constraint? {
+        guard let index = constraints.firstIndex(where: { $0.id == identifier }) else {
+            return nil
+        }
+        for compositeIndex in composites.indices {
+            composites[compositeIndex].remove(identifier)
+        }
+        return constraints.remove(at: index)
+    }
+
+    /// Removes every constraint while keeping identifiers monotonic by default.
+    public mutating func removeAllConstraints(resetIdentifiers: Bool = false) {
+        constraints.removeAll(keepingCapacity: true)
+        for index in composites.indices {
+            composites[index].removeAllConstraints()
+        }
+        if resetIdentifiers {
+            nextConstraintIdentifier = 0
+        }
+    }
+
+    /// The number of constraints owned by the world.
+    public var constraintCount: Int {
+        constraints.count
     }
 
     /// Adds a validated composite below an optional existing parent.
@@ -263,6 +348,11 @@ public struct World: Sendable, Hashable, Codable {
         composites.first { $0.bodyIDs.contains(body) }
     }
 
+    /// Returns the composite that directly contains a constraint, if one exists.
+    public func composite(containing constraint: ConstraintID) -> Composite? {
+        composites.first { $0.constraintIDs.contains(constraint) }
+    }
+
     /// Assigns an existing body directly to a composite, moving prior membership.
     public mutating func assignBody(_ body: BodyID, to composite: CompositeID) throws {
         guard self.body(withID: body) != nil else {
@@ -291,6 +381,39 @@ public struct World: Sendable, Hashable, Codable {
         return identifier
     }
 
+    /// Assigns an existing constraint to a composite, moving prior membership.
+    public mutating func assignConstraint(
+        _ constraint: ConstraintID,
+        to composite: CompositeID
+    ) throws {
+        guard self.constraint(withID: constraint) != nil else {
+            throw MatterError.unknownConstraint(constraint)
+        }
+        let destination = try compositeIndex(for: composite)
+        for index in composites.indices where index != destination {
+            composites[index].remove(constraint)
+        }
+        if !composites[destination].constraintIDs.contains(constraint) {
+            composites[destination].append(constraint)
+        }
+    }
+
+    /// Removes a constraint's direct composite membership and returns its former owner.
+    @discardableResult
+    public mutating func unassignConstraint(_ constraint: ConstraintID) throws -> CompositeID? {
+        guard self.constraint(withID: constraint) != nil else {
+            throw MatterError.unknownConstraint(constraint)
+        }
+        guard
+            let index = composites.firstIndex(where: { $0.constraintIDs.contains(constraint) })
+        else {
+            return nil
+        }
+        let identifier = composites[index].id
+        composites[index].remove(constraint)
+        return identifier
+    }
+
     /// Returns bodies assigned to a composite and, by default, all descendants.
     ///
     /// Results follow stable world body order rather than hierarchy traversal order.
@@ -309,6 +432,24 @@ public struct World: Sendable, Hashable, Codable {
                 .flatMap(\.bodyIDs)
         )
         return bodies.filter { bodyIDs.contains($0.id) }
+    }
+
+    /// Returns constraints assigned to a composite and, by default, all descendants.
+    public func constraints(
+        in composite: CompositeID,
+        includingDescendants: Bool = true
+    ) throws -> [Constraint] {
+        let index = try compositeIndex(for: composite)
+        var compositeIDs: Set<CompositeID> = [composites[index].id]
+        if includingDescendants {
+            compositeIDs.formUnion(descendantCompositeIDs(of: composite))
+        }
+        let constraintIDs = Set(
+            composites.lazy
+                .filter { compositeIDs.contains($0.id) }
+                .flatMap(\.constraintIDs)
+        )
+        return constraints.filter { constraintIDs.contains($0.id) }
     }
 
     /// Moves a composite below a new parent, rejecting hierarchy cycles.
@@ -333,7 +474,8 @@ public struct World: Sendable, Hashable, Codable {
     @discardableResult
     public mutating func removeComposite(
         withID identifier: CompositeID,
-        removeBodies: Bool = false
+        removeBodies: Bool = false,
+        removeConstraints: Bool = false
     ) throws -> [Composite] {
         _ = try compositeIndex(for: identifier)
         let removedIDs = Set([identifier] + descendantCompositeIDs(of: identifier))
@@ -341,6 +483,11 @@ public struct World: Sendable, Hashable, Codable {
         if removeBodies {
             let bodyIDs = Set(removed.flatMap(\.bodyIDs))
             bodies.removeAll { bodyIDs.contains($0.id) }
+            self.removeConstraints(referencing: bodyIDs)
+        }
+        if removeConstraints {
+            let constraintIDs = Set(removed.flatMap(\.constraintIDs))
+            constraints.removeAll { constraintIDs.contains($0.id) }
         }
         composites.removeAll { removedIDs.contains($0.id) }
         return removed
@@ -349,11 +496,17 @@ public struct World: Sendable, Hashable, Codable {
     /// Removes every composite while optionally removing all assigned bodies.
     public mutating func removeAllComposites(
         removeBodies: Bool = false,
+        removeConstraints: Bool = false,
         resetIdentifiers: Bool = false
     ) {
         if removeBodies {
             let bodyIDs = Set(composites.flatMap(\.bodyIDs))
             bodies.removeAll { bodyIDs.contains($0.id) }
+            self.removeConstraints(referencing: bodyIDs)
+        }
+        if removeConstraints {
+            let constraintIDs = Set(composites.flatMap(\.constraintIDs))
+            constraints.removeAll { constraintIDs.contains($0.id) }
         }
         composites.removeAll(keepingCapacity: true)
         if resetIdentifiers {
@@ -368,6 +521,26 @@ public struct World: Sendable, Hashable, Codable {
 
     mutating func replaceBodies(_ bodies: [Body]) {
         self.bodies = bodies
+    }
+
+    mutating func replaceConstraints(_ constraints: [Constraint]) {
+        let removed = Set(self.constraints.map(\.id)).subtracting(constraints.map(\.id))
+        self.constraints = constraints
+        for index in composites.indices {
+            composites[index].remove(removed)
+        }
+    }
+
+    private func state(for anchor: ConstraintAnchor) throws -> (point: Vector, angle: Float?) {
+        switch anchor {
+        case let .fixed(point):
+            return (point, nil)
+        case let .body(identifier, local):
+            guard let body = body(withID: identifier) else {
+                throw MatterError.unknownBody(identifier)
+            }
+            return (body.position + local.rotated(by: body.angle), body.angle)
+        }
     }
 
     private func bodyIndices(for identifiers: [BodyID]) throws -> [Int] {
@@ -405,6 +578,18 @@ public struct World: Sendable, Hashable, Codable {
             }
         }
         return descendants
+    }
+
+    private mutating func removeConstraints(referencing bodies: Set<BodyID>) {
+        let removed = Set(
+            constraints.lazy
+                .filter { constraint in bodies.contains { constraint.references($0) } }
+                .map(\.id)
+        )
+        constraints.removeAll { removed.contains($0.id) }
+        for index in composites.indices {
+            composites[index].remove(removed)
+        }
     }
 }
 
@@ -452,9 +637,15 @@ public enum ReferencePhysics {
         world: inout World,
         gravity: Vector,
         timeStep: Float,
-        solver configuration: SolverConfiguration = .standard
+        solver configuration: SolverConfiguration = .standard,
+        constraintSolver constraintConfiguration: ConstraintSolverConfiguration = .standard
     ) throws -> [Collision] {
         try ReferenceIntegrator.step(world: &world, gravity: gravity, timeStep: timeStep)
+        try ConstraintSolver.resolve(
+            world: &world,
+            timeStep: timeStep,
+            configuration: constraintConfiguration
+        )
         return try CollisionSolver.resolve(world: &world, configuration: configuration)
     }
 }

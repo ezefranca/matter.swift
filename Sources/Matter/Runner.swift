@@ -132,6 +132,9 @@ public struct RunnerUpdate: Sendable, Hashable, Codable {
     /// Collision lifecycle events accumulated across emitted ticks.
     public let collisionEvents: [CollisionEvent]
 
+    /// Constraints broken and removed across emitted ticks.
+    public let brokenConstraints: [ConstraintID]
+
     init(world: World, timing: FixedStepAdvance, simulation: SimulationResult?) {
         self.world = world
         self.tickCount = timing.tickCount
@@ -139,6 +142,7 @@ public struct RunnerUpdate: Sendable, Hashable, Codable {
         self.droppedTime = timing.droppedTime
         self.collisions = simulation?.collisions ?? []
         self.collisionEvents = simulation?.collisionEvents ?? []
+        self.brokenConstraints = simulation?.brokenConstraints ?? []
     }
 }
 
