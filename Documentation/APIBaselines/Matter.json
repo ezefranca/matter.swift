@@ -11591,6 +11591,200 @@
           },
           {
             "kind": "Var",
+            "name": "motorSpeed",
+            "printedName": "motorSpeed",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter20ConstraintDefinitionV10motorSpeedSfSgvp",
+            "mangledName": "$s6Matter20ConstraintDefinitionV10motorSpeedSfSgvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Float?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Float",
+                        "printedName": "Swift.Float",
+                        "usr": "s:Sf"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter20ConstraintDefinitionV10motorSpeedSfSgvg",
+                "mangledName": "$s6Matter20ConstraintDefinitionV10motorSpeedSfSgvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Float?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Float",
+                        "printedName": "Swift.Float",
+                        "usr": "s:Sf"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter20ConstraintDefinitionV10motorSpeedSfSgvs",
+                "mangledName": "$s6Matter20ConstraintDefinitionV10motorSpeedSfSgvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "maximumMotorTorque",
+            "printedName": "maximumMotorTorque",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter20ConstraintDefinitionV18maximumMotorTorqueSfSgvp",
+            "mangledName": "$s6Matter20ConstraintDefinitionV18maximumMotorTorqueSfSgvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Float?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Float",
+                        "printedName": "Swift.Float",
+                        "usr": "s:Sf"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter20ConstraintDefinitionV18maximumMotorTorqueSfSgvg",
+                "mangledName": "$s6Matter20ConstraintDefinitionV18maximumMotorTorqueSfSgvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Float?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Float",
+                        "printedName": "Swift.Float",
+                        "usr": "s:Sf"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter20ConstraintDefinitionV18maximumMotorTorqueSfSgvs",
+                "mangledName": "$s6Matter20ConstraintDefinitionV18maximumMotorTorqueSfSgvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "label",
             "printedName": "label",
             "children": [
@@ -11778,7 +11972,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(first:second:length:stiffness:damping:angularStiffness:maximumImpulse:label:metadata:)",
+            "printedName": "init(first:second:length:stiffness:damping:angularStiffness:maximumImpulse:motorSpeed:maximumMotorTorque:label:metadata:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -11851,6 +12045,36 @@
               },
               {
                 "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
                 "name": "String",
                 "printedName": "Swift.String",
                 "hasDefaultArg": true,
@@ -11879,8 +12103,8 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:6Matter20ConstraintDefinitionV5first6second6length9stiffness7damping16angularStiffness14maximumImpulse5label8metadataAcA0B6AnchorO_ANSfSgS3fAOSSSDyS2SGtKcfc",
-            "mangledName": "$s6Matter20ConstraintDefinitionV5first6second6length9stiffness7damping16angularStiffness14maximumImpulse5label8metadataAcA0B6AnchorO_ANSfSgS3fAOSSSDyS2SGtKcfc",
+            "usr": "s:6Matter20ConstraintDefinitionV5first6second6length9stiffness7damping16angularStiffness14maximumImpulse10motorSpeed0K11MotorTorque5label8metadataAcA0B6AnchorO_APSfSgS3fA3QSSSDyS2SGtKcfc",
+            "mangledName": "$s6Matter20ConstraintDefinitionV5first6second6length9stiffness7damping16angularStiffness14maximumImpulse10motorSpeed0K11MotorTorque5label8metadataAcA0B6AnchorO_APSfSgS3fA3QSSSDyS2SGtKcfc",
             "moduleName": "Matter",
             "throwing": true,
             "init_kind": "Designated"
@@ -12482,6 +12706,130 @@
                 "declKind": "Accessor",
                 "usr": "s:6Matter10ConstraintV14maximumImpulseSfSgvg",
                 "mangledName": "$s6Matter10ConstraintV14maximumImpulseSfSgvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "motorSpeed",
+            "printedName": "motorSpeed",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter10ConstraintV10motorSpeedSfSgvp",
+            "mangledName": "$s6Matter10ConstraintV10motorSpeedSfSgvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Float?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Float",
+                        "printedName": "Swift.Float",
+                        "usr": "s:Sf"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter10ConstraintV10motorSpeedSfSgvg",
+                "mangledName": "$s6Matter10ConstraintV10motorSpeedSfSgvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "maximumMotorTorque",
+            "printedName": "maximumMotorTorque",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter10ConstraintV18maximumMotorTorqueSfSgvp",
+            "mangledName": "$s6Matter10ConstraintV18maximumMotorTorqueSfSgvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Swift.Float?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Float",
+                        "printedName": "Swift.Float",
+                        "usr": "s:Sf"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter10ConstraintV18maximumMotorTorqueSfSgvg",
+                "mangledName": "$s6Matter10ConstraintV18maximumMotorTorqueSfSgvg",
                 "moduleName": "Matter",
                 "implicit": true,
                 "declAttributes": [
@@ -13630,6 +13978,127 @@
             "declKind": "Func",
             "usr": "s:6Matter11ConstraintsO8softBody_6length9stiffness7damping14maximumImpulseSayAA20ConstraintDefinitionVGSaySayAA0D2IDVGG_SfSgS2fAPtKFZ",
             "mangledName": "$s6Matter11ConstraintsO8softBody_6length9stiffness7damping14maximumImpulseSayAA20ConstraintDefinitionVGSaySayAA0D2IDVGG_SfSgS2fAPtKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "motor",
+            "printedName": "motor(_:pivot:targetSpeed:maximumTorque:damping:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ConstraintDefinition",
+                "printedName": "Matter.ConstraintDefinition",
+                "usr": "s:6Matter20ConstraintDefinitionV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BodyID",
+                "printedName": "Matter.BodyID",
+                "usr": "s:6Matter6BodyIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter11ConstraintsO5motor_5pivot11targetSpeed13maximumTorque7dampingAA20ConstraintDefinitionVAA6BodyIDV_AA6VectorVS2fSgSftKFZ",
+            "mangledName": "$s6Matter11ConstraintsO5motor_5pivot11targetSpeed13maximumTorque7dampingAA20ConstraintDefinitionVAA6BodyIDV_AA6VectorVS2fSgSftKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "rotationalLock",
+            "printedName": "rotationalLock(between:and:length:stiffness:damping:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ConstraintDefinition",
+                "printedName": "Matter.ConstraintDefinition",
+                "usr": "s:6Matter20ConstraintDefinitionV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BodyID",
+                "printedName": "Matter.BodyID",
+                "usr": "s:6Matter6BodyIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BodyID",
+                "printedName": "Matter.BodyID",
+                "usr": "s:6Matter6BodyIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter11ConstraintsO14rotationalLock7between3and6length9stiffness7dampingAA20ConstraintDefinitionVAA6BodyIDV_AMSfSgS2ftKFZ",
+            "mangledName": "$s6Matter11ConstraintsO14rotationalLock7between3and6length9stiffness7dampingAA20ConstraintDefinitionVAA6BodyIDV_AMSfSgS2ftKFZ",
             "moduleName": "Matter",
             "static": true,
             "throwing": true,

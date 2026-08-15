@@ -135,6 +135,8 @@ struct MatterTests {
         #expect(try ConstraintSolver.resolve(world: &world, timeStep: 0.1).isEmpty)
         let assembly = try Constraints.chain([first, second], stiffness: 0.5)
         #expect(try world.addConstraints(assembly, to: group).count == 1)
+        let motor = try Constraints.motor(first, pivot: .zero, targetSpeed: 1)
+        #expect(motor.motorSpeed == 1)
     }
 
     #if canImport(Metal)

@@ -100,6 +100,11 @@ struct MatterConstraintHelperTests {
         #expect(world.constraints.map(\.length) == [2, 3])
         #expect(world.composite(withID: composite)?.constraintIDs == identifiers)
         #expect(try world.addConstraints([], to: composite).isEmpty)
+        let endpointOrderConstraints = try world.addConstraints([
+            Constraints.pin(bodies[0], to: .zero),
+            ConstraintDefinition(first: .body(bodies[2]), second: .fixed(.zero)),
+        ])
+        #expect(endpointOrderConstraints.count == 2)
 
         let beforeFailure = world
         var invalid = definitions[0]

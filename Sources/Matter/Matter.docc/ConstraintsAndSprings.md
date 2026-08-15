@@ -67,6 +67,31 @@ mass, and configured stiffness; it is deterministic but is not a force sensor.
 Removing a body automatically removes every constraint that references it.
 Removing a constraint also cleans its composite membership.
 
+## Lock rotation and drive motors
+
+``Constraints/rotationalLock(between:and:length:stiffness:damping:)`` creates a
+distance joint with full angular stiffness, preserving the bodies' captured
+relative angle. For a driven pivot, use
+``Constraints/motor(_:pivot:targetSpeed:maximumTorque:damping:)``:
+
+```swift
+let windmillJoint = try world.addConstraint(
+    Constraints.motor(
+        windmill,
+        pivot: Vector(x: 160, y: 120),
+        targetSpeed: 1.5,
+        maximumTorque: 20
+    )
+)
+```
+
+Motor speed is the second endpoint's angular velocity relative to the first.
+Positive speed follows Matter's clockwise-angle convention. When supplied,
+`maximumTorque` caps total angular impulse per fixed tick; the solver divides
+that allowance across velocity iterations so iteration tuning does not increase
+available torque. Omit the cap for a servo-like motor that reaches its target in
+one velocity pass.
+
 ## Build larger assemblies
 
 Use the factory helpers to produce deterministic arrays of validated

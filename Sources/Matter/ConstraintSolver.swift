@@ -58,7 +58,12 @@ public enum ConstraintSolver {
         var bodies = world.bodies
         for _ in 0..<configuration.velocityIterations {
             for constraint in active {
-                try resolveVelocity(constraint, bodies: &bodies)
+                try resolveVelocity(
+                    constraint,
+                    bodies: &bodies,
+                    timeStep: timeStep,
+                    iterationCount: configuration.velocityIterations
+                )
             }
         }
         for _ in 0..<configuration.positionIterations {
@@ -106,12 +111,17 @@ private extension ConstraintSolver {
         return max(distanceImpulse, angularImpulse) > maximumImpulse
     }
 
-    static func resolveVelocity(_ constraint: Constraint, bodies: inout [Body]) throws {
-        guard constraint.damping > 0 else { return }
+    static func resolveVelocity(
+        _ constraint: Constraint,
+        bodies: inout [Body],
+        timeStep: Float,
+        iterationCount: Int
+    ) throws {
+        guard constraint.damping > 0 || constraint.motorSpeed != nil else { return }
         let endpoints = try resolveEndpoints(constraint, bodies: bodies)
         let direction = direction(for: endpoints.second.point - endpoints.first.point)
         let mass = effectiveMass(endpoints, direction: direction)
-        if mass > tolerance {
+        if mass > tolerance, constraint.damping > 0 {
             let relativeVelocity =
                 velocity(of: endpoints.second, bodies: bodies)
                 - velocity(of: endpoints.first, bodies: bodies)
@@ -119,7 +129,13 @@ private extension ConstraintSolver {
             applyVelocityImpulse(impulse, to: endpoints.first, bodies: &bodies)
             applyVelocityImpulse(-impulse, to: endpoints.second, bodies: &bodies)
         }
-        resolveAngularVelocity(constraint, endpoints: endpoints, bodies: &bodies)
+        resolveAngularVelocity(
+            constraint,
+            endpoints: endpoints,
+            bodies: &bodies,
+            timeStep: timeStep,
+            iterationCount: iterationCount
+        )
     }
 
     static func resolvePosition(_ constraint: Constraint, bodies: inout [Body]) throws {
@@ -139,19 +155,27 @@ private extension ConstraintSolver {
     static func resolveAngularVelocity(
         _ constraint: Constraint,
         endpoints: (first: Endpoint, second: Endpoint),
-        bodies: inout [Body]
+        bodies: inout [Body],
+        timeStep: Float,
+        iterationCount: Int
     ) {
         let mass = endpoints.first.inverseInertia + endpoints.second.inverseInertia
         guard mass > tolerance else { return }
         let firstVelocity = endpoints.first.bodyIndex.map { bodies[$0].angularVelocity } ?? 0
         let secondVelocity = endpoints.second.bodyIndex.map { bodies[$0].angularVelocity } ?? 0
-        let relativeVelocity: Float
-        if endpoints.first.bodyIndex != nil, endpoints.second.bodyIndex != nil {
-            relativeVelocity = secondVelocity - firstVelocity
+        let relativeVelocity = secondVelocity - firstVelocity
+        let impulse: Float
+        if let motorSpeed = constraint.motorSpeed {
+            let unconstrained = (relativeVelocity - motorSpeed) / mass
+            if let maximumTorque = constraint.maximumMotorTorque {
+                let limit = maximumTorque * timeStep / Float(iterationCount)
+                impulse = min(max(unconstrained, -limit), limit)
+            } else {
+                impulse = unconstrained
+            }
         } else {
-            relativeVelocity = firstVelocity + secondVelocity
+            impulse = relativeVelocity * constraint.damping / mass
         }
-        let impulse = relativeVelocity * constraint.damping / mass
         if let index = endpoints.first.bodyIndex {
             bodies[index].applyAngularImpulse(impulse)
         }
@@ -184,12 +208,7 @@ private extension ConstraintSolver {
         endpoints: (first: Endpoint, second: Endpoint),
         bodies: [Body]
     ) -> Float {
-        let current: Float
-        if endpoints.first.bodyIndex != nil, endpoints.second.bodyIndex != nil {
-            current = endpoints.second.angle - endpoints.first.angle
-        } else {
-            current = endpoints.first.angle + endpoints.second.angle
-        }
+        let current = endpoints.second.angle - endpoints.first.angle
         return normalizedAngle(current - constraint.referenceAngle)
     }
 

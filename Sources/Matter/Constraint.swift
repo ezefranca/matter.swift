@@ -67,6 +67,12 @@ public struct ConstraintDefinition: Sendable, Hashable, Codable {
     /// Optional maximum corrective impulse before the constraint breaks.
     public var maximumImpulse: Float?
 
+    /// Optional target angular speed of the second endpoint relative to the first.
+    public var motorSpeed: Float?
+
+    /// Optional motor torque cap in angular impulse per second.
+    public var maximumMotorTorque: Float?
+
     /// A nonempty human-readable name.
     public var label: String
 
@@ -85,6 +91,8 @@ public struct ConstraintDefinition: Sendable, Hashable, Codable {
         damping: Float = 0,
         angularStiffness: Float = 0,
         maximumImpulse: Float? = nil,
+        motorSpeed: Float? = nil,
+        maximumMotorTorque: Float? = nil,
         label: String = "Constraint",
         metadata: [String: String] = [:]
     ) throws {
@@ -95,6 +103,8 @@ public struct ConstraintDefinition: Sendable, Hashable, Codable {
         self.damping = damping
         self.angularStiffness = angularStiffness
         self.maximumImpulse = maximumImpulse
+        self.motorSpeed = motorSpeed
+        self.maximumMotorTorque = maximumMotorTorque
         self.label = label
         self.metadata = metadata
         try validate()
@@ -117,7 +127,10 @@ public struct ConstraintDefinition: Sendable, Hashable, Codable {
             (0...1).contains(stiffness),
             (0...1).contains(damping),
             (0...1).contains(angularStiffness),
-            maximumImpulse.map({ $0.isFinite && $0 > 0 }) ?? true
+            maximumImpulse.map({ $0.isFinite && $0 > 0 }) ?? true,
+            motorSpeed.map(\.isFinite) ?? true,
+            maximumMotorTorque.map({ $0.isFinite && $0 > 0 }) ?? true,
+            maximumMotorTorque == nil || motorSpeed != nil
         else {
             throw MatterError.invalidConstraint
         }
@@ -152,6 +165,12 @@ public struct Constraint: Sendable, Hashable, Codable {
     /// Optional maximum corrective impulse before automatic removal.
     public let maximumImpulse: Float?
 
+    /// Optional target angular speed of the second endpoint relative to the first.
+    public let motorSpeed: Float?
+
+    /// Optional motor torque cap in angular impulse per second.
+    public let maximumMotorTorque: Float?
+
     /// The relative body angle captured when the constraint was added.
     public let referenceAngle: Float
 
@@ -175,6 +194,8 @@ public struct Constraint: Sendable, Hashable, Codable {
         self.damping = definition.damping
         self.angularStiffness = definition.angularStiffness
         self.maximumImpulse = definition.maximumImpulse
+        self.motorSpeed = definition.motorSpeed
+        self.maximumMotorTorque = definition.maximumMotorTorque
         self.referenceAngle = referenceAngle
         self.label = definition.label
         self.metadata = definition.metadata
@@ -431,6 +452,46 @@ public enum Constraints {
             definitions[index].label = "Soft Body"
         }
         return definitions
+    }
+
+    /// Creates a centered world pin driven at a target angular speed.
+    public static func motor(
+        _ body: BodyID,
+        pivot: Vector,
+        targetSpeed: Float,
+        maximumTorque: Float? = nil,
+        damping: Float = 0
+    ) throws -> ConstraintDefinition {
+        try ConstraintDefinition(
+            first: .fixed(pivot),
+            second: .body(body),
+            length: 0,
+            stiffness: 1,
+            damping: damping,
+            motorSpeed: targetSpeed,
+            maximumMotorTorque: maximumTorque,
+            label: "Motor"
+        )
+    }
+
+    /// Creates a distance joint that locks the bodies' captured relative angle.
+    public static func rotationalLock(
+        between first: BodyID,
+        and second: BodyID,
+        length: Float? = nil,
+        stiffness: Float = 1,
+        damping: Float = 0
+    ) throws -> ConstraintDefinition {
+        var definition = try distance(
+            between: first,
+            and: second,
+            length: length,
+            stiffness: stiffness,
+            damping: damping,
+            angularStiffness: 1
+        )
+        definition.label = "Rotational Lock"
+        return definition
     }
 
     private static func validatedColumnCount(in rows: [[BodyID]]) throws -> Int {

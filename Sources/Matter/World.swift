@@ -256,7 +256,6 @@ public struct World: Sendable, Hashable, Codable {
         }
         let firstState = try state(for: definition.first)
         let secondState = try state(for: definition.second)
-        let angles = [firstState.angle, secondState.angle].compactMap { $0 }
         guard nextConstraintIdentifier < .max else {
             throw MatterError.constraintIdentifierExhausted
         }
@@ -268,7 +267,7 @@ public struct World: Sendable, Hashable, Codable {
                 id: identifier,
                 definition: definition,
                 length: definition.length ?? firstState.point.distance(to: secondState.point),
-                referenceAngle: angles.count == 2 ? angles[1] - angles[0] : angles[0]
+                referenceAngle: (secondState.angle ?? 0) - (firstState.angle ?? 0)
             )
         )
         if let destinationIndex {
@@ -295,10 +294,9 @@ public struct World: Sendable, Hashable, Codable {
         let states = try definitions.map { definition in
             let firstState = try state(for: definition.first)
             let secondState = try state(for: definition.second)
-            let angles = [firstState.angle, secondState.angle].compactMap { $0 }
             return (
                 length: definition.length ?? firstState.point.distance(to: secondState.point),
-                referenceAngle: angles.count == 2 ? angles[1] - angles[0] : angles[0]
+                referenceAngle: (secondState.angle ?? 0) - (firstState.angle ?? 0)
             )
         }
         guard UInt64(definitions.count) <= UInt64.max - nextConstraintIdentifier else {
