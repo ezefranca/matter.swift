@@ -2261,6 +2261,52 @@
           },
           {
             "kind": "Var",
+            "name": "isSleeping",
+            "printedName": "isSleeping",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter4BodyV10isSleepingSbvp",
+            "mangledName": "$s6Matter4BodyV10isSleepingSbvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "SetterAccess",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter4BodyV10isSleepingSbvg",
+                "mangledName": "$s6Matter4BodyV10isSleepingSbvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "isSensor",
             "printedName": "isSensor",
             "children": [
@@ -3083,6 +3129,29 @@
             "mangledName": "$s6Matter4BodyV18setAngularVelocityyySfKF",
             "moduleName": "Matter",
             "throwing": true,
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "setSleeping",
+            "printedName": "setSleeping(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter4BodyV11setSleepingyySbF",
+            "mangledName": "$s6Matter4BodyV11setSleepingyySbF",
+            "moduleName": "Matter",
             "funcSelfKind": "Mutating"
           },
           {
@@ -5061,6 +5130,78 @@
           },
           {
             "kind": "Var",
+            "name": "isSleeping",
+            "printedName": "isSleeping",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter14BodyDefinitionV10isSleepingSbvp",
+            "mangledName": "$s6Matter14BodyDefinitionV10isSleepingSbvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter14BodyDefinitionV10isSleepingSbvg",
+                "mangledName": "$s6Matter14BodyDefinitionV10isSleepingSbvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter14BodyDefinitionV10isSleepingSbvs",
+                "mangledName": "$s6Matter14BodyDefinitionV10isSleepingSbvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
             "name": "isSensor",
             "printedName": "isSensor",
             "children": [
@@ -5464,7 +5605,7 @@
           {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(shape:position:angle:velocity:angularVelocity:mass:isStatic:isSensor:label:metadata:material:collisionFilter:)",
+            "printedName": "init(shape:position:angle:velocity:angularVelocity:mass:isStatic:isSleeping:isSensor:label:metadata:material:collisionFilter:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -5528,6 +5669,13 @@
               },
               {
                 "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
                 "name": "String",
                 "printedName": "Swift.String",
                 "hasDefaultArg": true,
@@ -5570,8 +5718,8 @@
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:6Matter14BodyDefinitionV5shape8position5angle8velocity15angularVelocity4mass8isStatic0K6Sensor5label8metadata8material15collisionFilterAcA0B5ShapeO_AA6VectorVSfASS2fS2bSSSDyS2SGAA0B8MaterialVAA09CollisionR0VtKcfc",
-            "mangledName": "$s6Matter14BodyDefinitionV5shape8position5angle8velocity15angularVelocity4mass8isStatic0K6Sensor5label8metadata8material15collisionFilterAcA0B5ShapeO_AA6VectorVSfASS2fS2bSSSDyS2SGAA0B8MaterialVAA09CollisionR0VtKcfc",
+            "usr": "s:6Matter14BodyDefinitionV5shape8position5angle8velocity15angularVelocity4mass8isStatic0K8Sleeping0K6Sensor5label8metadata8material15collisionFilterAcA0B5ShapeO_AA6VectorVSfATS2fS3bSSSDyS2SGAA0B8MaterialVAA09CollisionS0VtKcfc",
+            "mangledName": "$s6Matter14BodyDefinitionV5shape8position5angle8velocity15angularVelocity4mass8isStatic0K8Sleeping0K6Sensor5label8metadata8material15collisionFilterAcA0B5ShapeO_AA6VectorVSfATS2fS3bSSSDyS2SGAA0B8MaterialVAA09CollisionS0VtKcfc",
             "moduleName": "Matter",
             "throwing": true,
             "init_kind": "Designated"
@@ -11505,6 +11653,68 @@
                 "declKind": "Accessor",
                 "usr": "s:6Matter16SimulationResultV17brokenConstraintsSayAA12ConstraintIDVGvg",
                 "mangledName": "$s6Matter16SimulationResultV17brokenConstraintsSayAA12ConstraintIDVGvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sleepingEvents",
+            "printedName": "sleepingEvents",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.SleepingEvent]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingEvent",
+                    "printedName": "Matter.SleepingEvent",
+                    "usr": "s:6Matter13SleepingEventV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter16SimulationResultV14sleepingEventsSayAA13SleepingEventVGvp",
+            "mangledName": "$s6Matter16SimulationResultV14sleepingEventsSayAA13SleepingEventVGvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.SleepingEvent]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SleepingEvent",
+                        "printedName": "Matter.SleepingEvent",
+                        "usr": "s:6Matter13SleepingEventV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter16SimulationResultV14sleepingEventsSayAA13SleepingEventVGvg",
+                "mangledName": "$s6Matter16SimulationResultV14sleepingEventsSayAA13SleepingEventVGvg",
                 "moduleName": "Matter",
                 "implicit": true,
                 "declAttributes": [
@@ -18830,9 +19040,57 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "sleepingConfiguration",
+            "printedName": "sleepingConfiguration",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingConfiguration",
+                "printedName": "Matter.SleepingConfiguration",
+                "usr": "s:6Matter21SleepingConfigurationV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter6EngineC21sleepingConfigurationAA08SleepingD0Vvp",
+            "mangledName": "$s6Matter6EngineC21sleepingConfigurationAA08SleepingD0Vvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingConfiguration",
+                    "printedName": "Matter.SleepingConfiguration",
+                    "usr": "s:6Matter21SleepingConfigurationV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter6EngineC21sleepingConfigurationAA08SleepingD0Vvg",
+                "mangledName": "$s6Matter6EngineC21sleepingConfigurationAA08SleepingD0Vvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(world:gravity:fixedTimeStep:solverConfiguration:constraintSolverConfiguration:)",
+            "printedName": "init(world:gravity:fixedTimeStep:solverConfiguration:constraintSolverConfiguration:sleepingConfiguration:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -18874,11 +19132,18 @@
                 "printedName": "Matter.ConstraintSolverConfiguration",
                 "hasDefaultArg": true,
                 "usr": "s:6Matter29ConstraintSolverConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingConfiguration",
+                "printedName": "Matter.SleepingConfiguration",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter21SleepingConfigurationV"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:6Matter6EngineC5world7gravity13fixedTimeStep19solverConfiguration016constraintSolverI0AcA5WorldV_AA6VectorVSfAA0kI0VAA010ConstraintkI0VtKcfc",
-            "mangledName": "$s6Matter6EngineC5world7gravity13fixedTimeStep19solverConfiguration016constraintSolverI0AcA5WorldV_AA6VectorVSfAA0kI0VAA010ConstraintkI0VtKcfc",
+            "usr": "s:6Matter6EngineC5world7gravity13fixedTimeStep19solverConfiguration016constraintSolverI008sleepingI0AcA5WorldV_AA6VectorVSfAA0kI0VAA010ConstraintkI0VAA08SleepingI0VtKcfc",
+            "mangledName": "$s6Matter6EngineC5world7gravity13fixedTimeStep19solverConfiguration016constraintSolverI008sleepingI0AcA5WorldV_AA6VectorVSfAA0kI0VAA010ConstraintkI0VAA08SleepingI0VtKcfc",
             "moduleName": "Matter",
             "throwing": true,
             "init_kind": "Designated"
@@ -18916,6 +19181,24 @@
             "declKind": "Func",
             "usr": "s:6Matter6EngineC19solverStateSnapshotAA015CollisionSolverD0VyF",
             "mangledName": "$s6Matter6EngineC19solverStateSnapshotAA015CollisionSolverD0VyF",
+            "moduleName": "Matter",
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "sleepingStateSnapshot",
+            "printedName": "sleepingStateSnapshot()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingState",
+                "printedName": "Matter.SleepingState",
+                "usr": "s:6Matter13SleepingStateV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EngineC21sleepingStateSnapshotAA08SleepingD0VyF",
+            "mangledName": "$s6Matter6EngineC21sleepingStateSnapshotAA08SleepingD0VyF",
             "moduleName": "Matter",
             "funcSelfKind": "NonMutating"
           },
@@ -23407,6 +23690,68 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "sleepingEvents",
+            "printedName": "sleepingEvents",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.SleepingEvent]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingEvent",
+                    "printedName": "Matter.SleepingEvent",
+                    "usr": "s:6Matter13SleepingEventV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter12RunnerUpdateV14sleepingEventsSayAA13SleepingEventVGvp",
+            "mangledName": "$s6Matter12RunnerUpdateV14sleepingEventsSayAA13SleepingEventVGvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.SleepingEvent]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SleepingEvent",
+                        "printedName": "Matter.SleepingEvent",
+                        "usr": "s:6Matter13SleepingEventV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter12RunnerUpdateV14sleepingEventsSayAA13SleepingEventVGvg",
+                "mangledName": "$s6Matter12RunnerUpdateV14sleepingEventsSayAA13SleepingEventVGvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "__derived_struct_equals",
             "printedName": "__derived_struct_equals(_:_:)",
@@ -23880,6 +24225,2441 @@
             "printedName": "Actor",
             "usr": "s:ScA",
             "mangledName": "$sScA"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SleepingConfiguration",
+        "printedName": "SleepingConfiguration",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "enabled",
+            "printedName": "enabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter21SleepingConfigurationV7enabledSbvp",
+            "mangledName": "$s6Matter21SleepingConfigurationV7enabledSbvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter21SleepingConfigurationV7enabledSbvg",
+                "mangledName": "$s6Matter21SleepingConfigurationV7enabledSbvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter21SleepingConfigurationV7enabledSbvs",
+                "mangledName": "$s6Matter21SleepingConfigurationV7enabledSbvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "linearVelocityThreshold",
+            "printedName": "linearVelocityThreshold",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter21SleepingConfigurationV23linearVelocityThresholdSfvp",
+            "mangledName": "$s6Matter21SleepingConfigurationV23linearVelocityThresholdSfvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter21SleepingConfigurationV23linearVelocityThresholdSfvg",
+                "mangledName": "$s6Matter21SleepingConfigurationV23linearVelocityThresholdSfvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter21SleepingConfigurationV23linearVelocityThresholdSfvs",
+                "mangledName": "$s6Matter21SleepingConfigurationV23linearVelocityThresholdSfvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "angularVelocityThreshold",
+            "printedName": "angularVelocityThreshold",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter21SleepingConfigurationV24angularVelocityThresholdSfvp",
+            "mangledName": "$s6Matter21SleepingConfigurationV24angularVelocityThresholdSfvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter21SleepingConfigurationV24angularVelocityThresholdSfvg",
+                "mangledName": "$s6Matter21SleepingConfigurationV24angularVelocityThresholdSfvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter21SleepingConfigurationV24angularVelocityThresholdSfvs",
+                "mangledName": "$s6Matter21SleepingConfigurationV24angularVelocityThresholdSfvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "minimumQuietTime",
+            "printedName": "minimumQuietTime",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter21SleepingConfigurationV16minimumQuietTimeSfvp",
+            "mangledName": "$s6Matter21SleepingConfigurationV16minimumQuietTimeSfvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter21SleepingConfigurationV16minimumQuietTimeSfvg",
+                "mangledName": "$s6Matter21SleepingConfigurationV16minimumQuietTimeSfvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter21SleepingConfigurationV16minimumQuietTimeSfvs",
+                "mangledName": "$s6Matter21SleepingConfigurationV16minimumQuietTimeSfvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(enabled:linearVelocityThreshold:angularVelocityThreshold:minimumQuietTime:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingConfiguration",
+                "printedName": "Matter.SleepingConfiguration",
+                "usr": "s:6Matter21SleepingConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter21SleepingConfigurationV7enabled23linearVelocityThreshold07angularfG016minimumQuietTimeACSb_S3ftcfc",
+            "mangledName": "$s6Matter21SleepingConfigurationV7enabled23linearVelocityThreshold07angularfG016minimumQuietTimeACSb_S3ftcfc",
+            "moduleName": "Matter",
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "standard",
+            "printedName": "standard",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingConfiguration",
+                "printedName": "Matter.SleepingConfiguration",
+                "usr": "s:6Matter21SleepingConfigurationV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter21SleepingConfigurationV8standardACvpZ",
+            "mangledName": "$s6Matter21SleepingConfigurationV8standardACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingConfiguration",
+                    "printedName": "Matter.SleepingConfiguration",
+                    "usr": "s:6Matter21SleepingConfigurationV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter21SleepingConfigurationV8standardACvgZ",
+                "mangledName": "$s6Matter21SleepingConfigurationV8standardACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "disabled",
+            "printedName": "disabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingConfiguration",
+                "printedName": "Matter.SleepingConfiguration",
+                "usr": "s:6Matter21SleepingConfigurationV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter21SleepingConfigurationV8disabledACvpZ",
+            "mangledName": "$s6Matter21SleepingConfigurationV8disabledACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingConfiguration",
+                    "printedName": "Matter.SleepingConfiguration",
+                    "usr": "s:6Matter21SleepingConfigurationV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter21SleepingConfigurationV8disabledACvgZ",
+                "mangledName": "$s6Matter21SleepingConfigurationV8disabledACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingConfiguration",
+                "printedName": "Matter.SleepingConfiguration",
+                "usr": "s:6Matter21SleepingConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingConfiguration",
+                "printedName": "Matter.SleepingConfiguration",
+                "usr": "s:6Matter21SleepingConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter21SleepingConfigurationV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter21SleepingConfigurationV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter21SleepingConfigurationV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter21SleepingConfigurationV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter21SleepingConfigurationV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter21SleepingConfigurationV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter21SleepingConfigurationV9hashValueSivp",
+            "mangledName": "$s6Matter21SleepingConfigurationV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter21SleepingConfigurationV9hashValueSivg",
+                "mangledName": "$s6Matter21SleepingConfigurationV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingConfiguration",
+                "printedName": "Matter.SleepingConfiguration",
+                "usr": "s:6Matter21SleepingConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter21SleepingConfigurationV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter21SleepingConfigurationV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter21SleepingConfigurationV",
+        "mangledName": "$s6Matter21SleepingConfigurationV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SimulationIsland",
+        "printedName": "SimulationIsland",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "identifier",
+            "printedName": "identifier",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BodyID",
+                "printedName": "Matter.BodyID",
+                "usr": "s:6Matter6BodyIDV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter16SimulationIslandV10identifierAA6BodyIDVvp",
+            "mangledName": "$s6Matter16SimulationIslandV10identifierAA6BodyIDVvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter16SimulationIslandV10identifierAA6BodyIDVvg",
+                "mangledName": "$s6Matter16SimulationIslandV10identifierAA6BodyIDVvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "bodyIDs",
+            "printedName": "bodyIDs",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter16SimulationIslandV7bodyIDsSayAA6BodyIDVGvp",
+            "mangledName": "$s6Matter16SimulationIslandV7bodyIDsSayAA6BodyIDVGvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.BodyID]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyID",
+                        "printedName": "Matter.BodyID",
+                        "usr": "s:6Matter6BodyIDV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter16SimulationIslandV7bodyIDsSayAA6BodyIDVGvg",
+                "mangledName": "$s6Matter16SimulationIslandV7bodyIDsSayAA6BodyIDVGvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "<",
+            "printedName": "<(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SimulationIsland",
+                "printedName": "Matter.SimulationIsland",
+                "usr": "s:6Matter16SimulationIslandV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SimulationIsland",
+                "printedName": "Matter.SimulationIsland",
+                "usr": "s:6Matter16SimulationIslandV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter16SimulationIslandV1loiySbAC_ACtFZ",
+            "mangledName": "$s6Matter16SimulationIslandV1loiySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SimulationIsland",
+                "printedName": "Matter.SimulationIsland",
+                "usr": "s:6Matter16SimulationIslandV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SimulationIsland",
+                "printedName": "Matter.SimulationIsland",
+                "usr": "s:6Matter16SimulationIslandV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter16SimulationIslandV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter16SimulationIslandV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter16SimulationIslandV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter16SimulationIslandV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter16SimulationIslandV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter16SimulationIslandV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter16SimulationIslandV9hashValueSivp",
+            "mangledName": "$s6Matter16SimulationIslandV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter16SimulationIslandV9hashValueSivg",
+                "mangledName": "$s6Matter16SimulationIslandV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SimulationIsland",
+                "printedName": "Matter.SimulationIsland",
+                "usr": "s:6Matter16SimulationIslandV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter16SimulationIslandV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter16SimulationIslandV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter16SimulationIslandV",
+        "mangledName": "$s6Matter16SimulationIslandV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Comparable",
+            "printedName": "Comparable",
+            "usr": "s:SL",
+            "mangledName": "$sSL"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "IslandManager",
+        "printedName": "IslandManager",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "islands",
+            "printedName": "islands(in:collisions:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.SimulationIsland]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SimulationIsland",
+                    "printedName": "Matter.SimulationIsland",
+                    "usr": "s:6Matter16SimulationIslandV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "World",
+                "printedName": "Matter.World",
+                "usr": "s:6Matter5WorldV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Matter.Collision]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.Collision]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Collision",
+                        "printedName": "Matter.Collision",
+                        "usr": "s:6Matter9CollisionV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter13IslandManagerO7islands2in10collisionsSayAA010SimulationB0VGAA5WorldV_SayAA9CollisionVGSgtFZ",
+            "mangledName": "$s6Matter13IslandManagerO7islands2in10collisionsSayAA010SimulationB0VGAA5WorldV_SayAA9CollisionVGSgtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter13IslandManagerO",
+        "mangledName": "$s6Matter13IslandManagerO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SleepingPhase",
+        "printedName": "SleepingPhase",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "started",
+            "printedName": "started",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.SleepingPhase.Type) -> Matter.SleepingPhase",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingPhase",
+                    "printedName": "Matter.SleepingPhase",
+                    "usr": "s:6Matter13SleepingPhaseO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.SleepingPhase.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SleepingPhase",
+                        "printedName": "Matter.SleepingPhase",
+                        "usr": "s:6Matter13SleepingPhaseO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter13SleepingPhaseO7startedyA2CmF",
+            "mangledName": "$s6Matter13SleepingPhaseO7startedyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "ended",
+            "printedName": "ended",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.SleepingPhase.Type) -> Matter.SleepingPhase",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingPhase",
+                    "printedName": "Matter.SleepingPhase",
+                    "usr": "s:6Matter13SleepingPhaseO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.SleepingPhase.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SleepingPhase",
+                        "printedName": "Matter.SleepingPhase",
+                        "usr": "s:6Matter13SleepingPhaseO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter13SleepingPhaseO5endedyA2CmF",
+            "mangledName": "$s6Matter13SleepingPhaseO5endedyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.SleepingPhase?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingPhase",
+                    "printedName": "Matter.SleepingPhase",
+                    "usr": "s:6Matter13SleepingPhaseO"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter13SleepingPhaseO8rawValueACSgSS_tcfc",
+            "mangledName": "$s6Matter13SleepingPhaseO8rawValueACSgSS_tcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "declAttributes": [
+              "Inlinable"
+            ],
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "TypeAlias",
+            "name": "AllCases",
+            "printedName": "AllCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.SleepingPhase]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingPhase",
+                    "printedName": "Matter.SleepingPhase",
+                    "usr": "s:6Matter13SleepingPhaseO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "TypeAlias",
+            "usr": "s:6Matter13SleepingPhaseO8AllCasesa",
+            "mangledName": "$s6Matter13SleepingPhaseO8AllCasesa",
+            "moduleName": "Matter",
+            "implicit": true
+          },
+          {
+            "kind": "TypeAlias",
+            "name": "RawValue",
+            "printedName": "RawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "TypeAlias",
+            "usr": "s:6Matter13SleepingPhaseO8RawValuea",
+            "mangledName": "$s6Matter13SleepingPhaseO8RawValuea",
+            "moduleName": "Matter",
+            "implicit": true
+          },
+          {
+            "kind": "Var",
+            "name": "allCases",
+            "printedName": "allCases",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.SleepingPhase]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingPhase",
+                    "printedName": "Matter.SleepingPhase",
+                    "usr": "s:6Matter13SleepingPhaseO"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter13SleepingPhaseO8allCasesSayACGvpZ",
+            "mangledName": "$s6Matter13SleepingPhaseO8allCasesSayACGvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Nonisolated"
+            ],
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.SleepingPhase]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SleepingPhase",
+                        "printedName": "Matter.SleepingPhase",
+                        "usr": "s:6Matter13SleepingPhaseO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter13SleepingPhaseO8allCasesSayACGvgZ",
+                "mangledName": "$s6Matter13SleepingPhaseO8allCasesSayACGvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter13SleepingPhaseO8rawValueSSvp",
+            "mangledName": "$s6Matter13SleepingPhaseO8rawValueSSvp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter13SleepingPhaseO8rawValueSSvg",
+                "mangledName": "$s6Matter13SleepingPhaseO8rawValueSSvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Inlinable"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter13SleepingPhaseO",
+        "mangledName": "$s6Matter13SleepingPhaseO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "enumRawTypeName": "String",
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "CaseIterable",
+            "printedName": "CaseIterable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "AllCases",
+                "printedName": "AllCases",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.SleepingPhase]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "SleepingPhase",
+                        "printedName": "Matter.SleepingPhase",
+                        "usr": "s:6Matter13SleepingPhaseO"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:s12CaseIterableP",
+            "mangledName": "$ss12CaseIterableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SleepingEvent",
+        "printedName": "SleepingEvent",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "phase",
+            "printedName": "phase",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingPhase",
+                "printedName": "Matter.SleepingPhase",
+                "usr": "s:6Matter13SleepingPhaseO"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter13SleepingEventV5phaseAA0B5PhaseOvp",
+            "mangledName": "$s6Matter13SleepingEventV5phaseAA0B5PhaseOvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingPhase",
+                    "printedName": "Matter.SleepingPhase",
+                    "usr": "s:6Matter13SleepingPhaseO"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter13SleepingEventV5phaseAA0B5PhaseOvg",
+                "mangledName": "$s6Matter13SleepingEventV5phaseAA0B5PhaseOvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "body",
+            "printedName": "body",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "BodyID",
+                "printedName": "Matter.BodyID",
+                "usr": "s:6Matter6BodyIDV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter13SleepingEventV4bodyAA6BodyIDVvp",
+            "mangledName": "$s6Matter13SleepingEventV4bodyAA6BodyIDVvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter13SleepingEventV4bodyAA6BodyIDVvg",
+                "mangledName": "$s6Matter13SleepingEventV4bodyAA6BodyIDVvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingEvent",
+                "printedName": "Matter.SleepingEvent",
+                "usr": "s:6Matter13SleepingEventV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingEvent",
+                "printedName": "Matter.SleepingEvent",
+                "usr": "s:6Matter13SleepingEventV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter13SleepingEventV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter13SleepingEventV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter13SleepingEventV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter13SleepingEventV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter13SleepingEventV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter13SleepingEventV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter13SleepingEventV9hashValueSivp",
+            "mangledName": "$s6Matter13SleepingEventV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter13SleepingEventV9hashValueSivg",
+                "mangledName": "$s6Matter13SleepingEventV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingEvent",
+                "printedName": "Matter.SleepingEvent",
+                "usr": "s:6Matter13SleepingEventV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter13SleepingEventV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter13SleepingEventV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter13SleepingEventV",
+        "mangledName": "$s6Matter13SleepingEventV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SleepingState",
+        "printedName": "SleepingState",
+        "children": [
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingState",
+                "printedName": "Matter.SleepingState",
+                "usr": "s:6Matter13SleepingStateV"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter13SleepingStateVACycfc",
+            "mangledName": "$s6Matter13SleepingStateVACycfc",
+            "moduleName": "Matter",
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "trackedBodies",
+            "printedName": "trackedBodies",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter13SleepingStateV13trackedBodiesSayAA6BodyIDVGvp",
+            "mangledName": "$s6Matter13SleepingStateV13trackedBodiesSayAA6BodyIDVGvp",
+            "moduleName": "Matter",
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.BodyID]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyID",
+                        "printedName": "Matter.BodyID",
+                        "usr": "s:6Matter6BodyIDV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter13SleepingStateV13trackedBodiesSayAA6BodyIDVGvg",
+                "mangledName": "$s6Matter13SleepingStateV13trackedBodiesSayAA6BodyIDVGvg",
+                "moduleName": "Matter",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "sleepingBodies",
+            "printedName": "sleepingBodies",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter13SleepingStateV14sleepingBodiesSayAA6BodyIDVGvp",
+            "mangledName": "$s6Matter13SleepingStateV14sleepingBodiesSayAA6BodyIDVGvp",
+            "moduleName": "Matter",
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.BodyID]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyID",
+                        "printedName": "Matter.BodyID",
+                        "usr": "s:6Matter6BodyIDV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter13SleepingStateV14sleepingBodiesSayAA6BodyIDVGvg",
+                "mangledName": "$s6Matter13SleepingStateV14sleepingBodiesSayAA6BodyIDVGvg",
+                "moduleName": "Matter",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "quietTime",
+            "printedName": "quietTime(for:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Swift.Float?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BodyID",
+                "printedName": "Matter.BodyID",
+                "usr": "s:6Matter6BodyIDV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter13SleepingStateV9quietTime3forSfSgAA6BodyIDV_tF",
+            "mangledName": "$s6Matter13SleepingStateV9quietTime3forSfSgAA6BodyIDV_tF",
+            "moduleName": "Matter",
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "reset",
+            "printedName": "reset()",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter13SleepingStateV5resetyyF",
+            "mangledName": "$s6Matter13SleepingStateV5resetyyF",
+            "moduleName": "Matter",
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingState",
+                "printedName": "Matter.SleepingState",
+                "usr": "s:6Matter13SleepingStateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingState",
+                "printedName": "Matter.SleepingState",
+                "usr": "s:6Matter13SleepingStateV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter13SleepingStateV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter13SleepingStateV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter13SleepingStateV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter13SleepingStateV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter13SleepingStateV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter13SleepingStateV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter13SleepingStateV9hashValueSivp",
+            "mangledName": "$s6Matter13SleepingStateV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter13SleepingStateV9hashValueSivg",
+                "mangledName": "$s6Matter13SleepingStateV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingState",
+                "printedName": "Matter.SleepingState",
+                "usr": "s:6Matter13SleepingStateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter13SleepingStateV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter13SleepingStateV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter13SleepingStateV",
+        "mangledName": "$s6Matter13SleepingStateV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "SleepingManager",
+        "printedName": "SleepingManager",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "prepareForStep",
+            "printedName": "prepareForStep(world:collisions:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.SleepingEvent]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingEvent",
+                    "printedName": "Matter.SleepingEvent",
+                    "usr": "s:6Matter13SleepingEventV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "World",
+                "printedName": "Matter.World",
+                "paramValueOwnership": "InOut",
+                "usr": "s:6Matter5WorldV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Matter.Collision]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.Collision]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Collision",
+                        "printedName": "Matter.Collision",
+                        "usr": "s:6Matter9CollisionV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter15SleepingManagerO14prepareForStep5world10collisionsSayAA0B5EventVGAA5WorldVz_SayAA9CollisionVGSgtFZ",
+            "mangledName": "$s6Matter15SleepingManagerO14prepareForStep5world10collisionsSayAA0B5EventVGAA5WorldVz_SayAA9CollisionVGSgtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "update",
+            "printedName": "update(world:state:collisions:timeStep:configuration:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.SleepingEvent]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "SleepingEvent",
+                    "printedName": "Matter.SleepingEvent",
+                    "usr": "s:6Matter13SleepingEventV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "World",
+                "printedName": "Matter.World",
+                "paramValueOwnership": "InOut",
+                "usr": "s:6Matter5WorldV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingState",
+                "printedName": "Matter.SleepingState",
+                "paramValueOwnership": "InOut",
+                "usr": "s:6Matter13SleepingStateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "[Matter.Collision]?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.Collision]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Collision",
+                        "printedName": "Matter.Collision",
+                        "usr": "s:6Matter9CollisionV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingConfiguration",
+                "printedName": "Matter.SleepingConfiguration",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter21SleepingConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter15SleepingManagerO6update5world5state10collisions8timeStep13configurationSayAA0B5EventVGAA5WorldVz_AA0B5StateVzSayAA9CollisionVGSgSfAA0B13ConfigurationVtKFZ",
+            "mangledName": "$s6Matter15SleepingManagerO6update5world5state10collisions8timeStep13configurationSayAA0B5EventVGAA5WorldVz_AA0B5StateVzSayAA9CollisionVGSgSfAA0B13ConfigurationVtKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter15SleepingManagerO",
+        "mangledName": "$s6Matter15SleepingManagerO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
           }
         ]
       },
@@ -25462,6 +28242,43 @@
             "declKind": "EnumElement",
             "usr": "s:6Matter0A5ErrorO26invalidSolverConfigurationyA2CmF",
             "mangledName": "$s6Matter0A5ErrorO26invalidSolverConfigurationyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "invalidSleepingConfiguration",
+            "printedName": "invalidSleepingConfiguration",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterError.Type) -> Matter.MatterError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterError",
+                    "printedName": "Matter.MatterError",
+                    "usr": "s:6Matter0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterError",
+                        "printedName": "Matter.MatterError",
+                        "usr": "s:6Matter0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A5ErrorO28invalidSleepingConfigurationyA2CmF",
+            "mangledName": "$s6Matter0A5ErrorO28invalidSleepingConfigurationyA2CmF",
             "moduleName": "Matter"
           },
           {
@@ -27956,6 +30773,87 @@
             "declAttributes": [
               "DiscardableResult"
             ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "stepWithEvents",
+            "printedName": "stepWithEvents(world:collisionTracker:collisionSolverState:sleepingState:gravity:timeStep:solver:constraintSolver:sleeping:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "SimulationResult",
+                "printedName": "Matter.SimulationResult",
+                "usr": "s:6Matter16SimulationResultV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "World",
+                "printedName": "Matter.World",
+                "paramValueOwnership": "InOut",
+                "usr": "s:6Matter5WorldV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CollisionTracker",
+                "printedName": "Matter.CollisionTracker",
+                "paramValueOwnership": "InOut",
+                "usr": "s:6Matter16CollisionTrackerV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CollisionSolverState",
+                "printedName": "Matter.CollisionSolverState",
+                "paramValueOwnership": "InOut",
+                "usr": "s:6Matter20CollisionSolverStateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingState",
+                "printedName": "Matter.SleepingState",
+                "paramValueOwnership": "InOut",
+                "usr": "s:6Matter13SleepingStateV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SolverConfiguration",
+                "printedName": "Matter.SolverConfiguration",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter19SolverConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ConstraintSolverConfiguration",
+                "printedName": "Matter.ConstraintSolverConfiguration",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter29ConstraintSolverConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "SleepingConfiguration",
+                "printedName": "Matter.SleepingConfiguration",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter21SleepingConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter16ReferencePhysicsO14stepWithEvents5world16collisionTracker0H11SolverState08sleepingK07gravity8timeStep6solver010constraintJ00L0AA16SimulationResultVAA5WorldVz_AA09CollisionI0VzAA0ujK0VzAA08SleepingK0VzAA6VectorVSfAA0J13ConfigurationVAA010ConstraintjX0VAA0vX0VtKFZ",
+            "mangledName": "$s6Matter16ReferencePhysicsO14stepWithEvents5world16collisionTracker0H11SolverState08sleepingK07gravity8timeStep6solver010constraintJ00L0AA16SimulationResultVAA5WorldVz_AA09CollisionI0VzAA0ujK0VzAA08SleepingK0VzAA6VectorVSfAA0J13ConfigurationVAA010ConstraintjX0VAA0vX0VtKFZ",
+            "moduleName": "Matter",
+            "static": true,
             "throwing": true,
             "funcSelfKind": "NonMutating"
           }

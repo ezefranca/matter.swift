@@ -12,7 +12,8 @@ The backend uploads a tightly defined 52-byte body-state representation. The
 bundled `Integration.metal` kernel performs semi-implicit Euler integration for
 linear and angular motion: it applies gravity, force, torque, inverse mass, and
 inverse inertia; applies configured air damping; advances position and angle;
-then clears force and torque.
+then clears force and torque. Sleeping bodies use the same immovable kernel path
+as static bodies for that tick, while preserving their distinct public state.
 
 ## Value boundaries
 
@@ -33,8 +34,10 @@ This division is fixed configuration, not a silent fallback: Metal remains
 mandatory for production integration, and all Metal failures are surfaced. The
 CPU constraint and collision implementations are also shared with
 ``ReferencePhysics`` so tests can compare complete deterministic ticks without
-duplicating response behavior. Each tick integrates first, solves constraints,
-then detects and resolves collisions.
+duplicating response behavior. An enabled sleeping pass first propagates wake
+state through current islands. Each tick then integrates, detects newly formed
+contacts and propagates wake state again, solves constraints, resolves
+collisions, and finally classifies quiet islands.
 The actor-owned ``CollisionTracker`` persists canonical pair state between ticks
 and produces value-semantic events returned by ``Engine/stepWithEvents(ticks:)``.
 ``Runner`` is a second actor boundary that owns only wall-clock accumulation and
@@ -55,6 +58,12 @@ subtrees are removed.
 Multi-body operations validate and prepare replacements before committing them.
 ``Engine/updateWorld(_:)`` extends that transactional value boundary to an
 arbitrary synchronous batch in one actor hop.
+
+``IslandManager`` derives stable dynamic-body components from nonsensor contacts
+and body-to-body constraints. It excludes static bodies as graph bridges, so a
+shared ground does not merge independent stacks. ``SleepingManager`` and its
+value-semantic ``SleepingState`` apply simultaneous island transitions on both
+the Metal engine and stateful CPU reference path.
 
 ## CPU reference path
 

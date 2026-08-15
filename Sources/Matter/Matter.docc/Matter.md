@@ -83,6 +83,17 @@ For reproducible reference calculations and tests only, use
 - <doc:CollisionDetection>
 - <doc:CollisionResponse>
 
+### Sleeping and islands
+
+- ``SleepingConfiguration``
+- ``SleepingState``
+- ``SleepingManager``
+- ``SleepingPhase``
+- ``SleepingEvent``
+- ``SimulationIsland``
+- ``IslandManager``
+- <doc:SleepingAndIslands>
+
 ### Spatial queries
 
 - ``WorldQuery``

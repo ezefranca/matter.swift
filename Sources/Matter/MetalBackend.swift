@@ -57,7 +57,7 @@
             torque = body.torque
             inverseInertia = body.inverseInertia
             airFriction = body.material.airFriction
-            isStatic = body.isStatic ? 1 : 0
+            isStatic = body.isStatic || body.isSleeping ? 1 : 0
         }
 
         func applied(to body: Body) -> Body {

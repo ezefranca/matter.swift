@@ -48,6 +48,9 @@ public struct Body: Sendable, Hashable, Codable {
     /// Whether this body ignores forces and integration.
     public let isStatic: Bool
 
+    /// Whether this dynamic body is temporarily excluded from integration.
+    public private(set) var isSleeping: Bool
+
     /// Whether collisions generate events without physical impulses.
     public let isSensor: Bool
 
@@ -90,16 +93,16 @@ public struct Body: Sendable, Hashable, Codable {
 
     /// The reciprocal mass used by the integrators.
     ///
-    /// Static bodies have no inverse mass and return zero.
+    /// Static and sleeping bodies have no effective inverse mass and return zero.
     public var inverseMass: Float {
-        isStatic ? 0 : 1 / mass
+        isStatic || isSleeping ? 0 : 1 / mass
     }
 
     /// The reciprocal inertia used by angular integration.
     ///
-    /// Static bodies have no inverse inertia and return zero.
+    /// Static and sleeping bodies have no effective inverse inertia and return zero.
     public var inverseInertia: Float {
-        isStatic ? 0 : 1 / inertia
+        isStatic || isSleeping ? 0 : 1 / inertia
     }
 
     /// Polygon vertices transformed into world coordinates.
@@ -155,12 +158,13 @@ public struct Body: Sendable, Hashable, Codable {
     }
 
     init(id: BodyID, definition: BodyDefinition) {
+        let beginsSleeping = definition.isSleeping && !definition.isStatic
         self.id = id
         self.shape = definition.shape
         self.position = definition.position
         self.angle = definition.angle
-        self.velocity = definition.velocity
-        self.angularVelocity = definition.angularVelocity
+        self.velocity = beginsSleeping ? .zero : definition.velocity
+        self.angularVelocity = beginsSleeping ? 0 : definition.angularVelocity
         self.force = .zero
         self.torque = 0
         self.mass = definition.mass
@@ -168,6 +172,7 @@ public struct Body: Sendable, Hashable, Codable {
         self.density = definition.mass / definition.shape.area
         self.inertia = definition.shape.inertia(forMass: definition.mass)
         self.isStatic = definition.isStatic
+        self.isSleeping = beginsSleeping
         self.isSensor = definition.isSensor
         self.label = definition.label
         self.metadata = definition.metadata
@@ -189,6 +194,7 @@ public struct Body: Sendable, Hashable, Codable {
         self.density = parent.density
         self.inertia = parent.inertia
         self.isStatic = parent.isStatic
+        self.isSleeping = parent.isSleeping
         self.isSensor = parent.isSensor
         self.label = parent.label
         self.metadata = parent.metadata
@@ -200,6 +206,7 @@ public struct Body: Sendable, Hashable, Codable {
     public mutating func applyForce(_ force: Vector) {
         guard !isStatic else { return }
         precondition(force.isFinite)
+        wake()
         self.force += force
     }
 
@@ -207,6 +214,7 @@ public struct Body: Sendable, Hashable, Codable {
     public mutating func applyForce(_ force: Vector, at point: Vector) {
         guard !isStatic else { return }
         precondition(force.isFinite && point.isFinite)
+        wake()
         self.force += force
         torque += (point - position).cross(force)
     }
@@ -215,12 +223,14 @@ public struct Body: Sendable, Hashable, Codable {
     public mutating func applyTorque(_ torque: Float) {
         guard !isStatic else { return }
         precondition(torque.isFinite)
+        wake()
         self.torque += torque
     }
 
     /// Repositions the body without changing its velocity.
     public mutating func setPosition(_ position: Vector) throws {
         guard position.isFinite else { throw MatterError.invalidVector }
+        wake()
         self.position = position
     }
 
@@ -232,6 +242,7 @@ public struct Body: Sendable, Hashable, Codable {
     /// Sets the clockwise body angle without changing angular velocity.
     public mutating func setAngle(_ angle: Float) throws {
         guard angle.isFinite else { throw MatterError.invalidAngle }
+        wake()
         self.angle = angle
     }
 
@@ -243,13 +254,33 @@ public struct Body: Sendable, Hashable, Codable {
     /// Replaces the body's linear velocity.
     public mutating func setVelocity(_ velocity: Vector) throws {
         guard velocity.isFinite else { throw MatterError.invalidVector }
+        wake()
         self.velocity = velocity
     }
 
     /// Replaces the body's clockwise angular velocity.
     public mutating func setAngularVelocity(_ angularVelocity: Float) throws {
         guard angularVelocity.isFinite else { throw MatterError.invalidAngle }
+        wake()
         self.angularVelocity = angularVelocity
+    }
+
+    /// Explicitly sleeps or wakes a dynamic body.
+    ///
+    /// Sleeping clears accumulated motion and forces. Static bodies remain
+    /// nonsleeping because their immobility is permanent rather than temporary.
+    public mutating func setSleeping(_ sleeping: Bool) {
+        guard !isStatic else { return }
+        isSleeping = sleeping
+        if sleeping {
+            velocity = .zero
+            angularVelocity = 0
+            clearForces()
+        }
+    }
+
+    mutating func wake() {
+        isSleeping = false
     }
 
     mutating func clearForces() {
@@ -299,7 +330,7 @@ public struct Body: Sendable, Hashable, Codable {
     }
 
     mutating func integrate(gravity: Vector, timeStep: Float) {
-        guard !isStatic else {
+        guard !isStatic, !isSleeping else {
             clearForces()
             return
         }

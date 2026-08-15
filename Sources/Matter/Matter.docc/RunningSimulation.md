@@ -44,8 +44,9 @@ draw(update.world, interpolationAlpha: update.interpolationAlpha)
 
 ``RunnerUpdate`` combines the current immutable world, tick count,
 interpolation alpha, dropped time, final-tick collisions, every collision event,
-and the identifiers of constraints broken during the update. A zero-tick update
-snapshots the engine without submitting Metal work.
+the identifiers of constraints broken during the update, and every sleeping
+transition. A zero-tick update snapshots the engine without submitting Metal
+work.
 
 ``Runner/pause()``, ``Runner/resume()``, and ``Runner/resetTiming(keepingPauseState:)``
 control time without changing the world. ``Runner/reset(to:)`` also replaces the

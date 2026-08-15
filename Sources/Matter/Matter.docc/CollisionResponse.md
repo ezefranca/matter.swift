@@ -69,11 +69,13 @@ The returned collisions represent the state before positional correction.
 Velocity passes apply normal impulses, restitution, geometric-mean static and
 dynamic friction, and angular impulse at every contact point. Position passes
 correct penetration beyond the larger body slop according to inverse mass.
-Static bodies contribute zero inverse mass and inertia. Sensors are returned to
-the caller but never receive impulses or correction.
+Static and sleeping bodies contribute zero effective inverse mass and inertia.
+Sensors are returned to the caller but never receive impulses or correction.
 
 ``ReferencePhysics/step(world:gravity:timeStep:solver:)`` combines the CPU
 reference integrator and the same solver for deterministic tests and tooling.
+Its stateful `stepWithEvents` overload additionally mirrors collision lifecycle,
+warm-start caching, constraints, and island sleeping in one explicit CPU tick.
 
 ## Understand the production pipeline
 

@@ -33,6 +33,8 @@ public enum MatterError: Error, Sendable, Equatable {
     case invalidRay
     /// Solver iterations or numerical tuning values were outside supported ranges.
     case invalidSolverConfiguration
+    /// Sleeping thresholds or the quiet-time duration were unsupported.
+    case invalidSleepingConfiguration
     /// Constraint anchors or numerical tuning values were unsupported.
     case invalidConstraint
     /// Constraint solver iterations were not positive.
@@ -717,5 +719,77 @@ public enum ReferencePhysics {
             configuration: constraintConfiguration
         )
         return try CollisionSolver.resolve(world: &world, configuration: configuration)
+    }
+
+    /// Runs one complete stateful CPU tick with collision and sleeping events.
+    ///
+    /// Reuse all three state values across ticks for lifecycle events, contact
+    /// warm starting, and accumulated island quiet time equivalent to ``Engine``.
+    public static func stepWithEvents(
+        world: inout World,
+        collisionTracker: inout CollisionTracker,
+        collisionSolverState: inout CollisionSolverState,
+        sleepingState: inout SleepingState,
+        gravity: Vector,
+        timeStep: Float,
+        solver configuration: SolverConfiguration = .standard,
+        constraintSolver constraintConfiguration: ConstraintSolverConfiguration = .standard,
+        sleeping sleepingConfiguration: SleepingConfiguration = .disabled
+    ) throws -> SimulationResult {
+        guard timeStep.isFinite, timeStep > 0 else { throw MatterError.invalidTimeStep }
+        try configuration.validate()
+        try constraintConfiguration.validate()
+        try sleepingConfiguration.validate()
+        var sleepingEvents: [SleepingEvent] = []
+        if sleepingConfiguration.enabled {
+            sleepingEvents.append(
+                contentsOf: SleepingManager.prepareForStep(world: &world)
+            )
+        } else {
+            sleepingEvents.append(
+                contentsOf: try SleepingManager.update(
+                    world: &world,
+                    state: &sleepingState,
+                    timeStep: timeStep,
+                    configuration: sleepingConfiguration
+                )
+            )
+        }
+        try ReferenceIntegrator.step(world: &world, gravity: gravity, timeStep: timeStep)
+        if sleepingConfiguration.enabled {
+            sleepingEvents.append(
+                contentsOf: SleepingManager.prepareForStep(
+                    world: &world,
+                    collisions: CollisionDetector.collisions(in: world)
+                )
+            )
+        }
+        let brokenConstraints = try ConstraintSolver.resolve(
+            world: &world,
+            timeStep: timeStep,
+            configuration: constraintConfiguration
+        )
+        let collisions = try CollisionSolver.resolve(
+            world: &world,
+            state: &collisionSolverState,
+            configuration: configuration
+        )
+        sleepingEvents.append(
+            contentsOf: try SleepingManager.update(
+                world: &world,
+                state: &sleepingState,
+                collisions: collisions,
+                timeStep: timeStep,
+                configuration: sleepingConfiguration
+            )
+        )
+        return SimulationResult(
+            world: world,
+            tickCount: 1,
+            collisions: collisions,
+            collisionEvents: collisionTracker.update(with: collisions),
+            brokenConstraints: brokenConstraints,
+            sleepingEvents: sleepingEvents
+        )
     }
 }

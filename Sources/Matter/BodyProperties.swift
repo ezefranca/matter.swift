@@ -120,6 +120,9 @@ public struct BodyDefinition: Sendable, Hashable, Codable {
     /// Whether integration ignores forces and leaves the body fixed.
     public var isStatic: Bool
 
+    /// Whether a dynamic body begins asleep and excluded from integration.
+    public var isSleeping: Bool
+
     /// Whether collisions generate events without physical impulses.
     public var isSensor: Bool
 
@@ -147,6 +150,7 @@ public struct BodyDefinition: Sendable, Hashable, Codable {
         angularVelocity: Float = 0,
         mass: Float = 1,
         isStatic: Bool = false,
+        isSleeping: Bool = false,
         isSensor: Bool = false,
         label: String = "Body",
         metadata: [String: String] = [:],
@@ -160,6 +164,7 @@ public struct BodyDefinition: Sendable, Hashable, Codable {
         self.angularVelocity = angularVelocity
         self.mass = mass
         self.isStatic = isStatic
+        self.isSleeping = isSleeping
         self.isSensor = isSensor
         self.label = label
         self.metadata = metadata

@@ -8,6 +8,7 @@ public actor Engine {
     private var world: World
     private var collisionTracker: CollisionTracker
     private var collisionSolverState: CollisionSolverState
+    private var sleepingState: SleepingState
     private let backend: MetalBackend
     /// The constant acceleration applied to every dynamic body each tick.
     public let gravity: Vector
@@ -17,6 +18,8 @@ public actor Engine {
     public let solverConfiguration: SolverConfiguration
     /// The validated CPU constraint configuration used after Metal integration.
     public let constraintSolverConfiguration: ConstraintSolverConfiguration
+    /// The validated island sleeping configuration applied around every tick.
+    public let sleepingConfiguration: SleepingConfiguration
 
     /// Creates an engine backed by Metal.
     public init(
@@ -24,21 +27,25 @@ public actor Engine {
         gravity: Vector = Vector(x: 0, y: 9.81),
         fixedTimeStep: Float = 1.0 / 60.0,
         solverConfiguration: SolverConfiguration = .standard,
-        constraintSolverConfiguration: ConstraintSolverConfiguration = .standard
+        constraintSolverConfiguration: ConstraintSolverConfiguration = .standard,
+        sleepingConfiguration: SleepingConfiguration = .disabled
     ) throws {
         guard fixedTimeStep.isFinite, fixedTimeStep > 0 else {
             throw MatterError.invalidTimeStep
         }
         try solverConfiguration.validate()
         try constraintSolverConfiguration.validate()
+        try sleepingConfiguration.validate()
 
         self.world = world
         self.gravity = gravity
         self.fixedTimeStep = fixedTimeStep
         self.solverConfiguration = solverConfiguration
         self.constraintSolverConfiguration = constraintSolverConfiguration
+        self.sleepingConfiguration = sleepingConfiguration
         self.collisionTracker = CollisionTracker()
         self.collisionSolverState = CollisionSolverState()
+        self.sleepingState = SleepingState()
         self.backend = try MetalBackend()
     }
 
@@ -50,6 +57,11 @@ public actor Engine {
     /// Returns the current value-semantic warm-start contact cache.
     public func solverStateSnapshot() -> CollisionSolverState {
         collisionSolverState
+    }
+
+    /// Returns the current value-semantic accumulated sleeping state.
+    public func sleepingStateSnapshot() -> SleepingState {
+        sleepingState
     }
 
     /// Adds a body to the actor-owned world.
@@ -200,6 +212,7 @@ public actor Engine {
         self.world = world
         collisionTracker.reset()
         collisionSolverState.reset()
+        sleepingState.reset()
     }
 
     /// Runs one or more fixed Metal simulation ticks and returns the resulting snapshot.
@@ -219,14 +232,37 @@ public actor Engine {
         var collisionEvents: [CollisionEvent] = []
         var collisions: [Collision] = []
         var brokenConstraints: [ConstraintID] = []
+        var sleepingEvents: [SleepingEvent] = []
         for _ in 0..<ticks {
             try Task.checkCancellation()
+            if sleepingConfiguration.enabled {
+                sleepingEvents.append(
+                    contentsOf: SleepingManager.prepareForStep(world: &world)
+                )
+            } else {
+                sleepingEvents.append(
+                    contentsOf: try SleepingManager.update(
+                        world: &world,
+                        state: &sleepingState,
+                        timeStep: fixedTimeStep,
+                        configuration: sleepingConfiguration
+                    )
+                )
+            }
             let integrated = try await backend.integrate(
                 bodies: world.bodies,
                 gravity: gravity,
                 timeStep: fixedTimeStep
             )
             world.replaceBodies(integrated)
+            if sleepingConfiguration.enabled {
+                sleepingEvents.append(
+                    contentsOf: SleepingManager.prepareForStep(
+                        world: &world,
+                        collisions: CollisionDetector.collisions(in: world)
+                    )
+                )
+            }
             brokenConstraints.append(
                 contentsOf: try ConstraintSolver.resolve(
                     world: &world,
@@ -239,6 +275,15 @@ public actor Engine {
                 state: &collisionSolverState,
                 configuration: solverConfiguration
             )
+            sleepingEvents.append(
+                contentsOf: try SleepingManager.update(
+                    world: &world,
+                    state: &sleepingState,
+                    collisions: collisions,
+                    timeStep: fixedTimeStep,
+                    configuration: sleepingConfiguration
+                )
+            )
             collisionEvents.append(contentsOf: collisionTracker.update(with: collisions))
         }
 
@@ -247,7 +292,8 @@ public actor Engine {
             tickCount: ticks,
             collisions: collisions,
             collisionEvents: collisionEvents,
-            brokenConstraints: brokenConstraints
+            brokenConstraints: brokenConstraints,
+            sleepingEvents: sleepingEvents
         )
     }
 }

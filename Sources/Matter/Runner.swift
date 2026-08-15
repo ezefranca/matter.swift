@@ -135,6 +135,9 @@ public struct RunnerUpdate: Sendable, Hashable, Codable {
     /// Constraints broken and removed across emitted ticks.
     public let brokenConstraints: [ConstraintID]
 
+    /// Sleeping transitions accumulated across emitted ticks.
+    public let sleepingEvents: [SleepingEvent]
+
     init(world: World, timing: FixedStepAdvance, simulation: SimulationResult?) {
         self.world = world
         self.tickCount = timing.tickCount
@@ -143,6 +146,7 @@ public struct RunnerUpdate: Sendable, Hashable, Codable {
         self.collisions = simulation?.collisions ?? []
         self.collisionEvents = simulation?.collisionEvents ?? []
         self.brokenConstraints = simulation?.brokenConstraints ?? []
+        self.sleepingEvents = simulation?.sleepingEvents ?? []
     }
 }
 

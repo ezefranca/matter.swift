@@ -97,17 +97,22 @@ public struct SimulationResult: Sendable, Hashable, Codable {
     /// Constraints broken and removed across every requested tick.
     public let brokenConstraints: [ConstraintID]
 
+    /// Ordered sleeping transitions accumulated across every requested tick.
+    public let sleepingEvents: [SleepingEvent]
+
     init(
         world: World,
         tickCount: Int,
         collisions: [Collision],
         collisionEvents: [CollisionEvent],
-        brokenConstraints: [ConstraintID]
+        brokenConstraints: [ConstraintID],
+        sleepingEvents: [SleepingEvent]
     ) {
         self.world = world
         self.tickCount = tickCount
         self.collisions = collisions
         self.collisionEvents = collisionEvents
         self.brokenConstraints = brokenConstraints
+        self.sleepingEvents = sleepingEvents
     }
 }
