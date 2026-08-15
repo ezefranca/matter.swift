@@ -13,7 +13,7 @@ native Swift APIs.
 
 ## Build and test
 
-With a full Xcode toolchain:
+Run the complete package suite with Xcode or standalone Command Line Tools:
 
 ```sh
 swift test --parallel --enable-code-coverage
@@ -21,14 +21,12 @@ COVERAGE_JSON=$(swift test --show-codecov-path)
 python3 Scripts/check_coverage.py \
   --coverage "$COVERAGE_JSON" \
   --source-root Sources/P5
-```
-
-Standalone Command Line Tools installations that omit Swift Testing can use:
-
-```sh
-P5_USE_SWIFT_TESTING_PACKAGE=1 swift test \
-  --parallel \
-  --enable-code-coverage
+python3 Scripts/check_coverage.py \
+  --coverage "$COVERAGE_JSON" \
+  --source-root Sources/Matter
+python3 Scripts/check_coverage.py \
+  --coverage "$COVERAGE_JSON" \
+  --source-root Sources/ML5
 ```
 
 Build the iOS variant with:

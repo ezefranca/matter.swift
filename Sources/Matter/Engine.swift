@@ -6,7 +6,9 @@
 public actor Engine {
     private var world: World
     private let backend: MetalBackend
+    /// The constant acceleration applied to every dynamic body each tick.
     public let gravity: Vector
+    /// The finite, positive duration of one deterministic simulation tick.
     public let fixedTimeStep: Float
 
     /// Creates an engine backed by Metal.
@@ -47,7 +49,7 @@ public actor Engine {
             throw MatterError.invalidTickCount
         }
 
-        for _ in 0 ..< ticks {
+        for _ in 0..<ticks {
             try Task.checkCancellation()
             let integrated = try await backend.integrate(
                 bodies: world.bodies,

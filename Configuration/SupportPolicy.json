@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "swift": {
+    "toolsVersion": "6.2",
+    "languageMode": "6",
+    "minimumTestedVersion": "6.2.3",
+    "currentTestedVersion": "6.3.2"
+  },
+  "xcode": {
+    "minimumMajorVersion": 26,
+    "currentMajorVersion": 26
+  },
+  "platforms": {
+    "iOS": {
+      "minimumVersion": "17.0",
+      "destinations": ["device", "simulator"]
+    },
+    "macOS": {
+      "minimumVersion": "14.0",
+      "destinations": ["apple-silicon", "intel"]
+    }
+  },
+  "metal": {
+    "requiredByProducts": ["Matter"],
+    "policy": "A default Metal device with compute pipelines and shared storage is required; failures are surfaced and never silently fall back.",
+    "simulatorSupport": "Build and validation are required; runtime execution depends on the simulator host exposing Metal."
+  }
+}

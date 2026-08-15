@@ -53,7 +53,7 @@ jobs:
         run: git checkout --detach "$TAG"
 
       - name: Build and test
-        run: swift test --parallel
+        run: swift test --parallel -Xswiftc -warnings-as-errors
 
       - name: Build iOS library
         run: >
@@ -61,6 +61,7 @@ jobs:
           -scheme P5
           -destination 'generic/platform=iOS Simulator'
           CODE_SIGNING_ALLOWED=NO
+          SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
 
       - name: Publish GitHub release
         env:

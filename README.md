@@ -188,7 +188,7 @@ native differences.
 
 ### Phase 2: Creative-coding utilities
 
-- [ ] `P5Vector` and vector arithmetic
+- [x] `P5Vector` and vector arithmetic
 - [ ] Seeded random values, Gaussian generation, and noise
 - [ ] Mapping, interpolation, constraints, normalization, and trigonometry
 - [ ] Date, time, frame count, delta time, and display information
@@ -314,12 +314,17 @@ COVERAGE_JSON=$(swift test --show-codecov-path)
 python3 Scripts/check_coverage.py \
   --coverage "$COVERAGE_JSON" \
   --source-root Sources/P5
+python3 Scripts/check_coverage.py \
+  --coverage "$COVERAGE_JSON" \
+  --source-root Sources/Matter
+python3 Scripts/check_coverage.py \
+  --coverage "$COVERAGE_JSON" \
+  --source-root Sources/ML5
 ```
 
-Full Xcode toolchains include Swift Testing. If a standalone Command Line
-Tools installation omits that module, set
-`P5_USE_SWIFT_TESTING_PACKAGE=1` to use the upstream test package while
-developing locally.
+The manifest declares the Swift Testing release matching the package's minimum
+Swift toolchain, so the same command works with full Xcode and standalone
+Command Line Tools installations.
 
 ## Distribution
 

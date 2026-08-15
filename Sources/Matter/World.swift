@@ -1,20 +1,28 @@
 /// Errors emitted while creating or simulating Matter values.
 @frozen
 public enum MatterError: Error, Sendable, Equatable {
+    /// A body mass was nonfinite or not greater than zero.
     case invalidMass
+    /// A shape dimension was nonfinite or not greater than zero.
     case invalidShapeDimension
+    /// A simulation time step was nonfinite or not greater than zero.
     case invalidTimeStep
+    /// An engine was asked to perform fewer than one tick.
     case invalidTickCount
+    /// A mutation referenced an identifier absent from the world.
     case unknownBody(BodyID)
+    /// The world's monotonically increasing identifier sequence reached `UInt64.max`.
     case bodyIdentifierExhausted
 }
 
 /// Owns a collection of value-type bodies and their identifiers.
 @frozen
 public struct World: Sendable, Hashable, Codable {
+    /// Value snapshots of the bodies in deterministic insertion order.
     public private(set) var bodies: [Body]
     private var nextBodyIdentifier: UInt64
 
+    /// Creates an empty world whose first assigned body identifier is one.
     public init() {
         self.bodies = []
         self.nextBodyIdentifier = 0
@@ -33,6 +41,7 @@ public struct World: Sendable, Hashable, Codable {
         return identifier
     }
 
+    /// Returns the body with a stable identifier, or `nil` when it is absent.
     public func body(withID identifier: BodyID) -> Body? {
         bodies.first { $0.id == identifier }
     }

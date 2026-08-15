@@ -87,26 +87,26 @@ struct MatterTests {
     }
 
     #if canImport(Metal)
-    @Test("Metal integration advances a body when a system device is available")
-    func metalIntegration() async throws {
-        // Arrange
-        guard MetalBackend.isAvailable else { return }
-        let engine = try Engine(
-            gravity: Vector(x: 0, y: 10),
-            fixedTimeStep: 0.5
-        )
-        let definition = try Bodies.circle(at: .zero, radius: 1, mass: 2)
-        let identifier = try await engine.add(definition)
-        try await engine.applyForce(Vector(x: 4, y: 0), to: identifier)
+        @Test("Metal integration advances a body when a system device is available")
+        func metalIntegration() async throws {
+            // Arrange
+            guard MetalBackend.isAvailable else { return }
+            let engine = try Engine(
+                gravity: Vector(x: 0, y: 10),
+                fixedTimeStep: 0.5
+            )
+            let definition = try Bodies.circle(at: .zero, radius: 1, mass: 2)
+            let identifier = try await engine.add(definition)
+            try await engine.applyForce(Vector(x: 4, y: 0), to: identifier)
 
-        // Act
-        let output = try await engine.step()
-        let body = try #require(output.bodies.first { $0.id == identifier })
+            // Act
+            let output = try await engine.step()
+            let body = try #require(output.bodies.first { $0.id == identifier })
 
-        // Assert
-        #expect(body.velocity == Vector(x: 1, y: 5))
-        #expect(body.position == Vector(x: 0.5, y: 2.5))
-        #expect(body.force == .zero)
-    }
+            // Assert
+            #expect(body.velocity == Vector(x: 1, y: 5))
+            #expect(body.position == Vector(x: 0.5, y: 2.5))
+            #expect(body.force == .zero)
+        }
     #endif
 }

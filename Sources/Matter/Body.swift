@@ -1,12 +1,15 @@
 /// The stable identity assigned to a body by a ``World``.
 @frozen
 public struct BodyID: RawRepresentable, Sendable, Hashable, Codable, Comparable {
+    /// The stable unsigned value stored in serialized world state.
     public let rawValue: UInt64
 
+    /// Creates an identifier from its stable serialized value.
     public init(rawValue: UInt64) {
         self.rawValue = rawValue
     }
 
+    /// Orders identifiers by their unsigned raw values.
     public static func < (lhs: Self, rhs: Self) -> Bool {
         lhs.rawValue < rhs.rawValue
     }
@@ -15,7 +18,9 @@ public struct BodyID: RawRepresentable, Sendable, Hashable, Codable, Comparable 
 /// A body shape supported by the first Matter vertical slice.
 @frozen
 public enum BodyShape: Sendable, Hashable, Codable {
+    /// A circle with a finite radius greater than zero.
     case circle(radius: Float)
+    /// An axis-aligned rectangle with finite width and height greater than zero.
     case rectangle(width: Float, height: Float)
 
     func validate() throws {
@@ -38,12 +43,21 @@ public enum BodyShape: Sendable, Hashable, Codable {
 /// remains the single owner of body identifiers.
 @frozen
 public struct BodyDefinition: Sendable, Hashable, Codable {
+    /// The validated collision geometry for the body.
     public var shape: BodyShape
+    /// The initial center position in world coordinates.
     public var position: Vector
+    /// The initial linear velocity in world units per second.
     public var velocity: Vector
+    /// The finite mass greater than zero; static bodies retain it for serialization.
     public var mass: Float
+    /// Whether integration ignores forces and leaves the body fixed.
     public var isStatic: Bool
 
+    /// Creates a validated definition for insertion into a world.
+    ///
+    /// - Throws: ``MatterError/invalidShapeDimension`` or
+    ///   ``MatterError/invalidMass`` when the definition is invalid.
     public init(
         shape: BodyShape,
         position: Vector,
@@ -106,15 +120,24 @@ public enum Bodies {
 /// A value snapshot of one body owned by a ``World``.
 @frozen
 public struct Body: Sendable, Hashable, Codable {
+    /// The stable identity assigned by the owning world.
     public let id: BodyID
+    /// The body's immutable collision geometry.
     public let shape: BodyShape
+    /// The current center position in world coordinates.
     public var position: Vector
+    /// The current linear velocity in world units per second.
     public var velocity: Vector
+    /// The force accumulated for the next integration tick.
     public private(set) var force: Vector
+    /// The finite, positive mass supplied by the body definition.
     public let mass: Float
+    /// Whether this body ignores forces and integration.
     public let isStatic: Bool
 
-    /// The reciprocal mass used by the integrators. Static bodies have no inverse mass.
+    /// The reciprocal mass used by the integrators.
+    ///
+    /// Static bodies have no inverse mass and return zero.
     public var inverseMass: Float {
         isStatic ? 0 : 1 / mass
     }

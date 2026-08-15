@@ -27,19 +27,33 @@ jobs:
       - name: Show Swift version
         run: swift --version
 
-      - name: Build and test
-        run: swift test --parallel --enable-code-coverage
+      - name: Run release-quality package validation
+        run: bash Scripts/validate.sh --skip-xcode
 
-      - name: Require 100% line coverage
-        run: |
-          COVERAGE_JSON=$(swift test --show-codecov-path)
-          python3 Scripts/check_coverage.py \
-            --coverage "$COVERAGE_JSON" \
-            --source-root Sources/P5
+  product-build:
+    name: ${{ matrix.scheme }} · ${{ matrix.platform }} · ${{ matrix.configuration }}
+    runs-on: macos-26
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        scheme: [P5, Matter, ML5]
+        platform: [macOS, iOS Simulator]
+        configuration: [Debug, Release]
 
-      - name: Build iOS library
-        run: >
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v7
+
+      - name: Build product
+        env:
+          CONFIGURATION: ${{ matrix.configuration }}
+          PLATFORM: ${{ matrix.platform }}
+          SCHEME: ${{ matrix.scheme }}
+        run: >-
           xcodebuild build
-          -scheme P5
-          -destination 'generic/platform=iOS Simulator'
+          -scheme "$SCHEME"
+          -configuration "$CONFIGURATION"
+          -destination "generic/platform=$PLATFORM"
           CODE_SIGNING_ALLOWED=NO
+          SWIFT_TREAT_WARNINGS_AS_ERRORS=YES

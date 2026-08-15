@@ -10,12 +10,24 @@ All notable changes to p5.swift are documented in this file.
   including `Vector`, `Body`, `World`, Matter-style body factories, an
   actor-owned Metal `Engine`, a bundled integration kernel, and a
   deterministic CPU `ReferenceIntegrator`.
+- Deterministic Matter tests cover validation, Codable state, cancellation,
+  and every typed Metal resource or command failure, with a 100% line-coverage
+  gate.
 - `ML5`, native Swift foundations for on-device machine learning inspired by
   ml5.js, including an actor-isolated `NeuralNetwork`, typed
   classification/regression tasks, `FeatureVector`, and a Core ML backed
   `ModelPredicting` implementation.
+- Comprehensive ML5 validation, task, cancellation, Core ML conversion, and
+  compiled-model integration tests, with a 100% production line-coverage gate.
 - This repository now ships all three packages (`P5`, `Matter`, `ML5`) as
   separate SwiftPM library products from one `Package.swift`.
+- `P5Vector`, including p5-style vector arithmetic and direction APIs, Swift
+  operators, deterministic random-vector construction, Core Graphics bridges,
+  and `P5Sketch.createVector()`.
+- Complete DocC comments for all source-located public symbols in P5, Matter,
+  and ML5, enforced from compiler-emitted symbol graphs in CI.
+- Compiler-generated public API baselines for all three products, plus CI
+  breakage diagnostics and an explicit review path for intentional changes.
 
 ## [0.3.2] - 2026-08-14
 

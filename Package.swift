@@ -2,29 +2,14 @@
 
 import PackageDescription
 
-let usesSwiftTestingPackage =
-    Context.environment["P5_USE_SWIFT_TESTING_PACKAGE"] == "1"
-
-var packageDependencies: [Package.Dependency] = []
-var testDependencies: [Target.Dependency] = ["P5"]
-var matterTestDependencies: [Target.Dependency] = ["Matter"]
-var ml5TestDependencies: [Target.Dependency] = ["ML5"]
-
-if usesSwiftTestingPackage {
-    packageDependencies.append(
-        .package(
-            url: "https://github.com/swiftlang/swift-testing",
-            revision: "swift-6.2.3-RELEASE"
-        )
-    )
-    let testingProduct: Target.Dependency = .product(
-        name: "Testing",
-        package: "swift-testing"
-    )
-    testDependencies.append(testingProduct)
-    matterTestDependencies.append(testingProduct)
-    ml5TestDependencies.append(testingProduct)
-}
+let testingPackage: Package.Dependency = .package(
+    url: "https://github.com/swiftlang/swift-testing",
+    revision: "swift-6.2.3-RELEASE"
+)
+let testingProduct: Target.Dependency = .product(
+    name: "Testing",
+    package: "swift-testing"
+)
 
 let package = Package(
     name: "p5.swift",
@@ -46,31 +31,31 @@ let package = Package(
             targets: ["ML5"]
         ),
     ],
-    dependencies: packageDependencies,
+    dependencies: [testingPackage],
     targets: [
         .target(
             name: "P5"
         ),
         .testTarget(
             name: "P5Tests",
-            dependencies: testDependencies
+            dependencies: ["P5", testingProduct]
         ),
         .target(
             name: "Matter",
             resources: [
-                .copy("Resources/Integration.metal"),
+                .copy("Resources/Integration.metal")
             ]
         ),
         .testTarget(
             name: "MatterTests",
-            dependencies: matterTestDependencies
+            dependencies: ["Matter", testingProduct]
         ),
         .target(
             name: "ML5"
         ),
         .testTarget(
             name: "ML5Tests",
-            dependencies: ml5TestDependencies
+            dependencies: ["ML5", testingProduct]
         ),
     ],
     swiftLanguageModes: [.v6]
