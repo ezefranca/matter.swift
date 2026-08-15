@@ -1,3 +1,5 @@
+import Foundation
+
 /// A two-dimensional vector used by Matter's physics state.
 @frozen
 public struct Vector: Sendable, Hashable, Codable {
@@ -15,6 +17,11 @@ public struct Vector: Sendable, Hashable, Codable {
     /// The vector whose two components are zero.
     public static let zero = Self(x: 0, y: 0)
 
+    /// Whether both components are finite.
+    public var isFinite: Bool {
+        x.isFinite && y.isFinite
+    }
+
     /// The squared Euclidean length, avoiding a square root.
     public var lengthSquared: Float {
         (x * x) + (y * y)
@@ -28,6 +35,26 @@ public struct Vector: Sendable, Hashable, Codable {
     /// Returns the scalar dot product with another vector.
     public func dot(_ other: Self) -> Float {
         (x * other.x) + (y * other.y)
+    }
+
+    /// Returns the two-dimensional scalar cross product with another vector.
+    public func cross(_ other: Self) -> Float {
+        (x * other.y) - (y * other.x)
+    }
+
+    /// Returns the Euclidean distance to another vector.
+    public func distance(to other: Self) -> Float {
+        (self - other).length
+    }
+
+    /// Returns this vector rotated clockwise by an angle in radians.
+    public func rotated(by angle: Float) -> Self {
+        let cosine = Foundation.cos(angle)
+        let sine = Foundation.sin(angle)
+        return Self(
+            x: x * cosine - y * sine,
+            y: x * sine + y * cosine
+        )
     }
 
     /// Returns a unit vector in the same direction, or ``zero`` for a zero vector.

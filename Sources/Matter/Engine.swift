@@ -43,6 +43,30 @@ public actor Engine {
         try world.applyForce(force, to: body)
     }
 
+    /// Accumulates force and torque by applying force at a world-space point.
+    public func applyForce(_ force: Vector, at point: Vector, to body: BodyID) throws {
+        try world.applyForce(force, at: point, to: body)
+    }
+
+    /// Accumulates torque for the next fixed simulation tick.
+    public func applyTorque(_ torque: Float, to body: BodyID) throws {
+        try world.applyTorque(torque, to: body)
+    }
+
+    /// Mutates one actor-owned body using a synchronous value closure.
+    public func updateBody(
+        withID identifier: BodyID,
+        _ update: @Sendable (inout Body) throws -> Void
+    ) throws {
+        try world.updateBody(withID: identifier, update)
+    }
+
+    /// Removes and returns an actor-owned body when it exists.
+    @discardableResult
+    public func removeBody(withID identifier: BodyID) -> Body? {
+        world.removeBody(withID: identifier)
+    }
+
     /// Runs one or more fixed Metal simulation ticks and returns the resulting snapshot.
     public func step(ticks: Int = 1) async throws -> World {
         guard ticks > 0 else {

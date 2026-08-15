@@ -37,6 +37,11 @@
         var forceX: Float
         var forceY: Float
         var inverseMass: Float
+        var angle: Float
+        var angularVelocity: Float
+        var torque: Float
+        var inverseInertia: Float
+        var airFriction: Float
         var isStatic: UInt32
 
         init(_ body: Body) {
@@ -47,14 +52,22 @@
             forceX = body.force.x
             forceY = body.force.y
             inverseMass = body.inverseMass
+            angle = body.angle
+            angularVelocity = body.angularVelocity
+            torque = body.torque
+            inverseInertia = body.inverseInertia
+            airFriction = body.material.airFriction
             isStatic = body.isStatic ? 1 : 0
         }
 
         func applied(to body: Body) -> Body {
             var result = body
-            result.position = Vector(x: positionX, y: positionY)
-            result.velocity = Vector(x: velocityX, y: velocityY)
-            result.clearForce()
+            result.replaceKinematics(
+                position: Vector(x: positionX, y: positionY),
+                angle: angle,
+                velocity: Vector(x: velocityX, y: velocityY),
+                angularVelocity: angularVelocity
+            )
             return result
         }
     }
@@ -230,9 +243,9 @@
                 throw MetalBackendError.unavailable
             }
             let actualBodyStride = factory.bodyStride()
-            guard actualBodyStride == 32 else {
+            guard actualBodyStride == 52 else {
                 throw MetalBackendError.incompatibleBodyLayout(
-                    expected: 32,
+                    expected: 52,
                     actual: actualBodyStride
                 )
             }

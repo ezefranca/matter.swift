@@ -257,19 +257,21 @@ release.
 
 - [x] Vector, identifiers, circle/rectangle definitions, body/world state, forces,
   fixed-step engine, Metal integration kernel, and CPU reference integrator.
-- [ ] Add angle, angular velocity, torque, inertia, center of mass, area, density,
+- [x] Add angle, angular velocity, torque, inertia, center of mass, area, density,
   restitution, friction, static friction, air friction, and slop.
-- [ ] Add body labels, plugin/user metadata, sensor state, collision groups/categories,
+- [x] Add body labels, plugin/user metadata, sensor state, collision groups/categories,
   masks, and immutable identifiers.
-- [ ] Add validated circle, rectangle, polygon, trapezoid, and vertices factories.
+- [x] Add validated circle, rectangle, polygon, trapezoid, and vertices factories.
 - [ ] Add compound bodies and concave decomposition with documented limitations.
-- [ ] Add body position/angle/velocity/angular-velocity setters and transforms.
-- [ ] Add world/composite add, remove, clear, lookup, enumeration, and query APIs.
+- [x] Add body position/angle/velocity/angular-velocity setters and transforms.
+- [x] Add world body add, remove, clear, lookup, stable enumeration, and in-place
+  mutation APIs.
+- [ ] Add hierarchical composites and spatial query APIs.
 - [ ] Add batch mutation APIs that avoid actor round trips.
 
 ### Collision system
 
-- [ ] Implement deterministic AABB generation and updates.
+- [x] Implement deterministic AABB generation and updates.
 - [ ] Implement a scalable broad phase with benchmarks and worst-case tests.
 - [ ] Implement circle-circle, circle-polygon, and polygon-polygon narrow phases.
 - [ ] Implement SAT/support features, contact manifolds, persistent pairs, and warm
@@ -295,7 +297,8 @@ release.
   silent fallback.
 - [ ] Add GPU buffers and kernels for the selected broad phase, narrow phase,
   solving, and integration stages where benchmarks justify them.
-- [ ] Preserve a deterministic CPU reference engine for conformance and CI.
+- [x] Preserve a deterministic CPU reference engine and verify linear/angular
+  integration against the Metal kernel within documented tolerances.
 - [ ] Add runner/manual-step APIs, fixed-step accumulation, interpolation, pause,
   reset, and cancellation.
 - [ ] Add immutable render snapshots safe to consume from the main actor.

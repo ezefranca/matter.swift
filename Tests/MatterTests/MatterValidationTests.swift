@@ -268,7 +268,7 @@ struct MatterValidationTests {
             factory = .system
             factory.bodyStride = { 64 }
             #expect(
-                throws: MetalBackendError.incompatibleBodyLayout(expected: 32, actual: 64)
+                throws: MetalBackendError.incompatibleBodyLayout(expected: 52, actual: 64)
             ) {
                 _ = try MetalBackend(resourceFactory: factory)
             }

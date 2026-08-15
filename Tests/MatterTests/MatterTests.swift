@@ -43,6 +43,10 @@ struct MatterTests {
         #expect(circle.mass == 3)
         #expect(rectangle.shape == .rectangle(width: 8, height: 4))
         #expect(rectangle.isStatic)
+        #expect(try Bodies.polygon(at: .zero, radius: 2, sides: 5).shape.localVertices.count == 5)
+        #expect(
+            try Bodies.trapezoid(at: .zero, width: 4, height: 2, slope: 0.25).shape.area > 0
+        )
     }
 
     @Test("A world consumes force using deterministic semi-implicit Euler integration")

@@ -35,6 +35,11 @@ For reproducible reference calculations and tests only, use
 - ``Body``
 - ``BodyDefinition``
 - ``Bodies``
+- ``BodyShape``
+- ``BodyMaterial``
+- ``CollisionFilter``
+- ``Bounds``
+- <doc:BodiesAndMaterials>
 
 ### Simulation
 

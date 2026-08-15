@@ -5,6 +5,22 @@ public enum MatterError: Error, Sendable, Equatable {
     case invalidMass
     /// A shape dimension was nonfinite or not greater than zero.
     case invalidShapeDimension
+    /// Polygon vertices were missing, nonfinite, collinear, or degenerate.
+    case invalidPolygon
+    /// A polygon was not convex.
+    case nonConvexPolygon
+    /// A position, velocity, force, or point contained a nonfinite component.
+    case invalidVector
+    /// An angle, angular velocity, or torque was nonfinite.
+    case invalidAngle
+    /// Restitution, friction, drag, or slop was outside its supported range.
+    case invalidMaterial
+    /// A collision category was zero.
+    case invalidCollisionFilter
+    /// A label was empty or had surrounding whitespace.
+    case invalidLabel
+    /// Client metadata contained an empty key or untrimmed value.
+    case invalidMetadata
     /// A simulation time step was nonfinite or not greater than zero.
     case invalidTimeStep
     /// An engine was asked to perform fewer than one tick.
@@ -31,6 +47,7 @@ public struct World: Sendable, Hashable, Codable {
     /// Adds a body and assigns its stable identifier.
     @discardableResult
     public mutating func add(_ definition: BodyDefinition) throws -> BodyID {
+        try definition.validate()
         guard nextBodyIdentifier < .max else {
             throw MatterError.bodyIdentifierExhausted
         }
@@ -48,11 +65,65 @@ public struct World: Sendable, Hashable, Codable {
 
     /// Applies a force that the next simulation tick consumes.
     public mutating func applyForce(_ force: Vector, to identifier: BodyID) throws {
+        guard force.isFinite else { throw MatterError.invalidVector }
         guard let index = bodies.firstIndex(where: { $0.id == identifier }) else {
             throw MatterError.unknownBody(identifier)
         }
 
         bodies[index].applyForce(force)
+    }
+
+    /// Applies a force at a world-space point, accumulating linear force and torque.
+    public mutating func applyForce(
+        _ force: Vector,
+        at point: Vector,
+        to identifier: BodyID
+    ) throws {
+        guard force.isFinite, point.isFinite else { throw MatterError.invalidVector }
+        try updateBody(withID: identifier) { body in
+            body.applyForce(force, at: point)
+        }
+    }
+
+    /// Applies torque to a body for the next simulation tick.
+    public mutating func applyTorque(_ torque: Float, to identifier: BodyID) throws {
+        guard torque.isFinite else { throw MatterError.invalidAngle }
+        try updateBody(withID: identifier) { body in
+            body.applyTorque(torque)
+        }
+    }
+
+    /// Mutates a body in place while preserving deterministic world ordering.
+    public mutating func updateBody(
+        withID identifier: BodyID,
+        _ update: (inout Body) throws -> Void
+    ) throws {
+        guard let index = bodies.firstIndex(where: { $0.id == identifier }) else {
+            throw MatterError.unknownBody(identifier)
+        }
+        try update(&bodies[index])
+    }
+
+    /// Removes and returns a body, or returns `nil` when its identifier is absent.
+    @discardableResult
+    public mutating func removeBody(withID identifier: BodyID) -> Body? {
+        guard let index = bodies.firstIndex(where: { $0.id == identifier }) else {
+            return nil
+        }
+        return bodies.remove(at: index)
+    }
+
+    /// Removes all bodies while keeping identifiers monotonic by default.
+    public mutating func removeAllBodies(resetIdentifiers: Bool = false) {
+        bodies.removeAll(keepingCapacity: true)
+        if resetIdentifiers {
+            nextBodyIdentifier = 0
+        }
+    }
+
+    /// The number of bodies owned by the world.
+    public var bodyCount: Int {
+        bodies.count
     }
 
     mutating func replaceBodies(_ bodies: [Body]) {
@@ -84,14 +155,6 @@ public enum ReferenceIntegrator {
 
     /// Advances one body using semi-implicit Euler integration.
     public static func step(body: inout Body, gravity: Vector, timeStep: Float) {
-        guard !body.isStatic else {
-            body.clearForce()
-            return
-        }
-
-        let acceleration = gravity + (body.force * body.inverseMass)
-        body.velocity += acceleration * timeStep
-        body.position += body.velocity * timeStep
-        body.clearForce()
+        body.integrate(gravity: gravity, timeStep: timeStep)
     }
 }
