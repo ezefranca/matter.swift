@@ -285,7 +285,7 @@ release.
   stress-test tolerances.
 - [x] Apply sensors and collision filtering to deterministic collision queries.
 - [x] Implement sleeping/waking and island management.
-- [ ] Add continuous collision detection or explicitly bounded tunneling behavior.
+- [x] Add continuous collision detection or explicitly bounded tunneling behavior.
 - [x] Emit ordered collision start, active, and end events with stable body
   identifiers and last-known end manifolds.
 

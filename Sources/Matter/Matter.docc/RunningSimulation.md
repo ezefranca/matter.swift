@@ -48,6 +48,11 @@ the identifiers of constraints broken during the update, and every sleeping
 transition. A zero-tick update snapshots the engine without submitting Metal
 work.
 
+When adaptive motion substeps are enabled, both ``SimulationResult`` and
+``RunnerUpdate`` include one ``ContinuousCollisionPlan`` per emitted fixed tick.
+The runner's `tickCount` remains a count of fixed ticks, not internal solve
+passes.
+
 ``Runner/pause()``, ``Runner/resume()``, and ``Runner/resetTiming(keepingPauseState:)``
 control time without changing the world. ``Runner/reset(to:)`` also replaces the
 world and clears collision lifecycle state. Cancellation is checked before

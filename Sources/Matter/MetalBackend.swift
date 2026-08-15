@@ -289,6 +289,7 @@
             guard timeStep.isFinite, timeStep > 0 else {
                 throw MatterError.invalidTimeStep
             }
+            guard gravity.isFinite else { throw MatterError.invalidVector }
             try Task.checkCancellation()
             guard !bodies.isEmpty else { return [] }
 

@@ -94,6 +94,8 @@ Call ``Engine/stepWithEvents(ticks:)`` when a client needs the complete
 last known manifold. The tracker is a standalone `Codable` value for custom
 manual-step pipelines as well.
 
-This release uses discrete detection. Fast bodies can tunnel when they cross an
-entire collider within one fixed step; continuous collision detection remains a
-separate capability rather than an implicit heuristic.
+Detection remains discrete, but clients can opt into deterministic adaptive
+substeps with ``ContinuousCollisionConfiguration``. Every
+``ContinuousCollisionPlan`` exposes its predicted motion and reports whether
+the configured substep cap prevented honoring the requested bound. See
+<doc:BoundedContinuousCollision> for sizing and relative-motion guidance.

@@ -138,6 +138,9 @@ public struct RunnerUpdate: Sendable, Hashable, Codable {
     /// Sleeping transitions accumulated across emitted ticks.
     public let sleepingEvents: [SleepingEvent]
 
+    /// Adaptive motion-substep decisions for every emitted fixed tick.
+    public let continuousCollisionPlans: [ContinuousCollisionPlan]
+
     init(world: World, timing: FixedStepAdvance, simulation: SimulationResult?) {
         self.world = world
         self.tickCount = timing.tickCount
@@ -147,6 +150,7 @@ public struct RunnerUpdate: Sendable, Hashable, Codable {
         self.collisionEvents = simulation?.collisionEvents ?? []
         self.brokenConstraints = simulation?.brokenConstraints ?? []
         self.sleepingEvents = simulation?.sleepingEvents ?? []
+        self.continuousCollisionPlans = simulation?.continuousCollisionPlans ?? []
     }
 }
 

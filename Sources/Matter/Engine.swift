@@ -20,6 +20,8 @@ public actor Engine {
     public let constraintSolverConfiguration: ConstraintSolverConfiguration
     /// The validated island sleeping configuration applied around every tick.
     public let sleepingConfiguration: SleepingConfiguration
+    /// The validated adaptive motion-substep configuration applied per fixed tick.
+    public let continuousCollisionConfiguration: ContinuousCollisionConfiguration
 
     /// Creates an engine backed by Metal.
     public init(
@@ -28,14 +30,17 @@ public actor Engine {
         fixedTimeStep: Float = 1.0 / 60.0,
         solverConfiguration: SolverConfiguration = .standard,
         constraintSolverConfiguration: ConstraintSolverConfiguration = .standard,
-        sleepingConfiguration: SleepingConfiguration = .disabled
+        sleepingConfiguration: SleepingConfiguration = .disabled,
+        continuousCollisionConfiguration: ContinuousCollisionConfiguration = .disabled
     ) throws {
         guard fixedTimeStep.isFinite, fixedTimeStep > 0 else {
             throw MatterError.invalidTimeStep
         }
+        guard gravity.isFinite else { throw MatterError.invalidVector }
         try solverConfiguration.validate()
         try constraintSolverConfiguration.validate()
         try sleepingConfiguration.validate()
+        try continuousCollisionConfiguration.validate()
 
         self.world = world
         self.gravity = gravity
@@ -43,6 +48,7 @@ public actor Engine {
         self.solverConfiguration = solverConfiguration
         self.constraintSolverConfiguration = constraintSolverConfiguration
         self.sleepingConfiguration = sleepingConfiguration
+        self.continuousCollisionConfiguration = continuousCollisionConfiguration
         self.collisionTracker = CollisionTracker()
         self.collisionSolverState = CollisionSolverState()
         self.sleepingState = SleepingState()
@@ -233,6 +239,7 @@ public actor Engine {
         var collisions: [Collision] = []
         var brokenConstraints: [ConstraintID] = []
         var sleepingEvents: [SleepingEvent] = []
+        var continuousCollisionPlans: [ContinuousCollisionPlan] = []
         for _ in 0..<ticks {
             try Task.checkCancellation()
             if sleepingConfiguration.enabled {
@@ -249,32 +256,46 @@ public actor Engine {
                     )
                 )
             }
-            let integrated = try await backend.integrate(
-                bodies: world.bodies,
+            let plan = try ContinuousCollisionPlanner.plan(
+                for: world,
                 gravity: gravity,
-                timeStep: fixedTimeStep
+                timeStep: fixedTimeStep,
+                configuration: continuousCollisionConfiguration
             )
-            world.replaceBodies(integrated)
-            if sleepingConfiguration.enabled {
-                sleepingEvents.append(
-                    contentsOf: SleepingManager.prepareForStep(
+            continuousCollisionPlans.append(plan)
+            let forceSnapshots = world.bodies
+            for substep in 0..<plan.substepCount {
+                let integrated = try await backend.integrate(
+                    bodies: world.bodies,
+                    gravity: gravity,
+                    timeStep: plan.substepTime
+                )
+                world.replaceBodies(integrated)
+                if substep < plan.substepCount - 1 {
+                    world.restoreForces(from: forceSnapshots)
+                }
+                if sleepingConfiguration.enabled {
+                    sleepingEvents.append(
+                        contentsOf: SleepingManager.prepareForStep(
+                            world: &world,
+                            collisions: CollisionDetector.collisions(in: world)
+                        )
+                    )
+                }
+                brokenConstraints.append(
+                    contentsOf: try ConstraintSolver.resolve(
                         world: &world,
-                        collisions: CollisionDetector.collisions(in: world)
+                        timeStep: plan.substepTime,
+                        configuration: constraintSolverConfiguration
                     )
                 )
-            }
-            brokenConstraints.append(
-                contentsOf: try ConstraintSolver.resolve(
+                collisions = try CollisionSolver.resolve(
                     world: &world,
-                    timeStep: fixedTimeStep,
-                    configuration: constraintSolverConfiguration
+                    state: &collisionSolverState,
+                    configuration: solverConfiguration
                 )
-            )
-            collisions = try CollisionSolver.resolve(
-                world: &world,
-                state: &collisionSolverState,
-                configuration: solverConfiguration
-            )
+                collisionEvents.append(contentsOf: collisionTracker.update(with: collisions))
+            }
             sleepingEvents.append(
                 contentsOf: try SleepingManager.update(
                     world: &world,
@@ -284,7 +305,6 @@ public actor Engine {
                     configuration: sleepingConfiguration
                 )
             )
-            collisionEvents.append(contentsOf: collisionTracker.update(with: collisions))
         }
 
         return SimulationResult(
@@ -293,7 +313,8 @@ public actor Engine {
             collisions: collisions,
             collisionEvents: collisionEvents,
             brokenConstraints: brokenConstraints,
-            sleepingEvents: sleepingEvents
+            sleepingEvents: sleepingEvents,
+            continuousCollisionPlans: continuousCollisionPlans
         )
     }
 }

@@ -112,6 +112,9 @@ For reproducible reference calculations and tests only, use
 - ``ForceApplication``
 - ``ReferenceIntegrator``
 - ``ReferencePhysics``
+- ``ContinuousCollisionConfiguration``
+- ``ContinuousCollisionPlan``
+- ``ContinuousCollisionPlanner``
 - ``MetalBackend``
 - ``MetalBackendError``
 - ``Runner``
@@ -120,6 +123,7 @@ For reproducible reference calculations and tests only, use
 - ``FixedStepAdvance``
 - <doc:RunningSimulation>
 - <doc:ForceBehaviors>
+- <doc:BoundedContinuousCollision>
 
 ### Architecture
 

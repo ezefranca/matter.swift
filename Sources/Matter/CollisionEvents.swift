@@ -100,13 +100,17 @@ public struct SimulationResult: Sendable, Hashable, Codable {
     /// Ordered sleeping transitions accumulated across every requested tick.
     public let sleepingEvents: [SleepingEvent]
 
+    /// Adaptive motion-substep decisions in fixed-tick order.
+    public let continuousCollisionPlans: [ContinuousCollisionPlan]
+
     init(
         world: World,
         tickCount: Int,
         collisions: [Collision],
         collisionEvents: [CollisionEvent],
         brokenConstraints: [ConstraintID],
-        sleepingEvents: [SleepingEvent]
+        sleepingEvents: [SleepingEvent],
+        continuousCollisionPlans: [ContinuousCollisionPlan]
     ) {
         self.world = world
         self.tickCount = tickCount
@@ -114,5 +118,6 @@ public struct SimulationResult: Sendable, Hashable, Codable {
         self.collisionEvents = collisionEvents
         self.brokenConstraints = brokenConstraints
         self.sleepingEvents = sleepingEvents
+        self.continuousCollisionPlans = continuousCollisionPlans
     }
 }

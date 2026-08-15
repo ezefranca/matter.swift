@@ -37,9 +37,11 @@ mandatory for production integration, and all Metal failures are surfaced. The
 CPU constraint and collision implementations are also shared with
 ``ReferencePhysics`` so tests can compare complete deterministic ticks without
 duplicating response behavior. An enabled sleeping pass first propagates wake
-state through current islands. Each tick then integrates, detects newly formed
-contacts and propagates wake state again, solves constraints, resolves
-collisions, and finally classifies quiet islands.
+state through current islands. An enabled bounded-motion plan divides a fixed
+tick into deterministic substeps. Each substep integrates, restores accumulated
+forces when another pass remains, detects newly formed contacts and propagates
+wake state, solves constraints, resolves collisions, and updates lifecycle
+events. The fixed tick finally classifies quiet islands.
 The actor-owned ``CollisionTracker`` persists canonical pair state between ticks
 and produces value-semantic events returned by ``Engine/stepWithEvents(ticks:)``.
 ``Runner`` is a second actor boundary that owns only wall-clock accumulation and

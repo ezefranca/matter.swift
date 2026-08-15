@@ -141,6 +141,36 @@ struct MatterValidationTests {
         }
     }
 
+    @Test("Integration entry points reject nonfinite gravity before mutation")
+    func invalidGravity() async throws {
+        var world = World()
+        _ = try world.add(Bodies.circle(at: .zero, radius: 1))
+        let original = world
+        #expect(throws: MatterError.invalidVector) {
+            try ReferenceIntegrator.step(
+                world: &world,
+                gravity: Vector(x: .infinity, y: 0),
+                timeStep: 0.1
+            )
+        }
+        #expect(world == original)
+        #expect(throws: MatterError.invalidVector) {
+            _ = try Engine(gravity: Vector(x: 0, y: .nan))
+        }
+
+        #if canImport(Metal)
+            guard MetalBackend.isAvailable else { return }
+            let backend = try MetalBackend()
+            await #expect(throws: MatterError.invalidVector) {
+                try await backend.integrate(
+                    bodies: world.bodies,
+                    gravity: Vector(x: .nan, y: 0),
+                    timeStep: 0.1
+                )
+            }
+        #endif
+    }
+
     #if canImport(Metal)
         @Test("Engine snapshots and tick validation preserve actor-owned state")
         func engineSnapshotsAndTicks() async throws {

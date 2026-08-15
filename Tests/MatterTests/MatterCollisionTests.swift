@@ -96,7 +96,14 @@ struct MatterCollisionTests {
         #expect(touching.penetration == 0)
 
         try world.updateBody(withID: second) { try $0.setPosition(.zero) }
-        let coincident = try #require(CollisionDetector.collisions(in: world).first)
+        let coincidentFirst = try #require(world.body(withID: first))
+        let coincidentSecond = try #require(world.body(withID: second))
+        let coincident = try #require(
+            CollisionDetector.collision(
+                between: coincidentFirst,
+                and: coincidentSecond
+            )
+        )
         #expect(coincident.normal == Vector(x: 1, y: 0))
         #expect(coincident.penetration == 4)
     }

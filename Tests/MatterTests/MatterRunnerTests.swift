@@ -87,6 +87,7 @@ struct MatterRunnerTests {
             #expect(update.collisions.isEmpty)
             #expect(update.collisionEvents.isEmpty)
             #expect(update.sleepingEvents.isEmpty)
+            #expect(update.continuousCollisionPlans.isEmpty)
             #expect(abs(update.interpolationAlpha - 0.5) < 0.000_01)
 
             await runner.pause()

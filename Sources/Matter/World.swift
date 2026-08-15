@@ -35,6 +35,8 @@ public enum MatterError: Error, Sendable, Equatable {
     case invalidSolverConfiguration
     /// Sleeping thresholds or the quiet-time duration were unsupported.
     case invalidSleepingConfiguration
+    /// Continuous-collision motion bounds or substep limits were unsupported.
+    case invalidContinuousCollisionConfiguration
     /// Constraint anchors or numerical tuning values were unsupported.
     case invalidConstraint
     /// Constraint solver iterations were not positive.
@@ -595,6 +597,17 @@ public struct World: Sendable, Hashable, Codable {
         self.bodies = bodies
     }
 
+    mutating func restoreForces(from snapshots: [Body]) {
+        precondition(snapshots.count == bodies.count)
+        for index in bodies.indices {
+            precondition(bodies[index].id == snapshots[index].id)
+            bodies[index].replaceForces(
+                force: snapshots[index].force,
+                torque: snapshots[index].torque
+            )
+        }
+    }
+
     mutating func replaceConstraints(_ constraints: [Constraint]) {
         let removed = Set(self.constraints.map(\.id)).subtracting(constraints.map(\.id))
         self.constraints = constraints
@@ -679,6 +692,7 @@ public enum ReferenceIntegrator {
         guard timeStep.isFinite, timeStep > 0 else {
             throw MatterError.invalidTimeStep
         }
+        guard gravity.isFinite else { throw MatterError.invalidVector }
 
         var bodies = world.bodies
         for index in bodies.indices {
@@ -734,12 +748,16 @@ public enum ReferencePhysics {
         timeStep: Float,
         solver configuration: SolverConfiguration = .standard,
         constraintSolver constraintConfiguration: ConstraintSolverConfiguration = .standard,
-        sleeping sleepingConfiguration: SleepingConfiguration = .disabled
+        sleeping sleepingConfiguration: SleepingConfiguration = .disabled,
+        continuousCollision continuousCollisionConfiguration:
+            ContinuousCollisionConfiguration = .disabled
     ) throws -> SimulationResult {
         guard timeStep.isFinite, timeStep > 0 else { throw MatterError.invalidTimeStep }
+        guard gravity.isFinite else { throw MatterError.invalidVector }
         try configuration.validate()
         try constraintConfiguration.validate()
         try sleepingConfiguration.validate()
+        try continuousCollisionConfiguration.validate()
         var sleepingEvents: [SleepingEvent] = []
         if sleepingConfiguration.enabled {
             sleepingEvents.append(
@@ -755,25 +773,47 @@ public enum ReferencePhysics {
                 )
             )
         }
-        try ReferenceIntegrator.step(world: &world, gravity: gravity, timeStep: timeStep)
-        if sleepingConfiguration.enabled {
-            sleepingEvents.append(
-                contentsOf: SleepingManager.prepareForStep(
+        let plan = try ContinuousCollisionPlanner.plan(
+            for: world,
+            gravity: gravity,
+            timeStep: timeStep,
+            configuration: continuousCollisionConfiguration
+        )
+        let forceSnapshots = world.bodies
+        var collisions: [Collision] = []
+        var collisionEvents: [CollisionEvent] = []
+        var brokenConstraints: [ConstraintID] = []
+        for substep in 0..<plan.substepCount {
+            try ReferenceIntegrator.step(
+                world: &world,
+                gravity: gravity,
+                timeStep: plan.substepTime
+            )
+            if substep < plan.substepCount - 1 {
+                world.restoreForces(from: forceSnapshots)
+            }
+            if sleepingConfiguration.enabled {
+                sleepingEvents.append(
+                    contentsOf: SleepingManager.prepareForStep(
+                        world: &world,
+                        collisions: CollisionDetector.collisions(in: world)
+                    )
+                )
+            }
+            brokenConstraints.append(
+                contentsOf: try ConstraintSolver.resolve(
                     world: &world,
-                    collisions: CollisionDetector.collisions(in: world)
+                    timeStep: plan.substepTime,
+                    configuration: constraintConfiguration
                 )
             )
+            collisions = try CollisionSolver.resolve(
+                world: &world,
+                state: &collisionSolverState,
+                configuration: configuration
+            )
+            collisionEvents.append(contentsOf: collisionTracker.update(with: collisions))
         }
-        let brokenConstraints = try ConstraintSolver.resolve(
-            world: &world,
-            timeStep: timeStep,
-            configuration: constraintConfiguration
-        )
-        let collisions = try CollisionSolver.resolve(
-            world: &world,
-            state: &collisionSolverState,
-            configuration: configuration
-        )
         sleepingEvents.append(
             contentsOf: try SleepingManager.update(
                 world: &world,
@@ -787,9 +827,10 @@ public enum ReferencePhysics {
             world: world,
             tickCount: 1,
             collisions: collisions,
-            collisionEvents: collisionTracker.update(with: collisions),
+            collisionEvents: collisionEvents,
             brokenConstraints: brokenConstraints,
-            sleepingEvents: sleepingEvents
+            sleepingEvents: sleepingEvents,
+            continuousCollisionPlans: [plan]
         )
     }
 }

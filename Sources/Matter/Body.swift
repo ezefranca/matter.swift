@@ -288,6 +288,11 @@ public struct Body: Sendable, Hashable, Codable {
         torque = 0
     }
 
+    mutating func replaceForces(force: Vector, torque: Float) {
+        self.force = force
+        self.torque = torque
+    }
+
     mutating func replaceKinematics(
         position: Vector,
         angle: Float,

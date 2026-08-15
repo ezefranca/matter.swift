@@ -13026,6 +13026,68 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "continuousCollisionPlans",
+            "printedName": "continuousCollisionPlans",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.ContinuousCollisionPlan]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContinuousCollisionPlan",
+                    "printedName": "Matter.ContinuousCollisionPlan",
+                    "usr": "s:6Matter23ContinuousCollisionPlanV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter16SimulationResultV24continuousCollisionPlansSayAA010ContinuousE4PlanVGvp",
+            "mangledName": "$s6Matter16SimulationResultV24continuousCollisionPlansSayAA010ContinuousE4PlanVGvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.ContinuousCollisionPlan]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ContinuousCollisionPlan",
+                        "printedName": "Matter.ContinuousCollisionPlan",
+                        "usr": "s:6Matter23ContinuousCollisionPlanV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter16SimulationResultV24continuousCollisionPlansSayAA010ContinuousE4PlanVGvg",
+                "mangledName": "$s6Matter16SimulationResultV24continuousCollisionPlansSayAA010ContinuousE4PlanVGvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "__derived_struct_equals",
             "printedName": "__derived_struct_equals(_:_:)",
@@ -20145,6 +20207,1098 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "ContinuousCollisionConfiguration",
+        "printedName": "ContinuousCollisionConfiguration",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "enabled",
+            "printedName": "enabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter32ContinuousCollisionConfigurationV7enabledSbvp",
+            "mangledName": "$s6Matter32ContinuousCollisionConfigurationV7enabledSbvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV7enabledSbvg",
+                "mangledName": "$s6Matter32ContinuousCollisionConfigurationV7enabledSbvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV7enabledSbvs",
+                "mangledName": "$s6Matter32ContinuousCollisionConfigurationV7enabledSbvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "maximumMotionPerSubstep",
+            "printedName": "maximumMotionPerSubstep",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter32ContinuousCollisionConfigurationV23maximumMotionPerSubstepSfvp",
+            "mangledName": "$s6Matter32ContinuousCollisionConfigurationV23maximumMotionPerSubstepSfvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV23maximumMotionPerSubstepSfvg",
+                "mangledName": "$s6Matter32ContinuousCollisionConfigurationV23maximumMotionPerSubstepSfvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV23maximumMotionPerSubstepSfvs",
+                "mangledName": "$s6Matter32ContinuousCollisionConfigurationV23maximumMotionPerSubstepSfvs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "maximumSubsteps",
+            "printedName": "maximumSubsteps",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter32ContinuousCollisionConfigurationV15maximumSubstepsSivp",
+            "mangledName": "$s6Matter32ContinuousCollisionConfigurationV15maximumSubstepsSivp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV15maximumSubstepsSivg",
+                "mangledName": "$s6Matter32ContinuousCollisionConfigurationV15maximumSubstepsSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              },
+              {
+                "kind": "Accessor",
+                "name": "Set",
+                "printedName": "Set()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Void",
+                    "printedName": "()"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV15maximumSubstepsSivs",
+                "mangledName": "$s6Matter32ContinuousCollisionConfigurationV15maximumSubstepsSivs",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "set"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(enabled:maximumMotionPerSubstep:maximumSubsteps:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionConfiguration",
+                "printedName": "Matter.ContinuousCollisionConfiguration",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "hasDefaultArg": true,
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "hasDefaultArg": true,
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter32ContinuousCollisionConfigurationV7enabled23maximumMotionPerSubstep0F8SubstepsACSb_SfSitcfc",
+            "mangledName": "$s6Matter32ContinuousCollisionConfigurationV7enabled23maximumMotionPerSubstep0F8SubstepsACSb_SfSitcfc",
+            "moduleName": "Matter",
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Var",
+            "name": "standard",
+            "printedName": "standard",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionConfiguration",
+                "printedName": "Matter.ContinuousCollisionConfiguration",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter32ContinuousCollisionConfigurationV8standardACvpZ",
+            "mangledName": "$s6Matter32ContinuousCollisionConfigurationV8standardACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContinuousCollisionConfiguration",
+                    "printedName": "Matter.ContinuousCollisionConfiguration",
+                    "usr": "s:6Matter32ContinuousCollisionConfigurationV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV8standardACvgZ",
+                "mangledName": "$s6Matter32ContinuousCollisionConfigurationV8standardACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "disabled",
+            "printedName": "disabled",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionConfiguration",
+                "printedName": "Matter.ContinuousCollisionConfiguration",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter32ContinuousCollisionConfigurationV8disabledACvpZ",
+            "mangledName": "$s6Matter32ContinuousCollisionConfigurationV8disabledACvpZ",
+            "moduleName": "Matter",
+            "static": true,
+            "declAttributes": [
+              "HasInitialValue",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContinuousCollisionConfiguration",
+                    "printedName": "Matter.ContinuousCollisionConfiguration",
+                    "usr": "s:6Matter32ContinuousCollisionConfigurationV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV8disabledACvgZ",
+                "mangledName": "$s6Matter32ContinuousCollisionConfigurationV8disabledACvgZ",
+                "moduleName": "Matter",
+                "static": true,
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionConfiguration",
+                "printedName": "Matter.ContinuousCollisionConfiguration",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionConfiguration",
+                "printedName": "Matter.ContinuousCollisionConfiguration",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter32ContinuousCollisionConfigurationV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter32ContinuousCollisionConfigurationV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter32ContinuousCollisionConfigurationV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter32ContinuousCollisionConfigurationV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter32ContinuousCollisionConfigurationV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter32ContinuousCollisionConfigurationV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter32ContinuousCollisionConfigurationV9hashValueSivp",
+            "mangledName": "$s6Matter32ContinuousCollisionConfigurationV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV9hashValueSivg",
+                "mangledName": "$s6Matter32ContinuousCollisionConfigurationV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionConfiguration",
+                "printedName": "Matter.ContinuousCollisionConfiguration",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter32ContinuousCollisionConfigurationV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter32ContinuousCollisionConfigurationV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter32ContinuousCollisionConfigurationV",
+        "mangledName": "$s6Matter32ContinuousCollisionConfigurationV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ContinuousCollisionPlan",
+        "printedName": "ContinuousCollisionPlan",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "substepCount",
+            "printedName": "substepCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter23ContinuousCollisionPlanV12substepCountSivp",
+            "mangledName": "$s6Matter23ContinuousCollisionPlanV12substepCountSivp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter23ContinuousCollisionPlanV12substepCountSivg",
+                "mangledName": "$s6Matter23ContinuousCollisionPlanV12substepCountSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "substepTime",
+            "printedName": "substepTime",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter23ContinuousCollisionPlanV11substepTimeSfvp",
+            "mangledName": "$s6Matter23ContinuousCollisionPlanV11substepTimeSfvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter23ContinuousCollisionPlanV11substepTimeSfvg",
+                "mangledName": "$s6Matter23ContinuousCollisionPlanV11substepTimeSfvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "maximumPredictedMotion",
+            "printedName": "maximumPredictedMotion",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter23ContinuousCollisionPlanV22maximumPredictedMotionSfvp",
+            "mangledName": "$s6Matter23ContinuousCollisionPlanV22maximumPredictedMotionSfvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Float",
+                    "printedName": "Swift.Float",
+                    "usr": "s:Sf"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter23ContinuousCollisionPlanV22maximumPredictedMotionSfvg",
+                "mangledName": "$s6Matter23ContinuousCollisionPlanV22maximumPredictedMotionSfvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "isClamped",
+            "printedName": "isClamped",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter23ContinuousCollisionPlanV9isClampedSbvp",
+            "mangledName": "$s6Matter23ContinuousCollisionPlanV9isClampedSbvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Bool",
+                    "printedName": "Swift.Bool",
+                    "usr": "s:Sb"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter23ContinuousCollisionPlanV9isClampedSbvg",
+                "mangledName": "$s6Matter23ContinuousCollisionPlanV9isClampedSbvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionPlan",
+                "printedName": "Matter.ContinuousCollisionPlan",
+                "usr": "s:6Matter23ContinuousCollisionPlanV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionPlan",
+                "printedName": "Matter.ContinuousCollisionPlan",
+                "usr": "s:6Matter23ContinuousCollisionPlanV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter23ContinuousCollisionPlanV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter23ContinuousCollisionPlanV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter23ContinuousCollisionPlanV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter23ContinuousCollisionPlanV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter23ContinuousCollisionPlanV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter23ContinuousCollisionPlanV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter23ContinuousCollisionPlanV9hashValueSivp",
+            "mangledName": "$s6Matter23ContinuousCollisionPlanV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter23ContinuousCollisionPlanV9hashValueSivg",
+                "mangledName": "$s6Matter23ContinuousCollisionPlanV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionPlan",
+                "printedName": "Matter.ContinuousCollisionPlan",
+                "usr": "s:6Matter23ContinuousCollisionPlanV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter23ContinuousCollisionPlanV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter23ContinuousCollisionPlanV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter23ContinuousCollisionPlanV",
+        "mangledName": "$s6Matter23ContinuousCollisionPlanV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "ContinuousCollisionPlanner",
+        "printedName": "ContinuousCollisionPlanner",
+        "children": [
+          {
+            "kind": "Function",
+            "name": "plan",
+            "printedName": "plan(for:gravity:timeStep:configuration:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionPlan",
+                "printedName": "Matter.ContinuousCollisionPlan",
+                "usr": "s:6Matter23ContinuousCollisionPlanV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "World",
+                "printedName": "Matter.World",
+                "usr": "s:6Matter5WorldV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Vector",
+                "printedName": "Matter.Vector",
+                "usr": "s:6Matter6VectorV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Float",
+                "printedName": "Swift.Float",
+                "usr": "s:Sf"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionConfiguration",
+                "printedName": "Matter.ContinuousCollisionConfiguration",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter26ContinuousCollisionPlannerO4plan3for7gravity8timeStep13configurationAA0bC4PlanVAA5WorldV_AA6VectorVSfAA0bC13ConfigurationVtKFZ",
+            "mangledName": "$s6Matter26ContinuousCollisionPlannerO4plan3for7gravity8timeStep13configurationAA0bC4PlanVAA5WorldV_AA6VectorVSfAA0bC13ConfigurationVtKFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          }
+        ],
+        "declKind": "Enum",
+        "usr": "s:6Matter26ContinuousCollisionPlannerO",
+        "mangledName": "$s6Matter26ContinuousCollisionPlannerO",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "isEnumExhaustive": true,
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "Engine",
         "printedName": "Engine",
         "children": [
@@ -20389,9 +21543,57 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "continuousCollisionConfiguration",
+            "printedName": "continuousCollisionConfiguration",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionConfiguration",
+                "printedName": "Matter.ContinuousCollisionConfiguration",
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter6EngineC32continuousCollisionConfigurationAA010ContinuousdE0Vvp",
+            "mangledName": "$s6Matter6EngineC32continuousCollisionConfigurationAA010ContinuousdE0Vvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "Final",
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContinuousCollisionConfiguration",
+                    "printedName": "Matter.ContinuousCollisionConfiguration",
+                    "usr": "s:6Matter32ContinuousCollisionConfigurationV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter6EngineC32continuousCollisionConfigurationAA010ContinuousdE0Vvg",
+                "mangledName": "$s6Matter6EngineC32continuousCollisionConfigurationAA010ContinuousdE0Vvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Final",
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
-            "printedName": "init(world:gravity:fixedTimeStep:solverConfiguration:constraintSolverConfiguration:sleepingConfiguration:)",
+            "printedName": "init(world:gravity:fixedTimeStep:solverConfiguration:constraintSolverConfiguration:sleepingConfiguration:continuousCollisionConfiguration:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -20440,11 +21642,18 @@
                 "printedName": "Matter.SleepingConfiguration",
                 "hasDefaultArg": true,
                 "usr": "s:6Matter21SleepingConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionConfiguration",
+                "printedName": "Matter.ContinuousCollisionConfiguration",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV"
               }
             ],
             "declKind": "Constructor",
-            "usr": "s:6Matter6EngineC5world7gravity13fixedTimeStep19solverConfiguration016constraintSolverI008sleepingI0AcA5WorldV_AA6VectorVSfAA0kI0VAA010ConstraintkI0VAA08SleepingI0VtKcfc",
-            "mangledName": "$s6Matter6EngineC5world7gravity13fixedTimeStep19solverConfiguration016constraintSolverI008sleepingI0AcA5WorldV_AA6VectorVSfAA0kI0VAA010ConstraintkI0VAA08SleepingI0VtKcfc",
+            "usr": "s:6Matter6EngineC5world7gravity13fixedTimeStep19solverConfiguration016constraintSolverI008sleepingI0019continuousCollisionI0AcA5WorldV_AA6VectorVSfAA0kI0VAA010ConstraintkI0VAA08SleepingI0VAA010ContinuousnI0VtKcfc",
+            "mangledName": "$s6Matter6EngineC5world7gravity13fixedTimeStep19solverConfiguration016constraintSolverI008sleepingI0019continuousCollisionI0AcA5WorldV_AA6VectorVSfAA0kI0VAA010ConstraintkI0VAA08SleepingI0VAA010ContinuousnI0VtKcfc",
             "moduleName": "Matter",
             "throwing": true,
             "init_kind": "Designated"
@@ -25053,6 +26262,68 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "continuousCollisionPlans",
+            "printedName": "continuousCollisionPlans",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.ContinuousCollisionPlan]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "ContinuousCollisionPlan",
+                    "printedName": "Matter.ContinuousCollisionPlan",
+                    "usr": "s:6Matter23ContinuousCollisionPlanV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter12RunnerUpdateV24continuousCollisionPlansSayAA010ContinuousE4PlanVGvp",
+            "mangledName": "$s6Matter12RunnerUpdateV24continuousCollisionPlansSayAA010ContinuousE4PlanVGvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.ContinuousCollisionPlan]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "ContinuousCollisionPlan",
+                        "printedName": "Matter.ContinuousCollisionPlan",
+                        "usr": "s:6Matter23ContinuousCollisionPlanV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter12RunnerUpdateV24continuousCollisionPlansSayAA010ContinuousE4PlanVGvg",
+                "mangledName": "$s6Matter12RunnerUpdateV24continuousCollisionPlansSayAA010ContinuousE4PlanVGvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Function",
             "name": "__derived_struct_equals",
             "printedName": "__derived_struct_equals(_:_:)",
@@ -29584,6 +30855,43 @@
           },
           {
             "kind": "Var",
+            "name": "invalidContinuousCollisionConfiguration",
+            "printedName": "invalidContinuousCollisionConfiguration",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterError.Type) -> Matter.MatterError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterError",
+                    "printedName": "Matter.MatterError",
+                    "usr": "s:6Matter0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterError",
+                        "printedName": "Matter.MatterError",
+                        "usr": "s:6Matter0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A5ErrorO39invalidContinuousCollisionConfigurationyA2CmF",
+            "mangledName": "$s6Matter0A5ErrorO39invalidContinuousCollisionConfigurationyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
             "name": "invalidConstraint",
             "printedName": "invalidConstraint",
             "children": [
@@ -32080,7 +33388,7 @@
           {
             "kind": "Function",
             "name": "stepWithEvents",
-            "printedName": "stepWithEvents(world:collisionTracker:collisionSolverState:sleepingState:gravity:timeStep:solver:constraintSolver:sleeping:)",
+            "printedName": "stepWithEvents(world:collisionTracker:collisionSolverState:sleepingState:gravity:timeStep:solver:constraintSolver:sleeping:continuousCollision:)",
             "children": [
               {
                 "kind": "TypeNominal",
@@ -32148,11 +33456,18 @@
                 "printedName": "Matter.SleepingConfiguration",
                 "hasDefaultArg": true,
                 "usr": "s:6Matter21SleepingConfigurationV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "ContinuousCollisionConfiguration",
+                "printedName": "Matter.ContinuousCollisionConfiguration",
+                "hasDefaultArg": true,
+                "usr": "s:6Matter32ContinuousCollisionConfigurationV"
               }
             ],
             "declKind": "Func",
-            "usr": "s:6Matter16ReferencePhysicsO14stepWithEvents5world16collisionTracker0H11SolverState08sleepingK07gravity8timeStep6solver010constraintJ00L0AA16SimulationResultVAA5WorldVz_AA09CollisionI0VzAA0ujK0VzAA08SleepingK0VzAA6VectorVSfAA0J13ConfigurationVAA010ConstraintjX0VAA0vX0VtKFZ",
-            "mangledName": "$s6Matter16ReferencePhysicsO14stepWithEvents5world16collisionTracker0H11SolverState08sleepingK07gravity8timeStep6solver010constraintJ00L0AA16SimulationResultVAA5WorldVz_AA09CollisionI0VzAA0ujK0VzAA08SleepingK0VzAA6VectorVSfAA0J13ConfigurationVAA010ConstraintjX0VAA0vX0VtKFZ",
+            "usr": "s:6Matter16ReferencePhysicsO14stepWithEvents5world16collisionTracker0H11SolverState08sleepingK07gravity8timeStep6solver010constraintJ00L019continuousCollisionAA16SimulationResultVAA5WorldVz_AA0sI0VzAA0sjK0VzAA08SleepingK0VzAA6VectorVSfAA0J13ConfigurationVAA010ConstraintjY0VAA0wY0VAA010ContinuoussY0VtKFZ",
+            "mangledName": "$s6Matter16ReferencePhysicsO14stepWithEvents5world16collisionTracker0H11SolverState08sleepingK07gravity8timeStep6solver010constraintJ00L019continuousCollisionAA16SimulationResultVAA5WorldVz_AA0sI0VzAA0sjK0VzAA08SleepingK0VzAA6VectorVSfAA0J13ConfigurationVAA010ConstraintjY0VAA0wY0VAA010ContinuoussY0VtKFZ",
             "moduleName": "Matter",
             "static": true,
             "throwing": true,
