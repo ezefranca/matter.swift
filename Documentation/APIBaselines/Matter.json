@@ -9597,6 +9597,746 @@
       },
       {
         "kind": "TypeDecl",
+        "name": "CompositeID",
+        "printedName": "CompositeID",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "rawValue",
+            "printedName": "rawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UInt64",
+                "printedName": "Swift.UInt64",
+                "usr": "s:s6UInt64V"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter11CompositeIDV8rawValues6UInt64Vvp",
+            "mangledName": "$s6Matter11CompositeIDV8rawValues6UInt64Vvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt64",
+                    "printedName": "Swift.UInt64",
+                    "usr": "s:s6UInt64V"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter11CompositeIDV8rawValues6UInt64Vvg",
+                "mangledName": "$s6Matter11CompositeIDV8rawValues6UInt64Vvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(rawValue:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "UInt64",
+                "printedName": "Swift.UInt64",
+                "usr": "s:s6UInt64V"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter11CompositeIDV8rawValueACs6UInt64V_tcfc",
+            "mangledName": "$s6Matter11CompositeIDV8rawValueACs6UInt64V_tcfc",
+            "moduleName": "Matter",
+            "init_kind": "Designated"
+          },
+          {
+            "kind": "Function",
+            "name": "<",
+            "printedName": "<(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter11CompositeIDV1loiySbAC_ACtFZ",
+            "mangledName": "$s6Matter11CompositeIDV1loiySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "TypeAlias",
+            "name": "RawValue",
+            "printedName": "RawValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "UInt64",
+                "printedName": "Swift.UInt64",
+                "usr": "s:s6UInt64V"
+              }
+            ],
+            "declKind": "TypeAlias",
+            "usr": "s:6Matter11CompositeIDV8RawValuea",
+            "mangledName": "$s6Matter11CompositeIDV8RawValuea",
+            "moduleName": "Matter",
+            "implicit": true
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter11CompositeIDV",
+        "mangledName": "$s6Matter11CompositeIDV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "BitwiseCopyable",
+            "printedName": "BitwiseCopyable",
+            "usr": "s:s15BitwiseCopyableP",
+            "mangledName": "$ss15BitwiseCopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Comparable",
+            "printedName": "Comparable",
+            "usr": "s:SL",
+            "mangledName": "$sSL"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "RawRepresentable",
+            "printedName": "RawRepresentable",
+            "children": [
+              {
+                "kind": "TypeWitness",
+                "name": "RawValue",
+                "printedName": "RawValue",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "UInt64",
+                    "printedName": "Swift.UInt64",
+                    "usr": "s:s6UInt64V"
+                  }
+                ]
+              }
+            ],
+            "usr": "s:SY",
+            "mangledName": "$sSY"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
+        "name": "Composite",
+        "printedName": "Composite",
+        "children": [
+          {
+            "kind": "Var",
+            "name": "id",
+            "printedName": "id",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter9CompositeV2idAA0B2IDVvp",
+            "mangledName": "$s6Matter9CompositeV2idAA0B2IDVvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter9CompositeV2idAA0B2IDVvg",
+                "mangledName": "$s6Matter9CompositeV2idAA0B2IDVvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "label",
+            "printedName": "label",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "usr": "s:SS"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter9CompositeV5labelSSvp",
+            "mangledName": "$s6Matter9CompositeV5labelSSvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter9CompositeV5labelSSvg",
+                "mangledName": "$s6Matter9CompositeV5labelSSvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "metadata",
+            "printedName": "metadata",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "usr": "s:SD"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter9CompositeV8metadataSDyS2SGvp",
+            "mangledName": "$s6Matter9CompositeV8metadataSDyS2SGvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasStorage"
+            ],
+            "isLet": true,
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Dictionary",
+                    "printedName": "[Swift.String : Swift.String]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "String",
+                        "printedName": "Swift.String",
+                        "usr": "s:SS"
+                      }
+                    ],
+                    "usr": "s:SD"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter9CompositeV8metadataSDyS2SGvg",
+                "mangledName": "$s6Matter9CompositeV8metadataSDyS2SGvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "parent",
+            "printedName": "parent",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.CompositeID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter9CompositeV6parentAA0B2IDVSgvp",
+            "mangledName": "$s6Matter9CompositeV6parentAA0B2IDVSgvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "HasInitialValue",
+              "SetterAccess",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Optional",
+                    "printedName": "Matter.CompositeID?",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CompositeID",
+                        "printedName": "Matter.CompositeID",
+                        "usr": "s:6Matter11CompositeIDV"
+                      }
+                    ],
+                    "usr": "s:Sq"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter9CompositeV6parentAA0B2IDVSgvg",
+                "mangledName": "$s6Matter9CompositeV6parentAA0B2IDVSgvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Var",
+            "name": "bodyIDs",
+            "printedName": "bodyIDs",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter9CompositeV7bodyIDsSayAA6BodyIDVGvp",
+            "mangledName": "$s6Matter9CompositeV7bodyIDsSayAA6BodyIDVGvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "SetterAccess",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.BodyID]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyID",
+                        "printedName": "Matter.BodyID",
+                        "usr": "s:6Matter6BodyIDV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter9CompositeV7bodyIDsSayAA6BodyIDVGvg",
+                "mangledName": "$s6Matter9CompositeV7bodyIDsSayAA6BodyIDVGvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "__derived_struct_equals",
+            "printedName": "__derived_struct_equals(_:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Composite",
+                "printedName": "Matter.Composite",
+                "usr": "s:6Matter9CompositeV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Composite",
+                "printedName": "Matter.Composite",
+                "usr": "s:6Matter9CompositeV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter9CompositeV23__derived_struct_equalsySbAC_ACtFZ",
+            "mangledName": "$s6Matter9CompositeV23__derived_struct_equalsySbAC_ACtFZ",
+            "moduleName": "Matter",
+            "static": true,
+            "implicit": true,
+            "declAttributes": [
+              "Implements"
+            ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "encode",
+            "printedName": "encode(to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Encoder",
+                "printedName": "any Swift.Encoder",
+                "usr": "s:s7EncoderP"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter9CompositeV6encode2toys7Encoder_p_tKF",
+            "mangledName": "$s6Matter9CompositeV6encode2toys7Encoder_p_tKF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "hash",
+            "printedName": "hash(into:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Hasher",
+                "printedName": "Swift.Hasher",
+                "paramValueOwnership": "InOut",
+                "usr": "s:s6HasherV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter9CompositeV4hash4intoys6HasherVz_tF",
+            "mangledName": "$s6Matter9CompositeV4hash4intoys6HasherVz_tF",
+            "moduleName": "Matter",
+            "implicit": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Var",
+            "name": "hashValue",
+            "printedName": "hashValue",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter9CompositeV9hashValueSivp",
+            "mangledName": "$s6Matter9CompositeV9hashValueSivp",
+            "moduleName": "Matter",
+            "implicit": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter9CompositeV9hashValueSivg",
+                "mangledName": "$s6Matter9CompositeV9hashValueSivg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Constructor",
+            "name": "init",
+            "printedName": "init(from:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Composite",
+                "printedName": "Matter.Composite",
+                "usr": "s:6Matter9CompositeV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Decoder",
+                "printedName": "any Swift.Decoder",
+                "usr": "s:s7DecoderP"
+              }
+            ],
+            "declKind": "Constructor",
+            "usr": "s:6Matter9CompositeV4fromACs7Decoder_p_tKcfc",
+            "mangledName": "$s6Matter9CompositeV4fromACs7Decoder_p_tKcfc",
+            "moduleName": "Matter",
+            "implicit": true,
+            "throwing": true,
+            "init_kind": "Designated"
+          }
+        ],
+        "declKind": "Struct",
+        "usr": "s:6Matter9CompositeV",
+        "mangledName": "$s6Matter9CompositeV",
+        "moduleName": "Matter",
+        "declAttributes": [
+          "Frozen"
+        ],
+        "conformances": [
+          {
+            "kind": "Conformance",
+            "name": "Copyable",
+            "printedName": "Copyable",
+            "usr": "s:s8CopyableP",
+            "mangledName": "$ss8CopyableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Decodable",
+            "printedName": "Decodable",
+            "usr": "s:Se",
+            "mangledName": "$sSe"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Encodable",
+            "printedName": "Encodable",
+            "usr": "s:SE",
+            "mangledName": "$sSE"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Equatable",
+            "printedName": "Equatable",
+            "usr": "s:SQ",
+            "mangledName": "$sSQ"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Escapable",
+            "printedName": "Escapable",
+            "usr": "s:s9EscapableP",
+            "mangledName": "$ss9EscapableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Hashable",
+            "printedName": "Hashable",
+            "usr": "s:SH",
+            "mangledName": "$sSH"
+          },
+          {
+            "kind": "Conformance",
+            "name": "Sendable",
+            "printedName": "Sendable",
+            "usr": "s:s8SendableP",
+            "mangledName": "$ss8SendableP"
+          },
+          {
+            "kind": "Conformance",
+            "name": "SendableMetatype",
+            "printedName": "SendableMetatype",
+            "usr": "s:s16SendableMetatypeP",
+            "mangledName": "$ss16SendableMetatypeP"
+          }
+        ]
+      },
+      {
+        "kind": "TypeDecl",
         "name": "Engine",
         "printedName": "Engine",
         "children": [
@@ -9839,6 +10579,65 @@
           },
           {
             "kind": "Function",
+            "name": "add",
+            "printedName": "add(_:to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyDefinition]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyDefinition",
+                    "printedName": "Matter.BodyDefinition",
+                    "usr": "s:6Matter14BodyDefinitionV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.CompositeID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EngineC3add_2toSayAA6BodyIDVGSayAA0E10DefinitionVG_AA09CompositeF0VSgtKF",
+            "mangledName": "$s6Matter6EngineC3add_2toSayAA6BodyIDVGSayAA0E10DefinitionVG_AA09CompositeF0VSgtKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "applyForce",
             "printedName": "applyForce(_:to:)",
             "children": [
@@ -9987,6 +10786,112 @@
           },
           {
             "kind": "Function",
+            "name": "updateBodies",
+            "printedName": "updateBodies(withIDs:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(inout Matter.Body) throws -> Swift.Void",
+                "children": [
+                  {
+                    "kind": "TypeNameAlias",
+                    "name": "Void",
+                    "printedName": "Swift.Void",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Body",
+                    "printedName": "Matter.Body",
+                    "usr": "s:6Matter4BodyV"
+                  }
+                ],
+                "typeAttributes": [
+                  "noescape"
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EngineC12updateBodies7withIDs_ySayAA6BodyIDVG_yAA0G0VzYbKXEtKF",
+            "mangledName": "$s6Matter6EngineC12updateBodies7withIDs_ySayAA6BodyIDVG_yAA0G0VzYbKXEtKF",
+            "moduleName": "Matter",
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "updateWorld",
+            "printedName": "updateWorld(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(inout Matter.World) throws -> Swift.Void",
+                "children": [
+                  {
+                    "kind": "TypeNameAlias",
+                    "name": "Void",
+                    "printedName": "Swift.Void",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "World",
+                    "printedName": "Matter.World",
+                    "usr": "s:6Matter5WorldV"
+                  }
+                ],
+                "typeAttributes": [
+                  "noescape"
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EngineC11updateWorldyyyAA0D0VzYbKXEKF",
+            "mangledName": "$s6Matter6EngineC11updateWorldyyyAA0D0VzYbKXEKF",
+            "moduleName": "Matter",
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
             "name": "removeBody",
             "printedName": "removeBody(withID:)",
             "children": [
@@ -10018,6 +10923,226 @@
             "declAttributes": [
               "DiscardableResult"
             ],
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeBodies",
+            "printedName": "removeBodies(withIDs:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.Body]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Body",
+                    "printedName": "Matter.Body",
+                    "usr": "s:6Matter4BodyV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EngineC12removeBodies7withIDsSayAA4BodyVGSayAA0G2IDVG_tKF",
+            "mangledName": "$s6Matter6EngineC12removeBodies7withIDsSayAA4BodyVGSayAA0G2IDVG_tKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "addComposite",
+            "printedName": "addComposite(label:metadata:parent:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.CompositeID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EngineC12addComposite5label8metadata6parentAA0D2IDVSS_SDyS2SGAISgtKF",
+            "mangledName": "$s6Matter6EngineC12addComposite5label8metadata6parentAA0D2IDVSS_SDyS2SGAISgtKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assignBody",
+            "printedName": "assignBody(_:to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BodyID",
+                "printedName": "Matter.BodyID",
+                "usr": "s:6Matter6BodyIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EngineC10assignBody_2toyAA0D2IDV_AA09CompositeF0VtKF",
+            "mangledName": "$s6Matter6EngineC10assignBody_2toyAA0D2IDV_AA09CompositeF0VtKF",
+            "moduleName": "Matter",
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "reparentComposite",
+            "printedName": "reparentComposite(_:to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.CompositeID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EngineC17reparentComposite_2toyAA0D2IDV_AGSgtKF",
+            "mangledName": "$s6Matter6EngineC17reparentComposite_2toyAA0D2IDV_AGSgtKF",
+            "moduleName": "Matter",
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeComposite",
+            "printedName": "removeComposite(withID:removeBodies:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.Composite]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Composite",
+                    "printedName": "Matter.Composite",
+                    "usr": "s:6Matter9CompositeV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter6EngineC15removeComposite6withID0C6BodiesSayAA0D0VGAA0dF0V_SbtKF",
+            "mangledName": "$s6Matter6EngineC15removeComposite6withID0C6BodiesSayAA0D0VGAA0dF0V_SbtKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
             "funcSelfKind": "NonMutating"
           },
           {
@@ -14322,6 +15447,143 @@
           },
           {
             "kind": "Var",
+            "name": "unknownComposite",
+            "printedName": "unknownComposite",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterError.Type) -> (Matter.CompositeID) -> Matter.MatterError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Matter.CompositeID) -> Matter.MatterError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterError",
+                        "printedName": "Matter.MatterError",
+                        "usr": "s:6Matter0A5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "CompositeID",
+                        "printedName": "Matter.CompositeID",
+                        "usr": "s:6Matter11CompositeIDV"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterError",
+                        "printedName": "Matter.MatterError",
+                        "usr": "s:6Matter0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A5ErrorO16unknownCompositeyAcA0D2IDVcACmF",
+            "mangledName": "$s6Matter0A5ErrorO16unknownCompositeyAcA0D2IDVcACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "duplicateBody",
+            "printedName": "duplicateBody",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterError.Type) -> (Matter.BodyID) -> Matter.MatterError",
+                "children": [
+                  {
+                    "kind": "TypeFunc",
+                    "name": "Function",
+                    "printedName": "(Matter.BodyID) -> Matter.MatterError",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterError",
+                        "printedName": "Matter.MatterError",
+                        "usr": "s:6Matter0A5ErrorO"
+                      },
+                      {
+                        "kind": "TypeNominal",
+                        "name": "BodyID",
+                        "printedName": "Matter.BodyID",
+                        "usr": "s:6Matter6BodyIDV"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterError",
+                        "printedName": "Matter.MatterError",
+                        "usr": "s:6Matter0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A5ErrorO13duplicateBodyyAcA0D2IDVcACmF",
+            "mangledName": "$s6Matter0A5ErrorO13duplicateBodyyAcA0D2IDVcACmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "compositeCycle",
+            "printedName": "compositeCycle",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterError.Type) -> Matter.MatterError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterError",
+                    "printedName": "Matter.MatterError",
+                    "usr": "s:6Matter0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterError",
+                        "printedName": "Matter.MatterError",
+                        "usr": "s:6Matter0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A5ErrorO14compositeCycleyA2CmF",
+            "mangledName": "$s6Matter0A5ErrorO14compositeCycleyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
             "name": "bodyIdentifierExhausted",
             "printedName": "bodyIdentifierExhausted",
             "children": [
@@ -14355,6 +15617,43 @@
             "declKind": "EnumElement",
             "usr": "s:6Matter0A5ErrorO23bodyIdentifierExhaustedyA2CmF",
             "mangledName": "$s6Matter0A5ErrorO23bodyIdentifierExhaustedyA2CmF",
+            "moduleName": "Matter"
+          },
+          {
+            "kind": "Var",
+            "name": "compositeIdentifierExhausted",
+            "printedName": "compositeIdentifierExhausted",
+            "children": [
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(Matter.MatterError.Type) -> Matter.MatterError",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "MatterError",
+                    "printedName": "Matter.MatterError",
+                    "usr": "s:6Matter0A5ErrorO"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Metatype",
+                    "printedName": "Matter.MatterError.Type",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "MatterError",
+                        "printedName": "Matter.MatterError",
+                        "usr": "s:6Matter0A5ErrorO"
+                      }
+                    ]
+                  }
+                ]
+              }
+            ],
+            "declKind": "EnumElement",
+            "usr": "s:6Matter0A5ErrorO28compositeIdentifierExhaustedyA2CmF",
+            "mangledName": "$s6Matter0A5ErrorO28compositeIdentifierExhaustedyA2CmF",
             "moduleName": "Matter"
           },
           {
@@ -14522,6 +15821,68 @@
             ]
           },
           {
+            "kind": "Var",
+            "name": "composites",
+            "printedName": "composites",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.Composite]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Composite",
+                    "printedName": "Matter.Composite",
+                    "usr": "s:6Matter9CompositeV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter5WorldV10compositesSayAA9CompositeVGvp",
+            "mangledName": "$s6Matter5WorldV10compositesSayAA9CompositeVGvp",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "SetterAccess",
+              "HasStorage"
+            ],
+            "hasStorage": true,
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Array",
+                    "printedName": "[Matter.Composite]",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Composite",
+                        "printedName": "Matter.Composite",
+                        "usr": "s:6Matter9CompositeV"
+                      }
+                    ],
+                    "usr": "s:Sa"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter5WorldV10compositesSayAA9CompositeVGvg",
+                "mangledName": "$s6Matter5WorldV10compositesSayAA9CompositeVGvg",
+                "moduleName": "Matter",
+                "implicit": true,
+                "declAttributes": [
+                  "Transparent"
+                ],
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
             "kind": "Constructor",
             "name": "init",
             "printedName": "init()",
@@ -14560,6 +15921,65 @@
             "declKind": "Func",
             "usr": "s:6Matter5WorldV3addyAA6BodyIDVAA0D10DefinitionVKF",
             "mangledName": "$s6Matter5WorldV3addyAA6BodyIDVAA0D10DefinitionVKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "add",
+            "printedName": "add(_:to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyDefinition]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyDefinition",
+                    "printedName": "Matter.BodyDefinition",
+                    "usr": "s:6Matter14BodyDefinitionV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.CompositeID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV3add_2toSayAA6BodyIDVGSayAA0E10DefinitionVG_AA09CompositeF0VSgtKF",
+            "mangledName": "$s6Matter5WorldV3add_2toSayAA6BodyIDVGSayAA0E10DefinitionVG_AA09CompositeF0VSgtKF",
             "moduleName": "Matter",
             "declAttributes": [
               "DiscardableResult"
@@ -14749,6 +16169,66 @@
           },
           {
             "kind": "Function",
+            "name": "updateBodies",
+            "printedName": "updateBodies(withIDs:_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeFunc",
+                "name": "Function",
+                "printedName": "(inout Matter.Body) throws -> Swift.Void",
+                "children": [
+                  {
+                    "kind": "TypeNameAlias",
+                    "name": "Void",
+                    "printedName": "Swift.Void",
+                    "children": [
+                      {
+                        "kind": "TypeNominal",
+                        "name": "Void",
+                        "printedName": "()"
+                      }
+                    ]
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Body",
+                    "printedName": "Matter.Body",
+                    "usr": "s:6Matter4BodyV"
+                  }
+                ],
+                "typeAttributes": [
+                  "noescape"
+                ]
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV12updateBodies7withIDs_ySayAA6BodyIDVG_yAA0G0VzKXEtKF",
+            "mangledName": "$s6Matter5WorldV12updateBodies7withIDs_ySayAA6BodyIDVG_yAA0G0VzKXEtKF",
+            "moduleName": "Matter",
+            "throwing": true,
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
             "name": "removeBody",
             "printedName": "removeBody(withID:)",
             "children": [
@@ -14780,6 +16260,50 @@
             "declAttributes": [
               "DiscardableResult"
             ],
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeBodies",
+            "printedName": "removeBodies(withIDs:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.Body]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Body",
+                    "printedName": "Matter.Body",
+                    "usr": "s:6Matter4BodyV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.BodyID]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "BodyID",
+                    "printedName": "Matter.BodyID",
+                    "usr": "s:6Matter6BodyIDV"
+                  }
+                ],
+                "usr": "s:Sa"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV12removeBodies7withIDsSayAA4BodyVGSayAA0G2IDVG_tKF",
+            "mangledName": "$s6Matter5WorldV12removeBodies7withIDsSayAA4BodyVGSayAA0G2IDVG_tKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
             "funcSelfKind": "Mutating"
           },
           {
@@ -14838,6 +16362,431 @@
                 "declKind": "Accessor",
                 "usr": "s:6Matter5WorldV9bodyCountSivg",
                 "mangledName": "$s6Matter5WorldV9bodyCountSivg",
+                "moduleName": "Matter",
+                "accessorKind": "get"
+              }
+            ]
+          },
+          {
+            "kind": "Function",
+            "name": "addComposite",
+            "printedName": "addComposite(label:metadata:parent:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "String",
+                "printedName": "Swift.String",
+                "hasDefaultArg": true,
+                "usr": "s:SS"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Dictionary",
+                "printedName": "[Swift.String : Swift.String]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  },
+                  {
+                    "kind": "TypeNominal",
+                    "name": "String",
+                    "printedName": "Swift.String",
+                    "usr": "s:SS"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:SD"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.CompositeID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV12addComposite5label8metadata6parentAA0D2IDVSS_SDyS2SGAISgtKF",
+            "mangledName": "$s6Matter5WorldV12addComposite5label8metadata6parentAA0D2IDVSS_SDyS2SGAISgtKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "composite",
+            "printedName": "composite(withID:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.Composite?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Composite",
+                    "printedName": "Matter.Composite",
+                    "usr": "s:6Matter9CompositeV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV9composite6withIDAA9CompositeVSgAA0fE0V_tF",
+            "mangledName": "$s6Matter5WorldV9composite6withIDAA9CompositeVSgAA0fE0V_tF",
+            "moduleName": "Matter",
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "childComposites",
+            "printedName": "childComposites(of:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.Composite]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Composite",
+                    "printedName": "Matter.Composite",
+                    "usr": "s:6Matter9CompositeV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.CompositeID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "hasDefaultArg": true,
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV15childComposites2ofSayAA9CompositeVGAA0F2IDVSg_tF",
+            "mangledName": "$s6Matter5WorldV15childComposites2ofSayAA9CompositeVGAA0F2IDVSg_tF",
+            "moduleName": "Matter",
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "composite",
+            "printedName": "composite(containing:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.Composite?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Composite",
+                    "printedName": "Matter.Composite",
+                    "usr": "s:6Matter9CompositeV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BodyID",
+                "printedName": "Matter.BodyID",
+                "usr": "s:6Matter6BodyIDV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV9composite10containingAA9CompositeVSgAA6BodyIDV_tF",
+            "mangledName": "$s6Matter5WorldV9composite10containingAA9CompositeVSgAA6BodyIDV_tF",
+            "moduleName": "Matter",
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "assignBody",
+            "printedName": "assignBody(_:to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BodyID",
+                "printedName": "Matter.BodyID",
+                "usr": "s:6Matter6BodyIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV10assignBody_2toyAA0D2IDV_AA09CompositeF0VtKF",
+            "mangledName": "$s6Matter5WorldV10assignBody_2toyAA0D2IDV_AA09CompositeF0VtKF",
+            "moduleName": "Matter",
+            "throwing": true,
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "unassignBody",
+            "printedName": "unassignBody(_:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.CompositeID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "usr": "s:Sq"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "BodyID",
+                "printedName": "Matter.BodyID",
+                "usr": "s:6Matter6BodyIDV"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV12unassignBodyyAA11CompositeIDVSgAA0dF0VKF",
+            "mangledName": "$s6Matter5WorldV12unassignBodyyAA11CompositeIDVSgAA0dF0VKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "bodies",
+            "printedName": "bodies(in:includingDescendants:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.Body]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Body",
+                    "printedName": "Matter.Body",
+                    "usr": "s:6Matter4BodyV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV6bodies2in20includingDescendantsSayAA4BodyVGAA11CompositeIDV_SbtKF",
+            "mangledName": "$s6Matter5WorldV6bodies2in20includingDescendantsSayAA4BodyVGAA11CompositeIDV_SbtKF",
+            "moduleName": "Matter",
+            "throwing": true,
+            "funcSelfKind": "NonMutating"
+          },
+          {
+            "kind": "Function",
+            "name": "reparentComposite",
+            "printedName": "reparentComposite(_:to:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Optional",
+                "printedName": "Matter.CompositeID?",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "CompositeID",
+                    "printedName": "Matter.CompositeID",
+                    "usr": "s:6Matter11CompositeIDV"
+                  }
+                ],
+                "usr": "s:Sq"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV17reparentComposite_2toyAA0D2IDV_AGSgtKF",
+            "mangledName": "$s6Matter5WorldV17reparentComposite_2toyAA0D2IDV_AGSgtKF",
+            "moduleName": "Matter",
+            "throwing": true,
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeComposite",
+            "printedName": "removeComposite(withID:removeBodies:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Array",
+                "printedName": "[Matter.Composite]",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Composite",
+                    "printedName": "Matter.Composite",
+                    "usr": "s:6Matter9CompositeV"
+                  }
+                ],
+                "usr": "s:Sa"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "CompositeID",
+                "printedName": "Matter.CompositeID",
+                "usr": "s:6Matter11CompositeIDV"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV15removeComposite6withID0C6BodiesSayAA0D0VGAA0dF0V_SbtKF",
+            "mangledName": "$s6Matter5WorldV15removeComposite6withID0C6BodiesSayAA0D0VGAA0dF0V_SbtKF",
+            "moduleName": "Matter",
+            "declAttributes": [
+              "DiscardableResult"
+            ],
+            "throwing": true,
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Function",
+            "name": "removeAllComposites",
+            "printedName": "removeAllComposites(removeBodies:resetIdentifiers:)",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Void",
+                "printedName": "()"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              },
+              {
+                "kind": "TypeNominal",
+                "name": "Bool",
+                "printedName": "Swift.Bool",
+                "hasDefaultArg": true,
+                "usr": "s:Sb"
+              }
+            ],
+            "declKind": "Func",
+            "usr": "s:6Matter5WorldV19removeAllComposites0C6Bodies16resetIdentifiersySb_SbtF",
+            "mangledName": "$s6Matter5WorldV19removeAllComposites0C6Bodies16resetIdentifiersySb_SbtF",
+            "moduleName": "Matter",
+            "funcSelfKind": "Mutating"
+          },
+          {
+            "kind": "Var",
+            "name": "compositeCount",
+            "printedName": "compositeCount",
+            "children": [
+              {
+                "kind": "TypeNominal",
+                "name": "Int",
+                "printedName": "Swift.Int",
+                "usr": "s:Si"
+              }
+            ],
+            "declKind": "Var",
+            "usr": "s:6Matter5WorldV14compositeCountSivp",
+            "mangledName": "$s6Matter5WorldV14compositeCountSivp",
+            "moduleName": "Matter",
+            "accessors": [
+              {
+                "kind": "Accessor",
+                "name": "Get",
+                "printedName": "Get()",
+                "children": [
+                  {
+                    "kind": "TypeNominal",
+                    "name": "Int",
+                    "printedName": "Swift.Int",
+                    "usr": "s:Si"
+                  }
+                ],
+                "declKind": "Accessor",
+                "usr": "s:6Matter5WorldV14compositeCountSivg",
+                "mangledName": "$s6Matter5WorldV14compositeCountSivg",
                 "moduleName": "Matter",
                 "accessorKind": "get"
               }

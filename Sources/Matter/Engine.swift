@@ -46,6 +46,15 @@ public actor Engine {
         try world.add(definition)
     }
 
+    /// Adds validated bodies atomically and optionally assigns them to a composite.
+    @discardableResult
+    public func add(
+        _ definitions: [BodyDefinition],
+        to composite: CompositeID? = nil
+    ) throws -> [BodyID] {
+        try world.add(definitions, to: composite)
+    }
+
     /// Accumulates a force for the next fixed simulation tick.
     public func applyForce(_ force: Vector, to body: BodyID) throws {
         try world.applyForce(force, to: body)
@@ -69,10 +78,64 @@ public actor Engine {
         try world.updateBody(withID: identifier, update)
     }
 
+    /// Mutates multiple actor-owned bodies atomically in one actor round trip.
+    public func updateBodies(
+        withIDs identifiers: [BodyID],
+        _ update: @Sendable (inout Body) throws -> Void
+    ) throws {
+        try world.updateBodies(withIDs: identifiers, update)
+    }
+
+    /// Applies an arbitrary transactional mutation in one actor round trip.
+    ///
+    /// If the closure throws, the actor-owned world remains unchanged.
+    public func updateWorld(
+        _ update: @Sendable (inout World) throws -> Void
+    ) throws {
+        var candidate = world
+        try update(&candidate)
+        world = candidate
+    }
+
     /// Removes and returns an actor-owned body when it exists.
     @discardableResult
     public func removeBody(withID identifier: BodyID) -> Body? {
         world.removeBody(withID: identifier)
+    }
+
+    /// Removes multiple actor-owned bodies atomically.
+    @discardableResult
+    public func removeBodies(withIDs identifiers: [BodyID]) throws -> [Body] {
+        try world.removeBodies(withIDs: identifiers)
+    }
+
+    /// Adds a composite to the actor-owned world hierarchy.
+    @discardableResult
+    public func addComposite(
+        label: String = "Composite",
+        metadata: [String: String] = [:],
+        parent: CompositeID? = nil
+    ) throws -> CompositeID {
+        try world.addComposite(label: label, metadata: metadata, parent: parent)
+    }
+
+    /// Assigns an actor-owned body directly to a composite.
+    public func assignBody(_ body: BodyID, to composite: CompositeID) throws {
+        try world.assignBody(body, to: composite)
+    }
+
+    /// Moves a composite below a new parent.
+    public func reparentComposite(_ composite: CompositeID, to parent: CompositeID?) throws {
+        try world.reparentComposite(composite, to: parent)
+    }
+
+    /// Removes a composite hierarchy and optionally its assigned bodies.
+    @discardableResult
+    public func removeComposite(
+        withID identifier: CompositeID,
+        removeBodies: Bool = false
+    ) throws -> [Composite] {
+        try world.removeComposite(withID: identifier, removeBodies: removeBodies)
     }
 
     /// Replaces the actor-owned world and clears collision lifecycle state.

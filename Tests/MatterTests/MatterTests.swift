@@ -120,6 +120,13 @@ struct MatterTests {
         )
         #expect(hits.first?.body == first)
         #expect(hits.first?.distance ?? -1 >= 0)
+
+        let group = try world.addComposite(label: "Public Group")
+        try world.assignBody(first, to: group)
+        #expect(try world.bodies(in: group).map(\.id) == [first])
+        try world.updateBodies(withIDs: [first, second]) { body in
+            try body.translate(by: Vector(x: 1, y: 0))
+        }
     }
 
     #if canImport(Metal)

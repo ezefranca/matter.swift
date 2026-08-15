@@ -104,7 +104,8 @@ struct MatterValidationTests {
     @Test("A decoded exhausted identifier sequence cannot wrap")
     func exhaustedBodyIdentifiers() throws {
         let data = Data(
-            #"{"bodies":[],"nextBodyIdentifier":18446744073709551615}"#.utf8
+            #"{"bodies":[],"composites":[],"nextBodyIdentifier":18446744073709551615,"nextCompositeIdentifier":0}"#
+                .utf8
         )
         var world = try JSONDecoder().decode(World.self, from: data)
         let definition = try Bodies.circle(at: .zero, radius: 1)

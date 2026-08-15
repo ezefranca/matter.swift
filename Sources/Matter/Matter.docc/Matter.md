@@ -41,6 +41,12 @@ For reproducible reference calculations and tests only, use
 - ``Bounds``
 - <doc:BodiesAndMaterials>
 
+### World organization
+
+- ``Composite``
+- ``CompositeID``
+- <doc:CompositesAndBatches>
+
 ### Collision queries
 
 - ``CollisionDetector``

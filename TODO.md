@@ -267,8 +267,9 @@ release.
 - [x] Add world body add, remove, clear, lookup, stable enumeration, and in-place
   mutation APIs.
 - [x] Add exact point, bounds-region, and finite-segment spatial query APIs.
-- [ ] Add hierarchical composites.
-- [ ] Add batch mutation APIs that avoid actor round trips.
+- [x] Add hierarchical composites with stable IDs, cycle prevention, recursive
+  body queries, and explicit subtree-removal semantics.
+- [x] Add transactional batch body/world mutation APIs that avoid actor round trips.
 
 ### Collision system
 

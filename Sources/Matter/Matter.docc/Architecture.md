@@ -44,6 +44,15 @@ speed to display callbacks.
 region, and ray queries therefore observe one coherent snapshot, require no
 actor hop, and never mutate engine-owned state.
 
+Composites are stable references into that same world value. A ``Composite``
+stores body identifiers and one optional parent identifier; it never duplicates
+mutable ``Body`` state. ``World`` owns hierarchy validation, prevents cycles,
+and cleans membership when bodies or composite subtrees are removed.
+
+Multi-body operations validate and prepare replacements before committing them.
+``Engine/updateWorld(_:)`` extends that transactional value boundary to an
+arbitrary synchronous batch in one actor hop.
+
 ## CPU reference path
 
 ``ReferenceIntegrator`` implements the same integrator using value semantics.
