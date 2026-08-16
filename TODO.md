@@ -225,8 +225,9 @@ release.
 - [x] Add image draw/crop/resize, mode, tint, mask, copy, and blend operations.
 - [x] Add pixel density, load/update pixels, typed pixel buffers, and sampling.
 - [x] Add Core Image filters with deterministic CPU-reference tests where practical.
-- [ ] Add PNG/JPEG/HEIF export, frame capture, animation/video export, and native
-  file/Photos integrations.
+- [x] Add PNG/JPEG/HEIF export, frame capture, GIF/video export, and native
+  SwiftUI file-document integration.
+- [ ] Add permission-aware native Photos library save integration.
 - [x] Define color-space, alpha-premultiplication, orientation, and HDR behavior.
 
 ### Native media, audio, data, and interface equivalents

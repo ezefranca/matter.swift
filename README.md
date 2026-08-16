@@ -194,7 +194,7 @@ native differences.
 - [ ] Date, time, frame count, delta time, and display information
 - [ ] Pixel access, filters, image sampling, and color interpolation
 - [ ] Offscreen graphics buffers and reusable drawing contexts
-- [ ] Image and animation export
+- [x] Image, GIF, and native video export
 
 ### Phase 3: Native media and audio
 
