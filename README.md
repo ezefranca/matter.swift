@@ -316,6 +316,10 @@ lock-free synchronous snapshot inference across every supported activation.
 training with Glorot, He, or zero initialization; momentum SGD or Adam; all configured
 losses; held-out validation history; and cooperative cancellation. It is the numerical
 reference backend for small models and accelerated-backend parity.
+`DenseMPSGraphTrainer` runs batched forward and automatic-differentiation graphs on
+an explicitly selected Metal device and command queue, while preserving the same
+validated model format and optimizer semantics. An unavailable accelerator is an
+explicit error; the library never silently changes training backends.
 
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. ML5-owned dense networks are trainable, but ML5 does not claim that

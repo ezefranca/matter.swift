@@ -338,7 +338,7 @@ release.
 - [x] Define dense-network configuration: inputs, outputs, hidden layers,
   activations, initialization, loss, optimizer, learning rate, batch size, epochs,
   validation, and deterministic seed.
-- [ ] Implement classification and regression training with MPSGraph/Metal-backed
+- [x] Implement classification and regression training with MPSGraph/Metal-backed
   Apple APIs, plus a deterministic small CPU reference trainer for tests.
 - [ ] Expose async progress, metrics, early stopping, cancellation, checkpoints,
   and explicit device/fallback selection.
