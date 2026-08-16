@@ -358,10 +358,10 @@ release.
 ### Model ecosystem
 
 - [x] Add bundled/resource/file/URL compiled-model loading with integrity checks.
-- [ ] Add Vision/Core ML adapters for image classification and feature extraction.
+- [x] Add Vision/Core ML adapters for image classification and feature extraction.
 - [x] Add model metadata, licenses, provenance, versioning, and cache management.
-- [ ] Document Create ML/macOS-only workflows separately from on-device APIs.
-- [ ] Add privacy, memory, thermal, and Neural Engine availability guidance.
+- [x] Document Create ML/macOS-only workflows separately from on-device APIs.
+- [x] Add privacy, memory, thermal, and Neural Engine availability guidance.
 
 ## 7. Nature of Code API reference
 
