@@ -328,7 +328,7 @@ release.
 - [x] Add dataset accumulation/removal/shuffle/split APIs corresponding to `addData`.
 - [x] Add fitted normalization statistics, `normalizeData`, denormalization, and
   serializable preprocessing pipelines.
-- [ ] Add batch prediction and a low-latency immutable synchronous inference
+- [x] Add batch prediction and a low-latency immutable synchronous inference
   snapshot suitable for a draw loop.
 - [ ] Add classification top-k, calibrated confidence, regression vectors, and
   evaluation metrics.

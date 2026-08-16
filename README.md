@@ -296,6 +296,10 @@ min-max normalization for numbers, arrays, numeric dictionaries, and tensors.
 Fitted statistics and pipeline stages are immutable, Sendable, Codable, and
 validated again when decoded.
 
+Prediction supports ordered batches. Snapshot-capable backends can also vend a
+typed `NeuralNetworkInferenceSnapshot` for synchronous draw-loop inference without
+an actor hop; backends that cannot do so report an explicit unsupported operation.
+
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. `ML5` does not claim arbitrary-model, on-device training:
 calling `train(_:)` currently throws
