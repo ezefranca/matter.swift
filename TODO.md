@@ -236,7 +236,7 @@ release.
 - [x] Add video playback, frame extraction, recording, and lifecycle management.
 - [x] Add AVAudioEngine files, oscillators, envelopes, amplitude analysis, and FFT.
 - [x] Add URLSession loading, JSON/text/table parsing, and cancellation.
-- [ ] Add UserDefaults and file-backed persistence helpers.
+- [x] Add UserDefaults and file-backed persistence helpers.
 - [ ] Provide SwiftUI/UIKit/AppKit equivalents for buttons, sliders, text fields,
   labels, and other DOM controls used by book examples.
 - [x] Add privacy manifests and permission documentation for accessed resources.
@@ -250,7 +250,8 @@ release.
 - [ ] Add 3D primitives, indexed meshes, normals, materials, lights, and textures.
 - [ ] Add depth, stencil, culling, blending, MSAA, and render-target controls.
 - [ ] Add Metal shader APIs and validated model loading.
-- [ ] Port the book's 3D/vector and particle examples with native Metal rendering.
+- [x] Exclude exhaustive Nature of Code example ports from package scope while
+  preserving the reusable APIs needed to build them.
 
 ## 5. Matter: production physics engine
 

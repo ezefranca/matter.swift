@@ -202,6 +202,7 @@ native differences.
 - [x] Video playback, frame extraction, and recording
 - [x] Audio files, oscillators, envelopes, amplitude analysis, and FFT data
 - [x] URLSession loading, JSON/text/table parsing, and cancellation
+- [x] Typed UserDefaults and atomic file-backed Codable persistence
 - [x] Permission-aware asynchronous APIs and lifecycle management
 - [x] Photos and file importer/exporter integration
 
@@ -220,7 +221,7 @@ native differences.
 - [ ] Observable sketch state and native controls
 - [ ] Accessibility descriptions and reduced-motion behavior
 - [ ] Drag and drop, clipboard, file dialogs, and sharing
-- [ ] URLSession networking and native persistence helpers
+- [x] URLSession networking and native persistence helpers
 
 Read the complete
 [parity and compatibility policy](https://ezefranca.com/p5.swift/documentation/p5/p5parityroadmap/)

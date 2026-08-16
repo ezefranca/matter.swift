@@ -37,6 +37,8 @@ All notable changes to p5.swift are documented in this file.
 - Cancellation-aware local and URLSession data loading, typed text and JSON
   decoding, and validated CSV/TSV/semicolon/pipe tables with quoted-field and
   multiline-record support.
+- Typed, namespaced UserDefaults values and an actor-isolated Codable file store
+  with versioned envelopes, atomic replacement, cancellation, and stable errors.
 
 ## [0.3.2] - 2026-08-14
 
