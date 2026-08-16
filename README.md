@@ -312,9 +312,15 @@ and seed. Every configuration is validated, `Sendable`, `Hashable`, and `Codable
 `DenseNetworkModel` adds immutable, shape-checked parameters plus async, batch, and
 lock-free synchronous snapshot inference across every supported activation.
 
+`DenseCPUTrainer` provides reproducible mini-batch classification and regression
+training with Glorot, He, or zero initialization; momentum SGD or Adam; all configured
+losses; held-out validation history; and cooperative cancellation. It is the numerical
+reference backend for small models and accelerated-backend parity.
+
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
-model prediction. `ML5` does not claim arbitrary-model, on-device training:
-calling `train(_:)` currently throws
+model prediction. ML5-owned dense networks are trainable, but ML5 does not claim that
+an arbitrary loaded Core ML model can be retrained: calling `NeuralNetwork.train(_:)`
+currently throws
 `ML5Error.unsupportedOperation(.onDeviceTraining)`.
 `NeuralNetworkTrainingAdapter` is the extension point for a future Create ML
 adapter that can return a `ModelPredicting` backend.
