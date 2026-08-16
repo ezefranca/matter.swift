@@ -202,7 +202,7 @@ native differences.
 - [ ] Video playback, frame extraction, and recording
 - [ ] Audio files, oscillators, amplitude analysis, and FFT data
 - [ ] Permission-aware asynchronous APIs and lifecycle management
-- [ ] Photos and file importer/exporter integration
+- [x] Photos and file importer/exporter integration
 
 ### Phase 4: Metal-backed 3D
 

@@ -16,6 +16,7 @@ VALIDATION_TEMP=$(mktemp -d /tmp/p5-swift-validation.XXXXXX)
 trap 'rm -rf "$VALIDATION_TEMP"' EXIT
 
 python3 Scripts/check_support_policy.py
+python3 Scripts/check_privacy_manifests.py
 python3 -m unittest discover -s Tests/ScriptTests -v
 swift format lint \
   --configuration .swift-format \

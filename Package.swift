@@ -34,7 +34,10 @@ let package = Package(
     dependencies: [testingPackage],
     targets: [
         .target(
-            name: "P5"
+            name: "P5",
+            resources: [
+                .process("Resources/PrivacyInfo.xcprivacy")
+            ]
         ),
         .testTarget(
             name: "P5Tests",
@@ -43,7 +46,8 @@ let package = Package(
         .target(
             name: "Matter",
             resources: [
-                .copy("Resources/Integration.metal")
+                .copy("Resources/Integration.metal"),
+                .process("Resources/PrivacyInfo.xcprivacy"),
             ]
         ),
         .testTarget(
@@ -51,7 +55,10 @@ let package = Package(
             dependencies: ["Matter", testingProduct]
         ),
         .target(
-            name: "ML5"
+            name: "ML5",
+            resources: [
+                .process("Resources/PrivacyInfo.xcprivacy")
+            ]
         ),
         .testTarget(
             name: "ML5Tests",

@@ -227,7 +227,7 @@ release.
 - [x] Add Core Image filters with deterministic CPU-reference tests where practical.
 - [x] Add PNG/JPEG/HEIF export, frame capture, GIF/video export, and native
   SwiftUI file-document integration.
-- [ ] Add permission-aware native Photos library save integration.
+- [x] Add permission-aware native Photos library save integration.
 - [x] Define color-space, alpha-premultiplication, orientation, and HDR behavior.
 
 ### Native media, audio, data, and interface equivalents
