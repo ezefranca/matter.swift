@@ -43,6 +43,10 @@ All notable changes to p5.swift are documented in this file.
   toggles, pickers, and color input, plus accessible AppKit/UIKit factories.
 - Right-handed 3D matrices, cameras, Metal-depth projections, validated indexed
   meshes, planes, boxes, spheres, generated normals, bounds, and OBJ loading.
+- An actor-owned Metal 3D renderer with immutable meshes, materials, image
+  textures, ambient/directional/point lights, custom shaders, MetalKit drawable
+  presentation, offscreen readback, depth/stencil/culling/blending/MSAA state,
+  typed GPU failures, cancellation, statistics, and exhaustive native tests.
 
 ## [0.3.2] - 2026-08-14
 

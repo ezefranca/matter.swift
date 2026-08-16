@@ -210,11 +210,11 @@ native differences.
 
 - [x] 3D matrices, primitives, indexed meshes, cameras, and projections
 - [x] Validated, cancellation-aware Wavefront OBJ loading
-- [ ] Materials and lights
-- [ ] Textures and offscreen render targets
-- [ ] Shader APIs adapted for Metal Shading Language
-- [ ] Model loading and normal generation
-- [ ] Depth, stencil, blending, and antialiasing controls
+- [x] Validated materials and ambient, directional, and point lights
+- [x] Image textures, shared offscreen targets, and MetalKit drawable targets
+- [x] Shader APIs with a documented Metal Shading Language buffer ABI
+- [x] OBJ model loading and generated mesh normals
+- [x] Depth, stencil, culling, blending, MSAA, and render-target controls
 
 ### Phase 5: Native interface integrations
 

@@ -243,14 +243,14 @@ release.
 
 ### Metal-backed 3D
 
-- [ ] Define the renderer abstraction without regressing the Core Graphics 2D path.
-- [ ] Add Metal device, queue, pipeline, buffers, frame pacing, and error model.
+- [x] Define the renderer abstraction without regressing the Core Graphics 2D path.
+- [x] Add Metal device, queue, pipeline, buffers, frame pacing, and error model.
 - [x] Add 3D vectors/matrices, cameras, perspective/orthographic projections, and
   coordinate conventions.
 - [x] Add 3D primitives, indexed meshes, normals, and model-space bounds.
-- [ ] Add materials, lights, and textures.
-- [ ] Add depth, stencil, culling, blending, MSAA, and render-target controls.
-- [ ] Add Metal shader APIs.
+- [x] Add materials, lights, and textures.
+- [x] Add depth, stencil, culling, blending, MSAA, and render-target controls.
+- [x] Add Metal shader APIs.
 - [x] Add cancellation-aware validated OBJ model loading.
 - [x] Exclude exhaustive Nature of Code example ports from package scope while
   preserving the reusable APIs needed to build them.

@@ -36,7 +36,8 @@ let package = Package(
         .target(
             name: "P5",
             resources: [
-                .process("Resources/PrivacyInfo.xcprivacy")
+                .copy("Resources/P5Renderer3D.metal"),
+                .process("Resources/PrivacyInfo.xcprivacy"),
             ]
         ),
         .testTarget(
