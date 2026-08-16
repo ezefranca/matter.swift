@@ -245,11 +245,13 @@ release.
 
 - [ ] Define the renderer abstraction without regressing the Core Graphics 2D path.
 - [ ] Add Metal device, queue, pipeline, buffers, frame pacing, and error model.
-- [ ] Add 3D vectors/matrices, cameras, perspective/orthographic projections, and
+- [x] Add 3D vectors/matrices, cameras, perspective/orthographic projections, and
   coordinate conventions.
-- [ ] Add 3D primitives, indexed meshes, normals, materials, lights, and textures.
+- [x] Add 3D primitives, indexed meshes, normals, and model-space bounds.
+- [ ] Add materials, lights, and textures.
 - [ ] Add depth, stencil, culling, blending, MSAA, and render-target controls.
-- [ ] Add Metal shader APIs and validated model loading.
+- [ ] Add Metal shader APIs.
+- [x] Add cancellation-aware validated OBJ model loading.
 - [x] Exclude exhaustive Nature of Code example ports from package scope while
   preserving the reusable APIs needed to build them.
 

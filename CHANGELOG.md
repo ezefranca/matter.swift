@@ -41,6 +41,8 @@ All notable changes to p5.swift are documented in this file.
   with versioned envelopes, atomic replacement, cancellation, and stable errors.
 - Observation-backed control state, SwiftUI buttons, sliders, fields, labels,
   toggles, pickers, and color input, plus accessible AppKit/UIKit factories.
+- Right-handed 3D matrices, cameras, Metal-depth projections, validated indexed
+  meshes, planes, boxes, spheres, generated normals, bounds, and OBJ loading.
 
 ## [0.3.2] - 2026-08-14
 

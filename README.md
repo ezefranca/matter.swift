@@ -208,7 +208,9 @@ native differences.
 
 ### Phase 4: Metal-backed 3D
 
-- [ ] 3D primitives, meshes, cameras, projections, materials, and lights
+- [x] 3D matrices, primitives, indexed meshes, cameras, and projections
+- [x] Validated, cancellation-aware Wavefront OBJ loading
+- [ ] Materials and lights
 - [ ] Textures and offscreen render targets
 - [ ] Shader APIs adapted for Metal Shading Language
 - [ ] Model loading and normal generation
