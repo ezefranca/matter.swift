@@ -335,7 +335,7 @@ release.
 
 ### Native training
 
-- [ ] Define dense-network configuration: inputs, outputs, hidden layers,
+- [x] Define dense-network configuration: inputs, outputs, hidden layers,
   activations, initialization, loss, optimizer, learning rate, batch size, epochs,
   validation, and deterministic seed.
 - [ ] Implement classification and regression training with MPSGraph/Metal-backed

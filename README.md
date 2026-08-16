@@ -305,6 +305,11 @@ temperature-scaled logits, stable top-k ordering, confusion matrices, and per-la
 precision/recall/F1 metrics. Ordered regression-vector tasks and scalar/vector
 evaluation provide MAE, MSE, RMSE, R², and per-component summaries.
 
+Dense-network configuration covers ordered inputs and outputs, hidden layers,
+activations, deterministic initialization, compatible regression/classification
+losses, SGD or Adam optimization, learning rate, batches, epochs, validation split,
+and seed. Every configuration is validated, `Sendable`, `Hashable`, and `Codable`.
+
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. `ML5` does not claim arbitrary-model, on-device training:
 calling `train(_:)` currently throws
