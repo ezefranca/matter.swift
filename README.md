@@ -309,6 +309,8 @@ Dense-network configuration covers ordered inputs and outputs, hidden layers,
 activations, deterministic initialization, compatible regression/classification
 losses, SGD or Adam optimization, learning rate, batches, epochs, validation split,
 and seed. Every configuration is validated, `Sendable`, `Hashable`, and `Codable`.
+`DenseNetworkModel` adds immutable, shape-checked parameters plus async, batch, and
+lock-free synchronous snapshot inference across every supported activation.
 
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. `ML5` does not claim arbitrary-model, on-device training:
