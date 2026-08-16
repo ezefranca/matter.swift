@@ -34,6 +34,9 @@ All notable changes to p5.swift are documented in this file.
 - A native AVAudioEngine graph for file playback and periodic oscillators,
   deterministic ADSR envelopes, and thread-safe RMS/FFT output analysis backed
   by Accelerate.
+- Cancellation-aware local and URLSession data loading, typed text and JSON
+  decoding, and validated CSV/TSV/semicolon/pipe tables with quoted-field and
+  multiline-record support.
 
 ## [0.3.2] - 2026-08-14
 

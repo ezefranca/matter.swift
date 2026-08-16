@@ -235,7 +235,7 @@ release.
 - [x] Add permission-aware AVFoundation camera and microphone capture.
 - [x] Add video playback, frame extraction, recording, and lifecycle management.
 - [x] Add AVAudioEngine files, oscillators, envelopes, amplitude analysis, and FFT.
-- [ ] Add URLSession loading, JSON/text/table parsing, and cancellation.
+- [x] Add URLSession loading, JSON/text/table parsing, and cancellation.
 - [ ] Add UserDefaults and file-backed persistence helpers.
 - [ ] Provide SwiftUI/UIKit/AppKit equivalents for buttons, sliders, text fields,
   labels, and other DOM controls used by book examples.

@@ -201,6 +201,7 @@ native differences.
 - [x] Camera and microphone capture with AVFoundation
 - [x] Video playback, frame extraction, and recording
 - [x] Audio files, oscillators, envelopes, amplitude analysis, and FFT data
+- [x] URLSession loading, JSON/text/table parsing, and cancellation
 - [x] Permission-aware asynchronous APIs and lifecycle management
 - [x] Photos and file importer/exporter integration
 
