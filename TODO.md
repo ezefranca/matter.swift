@@ -196,9 +196,9 @@ release.
 - [ ] Add image coordinate modes after the image subsystem exists.
 - [x] Add `beginShape`, vertex, Catmull-Rom curve vertex, Bézier vertex, quadratic vertex,
   contours, and `endShape` close behavior.
-- [ ] Add Core Graphics path import/export and reusable shape objects.
+- [x] Add Core Graphics path import/export and reusable shape objects.
 - [x] Add scale, shear, apply-matrix, and reset-matrix transform helpers.
-- [ ] Add public matrix inspection and reusable transform values.
+- [x] Add public matrix inspection and reusable transform values.
 - [ ] Add geometry tests for flipped native canvas coordinates and pixel alignment.
 
 ### Input and interaction
