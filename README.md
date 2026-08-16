@@ -199,7 +199,7 @@ native differences.
 ### Phase 3: Native media and audio
 
 - [x] Camera and microphone capture with AVFoundation
-- [ ] Video playback, frame extraction, and recording
+- [x] Video playback, frame extraction, and recording
 - [ ] Audio files, oscillators, amplitude analysis, and FFT data
 - [x] Permission-aware asynchronous APIs and lifecycle management
 - [x] Photos and file importer/exporter integration

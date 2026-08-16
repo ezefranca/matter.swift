@@ -28,6 +28,9 @@ All notable changes to p5.swift are documented in this file.
   and ML5, enforced from compiler-emitted symbol graphs in CI.
 - Compiler-generated public API baselines for all three products, plus CI
   breakage diagnostics and an explicit review path for intentional changes.
+- Native P5 video metadata, exact or tolerant frame extraction, and an
+  AVPlayer-backed main-actor playback controller with looping, scene lifecycle,
+  cancellation, and typed transport failures.
 
 ## [0.3.2] - 2026-08-14
 

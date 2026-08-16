@@ -233,7 +233,7 @@ release.
 ### Native media, audio, data, and interface equivalents
 
 - [x] Add permission-aware AVFoundation camera and microphone capture.
-- [ ] Add video playback, frame extraction, recording, and lifecycle management.
+- [x] Add video playback, frame extraction, recording, and lifecycle management.
 - [ ] Add AVAudioEngine files, oscillators, envelopes, amplitude analysis, and FFT.
 - [ ] Add URLSession loading, JSON/text/table parsing, and cancellation.
 - [ ] Add UserDefaults and file-backed persistence helpers.
