@@ -347,12 +347,12 @@ release.
 
 ### Neuroevolution
 
-- [ ] Add weight/topology snapshot and deep-copy support.
-- [ ] Add deterministic mutation strategies and configurable mutation rates/scales.
-- [ ] Add crossover strategies with topology compatibility validation.
-- [ ] Add synchronous `predict` and `classify` paths for evolved agents.
-- [ ] Add serialization for populations/brains and reproducible resume.
-- [ ] Meet Chapters 10–11 API needs: neural-network creation, `addData`, normalization,
+- [x] Add weight/topology snapshot and deep-copy support.
+- [x] Add deterministic mutation strategies and configurable mutation rates/scales.
+- [x] Add crossover strategies with topology compatibility validation.
+- [x] Add synchronous `predict` and `classify` paths for evolved agents.
+- [x] Add serialization for populations/brains and reproducible resume.
+- [x] Meet Chapters 10–11 API needs: neural-network creation, `addData`, normalization,
   training, classify/predict sync and async, copy, mutate, and crossover.
 
 ### Model ecosystem

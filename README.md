@@ -348,6 +348,13 @@ dense activation against `MLModel` and check numerical parity with native ML5 in
 Training quality is gated independently on canonical XOR and held-out affine datasets,
 with CPU/Metal predictions and loss histories compared on Metal-capable CI hosts.
 
+`DenseBrain` turns a trained dense model into an immutable neuroevolution value with
+synchronous `predict` and ordered softmax `classify` calls for agent update loops.
+Seeded Gaussian, uniform, or reset mutation and uniform, single-point, or blend
+crossover return independent children. Versioned `DenseBrainSnapshot` and homogeneous
+`DenseBrainPopulation` values are `Codable`; population archives retain their random
+state so mutation resumes reproducibly after decoding.
+
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. ML5-owned dense networks are trainable, but ML5 does not claim that
 an arbitrary loaded Core ML model can be retrained: calling `NeuralNetwork.train(_:)`
