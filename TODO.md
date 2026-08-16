@@ -166,12 +166,12 @@ release.
   and explicit context-free vector APIs.
 - [x] Add a stable seedable uniform generator, range sampling, collection selection,
   Gaussian values, and per-sketch deterministic random state.
-- [ ] Add weighted selection, exponential values, and reproducible generator
+- [x] Add weighted selection, exponential values, and reproducible generator
   injection.
 - [x] Add seedable 1D/2D/3D coherent Perlin noise, octave/falloff detail controls,
   and per-sketch deterministic noise state.
-- [ ] Validate statistical properties and deterministic golden sequences.
-- [ ] Evaluate Accelerate/BNNS/native SIMD implementations and document choices.
+- [x] Validate statistical properties and deterministic golden sequences.
+- [x] Evaluate Accelerate/BNNS/native SIMD implementations and document choices.
 
 ### Colors and drawing style
 
