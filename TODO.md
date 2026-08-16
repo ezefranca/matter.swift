@@ -357,9 +357,9 @@ release.
 
 ### Model ecosystem
 
-- [ ] Add bundled/resource/file/URL compiled-model loading with integrity checks.
+- [x] Add bundled/resource/file/URL compiled-model loading with integrity checks.
 - [ ] Add Vision/Core ML adapters for image classification and feature extraction.
-- [ ] Add model metadata, licenses, provenance, versioning, and cache management.
+- [x] Add model metadata, licenses, provenance, versioning, and cache management.
 - [ ] Document Create ML/macOS-only workflows separately from on-device APIs.
 - [ ] Add privacy, memory, thermal, and Neural Engine availability guidance.
 

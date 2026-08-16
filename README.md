@@ -355,6 +355,12 @@ crossover return independent children. Versioned `DenseBrainSnapshot` and homoge
 `DenseBrainPopulation` values are `Codable`; population archives retain their random
 state so mutation resumes reproducibly after decoding.
 
+Third-party Core ML assets can be described with `ML5ModelSource`, which requires a
+lowercase SHA-256 `ML5ModelDigest` and the same ownership/license/provenance metadata
+used by dense archives. `ML5ModelCache` resolves bundle, file, package, compiled, and
+HTTPS `.mlmodel` sources behind an actor; verifies before compilation; rehashes compiled
+cache entries on every hit; and provides bounded inventory and explicit eviction APIs.
+
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. ML5-owned dense networks are trainable, but ML5 does not claim that
 an arbitrary loaded Core ML model can be retrained: calling `NeuralNetwork.train(_:)`

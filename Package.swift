@@ -55,7 +55,10 @@ let package = Package(
         ),
         .testTarget(
             name: "ML5Tests",
-            dependencies: ["ML5", testingProduct]
+            dependencies: ["ML5", testingProduct],
+            resources: [
+                .copy("Resources/BundledModel.mlmodel")
+            ]
         ),
     ],
     swiftLanguageModes: [.v6]
