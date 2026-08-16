@@ -205,7 +205,7 @@ release.
 
 - [x] Add pointer position, previous position, delta, buttons, pressed state, enter,
   exit, move, drag, press, release, and click callbacks.
-- [ ] Add multi-touch tracking with stable identifiers and gesture coexistence.
+- [x] Add multi-touch tracking with stable identifiers and gesture coexistence.
 - [x] Add semantic keyboard key/code/modifier state and press/release/type/cancel
   callbacks with AppKit and UIKit native adapters.
 - [ ] Add focus, hover, scroll, accessibility actions, drag/drop, and clipboard hooks.
