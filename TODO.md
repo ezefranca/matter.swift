@@ -340,7 +340,7 @@ release.
   validation, and deterministic seed.
 - [x] Implement classification and regression training with MPSGraph/Metal-backed
   Apple APIs, plus a deterministic small CPU reference trainer for tests.
-- [ ] Expose async progress, metrics, early stopping, cancellation, checkpoints,
+- [x] Expose async progress, metrics, early stopping, cancellation, checkpoints,
   and explicit device/fallback selection.
 - [ ] Support model save/load and conversion or export to Core ML where supported.
 - [ ] Validate trained-model numerical quality on canonical datasets.

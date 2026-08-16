@@ -318,8 +318,11 @@ losses; held-out validation history; and cooperative cancellation. It is the num
 reference backend for small models and accelerated-backend parity.
 `DenseMPSGraphTrainer` runs batched forward and automatic-differentiation graphs on
 an explicitly selected Metal device and command queue, while preserving the same
-validated model format and optimizer semantics. An unavailable accelerator is an
-explicit error; the library never silently changes training backends.
+validated model format and optimizer semantics. Both backends support serial async
+progress, cooperative cancellation, early stopping, and `Codable` exact-resume
+checkpoints containing optimizer state and dataset identity. `DenseTrainer` provides
+explicit CPU, Metal, or automatic selection with a declared fallback policy; fallback
+is considered only before training begins, never after a graph or numerical failure.
 
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. ML5-owned dense networks are trainable, but ML5 does not claim that
