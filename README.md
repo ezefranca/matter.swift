@@ -200,7 +200,7 @@ native differences.
 
 - [x] Camera and microphone capture with AVFoundation
 - [x] Video playback, frame extraction, and recording
-- [ ] Audio files, oscillators, amplitude analysis, and FFT data
+- [x] Audio files, oscillators, envelopes, amplitude analysis, and FFT data
 - [x] Permission-aware asynchronous APIs and lifecycle management
 - [x] Photos and file importer/exporter integration
 

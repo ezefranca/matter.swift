@@ -31,6 +31,9 @@ All notable changes to p5.swift are documented in this file.
 - Native P5 video metadata, exact or tolerant frame extraction, and an
   AVPlayer-backed main-actor playback controller with looping, scene lifecycle,
   cancellation, and typed transport failures.
+- A native AVAudioEngine graph for file playback and periodic oscillators,
+  deterministic ADSR envelopes, and thread-safe RMS/FFT output analysis backed
+  by Accelerate.
 
 ## [0.3.2] - 2026-08-14
 
