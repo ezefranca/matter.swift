@@ -151,7 +151,7 @@ release.
   and safe-area behavior.
 - [x] Define deterministic manual-clock and manual-frame drivers for tests/examples.
 - [x] Add pause/resume behavior for app scene and window lifecycle transitions.
-- [ ] Add offscreen graphics buffers and reusable rendering contexts.
+- [x] Add offscreen graphics buffers and reusable rendering contexts.
 
 ### Math, vectors, randomness, and noise
 
@@ -193,7 +193,7 @@ release.
   regular polygons.
 - [x] Add rectangle and ellipse coordinate modes, including their square, rounded-rectangle,
   circle, and arc forms.
-- [ ] Add image coordinate modes after the image subsystem exists.
+- [x] Add image coordinate modes after the image subsystem exists.
 - [x] Add `beginShape`, vertex, Catmull-Rom curve vertex, Bézier vertex, quadratic vertex,
   contours, and `endShape` close behavior.
 - [x] Add Core Graphics path import/export and reusable shape objects.
@@ -221,7 +221,7 @@ release.
 
 - [ ] Add Core Text font loading, fallback, size, leading, alignment, bounds,
   wrapping, measurement, and drawing.
-- [ ] Add async CGImage/ImageIO loading from bundle, file, data, and URL.
+- [x] Add async CGImage/ImageIO loading from bundle, file, data, and URL.
 - [ ] Add image draw/crop/resize, mode, tint, mask, copy, and blend operations.
 - [ ] Add pixel density, load/update pixels, typed pixel buffers, and sampling.
 - [ ] Add Core Image filters with deterministic CPU-reference tests where practical.
