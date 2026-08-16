@@ -300,6 +300,11 @@ Prediction supports ordered batches. Snapshot-capable backends can also vend a
 typed `NeuralNetworkInferenceSnapshot` for synchronous draw-loop inference without
 an actor hop; backends that cannot do so report an explicit unsupported operation.
 
+Ranked classification supports normalized probability dictionaries,
+temperature-scaled logits, stable top-k ordering, confusion matrices, and per-label
+precision/recall/F1 metrics. Ordered regression-vector tasks and scalar/vector
+evaluation provide MAE, MSE, RMSE, R², and per-component summaries.
+
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. `ML5` does not claim arbitrary-model, on-device training:
 calling `train(_:)` currently throws

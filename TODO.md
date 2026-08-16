@@ -330,7 +330,7 @@ release.
   serializable preprocessing pipelines.
 - [x] Add batch prediction and a low-latency immutable synchronous inference
   snapshot suitable for a draw loop.
-- [ ] Add classification top-k, calibrated confidence, regression vectors, and
+- [x] Add classification top-k, calibrated confidence, regression vectors, and
   evaluation metrics.
 
 ### Native training
