@@ -208,13 +208,13 @@ release.
 - [x] Add multi-touch tracking with stable identifiers and gesture coexistence.
 - [x] Add semantic keyboard key/code/modifier state and press/release/type/cancel
   callbacks with AppKit and UIKit native adapters.
-- [ ] Add focus, hover, scroll, accessibility actions, drag/drop, and clipboard hooks.
+- [x] Add focus, hover, scroll, accessibility actions, drag/drop, and clipboard hooks.
 - [x] Map the shared pointer model to mouse, Apple Pencil, trackpad, and indirect
   pointer behavior; retain specialized gesture semantics as follow-up work.
 - [x] Make pointer-event delivery main-actor safe, ordered, injectable, and documented.
 - [x] Apply main-actor ordering, injection, record/replay values, and cancellation
   safety to keyboard input.
-- [ ] Apply the same delivery guarantees to multi-touch collection, gestures,
+- [x] Apply the same delivery guarantees to multi-touch collection, gestures,
   scroll, drag/drop, clipboard, and accessibility input.
 
 ### Text, images, pixels, and export

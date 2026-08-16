@@ -184,7 +184,7 @@ native differences.
 - [ ] Scale, shear, matrix operations, angle modes, line caps, and line joins
 - [ ] Text loading, measurement, alignment, wrapping, and drawing
 - [ ] Image loading, drawing, resizing, tinting, masking, and blend modes
-- [ ] Mouse, touch, keyboard, focus, timing, and canvas-resize events
+- [x] Mouse, touch, keyboard, focus, timing, and canvas-resize events
 
 ### Phase 2: Creative-coding utilities
 
