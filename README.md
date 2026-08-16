@@ -324,6 +324,28 @@ checkpoints containing optimizer state and dataset identity. `DenseTrainer` prov
 explicit CPU, Metal, or automatic selection with a declared fallback policy; fallback
 is considered only before training begins, never after a graph or numerical failure.
 
+Persist trained models as versioned, integrity-checked JSON with
+`DenseModelArchive`. `ML5ModelMetadata` records ownership, license, provenance, and
+application version. For Apple deployment, export any validated dense model as a
+self-contained `.mlmodel` specification and ask Core ML to compile it natively:
+
+```swift
+let metadata = try ML5ModelMetadata(
+    name: "MyClassifier",
+    version: "1.0.0",
+    author: "Example Team",
+    license: "MIT"
+)
+try result.model.archived(metadata: metadata).write(to: archiveURL)
+
+let export = try DenseCoreMLExportConfiguration(metadata: metadata)
+try result.model.writeCoreMLModel(to: modelURL, configuration: export)
+```
+
+Core ML receives a single float32 multi-array in the configured input-feature order
+and returns a multi-array in output-name order. Compilation tests exercise every ML5
+dense activation against `MLModel` and check numerical parity with native ML5 inference.
+
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. ML5-owned dense networks are trainable, but ML5 does not claim that
 an arbitrary loaded Core ML model can be retrained: calling `NeuralNetwork.train(_:)`

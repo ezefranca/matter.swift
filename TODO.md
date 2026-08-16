@@ -342,7 +342,7 @@ release.
   Apple APIs, plus a deterministic small CPU reference trainer for tests.
 - [x] Expose async progress, metrics, early stopping, cancellation, checkpoints,
   and explicit device/fallback selection.
-- [ ] Support model save/load and conversion or export to Core ML where supported.
+- [x] Support model save/load and conversion or export to Core ML where supported.
 - [ ] Validate trained-model numerical quality on canonical datasets.
 
 ### Neuroevolution
