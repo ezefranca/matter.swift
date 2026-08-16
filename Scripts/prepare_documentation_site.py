@@ -12,24 +12,29 @@ from pathlib import Path
 from urllib.parse import quote
 
 
-PACKAGE_NAME = "p5.swift"
-MODULES = (
-    {
-        "name": "P5",
-        "slug": "p5",
-        "summary": "Native creative coding with Core Graphics and SwiftUI.",
-    },
-    {
-        "name": "Matter",
-        "slug": "matter",
-        "summary": "Deterministic, Metal-first native physics.",
-    },
-    {
-        "name": "ML5",
-        "slug": "ml5",
-        "summary": "Typed on-device machine learning with Core ML.",
-    },
+REPOSITORY = Path(__file__).resolve().parent.parent
+PACKAGE_NAME = REPOSITORY.name
+MODULE_SUMMARIES = {
+    "P5": "Native creative coding with Core Graphics, Metal, and SwiftUI.",
+    "Matter": "Deterministic, Metal-first native physics.",
+    "ML5": "Typed on-device machine learning with Core ML and MPSGraph.",
+}
+PRODUCT_NAMES = tuple(
+    json.loads(
+        (REPOSITORY / "Configuration/ModuleBoundaries.json").read_text(
+            encoding="utf-8"
+        )
+    )["products"]
 )
+MODULES = tuple(
+    {
+        "name": name,
+        "slug": name.lower(),
+        "summary": MODULE_SUMMARIES[name],
+    }
+    for name in PRODUCT_NAMES
+)
+PACKAGE_SUMMARY = " ".join(module["summary"] for module in MODULES)
 
 
 def arguments() -> argparse.Namespace:
@@ -45,13 +50,13 @@ def arguments() -> argparse.Namespace:
 def abstract_text(document: dict[str, object]) -> str:
     fragments = document.get("abstract", [])
     if not isinstance(fragments, list):
-        return "Native creative coding, physics, and machine learning for Swift."
+        return PACKAGE_SUMMARY
     text = "".join(
         fragment.get("text", "")
         for fragment in fragments
         if isinstance(fragment, dict) and isinstance(fragment.get("text"), str)
     )
-    return text or "Native creative coding, physics, and machine learning for Swift."
+    return text or PACKAGE_SUMMARY
 
 
 def route_path(document: dict[str, object]) -> str | None:
@@ -107,11 +112,11 @@ def landing_page(base_url: str, version: str) -> str:
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{PACKAGE_NAME} Documentation</title>
-<meta name="description" content="Native Swift creative coding, physics, and on-device machine learning for Apple platforms.">
+<meta name="description" content="{html.escape(PACKAGE_SUMMARY, quote=True)}">
 <link rel="canonical" href="{safe_base_url}/">
 <link rel="alternate" type="text/plain" href="{safe_base_url}/llms.txt" title="Documentation for language models">
 <meta property="og:type" content="website"><meta property="og:title" content="{PACKAGE_NAME} Documentation">
-<meta property="og:description" content="Three independent Swift products for creative coding, native physics, and machine learning.">
+<meta property="og:description" content="{html.escape(PACKAGE_SUMMARY, quote=True)}">
 <style>
 :root{{color-scheme:light dark;font-family:-apple-system,BlinkMacSystemFont,"SF Pro Text",sans-serif;background:#f5f5f7;color:#1d1d1f}}
 *{{box-sizing:border-box}}body{{margin:0}}main{{max-width:1080px;margin:auto;padding:clamp(3rem,9vw,8rem) 1.5rem}}
@@ -125,8 +130,8 @@ footer{{margin-top:3rem;color:#6e6e73;font-size:.9rem}}footer a{{color:inherit}}
 @media(prefers-color-scheme:dark){{:root{{background:#000;color:#f5f5f7}}.card{{background:#1d1d1f}}.eyebrow,.intro,p,footer{{color:#a1a1a6}}.link{{color:#2997ff}}}}
 @media(prefers-reduced-motion:reduce){{.card{{transition:none}}}}
 </style></head><body><main><span class="eyebrow">Version {html.escape(version)}</span>
-<h1>Creative computation, native to Swift.</h1>
-<p class="intro">One package, three independently importable libraries for Apple platforms. Explore the API reference, architecture, and migration guidance for each product.</p>
+<h1>{html.escape(MODULES[0]["name"])}. Native to Swift.</h1>
+<p class="intro">One independently versioned Swift package for Apple platforms. Explore its API reference, architecture, compatibility, and migration guidance.</p>
 <section class="grid" aria-label="Package products">{''.join(cards)}</section>
 <footer><a href="llms.txt">Agent-readable index</a> · <a href="llms-full.txt">Complete context</a> · <a href="agent-context.json">Structured metadata</a></footer>
 </main></body></html>"""
@@ -225,9 +230,13 @@ def write_agent_resources(
         f"- [{module['name']} documentation]({base_url}/documentation/{module['slug']}/): {module['summary']}"
         for module in MODULES
     )
+    render_data = "\n".join(
+        f"- [{module['name']} DocC render data]({base_url}/data/documentation/{module['slug']}.json)"
+        for module in MODULES
+    )
     llms = f"""# {PACKAGE_NAME}
 
-> Three independently importable native Swift libraries for creative coding, Metal-first physics, and approachable on-device machine learning.
+> {PACKAGE_SUMMARY}
 
 Current documented release: {version}
 
@@ -239,15 +248,13 @@ Current documented release: {version}
 
 - [Complete documentation context]({base_url}/llms-full.txt)
 - [Structured project context]({base_url}/agent-context.json)
-- [P5 DocC render data]({base_url}/data/documentation/p5.json)
-- [Matter DocC render data]({base_url}/data/documentation/matter.json)
-- [ML5 DocC render data]({base_url}/data/documentation/ml5.json)
+{render_data}
 - [Source repository]({repository_url})
 """
     (site / "llms.txt").write_text(llms, encoding="utf-8")
 
     documentation_sources = ["README.md", "TODO.md"]
-    for product in ("P5", "Matter", "ML5"):
+    for product in PRODUCT_NAMES:
         source_root = repository / "Sources" / product
         documentation_sources.extend(
             str(path.relative_to(repository))
@@ -287,7 +294,7 @@ Current documented release: {version}
         "schemaVersion": 2,
         "name": PACKAGE_NAME,
         "version": version,
-        "summary": "Native Swift creative coding, physics, and machine learning.",
+        "summary": PACKAGE_SUMMARY,
         "canonicalDocumentation": f"{base_url}/",
         "repository": repository_url,
         "license": "MIT",
@@ -306,10 +313,10 @@ Current documented release: {version}
             for module in MODULES
         ],
         "importantConstraints": [
-            "P5 sketches and their native views are main-actor isolated.",
-            "Matter Engine and ML5 NeuralNetwork serialize mutable backend access with actors.",
-            "Browser-only objects receive native capability mappings rather than literal ports.",
-            "The package products share a semantic version but do not depend on one another.",
+            "The package has no production package dependencies.",
+            "Mutable native resources are actor-owned or main-actor isolated.",
+            "JavaScript and browser concepts receive native capability mappings rather than literal emulation.",
+            "Capability failures, cancellation, and validation errors are explicit.",
         ],
         "agentResources": {
             "index": f"{base_url}/llms.txt",

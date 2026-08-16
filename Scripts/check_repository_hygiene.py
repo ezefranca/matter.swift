@@ -4,12 +4,12 @@
 
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import subprocess
 
 
 REPOSITORY = Path(__file__).resolve().parent.parent
-PRODUCTS = ("P5", "Matter", "ML5")
 DISALLOWED_PARTS = {
     ".build",
     ".DS_Store",
@@ -28,6 +28,12 @@ def tracked_files() -> list[Path]:
 
 
 def main() -> None:
+    boundaries = json.loads(
+        (REPOSITORY / "Configuration/ModuleBoundaries.json").read_text(
+            encoding="utf-8"
+        )
+    )
+    products = tuple(boundaries["products"])
     violations: list[str] = []
     for path in tracked_files():
         if any(part in DISALLOWED_PARTS for part in path.parts):
@@ -37,11 +43,14 @@ def main() -> None:
 
     required = [
         Path("Documentation/RepositoryHygiene.md"),
+        Path("Package.resolved"),
         Path("Package.swift"),
-        Path("P5Demo/P5Demo.xcodeproj/project.pbxproj"),
         Path("THIRD_PARTY_NOTICES.md"),
     ]
-    for product in PRODUCTS:
+    demo_project = Path("P5Demo/P5Demo.xcodeproj/project.pbxproj")
+    if (REPOSITORY / "P5Demo").is_dir():
+        required.append(demo_project)
+    for product in products:
         required.extend(
             [
                 Path(f".swiftpm/xcode/xcshareddata/xcschemes/{product}.xcscheme"),

@@ -18,19 +18,16 @@ jobs:
     name: External SwiftPM client
     runs-on: macos-26
     timeout-minutes: 20
-
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
-
       - name: Resolve release tag
         id: release
         env:
           EVENT_TAG: ${{ github.event.release.tag_name }}
           INPUT_TAG: ${{ inputs.tag }}
         run: echo "tag=${EVENT_TAG:-$INPUT_TAG}" >> "$GITHUB_OUTPUT"
-
-      - name: Build fresh external clients
+      - name: Build fresh external client
         env:
           TAG: ${{ steps.release.outputs.tag }}
         run: bash Scripts/validate_external_client.sh --url "https://github.com/$GITHUB_REPOSITORY" --version "$TAG"
@@ -39,15 +36,19 @@ jobs:
     name: Documentation and SPI routes
     runs-on: ubuntu-latest
     timeout-minutes: 10
-
     steps:
-      - name: Check hosted product documentation
+      - name: Verify published routes
+        env:
+          REPOSITORY: ${{ github.event.repository.name }}
+          OWNER: ${{ github.repository_owner }}
         run: |
-          curl --fail --location --retry 6 --retry-delay 10 https://ezefranca.com/p5.swift/documentation/p5/ >/dev/null
-          curl --fail --location --retry 6 --retry-delay 10 https://ezefranca.com/p5.swift/documentation/matter/ >/dev/null
-          curl --fail --location --retry 6 --retry-delay 10 https://ezefranca.com/p5.swift/documentation/ml5/ >/dev/null
-
-      - name: Check Swift Package Index package and documentation routes
-        run: |
-          curl --fail --location --retry 6 --retry-delay 10 https://swiftpackageindex.com/ezefranca/p5.swift >/dev/null
-          curl --fail --location --retry 6 --retry-delay 10 https://swiftpackageindex.com/ezefranca/p5.swift/documentation/p5 >/dev/null
+          case "$REPOSITORY" in
+            p5.swift) PRODUCT=p5 ;;
+            matter.swift) PRODUCT=matter ;;
+            ml5.swift) PRODUCT=ml5 ;;
+            *) exit 65 ;;
+          esac
+          curl --fail --location --retry 6 --retry-delay 10 "https://ezefranca.com/$REPOSITORY/documentation/$PRODUCT/" >/dev/null
+          curl --fail --location --retry 6 --retry-delay 10 "https://ezefranca.com/$REPOSITORY/llms.txt" >/dev/null
+          curl --fail --location --retry 6 --retry-delay 10 "https://swiftpackageindex.com/$OWNER/$REPOSITORY" >/dev/null
+          curl --fail --location --retry 6 --retry-delay 10 "https://swiftpackageindex.com/$OWNER/$REPOSITORY/documentation/$PRODUCT" >/dev/null

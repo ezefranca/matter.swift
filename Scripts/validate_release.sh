@@ -23,6 +23,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 cd "$REPOSITORY_ROOT"
+PRODUCT=$(python3 -c 'import json; print(next(iter(json.load(open("Configuration/ModuleBoundaries.json"))["products"])))')
 if [[ -n "$(git status --porcelain)" ]]; then
   echo "Release validation requires a clean worktree." >&2
   exit 65
@@ -48,7 +49,5 @@ fi
 bash Scripts/check_api_breakage.sh
 python3 Scripts/check_dependency_policy.py
 python3 Scripts/check_links.py
-for SAMPLE in P5SmokeSample MatterSmokeSample ML5SmokeSample; do
-  swift build --product "$SAMPLE" -Xswiftc -warnings-as-errors
-done
+swift build --product "${PRODUCT}SmokeSample" -Xswiftc -warnings-as-errors
 echo "Release candidate $TAG passed all local gates."

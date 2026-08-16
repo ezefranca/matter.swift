@@ -26,78 +26,70 @@ jobs:
     timeout-minutes: 20
     outputs:
       pages-configuration: ${{ steps.pages.outcome }}
-    env:
-      P5_DOCUMENTATION_BASE_URL: https://ezefranca.com/p5.swift
-      P5_HOSTING_BASE_PATH: p5.swift
-
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-
       - name: Configure GitHub Pages
         id: pages
         uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
         continue-on-error: true
-
-      - name: Build DocC archives
-        env:
-          P5_DERIVED_DATA_ROOT: ${{ runner.temp }}/P5DerivedData
+      - name: Resolve documentation identity
+        id: package
         run: |
-          for TARGET in P5 Matter ML5; do
-            xcodebuild docbuild \
-              -scheme "$TARGET" \
-              -destination 'generic/platform=macOS' \
-              -derivedDataPath "$P5_DERIVED_DATA_ROOT/$TARGET" \
-              CODE_SIGNING_ALLOWED=NO \
-              SWIFT_SUPPRESS_WARNINGS=NO \
-              SWIFT_TREAT_WARNINGS_AS_ERRORS=YES \
-              DOCC_WARNINGS_AS_ERRORS=YES \
-              DOCC_HOSTING_BASE_PATH="$P5_HOSTING_BASE_PATH"
-          done
-
+          PRODUCT=$(python3 -c 'import json; print(next(iter(json.load(open("Configuration/ModuleBoundaries.json"))["products"])))')
+          REPOSITORY_NAME=${GITHUB_REPOSITORY#*/}
+          echo "product=$PRODUCT" >> "$GITHUB_OUTPUT"
+          echo "slug=$(printf '%s' "$PRODUCT" | tr '[:upper:]' '[:lower:]')" >> "$GITHUB_OUTPUT"
+          echo "repository=$REPOSITORY_NAME" >> "$GITHUB_OUTPUT"
+          echo "base_url=https://ezefranca.com/$REPOSITORY_NAME" >> "$GITHUB_OUTPUT"
+      - name: Build DocC archive
+        env:
+          PRODUCT: ${{ steps.package.outputs.product }}
+        run: |
+          xcodebuild docbuild \
+            -scheme "$PRODUCT" \
+            -destination 'generic/platform=macOS' \
+            -derivedDataPath "${{ runner.temp }}/DerivedData" \
+            CODE_SIGNING_ALLOWED=NO \
+            SWIFT_SUPPRESS_WARNINGS=NO \
+            SWIFT_TREAT_WARNINGS_AS_ERRORS=YES \
+            DOCC_WARNINGS_AS_ERRORS=YES \
+            DOCC_HOSTING_BASE_PATH="${{ steps.package.outputs.repository }}"
       - name: Transform archive for static hosting
         env:
-          P5_DERIVED_DATA_ROOT: ${{ runner.temp }}/P5DerivedData
-          P5_DOCUMENTATION_SITE: ${{ runner.temp }}/P5Documentation
-          P5_DOCUMENTATION_EXPORTS: ${{ runner.temp }}/P5DocumentationExports
+          BASE_URL: ${{ steps.package.outputs.base_url }}
+          PRODUCT: ${{ steps.package.outputs.product }}
+          REPOSITORY_NAME: ${{ steps.package.outputs.repository }}
         run: |
-          mkdir -p "$P5_DOCUMENTATION_SITE" "$P5_DOCUMENTATION_EXPORTS"
-          for TARGET in P5 Matter ML5; do
-            xcrun docc process-archive transform-for-static-hosting \
-              "$P5_DERIVED_DATA_ROOT/$TARGET/Build/Products/Debug/$TARGET.doccarchive" \
-              --output-path "$P5_DOCUMENTATION_EXPORTS/$TARGET" \
-              --hosting-base-path "$P5_HOSTING_BASE_PATH"
-            ditto "$P5_DOCUMENTATION_EXPORTS/$TARGET" "$P5_DOCUMENTATION_SITE"
-          done
-
-          P5_VERSION=$(git describe --tags --abbrev=0 --match '[0-9]*' 2>/dev/null || echo unreleased)
+          SITE="${{ runner.temp }}/Documentation"
+          xcrun docc process-archive transform-for-static-hosting \
+            "${{ runner.temp }}/DerivedData/Build/Products/Debug/$PRODUCT.doccarchive" \
+            --output-path "$SITE" \
+            --hosting-base-path "$REPOSITORY_NAME"
+          VERSION=$(git describe --tags --abbrev=0 --match '[0-9]*' 2>/dev/null || echo unreleased)
           python3 Scripts/prepare_documentation_site.py \
-            --site "$P5_DOCUMENTATION_SITE" \
-            --base-url "$P5_DOCUMENTATION_BASE_URL" \
-            --version "$P5_VERSION" \
+            --site "$SITE" \
+            --base-url "$BASE_URL" \
+            --version "$VERSION" \
             --repository-root "$GITHUB_WORKSPACE" \
             --repository-url "https://github.com/$GITHUB_REPOSITORY"
-
-      - name: Verify multi-product documentation routes
-        env:
-          P5_DOCUMENTATION_SITE: ${{ runner.temp }}/P5Documentation
+      - name: Verify documentation routes
         run: |
-          test -f "$P5_DOCUMENTATION_SITE/documentation/p5/index.html"
-          test -f "$P5_DOCUMENTATION_SITE/documentation/matter/index.html"
-          test -f "$P5_DOCUMENTATION_SITE/documentation/ml5/index.html"
-          test -f "$P5_DOCUMENTATION_SITE/data/documentation/p5.json"
-          test -f "$P5_DOCUMENTATION_SITE/data/documentation/matter.json"
-          test -f "$P5_DOCUMENTATION_SITE/data/documentation/ml5.json"
-
+          SITE="${{ runner.temp }}/Documentation"
+          test -f "$SITE/documentation/${{ steps.package.outputs.slug }}/index.html"
+          test -f "$SITE/data/documentation/${{ steps.package.outputs.slug }}.json"
+          test -f "$SITE/llms.txt"
+          test -f "$SITE/llms-full.txt"
+          test -f "$SITE/agent-context.json"
+          test -f "$SITE/sitemap.xml"
       - name: Validate internal and external references
         run: python3 Scripts/check_links.py --online
-
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:
-          path: ${{ runner.temp }}/P5Documentation
+          path: ${{ runner.temp }}/Documentation
 
   deploy:
     name: Deploy DocC site
@@ -108,7 +100,6 @@ jobs:
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-
     steps:
       - name: Deploy to GitHub Pages
         id: deployment

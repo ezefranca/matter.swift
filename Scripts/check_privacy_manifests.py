@@ -63,6 +63,11 @@ def validate_manifest(
 
 
 def main() -> None:
+    boundaries = json.loads(
+        (REPOSITORY / "Configuration/ModuleBoundaries.json").read_text(
+            encoding="utf-8"
+        )
+    )
     package = json.loads(
         subprocess.check_output(
             ["swift", "package", "dump-package"],
@@ -71,7 +76,12 @@ def main() -> None:
         )
     )
     targets = {target["name"]: target for target in package["targets"]}
-    for product, expected_access in PRODUCT_ACCESS.items():
+    products = list(boundaries["products"])
+    for product in products:
+        try:
+            expected_access = PRODUCT_ACCESS[product]
+        except KeyError as error:
+            raise SystemExit(f"No privacy policy is defined for {product}.") from error
         relative_path = Path("Resources/PrivacyInfo.xcprivacy")
         resources = {
             resource["path"]: resource["rule"] for resource in targets[product]["resources"]
@@ -84,7 +94,7 @@ def main() -> None:
         except (OSError, plistlib.InvalidFileException, ValueError) as error:
             raise SystemExit(str(error)) from error
 
-    print("Privacy manifests valid for P5, Matter, and ML5.")
+    print(f"Privacy manifests valid for {', '.join(products)}.")
 
 
 if __name__ == "__main__":

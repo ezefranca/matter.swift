@@ -2,8 +2,7 @@ name: Release
 
 on:
   push:
-    tags:
-      - "*.*.*"
+    tags: ["*.*.*"]
   workflow_dispatch:
     inputs:
       tag:
@@ -20,13 +19,11 @@ jobs:
     name: Publish Swift package
     runs-on: macos-26
     timeout-minutes: 45
-
     steps:
       - name: Check out repository
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
-
       - name: Select release tag
         id: release
         env:
@@ -39,41 +36,36 @@ jobs:
           else
             echo "tag=$REF_NAME" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: Verify semantic version tag
+      - name: Verify and check out release tag
         env:
           TAG: ${{ steps.release.outputs.tag }}
         run: |
           [[ "$TAG" =~ ^[0-9]+\.[0-9]+\.[0-9]+$ ]]
           git rev-parse --verify "refs/tags/$TAG"
-
-      - name: Check out release tag
-        if: github.event_name == 'workflow_dispatch'
-        env:
-          TAG: ${{ steps.release.outputs.tag }}
-        run: git checkout --detach "$TAG"
-
+          git checkout --detach "$TAG"
       - name: Validate release candidate
         env:
           TAG: ${{ steps.release.outputs.tag }}
         run: bash Scripts/validate_release.sh --tag "$TAG"
-
-      - name: Create source archive and release manifest
+      - name: Create source archive and manifest
+        id: archive
         env:
           TAG: ${{ steps.release.outputs.tag }}
         run: |
-          git archive --format=zip --prefix="p5.swift-$TAG/" --output="${{ runner.temp }}/p5.swift-$TAG.zip" "$TAG"
+          PACKAGE=${GITHUB_REPOSITORY#*/}
+          ARCHIVE="${{ runner.temp }}/$PACKAGE-$TAG.zip"
+          git archive --format=zip --prefix="$PACKAGE-$TAG/" --output="$ARCHIVE" "$TAG"
           python3 Scripts/create_release_manifest.py \
             --tag "$TAG" \
             --output "${{ runner.temp }}/release-manifest.json" \
-            "${{ runner.temp }}/p5.swift-$TAG.zip"
-          shasum -a 256 "${{ runner.temp }}/p5.swift-$TAG.zip" "${{ runner.temp }}/release-manifest.json" > "${{ runner.temp }}/SHA256SUMS"
-
+            "$ARCHIVE"
+          shasum -a 256 "$ARCHIVE" "${{ runner.temp }}/release-manifest.json" > "${{ runner.temp }}/SHA256SUMS"
+          echo "path=$ARCHIVE" >> "$GITHUB_OUTPUT"
+          echo "package=$PACKAGE" >> "$GITHUB_OUTPUT"
       - name: Attest source archive provenance
         uses: actions/attest-build-provenance@96278af6caaf10aea03fd8d33a09a777ca52d62f # v3.2.0
         with:
-          subject-path: ${{ runner.temp }}/p5.swift-${{ steps.release.outputs.tag }}.zip
-
+          subject-path: ${{ steps.archive.outputs.path }}
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
@@ -82,7 +74,7 @@ jobs:
           gh release create "$TAG"
           --verify-tag
           --generate-notes
-          --title "p5.swift $TAG"
-          "${{ runner.temp }}/p5.swift-$TAG.zip"
+          --title "${{ steps.archive.outputs.package }} $TAG"
+          "${{ steps.archive.outputs.path }}"
           "${{ runner.temp }}/release-manifest.json"
           "${{ runner.temp }}/SHA256SUMS"

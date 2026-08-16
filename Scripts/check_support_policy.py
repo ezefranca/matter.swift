@@ -111,8 +111,11 @@ def main() -> None:
         )
 
     spi = (REPOSITORY / ".spi.yml").read_text(encoding="utf-8")
-    if "documentation_targets: [P5, Matter, ML5]" not in spi:
-        raise SystemExit("Swift Package Index must build all documentation targets.")
+    for product in expected_products:
+        if f"documentation_targets: [{product}]" not in spi:
+            raise SystemExit(
+                f"Swift Package Index must build {product} documentation."
+            )
 
     workflow = (REPOSITORY / ".github/workflows/tests.yml").read_text(
         encoding="utf-8"
@@ -123,7 +126,7 @@ def main() -> None:
 
     print(
         "Support policy valid: "
-        f"Swift {match.group(1)}, {len(expected_products)} independent products, "
+        f"Swift {match.group(1)}, {len(expected_products)} independent product, "
         f"iOS {actual_platforms['ios']}+, macOS {actual_platforms['macos']}+."
     )
 

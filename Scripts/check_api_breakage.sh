@@ -8,7 +8,8 @@ MODULE_PATH="$BUILD_PATH/Modules"
 SDK_PATH=$(xcrun --show-sdk-path)
 TARGET_TRIPLE="$(uname -m)-apple-macosx14.0"
 
-for MODULE in P5 Matter ML5; do
+MODULES=$(python3 -c 'import json; print(*json.load(open("Configuration/ModuleBoundaries.json"))["products"])')
+for MODULE in $MODULES; do
   swift build \
     --package-path "$REPOSITORY_ROOT" \
     --target "$MODULE" \

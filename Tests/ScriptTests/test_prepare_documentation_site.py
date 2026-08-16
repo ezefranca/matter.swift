@@ -18,7 +18,7 @@ SPEC.loader.exec_module(prepare)
 
 
 class DocumentationSiteTests(unittest.TestCase):
-    def test_builds_multi_product_routes_and_agent_metadata(self) -> None:
+    def test_builds_product_routes_and_agent_metadata(self) -> None:
         with tempfile.TemporaryDirectory() as temporary_directory:
             site = Path(temporary_directory) / "site"
             data = site / "data" / "documentation"
@@ -27,7 +27,9 @@ class DocumentationSiteTests(unittest.TestCase):
                 "<html><head><title>Documentation</title></head></html>",
                 encoding="utf-8",
             )
-            for module in ("p5", "matter", "ml5"):
+            slugs = [module["slug"] for module in prepare.MODULES]
+            names = [module["name"] for module in prepare.MODULES]
+            for module in slugs:
                 document = {
                     "abstract": [{"type": "text", "text": f"{module} summary"}],
                     "kind": "article",
@@ -56,9 +58,9 @@ class DocumentationSiteTests(unittest.TestCase):
                 prepare.main()
 
             landing = (site / "index.html").read_text(encoding="utf-8")
-            for module in ("P5", "Matter", "ML5"):
+            for module in names:
                 self.assertIn(f">{module}</h2>", landing)
-            for module in ("p5", "matter", "ml5"):
+            for module in slugs:
                 route = site / "documentation" / module / "index.html"
                 self.assertTrue(route.is_file())
                 self.assertIn("rel=\"canonical\"", route.read_text(encoding="utf-8"))
@@ -69,14 +71,13 @@ class DocumentationSiteTests(unittest.TestCase):
             self.assertEqual(context["schemaVersion"], 2)
             self.assertEqual(
                 [product["name"] for product in context["products"]],
-                ["P5", "Matter", "ML5"],
+                names,
             )
             llms = (site / "llms.txt").read_text(encoding="utf-8")
-            self.assertIn("/documentation/p5/", llms)
-            self.assertIn("/documentation/matter/", llms)
-            self.assertIn("/documentation/ml5/", llms)
+            for module in slugs:
+                self.assertIn(f"/documentation/{module}/", llms)
             sitemap = (site / "sitemap.xml").read_text(encoding="utf-8")
-            self.assertEqual(sitemap.count("<url>"), 3)
+            self.assertEqual(sitemap.count("<url>"), len(slugs))
             self.assertTrue((site / ".nojekyll").is_file())
             self.assertTrue((site / "404.html").is_file())
 

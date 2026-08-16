@@ -1,19 +1,9 @@
 {
   "schemaVersion": 1,
   "products": {
-    "P5": {
-      "sourceRoot": "Sources/P5",
-      "testRoot": "Tests/P5Tests",
-      "allowedProductionDependencies": []
-    },
     "Matter": {
       "sourceRoot": "Sources/Matter",
       "testRoot": "Tests/MatterTests",
-      "allowedProductionDependencies": []
-    },
-    "ML5": {
-      "sourceRoot": "Sources/ML5",
-      "testRoot": "Tests/ML5Tests",
       "allowedProductionDependencies": []
     }
   }

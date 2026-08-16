@@ -2,10 +2,13 @@
 __pycache__/
 *.py[cod]
 /.build
-/Package.resolved
 /Packages
 xcuserdata/
 DerivedData/
+*.profraw
+*.profdata
+*.xcresult
+*.trace
 .swiftpm/configuration/registries.json
 .swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata
 .netrc

@@ -21,6 +21,11 @@ let world = try await engine.step()
 For reproducible reference calculations and tests only, use
 ``ReferenceIntegrator``. It is never used as a runtime fallback.
 
+Matter is independently versioned. Compose it at the application layer with
+[p5.swift](https://github.com/ezefranca/p5.swift) for visualization or
+[ml5.swift](https://github.com/ezefranca/ml5.swift) for native machine learning;
+none of the packages has a production dependency on another.
+
 ## Topics
 
 ### Essentials

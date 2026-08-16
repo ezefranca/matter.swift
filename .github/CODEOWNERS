@@ -1,10 +1,6 @@
-# Product boundaries. Replace or extend these owners as maintainers join.
-/Sources/P5/ @ezefranca
-/Tests/P5Tests/ @ezefranca
+* @ezefranca
 /Sources/Matter/ @ezefranca
 /Tests/MatterTests/ @ezefranca
-/Sources/ML5/ @ezefranca
-/Tests/ML5Tests/ @ezefranca
 /Package.swift @ezefranca
 /Configuration/ @ezefranca
-/Documentation/APIBaselines/ @ezefranca
+/.github/workflows/ @ezefranca

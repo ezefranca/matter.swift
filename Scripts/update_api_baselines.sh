@@ -10,7 +10,8 @@ TARGET_TRIPLE="$(uname -m)-apple-macosx14.0"
 BASELINE_PATH="$REPOSITORY_ROOT/Documentation/APIBaselines"
 mkdir -p "$BASELINE_PATH"
 
-for MODULE in P5 Matter ML5; do
+MODULES=$(python3 -c 'import json; print(*json.load(open("Configuration/ModuleBoundaries.json"))["products"])')
+for MODULE in $MODULES; do
   swift build \
     --package-path "$REPOSITORY_ROOT" \
     --target "$MODULE" \
@@ -28,4 +29,4 @@ for MODULE in P5 Matter ML5; do
     -o "$BASELINE_PATH/$MODULE.json"
 done
 
-echo "Updated P5, Matter, and ML5 API baselines."
+echo "Updated API baselines for $MODULES."

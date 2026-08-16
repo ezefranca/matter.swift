@@ -14,15 +14,14 @@ if [[ "$(xcode-select -p)" != *Xcode*.app* && "${DEVELOPER_DIR:-}" != *Xcode*.ap
 fi
 
 cd "$REPOSITORY_ROOT"
+PRODUCT=$(python3 -c 'import json; print(next(iter(json.load(open("Configuration/ModuleBoundaries.json"))["products"])))')
+SAMPLE="${PRODUCT}SmokeSample"
 mkdir -p "$OUTPUT_ROOT"
-for PRODUCT in P5SmokeSample MatterSmokeSample ML5SmokeSample; do
-  swift build --configuration release --product "$PRODUCT"
-done
+swift build --configuration release --product "$SAMPLE"
 BIN_PATH=$(swift build --configuration release --show-bin-path)
 
 record() {
   local template=$1
-  local sample=$2
   local slug=${template// /-}
   local status
   local table_of_contents="$OUTPUT_ROOT/$slug.xml"
@@ -34,13 +33,9 @@ record() {
     --time-limit 15s \
     --output "$OUTPUT_ROOT/$slug.trace" \
     --target-stdout - \
-    --launch -- "$BIN_PATH/$sample"
+    --launch -- "$BIN_PATH/$SAMPLE" </dev/null
   status=$?
   set -e
-
-  # xctrace returns 54 when a recording ends at its requested time limit even
-  # though it wrote a valid trace. Reject every other failure and verify that
-  # the resulting archive is readable before continuing.
   if [[ $status -ne 0 && $status -ne 54 ]]; then
     return "$status"
   fi
@@ -51,11 +46,23 @@ record() {
   grep -Fq "template-name>$template<" "$table_of_contents"
 }
 
-record "Time Profiler" MatterSmokeSample
-record "Allocations" P5SmokeSample
-record "Leaks" P5SmokeSample
-record "Metal System Trace" P5SmokeSample
-record "Core ML" ML5SmokeSample
-record "Power Profiler" MatterSmokeSample
+case "$PRODUCT" in
+  P5)
+    TEMPLATES=("Time Profiler" "Allocations" "Leaks" "Metal System Trace" "Power Profiler")
+    ;;
+  Matter)
+    TEMPLATES=("Time Profiler" "Allocations" "Leaks" "Metal System Trace" "Power Profiler")
+    ;;
+  ML5)
+    TEMPLATES=("Time Profiler" "Allocations" "Leaks" "Core ML" "Power Profiler")
+    ;;
+  *)
+    echo "No Instruments policy exists for $PRODUCT." >&2
+    exit 65
+    ;;
+esac
 
+for TEMPLATE in "${TEMPLATES[@]}"; do
+  record "$TEMPLATE"
+done
 echo "Instruments audit traces written to $OUTPUT_ROOT; inspect and summarize them locally."

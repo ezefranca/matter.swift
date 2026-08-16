@@ -12,6 +12,7 @@ elif [[ $# -ne 0 ]]; then
 fi
 
 cd "$REPOSITORY_ROOT"
+TARGETS=$(python3 -c 'import json; print(*json.load(open("Configuration/ModuleBoundaries.json"))["products"])')
 VALIDATION_TEMP=$(mktemp -d /tmp/p5-swift-validation.XXXXXX)
 trap 'rm -rf "$VALIDATION_TEMP"' EXIT
 
@@ -20,20 +21,25 @@ python3 Scripts/check_privacy_manifests.py
 python3 Scripts/check_repository_hygiene.py
 python3 Scripts/check_dependency_policy.py
 python3 Scripts/check_workflow_security.py
+python3 Scripts/check_package_family.py
 python3 Scripts/check_links.py
 python3 -m unittest discover -s Tests/ScriptTests -v
+FORMAT_PATHS=(Package.swift Sources Tests)
+if [[ -d P5Demo/P5Demo ]]; then
+  FORMAT_PATHS+=(P5Demo/P5Demo)
+fi
 swift format lint \
   --configuration .swift-format \
   --recursive \
   --parallel \
   --strict \
-  Package.swift Sources Tests P5Demo/P5Demo
+  "${FORMAT_PATHS[@]}"
 
 swift build --configuration release -Xswiftc -warnings-as-errors
 swift test --parallel --enable-code-coverage -Xswiftc -warnings-as-errors
 
 COVERAGE_JSON=$(swift test --show-codecov-path)
-for TARGET in P5 Matter ML5; do
+for TARGET in $TARGETS; do
   python3 Scripts/check_coverage.py \
     --coverage "$COVERAGE_JSON" \
     --source-root "Sources/$TARGET"
@@ -74,7 +80,7 @@ print(next(
 '
   )
   mkdir -p "$VALIDATION_TEMP/results"
-  for TARGET in P5 Matter ML5; do
+  for TARGET in $TARGETS; do
     for PLATFORM in macOS "iOS Simulator"; do
       for CONFIGURATION in Debug Release; do
         xcodebuild build \
@@ -110,17 +116,19 @@ print(next(
         SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
     done
   done
-  for CONFIGURATION in Debug Release; do
-    xcodebuild build \
-      -project P5Demo/P5Demo.xcodeproj \
-      -scheme P5Demo \
-      -configuration "$CONFIGURATION" \
-      -destination 'generic/platform=iOS Simulator' \
-      -derivedDataPath "$VALIDATION_TEMP/xcode/P5Demo-$CONFIGURATION" \
-      CODE_SIGNING_ALLOWED=NO \
-      SWIFT_SUPPRESS_WARNINGS=NO \
-      SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
-  done
+  if [[ -f P5Demo/P5Demo.xcodeproj/project.pbxproj ]]; then
+    for CONFIGURATION in Debug Release; do
+      xcodebuild build \
+        -project P5Demo/P5Demo.xcodeproj \
+        -scheme P5Demo \
+        -configuration "$CONFIGURATION" \
+        -destination 'generic/platform=iOS Simulator' \
+        -derivedDataPath "$VALIDATION_TEMP/xcode/P5Demo-$CONFIGURATION" \
+        CODE_SIGNING_ALLOWED=NO \
+        SWIFT_SUPPRESS_WARNINGS=NO \
+        SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
+    done
+  fi
 fi
 
-echo "p5.swift validation passed."
+echo "$(basename "$REPOSITORY_ROOT") validation passed."

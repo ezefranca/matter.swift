@@ -1,12 +1,12 @@
 version: 1
 
 metadata:
-  authors: "Expanded from Juan Hurtado's P5Swift"
+  authors: "Ezequiel França"
 
 builder:
   configs:
     - platform: macos
-      scheme: P5
-      documentation_targets: [P5, Matter, ML5]
+      scheme: Matter
+      documentation_targets: [Matter]
     - platform: ios
-      scheme: P5
+      scheme: Matter
