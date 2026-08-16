@@ -218,7 +218,7 @@ native differences.
 
 - [x] SwiftUI sketch presentation
 - [x] UIKit and AppKit canvas adapters
-- [ ] Observable sketch state and native controls
+- [x] Observable sketch state and native SwiftUI/UIKit/AppKit controls
 - [ ] Accessibility descriptions and reduced-motion behavior
 - [ ] Drag and drop, clipboard, file dialogs, and sharing
 - [x] URLSession networking and native persistence helpers

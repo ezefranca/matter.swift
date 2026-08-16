@@ -237,7 +237,7 @@ release.
 - [x] Add AVAudioEngine files, oscillators, envelopes, amplitude analysis, and FFT.
 - [x] Add URLSession loading, JSON/text/table parsing, and cancellation.
 - [x] Add UserDefaults and file-backed persistence helpers.
-- [ ] Provide SwiftUI/UIKit/AppKit equivalents for buttons, sliders, text fields,
+- [x] Provide SwiftUI/UIKit/AppKit equivalents for buttons, sliders, text fields,
   labels, and other DOM controls used by book examples.
 - [x] Add privacy manifests and permission documentation for accessed resources.
 

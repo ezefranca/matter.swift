@@ -39,6 +39,8 @@ All notable changes to p5.swift are documented in this file.
   multiline-record support.
 - Typed, namespaced UserDefaults values and an actor-isolated Codable file store
   with versioned envelopes, atomic replacement, cancellation, and stable errors.
+- Observation-backed control state, SwiftUI buttons, sliders, fields, labels,
+  toggles, pickers, and color input, plus accessible AppKit/UIKit factories.
 
 ## [0.3.2] - 2026-08-14
 
