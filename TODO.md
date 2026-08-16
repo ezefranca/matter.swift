@@ -232,14 +232,14 @@ release.
 
 ### Native media, audio, data, and interface equivalents
 
-- [ ] Add permission-aware AVFoundation camera and microphone capture.
+- [x] Add permission-aware AVFoundation camera and microphone capture.
 - [ ] Add video playback, frame extraction, recording, and lifecycle management.
 - [ ] Add AVAudioEngine files, oscillators, envelopes, amplitude analysis, and FFT.
 - [ ] Add URLSession loading, JSON/text/table parsing, and cancellation.
 - [ ] Add UserDefaults and file-backed persistence helpers.
 - [ ] Provide SwiftUI/UIKit/AppKit equivalents for buttons, sliders, text fields,
   labels, and other DOM controls used by book examples.
-- [ ] Add privacy manifests and permission documentation for accessed resources.
+- [x] Add privacy manifests and permission documentation for accessed resources.
 
 ### Metal-backed 3D
 
