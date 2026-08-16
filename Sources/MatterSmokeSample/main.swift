@@ -1,3 +1,4 @@
+import Foundation
 import Matter
 
 @main
@@ -13,6 +14,9 @@ struct MatterSmokeSample {
             throw SmokeSampleError.missingBody
         }
         print("Matter stepped body \(ball.rawValue) to (\(body.position.x), \(body.position.y)).")
+        if ProcessInfo.processInfo.environment["SWIFT_PACKAGE_INSTRUMENTS_HOLD"] == "1" {
+            try await Task.sleep(for: .seconds(20))
+        }
     }
 }
 
