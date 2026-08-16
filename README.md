@@ -345,6 +345,8 @@ try result.model.writeCoreMLModel(to: modelURL, configuration: export)
 Core ML receives a single float32 multi-array in the configured input-feature order
 and returns a multi-array in output-name order. Compilation tests exercise every ML5
 dense activation against `MLModel` and check numerical parity with native ML5 inference.
+Training quality is gated independently on canonical XOR and held-out affine datasets,
+with CPU/Metal predictions and loss histories compared on Metal-capable CI hosts.
 
 `NeuralNetwork` is actor-isolated and checks cancellation before and after
 model prediction. ML5-owned dense networks are trainable, but ML5 does not claim that

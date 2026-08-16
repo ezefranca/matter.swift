@@ -343,7 +343,7 @@ release.
 - [x] Expose async progress, metrics, early stopping, cancellation, checkpoints,
   and explicit device/fallback selection.
 - [x] Support model save/load and conversion or export to Core ML where supported.
-- [ ] Validate trained-model numerical quality on canonical datasets.
+- [x] Validate trained-model numerical quality on canonical datasets.
 
 ### Neuroevolution
 
