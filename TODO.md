@@ -184,7 +184,7 @@ release.
 - [x] Add stroke caps, joins, miter limits, dash patterns, fill rules, and antialiasing
   controls.
 - [x] Add native normal, multiply, screen, and additive blend modes plus global opacity.
-- [ ] Add tint/no-tint and broader Core Image compositing mappings.
+- [x] Add tint/no-tint and broader Core Image compositing mappings.
 
 ### 2D geometry and paths
 
@@ -222,9 +222,9 @@ release.
 - [ ] Add Core Text font loading, fallback, size, leading, alignment, bounds,
   wrapping, measurement, and drawing.
 - [x] Add async CGImage/ImageIO loading from bundle, file, data, and URL.
-- [ ] Add image draw/crop/resize, mode, tint, mask, copy, and blend operations.
-- [ ] Add pixel density, load/update pixels, typed pixel buffers, and sampling.
-- [ ] Add Core Image filters with deterministic CPU-reference tests where practical.
+- [x] Add image draw/crop/resize, mode, tint, mask, copy, and blend operations.
+- [x] Add pixel density, load/update pixels, typed pixel buffers, and sampling.
+- [x] Add Core Image filters with deterministic CPU-reference tests where practical.
 - [ ] Add PNG/JPEG/HEIF export, frame capture, animation/video export, and native
   file/Photos integrations.
 - [ ] Define color-space, alpha-premultiplication, orientation, and HDR behavior.
