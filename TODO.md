@@ -219,7 +219,7 @@ release.
 
 ### Text, images, pixels, and export
 
-- [ ] Add Core Text font loading, fallback, size, leading, alignment, bounds,
+- [x] Add Core Text font loading, fallback, size, leading, alignment, bounds,
   wrapping, measurement, and drawing.
 - [x] Add async CGImage/ImageIO loading from bundle, file, data, and URL.
 - [x] Add image draw/crop/resize, mode, tint, mask, copy, and blend operations.
