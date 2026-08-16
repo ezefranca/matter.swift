@@ -199,7 +199,7 @@ release.
 - [x] Add Core Graphics path import/export and reusable shape objects.
 - [x] Add scale, shear, apply-matrix, and reset-matrix transform helpers.
 - [x] Add public matrix inspection and reusable transform values.
-- [ ] Add geometry tests for flipped native canvas coordinates and pixel alignment.
+- [x] Add geometry tests for flipped native canvas coordinates and pixel alignment.
 
 ### Input and interaction
 
@@ -227,7 +227,7 @@ release.
 - [x] Add Core Image filters with deterministic CPU-reference tests where practical.
 - [ ] Add PNG/JPEG/HEIF export, frame capture, animation/video export, and native
   file/Photos integrations.
-- [ ] Define color-space, alpha-premultiplication, orientation, and HDR behavior.
+- [x] Define color-space, alpha-premultiplication, orientation, and HDR behavior.
 
 ### Native media, audio, data, and interface equivalents
 
