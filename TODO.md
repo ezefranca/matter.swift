@@ -147,10 +147,10 @@ release.
 - [x] Native AppKit/UIKit canvas and SwiftUI presentation.
 - [x] Add `frameCount`, `deltaTime`, measured frame rate, `millis()`, and monotonic
   clock behavior.
-- [ ] Add canvas resizing, display scale, pixel density, fullscreen/display metadata,
+- [x] Add canvas resizing, display scale, pixel density, fullscreen/display metadata,
   and safe-area behavior.
 - [x] Define deterministic manual-clock and manual-frame drivers for tests/examples.
-- [ ] Add pause/resume behavior for app scene and window lifecycle transitions.
+- [x] Add pause/resume behavior for app scene and window lifecycle transitions.
 - [ ] Add offscreen graphics buffers and reusable rendering contexts.
 
 ### Math, vectors, randomness, and noise
