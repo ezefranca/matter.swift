@@ -64,6 +64,13 @@ def main() -> None:
         )
         if not scheme.is_file():
             raise SystemExit(f"Missing shared Xcode scheme for {product}.")
+        test_plan = (
+            REPOSITORY
+            / ".swiftpm/xcode/xcshareddata/xctestplans"
+            / f"{product}.xctestplan"
+        )
+        if not test_plan.is_file():
+            raise SystemExit(f"Missing shared Xcode test plan for {product}.")
 
     tools_version = package["toolsVersion"]["_version"].removesuffix(".0")
     if tools_version != support["swift"]["toolsVersion"]:

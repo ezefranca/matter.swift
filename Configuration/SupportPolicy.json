@@ -4,7 +4,7 @@
     "toolsVersion": "6.2",
     "languageMode": "6",
     "minimumTestedVersion": "6.2.3",
-    "currentTestedVersion": "6.3.2"
+    "currentTestedVersion": "6.3.3"
   },
   "xcode": {
     "minimumMajorVersion": 26,

@@ -1,5 +1,11 @@
 # p5.swift
 
+<p align="center">
+  <img src="Assets/P5.svg" width="104" alt="P5 icon">
+  <img src="Assets/Matter.svg" width="104" alt="Matter icon">
+  <img src="Assets/ML5.svg" width="104" alt="ML5 icon">
+</p>
+
 > [!IMPORTANT]
 > **p5.swift is an expanded fork of
 > [Juan Hurtado's P5Swift](https://github.com/juandahurt/P5Swift).**
@@ -25,20 +31,30 @@ This repository is a single Swift package that ships three independent
 library products, each mapped to a well-known JavaScript creative-coding or
 ML library:
 
-| Product | Inspired by | Status |
+| Product | Inspired by | Release maturity |
 | --- | --- | --- |
-| [`P5`](#create-a-sketch) | [p5.js](https://p5js.org) | Active, see the [parity roadmap](#p5-parity-roadmap) |
-| [`Matter`](#matter-physics) | [Matter.js](https://brm.io/matter-js/) | Early, Metal-first physics core |
-| [`ML5`](#ml5-on-device-machine-learning) | [ml5.js](https://ml5js.org/) | Active, typed Core ML inference foundation |
+| [`P5`](#create-a-sketch) | [p5.js](https://p5js.org) | Pre-1.0 release candidate: 2D, native media/UI, and Metal 3D |
+| [`Matter`](#matter-physics) | [Matter.js](https://brm.io/matter-js/) | Pre-1.0 release candidate: complete deterministic physics pipeline |
+| [`ML5`](#ml5-on-device-machine-learning) | [ml5.js](https://ml5js.org/) | Pre-1.0 release candidate: Core ML inference and native dense training |
 
 Each product is a separate SwiftPM target with its own tests and DocC
 catalog. Add only the products you need to your target's dependencies.
+
+```mermaid
+flowchart LR
+    APP["Your app"] --> P5["P5 · drawing and interaction"]
+    APP --> MATTER["Matter · deterministic physics"]
+    APP --> ML5["ML5 · native machine learning"]
+```
+
+There are no arrows between the library products: each builds and imports without
+either sibling.
 
 ## Requirements
 
 | Tool or platform | Minimum version |
 | --- | --- |
-| Swift | 6.2 |
+| Swift | 6.2.3 |
 | Xcode | 26 |
 | iOS | 17 |
 | macOS | 14 |
@@ -163,71 +179,20 @@ Literal browser objects such as `window`, HTML elements, and CSS do not exist
 on Apple platforms. Their underlying capabilities can still receive native
 APIs.
 
-## P5 parity roadmap
+## P5 capability map
 
-The project is currently in **Phase 1**. Checked items are available in the
-latest release; unchecked items are planned. Every new API must include
-behavioral tests, p5.js reference links, and documentation of intentional
-native differences.
+P5 now includes the complete planned native foundation: lifecycle and deterministic
+timing; Core Graphics shapes, paths, typography, colors, images, pixels, filters,
+and export; vector math, seeded randomness, and Perlin noise; mouse, Pencil, touch,
+keyboard, drag/drop, clipboard, and accessibility events; AVFoundation media and
+audio; URLSession data loading and persistence; SwiftUI/UIKit/AppKit controls; and
+an actor-owned Metal 3D renderer with meshes, cameras, materials, lights, textures,
+custom shaders, offscreen targets, and MetalKit presentation.
 
-### Phase 1: Complete the 2D foundation
-
-- [x] Sketch lifecycle with `setup()` and `draw()`
-- [x] Frame-rate, loop, no-loop, and redraw controls
-- [x] Core primitives: lines, rectangles, squares, circles, and ellipses
-- [x] Fill, stroke, stroke weight, and disabled fill or stroke
-- [x] Translation, rotation, and drawing-state stacks
-- [ ] Numeric and grayscale colors, alpha overloads, and color modes
-- [ ] Points, triangles, quads, arcs, rounded rectangles, and shape modes
-- [ ] `beginShape()`, vertices, curves, Bézier paths, contours, and
-  `endShape()`
-- [ ] Scale, shear, matrix operations, angle modes, line caps, and line joins
-- [ ] Text loading, measurement, alignment, wrapping, and drawing
-- [ ] Image loading, drawing, resizing, tinting, masking, and blend modes
-- [x] Mouse, touch, keyboard, focus, timing, and canvas-resize events
-
-### Phase 2: Creative-coding utilities
-
-- [x] `P5Vector` and vector arithmetic
-- [ ] Seeded random values, Gaussian generation, and noise
-- [ ] Mapping, interpolation, constraints, normalization, and trigonometry
-- [ ] Date, time, frame count, delta time, and display information
-- [ ] Pixel access, filters, image sampling, and color interpolation
-- [ ] Offscreen graphics buffers and reusable drawing contexts
-- [x] Image, GIF, and native video export
-
-### Phase 3: Native media and audio
-
-- [x] Camera and microphone capture with AVFoundation
-- [x] Video playback, frame extraction, and recording
-- [x] Audio files, oscillators, envelopes, amplitude analysis, and FFT data
-- [x] URLSession loading, JSON/text/table parsing, and cancellation
-- [x] Typed UserDefaults and atomic file-backed Codable persistence
-- [x] Permission-aware asynchronous APIs and lifecycle management
-- [x] Photos and file importer/exporter integration
-
-### Phase 4: Metal-backed 3D
-
-- [x] 3D matrices, primitives, indexed meshes, cameras, and projections
-- [x] Validated, cancellation-aware Wavefront OBJ loading
-- [x] Validated materials and ambient, directional, and point lights
-- [x] Image textures, shared offscreen targets, and MetalKit drawable targets
-- [x] Shader APIs with a documented Metal Shading Language buffer ABI
-- [x] OBJ model loading and generated mesh normals
-- [x] Depth, stencil, culling, blending, MSAA, and render-target controls
-
-### Phase 5: Native interface integrations
-
-- [x] SwiftUI sketch presentation
-- [x] UIKit and AppKit canvas adapters
-- [x] Observable sketch state and native SwiftUI/UIKit/AppKit controls
-- [ ] Accessibility descriptions and reduced-motion behavior
-- [ ] Drag and drop, clipboard, file dialogs, and sharing
-- [x] URLSession networking and native persistence helpers
-
-Read the complete
-[parity and compatibility policy](https://ezefranca.com/p5.swift/documentation/p5/p5parityroadmap/)
-in the DocC documentation.
+The [compatibility guide](Sources/P5/P5.docc/P5CompatibilityAndConcepts.md) explains
+coordinates, color, concurrency, resource ownership, and intentional differences
+from JavaScript. Browser globals, HTML/CSS, WebGL shader source, and JavaScript
+coercion are deliberately replaced by native equivalents rather than emulated.
 
 ## Matter: physics
 
@@ -235,14 +200,13 @@ in the DocC documentation.
 [Matter.js](https://brm.io/matter-js/). It has no SpriteKit dependency and
 does not include Matter.js source code.
 
-The current slice provides `Sendable` vectors, identifiers, body
-definitions, bodies, and worlds; Matter-style circle and rectangle
-factories; force accumulation with fixed-step semi-implicit Euler
-integration; an actor-owned `Engine` with a required Metal execution path
-and a bundled Metal kernel; and a deterministic CPU
-`ReferenceIntegrator` for tests and numerical comparison. Collision
-detection, constraints, sleeping, compound bodies, and rendering are
-intentionally outside this initial slice.
+Matter provides validated value-semantic bodies and worlds, compound geometry,
+composites and transactional mutation, spatial queries, sweep-and-prune and SAT
+collision detection, persistent contact manifolds, impulse/friction response,
+constraints and soft-body helpers, sleeping and islands, bounded continuous
+collision handling, ordered events, fixed-step runners, drawing snapshots, and
+pointer constraints. An actor-owned `Engine` uses Metal for integration and the
+documented deterministic CPU pipeline for collision and constraint ownership.
 
 ```swift
 import Matter
@@ -373,11 +337,29 @@ currently throws
 `NeuralNetworkTrainingAdapter` is the extension point for a future Create ML
 adapter that can return a `ModelPredicting` backend.
 
+## Focused smoke samples
+
+The package includes one intentionally small executable per product. They are
+API and integration smoke checks, not line-by-line Nature of Code ports:
+
+```sh
+swift run P5SmokeSample
+swift run MatterSmokeSample
+swift run ML5SmokeSample
+```
+
+Each executable imports exactly one library product. P5 demonstrates validated
+geometry and an offscreen Metal pass, Matter advances a Metal-integrated world,
+and ML5 trains and predicts with the deterministic CPU reference backend.
+
 ## Documentation
 
 The DocC documentation is published at
 [ezefranca.com/p5.swift](https://ezefranca.com/p5.swift/documentation/p5/).
-GitHub Actions rebuilds it from `main`.
+GitHub Actions rebuilds all three catalogs from `main`. Start with the P5,
+Matter, and ML5 getting-started tutorials in their respective catalogs. For local
+diagnostics and measurement policy, see [Troubleshooting](Documentation/Troubleshooting.md)
+and [Performance baselines](Documentation/Benchmarks.md).
 
 Swift Package Index also builds and hosts versioned
 [DocC documentation](https://swiftpackageindex.com/ezefranca/p5.swift/documentation)
@@ -412,9 +394,12 @@ Command Line Tools installations.
 
 ## Distribution
 
-p5.swift is distributed as a source package through Swift Package Manager.
-Semantic version tags are published as GitHub Releases by the release
-workflow.
+p5.swift is currently the staging source package for all three products. The
+accepted 1.0 distribution architecture is three independently versioned source
+repositories: `p5.swift`, `matter.swift`, and `ml5.swift`. Each successor carries
+its own CI, DocC, Swift Package Index metadata, API baseline, release process, and
+reciprocal project links. See
+[ADR 0002](Documentation/Decisions/0002-separate-repositories.md).
 
 The repository includes `.spi.yml` metadata for
 [Swift Package Index](https://swiftpackageindex.com/ezefranca/p5.swift).
@@ -432,6 +417,9 @@ p5.swift builds on
 original Core Graphics renderer and demo sketches. The project is inspired by
 [p5.js](https://p5js.org) and the creative-coding work of
 [Daniel Shiffman](https://github.com/shiffman).
+
+See [Third-party notices](THIRD_PARTY_NOTICES.md) for dependency and inspiration
+attribution. The project is independent and is not endorsed by the upstream projects.
 
 ## Contributing and license
 

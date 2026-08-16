@@ -17,23 +17,23 @@ release.
   none of the three library targets depends on either of the others.
 - [x] Decide and document the distribution topology before 1.0: three separately
   versioned repositories, superseding the initial staging-monorepo decision.
-- [ ] Every supported public symbol has a complete DocC comment, availability,
+- [x] Every supported public symbol has a complete DocC comment, availability,
   thread-safety semantics, validation behavior, and a native-difference note
   where JavaScript behavior cannot map literally.
-- [ ] Every public behavior has deterministic unit coverage; each production
+- [x] Every public behavior has deterministic unit coverage; each production
   target maintains 100% line coverage and meaningful branch coverage.
-- [ ] Every product builds in Debug and Release for supported macOS and iOS
+- [x] Every product builds in Debug and Release for supported macOS and iOS
   destinations with warnings treated as errors.
 - [ ] Swift Package Index builds all three products and documentation catalogs.
 - [ ] GitHub Pages publishes versioned, searchable documentation for all three
   products plus complete `llms.txt` and symbol metadata.
-- [ ] The pinned Nature of Code audit is used as an API-requirements reference;
+- [x] The pinned Nature of Code audit is used as an API-requirements reference;
   exhaustive example manifests and ports are explicitly outside release scope.
-- [ ] Accessibility, cancellation, resource lifetime, memory behavior, GPU/CPU
+- [x] Accessibility, cancellation, resource lifetime, memory behavior, GPU/CPU
   failure behavior, and privacy requirements are documented and tested.
 - [ ] A clean checkout passes the documented build, test, documentation, example,
   and release-validation commands without private machine state.
-- [ ] The 1.0 API has completed Swift API Design Guidelines review, API-diff
+- [x] The 1.0 API has completed Swift API Design Guidelines review, API-diff
   review, license/attribution review, and release-candidate validation.
 
 ## 0. Baseline and repository architecture
@@ -52,9 +52,9 @@ release.
   Swift toolchain.
 - [x] Treat compiler warnings, documentation warnings, and lint violations as CI
   failures.
-- [ ] Remove committed Xcode-generated state that is not required for consumers,
+- [x] Remove committed Xcode-generated state that is not required for consumers,
   and document which generated files are intentionally versioned.
-- [ ] Audit product/module names for collisions with Apple frameworks and document
+- [x] Audit product/module names for collisions with Apple frameworks and document
   the naming decision.
 - [x] Make all package test commands work without optional environment
   variables or undeclared toolchain modules.
@@ -71,48 +71,49 @@ release.
   generated accessors and inactive conditional-compilation branches are excluded
   by LLVM's source coverage map.
 - [x] Add public-client tests that import each product without `@testable`.
-- [ ] Add serialization round-trip and forward/backward compatibility tests for
+- [x] Add serialization round-trip and forward/backward compatibility tests for
   every public `Codable` model.
-- [ ] Add invalid-input, boundary-value, floating-point, cancellation, and actor
+- [x] Add invalid-input, boundary-value, floating-point, cancellation, and actor
   isolation tests for every public API.
 - [x] Add deterministic seeded tests for the current randomized and noisy
   algorithms, including a fixed SplitMix64 golden sequence and repeatable Perlin
   fields.
-- [ ] Add macOS and iOS snapshot/golden-image tests for rendering behavior.
-- [ ] Add CPU-versus-GPU numerical conformance tests with documented tolerances.
-- [ ] Add Metal-unavailable, shader-compilation, allocation, encoder, command
+- [x] Add macOS and iOS snapshot/golden-image tests for rendering behavior.
+- [x] Add CPU-versus-GPU numerical conformance tests with documented tolerances.
+- [x] Add Metal-unavailable, shader-compilation, allocation, encoder, command
   buffer, cancellation, and device-loss failure tests.
-- [ ] Add performance baselines for rendering, physics step throughput, collision
+- [x] Add performance baselines for rendering, physics step throughput, collision
   scaling, neural inference, and neural training.
-- [ ] Add memory-growth and resource-lifetime tests for long-running sketches.
-- [ ] Run sanitizer jobs where supported: Address, Thread, and Undefined Behavior.
-- [ ] Add strict-concurrency builds for all products and examples.
-- [ ] Add flaky-test detection and repeat critical deterministic suites in CI.
+- [x] Add memory-growth and resource-lifetime tests for long-running sketches.
+- [x] Run sanitizer jobs where supported: Address and Thread; Swift has no
+  Undefined Behavior Sanitizer mode on the supported Apple toolchain.
+- [x] Add strict-concurrency builds for all products and examples.
+- [x] Add flaky-test detection and repeat critical deterministic suites in CI.
 
 ## 2. CI, release, and Swift Package Index
 
 - [x] Basic test, documentation, and release workflows exist.
 - [x] `.spi.yml` lists P5, Matter, and ML5 documentation targets for macOS.
 - [x] Create shared Xcode schemes for P5, Matter, and ML5.
-- [ ] Create test plans that include each product suite and integration suites.
+- [x] Create test plans that include each product suite and integration suites.
 - [x] Build each product independently for macOS Debug and Release in CI.
 - [x] Build each product independently for iOS Simulator Debug and Release in CI.
-- [ ] Run package tests through the supported standalone Swift toolchain and Xcode.
-- [ ] Validate the bundled Metal source on every supported SDK and architecture.
-- [ ] Add a CI matrix for the minimum supported and current stable toolchains.
-- [ ] Cache dependencies and build products without hiding clean-build failures.
-- [ ] Add dependency review, secret scanning, and license-policy validation.
+- [x] Run package tests through the supported standalone Swift toolchain and Xcode.
+- [x] Validate the bundled Metal source on every supported SDK and architecture.
+- [x] Add a CI matrix for the minimum supported and current stable toolchains.
+- [x] Cache dependencies and build products without hiding clean-build failures.
+- [x] Add dependency review, secret scanning, and license-policy validation.
 - [x] Build all three DocC archives with warnings treated as errors.
 - [x] Publish P5, Matter, and ML5 documentation under stable independent routes.
 - [x] Generate a documentation landing page that clearly presents all products.
 - [x] Generate version metadata, sitemap, canonical URLs, and `llms.txt` content
   from all three symbol graphs and DocC catalogs.
-- [ ] Verify the production SPI build after every release and expose status badges
+- [x] Verify the production SPI build after every release and expose status badges
   for every supported platform/product combination.
-- [ ] Validate semantic version tags, changelog entries, clean worktrees, tests,
+- [x] Validate semantic version tags, changelog entries, clean worktrees, tests,
   documentation, examples, and API diffs before creating a release.
-- [ ] Produce checksummed release provenance and a machine-readable release manifest.
-- [ ] Add a rollback/yank procedure and post-release smoke test.
+- [x] Produce checksummed release provenance and a machine-readable release manifest.
+- [x] Add a rollback/yank procedure and post-release smoke test.
 
 ## 3. Documentation and developer experience
 
@@ -122,22 +123,22 @@ release.
 - [x] Document every Matter public symbol; current symbol graph is 84/84 documented.
 - [x] Document every ML5 public symbol; current symbol graph is 114/114 documented.
 - [ ] Add executable usage snippets for every major feature and error path.
-- [ ] Add tutorials for first P5 sketch, first Matter world, and first ML5 model.
+- [x] Add tutorials for first P5 sketch, first Matter world, and first ML5 model.
 - [x] Add a conceptual article for P5 monotonic timing and deterministic manual frames.
-- [ ] Add conceptual articles for coordinates, color, concurrency, Metal execution,
+- [x] Add conceptual articles for coordinates, color, concurrency, Metal execution,
   Core ML, MPSGraph training, and resource ownership.
-- [ ] Publish explicit p5.js, Matter.js, and ml5.js compatibility tables.
-- [ ] Link each compatibility API to its authoritative upstream reference.
-- [ ] Document all intentional differences from JavaScript and browser behavior.
-- [ ] Add migration guides from p5.js/Matter.js/ml5.js examples to Swift.
-- [ ] Add troubleshooting for toolchains, permissions, GPU availability, model
+- [x] Publish explicit p5.js, Matter.js, and ml5.js compatibility tables.
+- [x] Link each compatibility API to its authoritative upstream reference.
+- [x] Document all intentional differences from JavaScript and browser behavior.
+- [x] Add migration guides from p5.js/Matter.js/ml5.js examples to Swift.
+- [x] Add troubleshooting for toolchains, permissions, GPU availability, model
   compilation, package resolution, and Swift Playgrounds.
-- [ ] Add benchmark methodology and current performance results.
-- [ ] Add a polished multi-product README with separate installation and quick-start
+- [x] Add benchmark methodology and current performance results.
+- [x] Add a polished multi-product README with separate installation and quick-start
   sections, screenshots, support status, and release maturity labels.
-- [ ] Add complete contribution guidance for APIs, shaders, models, examples,
+- [x] Add complete contribution guidance for APIs, shaders, models, examples,
   documentation, tests, performance, and compatibility updates.
-- [ ] Validate every internal DocC link and every external reference in CI.
+- [x] Validate every internal DocC link and every external reference in CI.
 
 ## 4. P5: core creative-coding runtime
 
@@ -371,42 +372,42 @@ release.
 
 - [x] Remove exhaustive example manifests, browser work, and 344 example ports from
   release scope at the project owner's direction.
-- [ ] Keep the pinned upstream audit as a requirements checklist for library APIs.
-- [ ] Add a small focused smoke sample for each major library capability; samples
+- [x] Keep the pinned upstream audit as a requirements checklist for library APIs.
+- [x] Add a small focused smoke sample for each major library capability; samples
   demonstrate the API but are not line-by-line book ports.
-- [ ] Add a book-version compatibility page and clearly attribute Daniel Shiffman
+- [x] Add a book-version compatibility page and clearly attribute Daniel Shiffman
   and the Nature of Code project without implying official affiliation.
 
 ## 8. Apple-platform product polish
 
-- [ ] Review every API against the Swift API Design Guidelines and Apple framework
+- [x] Review every API against the Swift API Design Guidelines and Apple framework
   naming/concurrency conventions.
-- [ ] Prefer value semantics, `Sendable`, actors, async/await, typed errors, and
+- [x] Prefer value semantics, `Sendable`, actors, async/await, typed errors, and
   explicit ownership; document deliberate exceptions.
-- [ ] Add availability annotations and graceful capability checks for Metal, Core ML,
+- [x] Add availability annotations and graceful capability checks for Metal, Core ML,
   MPSGraph, camera, microphone, Photos, and platform-specific UI.
-- [ ] Support Dynamic Type, VoiceOver, Reduce Motion, increased contrast, keyboard
+- [x] Support Dynamic Type, VoiceOver, Reduce Motion, increased contrast, keyboard
   navigation, pointer input, and localization in the example browser.
-- [ ] Verify display scale, color management, wide color, dark mode, HDR decisions,
+- [x] Verify display scale, color management, wide color, dark mode, HDR decisions,
   and energy behavior.
 - [ ] Add Instruments-based performance, allocations, leaks, GPU, and energy audits.
-- [ ] Add package icons, consistent diagrams/screenshots, copy editing, and polished
+- [x] Add package icons, consistent diagrams/screenshots, copy editing, and polished
   error/troubleshooting language.
 - [ ] Verify clean integration in Xcode apps, SwiftPM clients, Swift Playgrounds,
   and an archived sample application.
-- [ ] Complete security, privacy, license, attribution, and third-party model audits.
+- [x] Complete security, privacy, license, attribution, and third-party model audits.
 
 ## 9. Release gates
 
 - [ ] All preceding checklist items are complete or moved to an explicitly approved
   post-1.0 scope with rationale and no contradiction of public compatibility claims.
-- [ ] All three products pass clean Debug/Release builds and tests on every supported
+- [x] All three products pass clean Debug/Release builds and tests on every supported
   platform/toolchain matrix entry.
-- [ ] Coverage and documentation completeness gates report 100% for all products.
-- [ ] Focused package smoke samples compile and their required runtime/visual suites
+- [x] Coverage and documentation completeness gates report 100% for all products.
+- [x] Focused package smoke samples compile and their required runtime/visual suites
   pass; exhaustive Nature of Code ports are not a release gate.
-- [ ] API digester reports no unreviewed breaking changes.
-- [ ] Performance and memory regressions remain within documented budgets.
+- [x] API digester reports no unreviewed breaking changes.
+- [x] Performance and memory regressions remain within documented budgets.
 - [ ] SPI and hosted documentation smoke tests pass for the release candidate.
 - [ ] A fresh external sample project resolves the tag and imports each product
   independently.

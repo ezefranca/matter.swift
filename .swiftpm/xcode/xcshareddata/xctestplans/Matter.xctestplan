@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "6CA9B049-909A-474A-AF35-8684D6A63BAA",
+      "name" : "Default",
+      "options" : {
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:",
+      "identifier" : "Matter",
+      "name" : "Matter"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : false,
+      "target" : {
+        "containerPath" : "container:",
+        "identifier" : "MatterTests",
+        "name" : "MatterTests"
+      }
+    }
+  ],
+  "version" : 1
+}

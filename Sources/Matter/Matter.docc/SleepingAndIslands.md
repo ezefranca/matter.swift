@@ -55,7 +55,7 @@ diagnostics, while ``SimulationResult/sleepingEvents`` reports ordered
 ``SleepingEvent`` values for every requested tick. ``RunnerUpdate`` forwards
 the same event stream.
 
-For a custom CPU pipeline, ``ReferencePhysics/stepWithEvents(world:collisionTracker:collisionSolverState:sleepingState:gravity:timeStep:solver:constraintSolver:sleeping:)``
+For a custom CPU pipeline, ``ReferencePhysics/stepWithEvents(world:collisionTracker:collisionSolverState:sleepingState:gravity:timeStep:solver:constraintSolver:sleeping:continuousCollision:)``
 accepts all persistent state explicitly and returns the same result shape as a
 single engine tick. Lower-level schedulers can instead call
 ``SleepingManager/prepareForStep(world:collisions:)`` before work and

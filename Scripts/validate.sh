@@ -17,13 +17,17 @@ trap 'rm -rf "$VALIDATION_TEMP"' EXIT
 
 python3 Scripts/check_support_policy.py
 python3 Scripts/check_privacy_manifests.py
+python3 Scripts/check_repository_hygiene.py
+python3 Scripts/check_dependency_policy.py
+python3 Scripts/check_workflow_security.py
+python3 Scripts/check_links.py
 python3 -m unittest discover -s Tests/ScriptTests -v
 swift format lint \
   --configuration .swift-format \
   --recursive \
   --parallel \
   --strict \
-  Package.swift Sources Tests
+  Package.swift Sources Tests P5Demo/P5Demo
 
 swift build --configuration release -Xswiftc -warnings-as-errors
 swift test --parallel --enable-code-coverage -Xswiftc -warnings-as-errors
@@ -50,10 +54,26 @@ done
 bash Scripts/check_api_breakage.sh
 
 if [[ "$SKIP_XCODE" == false ]]; then
-  if [[ "$(xcode-select -p)" != *Xcode.app* ]]; then
+  ACTIVE_DEVELOPER_DIR=${DEVELOPER_DIR:-$(xcode-select -p)}
+  if [[ "$ACTIVE_DEVELOPER_DIR" != *Xcode*.app/Contents/Developer ]]; then
     echo "Full Xcode is required; use --skip-xcode only when Xcode jobs run separately." >&2
     exit 69
   fi
+  export DEVELOPER_DIR="$ACTIVE_DEVELOPER_DIR"
+  xcodebuild -version
+  IOS_SIMULATOR_ID=$(
+    xcrun simctl list devices available -j | python3 -c '
+import json, sys
+devices = json.load(sys.stdin)["devices"]
+print(next(
+    device["udid"]
+    for runtime in devices.values()
+    for device in runtime
+    if "iPhone" in device["name"]
+))
+'
+  )
+  mkdir -p "$VALIDATION_TEMP/results"
   for TARGET in P5 Matter ML5; do
     for PLATFORM in macOS "iOS Simulator"; do
       for CONFIGURATION in Debug Release; do
@@ -63,6 +83,7 @@ if [[ "$SKIP_XCODE" == false ]]; then
           -destination "generic/platform=$PLATFORM" \
           -derivedDataPath "$VALIDATION_TEMP/xcode/$TARGET-$PLATFORM-$CONFIGURATION" \
           CODE_SIGNING_ALLOWED=NO \
+          SWIFT_SUPPRESS_WARNINGS=NO \
           SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
       done
     done
@@ -71,8 +92,34 @@ if [[ "$SKIP_XCODE" == false ]]; then
       -destination 'generic/platform=macOS' \
       -derivedDataPath "$VALIDATION_TEMP/docc/$TARGET" \
       CODE_SIGNING_ALLOWED=NO \
-      SWIFT_TREAT_WARNINGS_AS_ERRORS=YES \
-      DOCC_WARNINGS_AS_ERRORS=YES
+      SWIFT_SUPPRESS_WARNINGS=NO \
+        SWIFT_TREAT_WARNINGS_AS_ERRORS=YES \
+        DOCC_WARNINGS_AS_ERRORS=YES
+    for DESTINATION in 'platform=macOS' "id=$IOS_SIMULATOR_ID"; do
+      PLATFORM_NAME=$(printf '%s' "$DESTINATION" | tr '=, ' '---')
+      xcodebuild test \
+        -quiet \
+        -skipMacroValidation \
+        -scheme "$TARGET" \
+        -testPlan "$TARGET" \
+        -destination "$DESTINATION" \
+        -derivedDataPath "$VALIDATION_TEMP/tests/$TARGET-$PLATFORM_NAME" \
+        -resultBundlePath "$VALIDATION_TEMP/results/$TARGET-$PLATFORM_NAME.xcresult" \
+        CODE_SIGNING_ALLOWED=NO \
+        SWIFT_SUPPRESS_WARNINGS=NO \
+        SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
+    done
+  done
+  for CONFIGURATION in Debug Release; do
+    xcodebuild build \
+      -project P5Demo/P5Demo.xcodeproj \
+      -scheme P5Demo \
+      -configuration "$CONFIGURATION" \
+      -destination 'generic/platform=iOS Simulator' \
+      -derivedDataPath "$VALIDATION_TEMP/xcode/P5Demo-$CONFIGURATION" \
+      CODE_SIGNING_ALLOWED=NO \
+      SWIFT_SUPPRESS_WARNINGS=NO \
+      SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
   done
 fi
 

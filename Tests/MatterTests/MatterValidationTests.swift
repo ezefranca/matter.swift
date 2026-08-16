@@ -13,6 +13,18 @@ import Testing
             "Synthetic Metal failure."
         }
     }
+
+    private let matterTestKernelSource = """
+        #include <metal_stdlib>
+        using namespace metal;
+
+        kernel void integrateBodies(
+            device float *values [[buffer(0)]],
+            uint index [[thread_position_in_grid]])
+        {
+            values[index] = values[index];
+        }
+        """
 #endif
 
 @Suite("Matter validation and state")
@@ -380,7 +392,8 @@ struct MatterValidationTests {
                 _ = try MetalBackend(resourceFactory: factory)
             }
 
-            guard MTLCreateSystemDefaultDevice() != nil else { return }
+            guard let device = MTLCreateSystemDefaultDevice() else { return }
+            _ = MetalResourceFactory.system.makeDefaultLibrary(device)
 
             factory = .system
             factory.bodyStride = { 64 }
@@ -392,11 +405,20 @@ struct MatterValidationTests {
 
             factory = .system
             factory.loadKernelSource = { nil }
+            factory.makeDefaultLibrary = { _ in nil }
             #expect(throws: MetalBackendError.kernelSourceUnavailable) {
                 _ = try MetalBackend(resourceFactory: factory)
             }
 
             factory = .system
+            factory.loadKernelSource = { nil }
+            factory.makeDefaultLibrary = { device in
+                try? device.makeLibrary(source: matterTestKernelSource, options: nil)
+            }
+            _ = try MetalBackend(resourceFactory: factory)
+
+            factory = .system
+            factory.loadKernelSource = { matterTestKernelSource }
             factory.makeLibrary = { _, _ in throw SyntheticMetalFailure.expected }
             #expect(
                 throws: MetalBackendError.kernelCompilationFailed(
@@ -407,6 +429,7 @@ struct MatterValidationTests {
             }
 
             factory = .system
+            factory.loadKernelSource = { matterTestKernelSource }
             factory.makeFunction = { _, _ in nil }
             #expect(
                 throws: MetalBackendError.kernelFunctionUnavailable(name: "integrateBodies")
@@ -415,6 +438,7 @@ struct MatterValidationTests {
             }
 
             factory = .system
+            factory.loadKernelSource = { matterTestKernelSource }
             factory.makePipeline = { _, _ in throw SyntheticMetalFailure.expected }
             #expect(
                 throws: MetalBackendError.pipelineCreationFailed(
@@ -425,6 +449,7 @@ struct MatterValidationTests {
             }
 
             factory = .system
+            factory.loadKernelSource = { matterTestKernelSource }
             factory.makeCommandQueue = { _ in nil }
             #expect(throws: MetalBackendError.commandQueueCreationFailed) {
                 _ = try MetalBackend(resourceFactory: factory)

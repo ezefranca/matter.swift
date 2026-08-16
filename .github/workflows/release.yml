@@ -13,16 +13,17 @@ on:
 
 permissions:
   contents: write
+  id-token: write
 
 jobs:
   release:
     name: Publish Swift package
     runs-on: macos-26
-    timeout-minutes: 15
+    timeout-minutes: 45
 
     steps:
       - name: Check out repository
-        uses: actions/checkout@v7
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
           fetch-depth: 0
 
@@ -52,23 +53,36 @@ jobs:
           TAG: ${{ steps.release.outputs.tag }}
         run: git checkout --detach "$TAG"
 
-      - name: Build and test
-        run: swift test --parallel -Xswiftc -warnings-as-errors
+      - name: Validate release candidate
+        env:
+          TAG: ${{ steps.release.outputs.tag }}
+        run: bash Scripts/validate_release.sh --tag "$TAG"
 
-      - name: Build iOS library
-        run: >
-          xcodebuild build
-          -scheme P5
-          -destination 'generic/platform=iOS Simulator'
-          CODE_SIGNING_ALLOWED=NO
-          SWIFT_TREAT_WARNINGS_AS_ERRORS=YES
+      - name: Create source archive and release manifest
+        env:
+          TAG: ${{ steps.release.outputs.tag }}
+        run: |
+          git archive --format=zip --prefix="p5.swift-$TAG/" --output="${{ runner.temp }}/p5.swift-$TAG.zip" "$TAG"
+          python3 Scripts/create_release_manifest.py \
+            --tag "$TAG" \
+            --output "${{ runner.temp }}/release-manifest.json" \
+            "${{ runner.temp }}/p5.swift-$TAG.zip"
+          shasum -a 256 "${{ runner.temp }}/p5.swift-$TAG.zip" "${{ runner.temp }}/release-manifest.json" > "${{ runner.temp }}/SHA256SUMS"
+
+      - name: Attest source archive provenance
+        uses: actions/attest-build-provenance@96278af6caaf10aea03fd8d33a09a777ca52d62f # v3.2.0
+        with:
+          subject-path: ${{ runner.temp }}/p5.swift-${{ steps.release.outputs.tag }}.zip
 
       - name: Publish GitHub release
         env:
           GH_TOKEN: ${{ github.token }}
           TAG: ${{ steps.release.outputs.tag }}
-        run: >
+        run: >-
           gh release create "$TAG"
           --verify-tag
           --generate-notes
           --title "p5.swift $TAG"
+          "${{ runner.temp }}/p5.swift-$TAG.zip"
+          "${{ runner.temp }}/release-manifest.json"
+          "${{ runner.temp }}/SHA256SUMS"

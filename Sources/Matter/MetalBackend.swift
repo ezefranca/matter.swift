@@ -140,6 +140,7 @@
         var makeDevice: () -> (any MTLDevice)?
         var bodyStride: () -> Int
         var loadKernelSource: () -> String?
+        var makeDefaultLibrary: (any MTLDevice) -> (any MTLLibrary)?
         var makeLibrary: (any MTLDevice, String) throws -> any MTLLibrary
         var makeFunction: (any MTLLibrary, String) -> (any MTLFunction)?
         var makePipeline: (any MTLDevice, any MTLFunction) throws -> any MTLComputePipelineState
@@ -155,6 +156,9 @@
                         withExtension: "metal"
                     )
                 )
+            },
+            makeDefaultLibrary: { device in
+                try? device.makeDefaultLibrary(bundle: Bundle.module)
             },
             makeLibrary: { device, source in
                 try device.makeLibrary(source: source, options: nil)
@@ -255,15 +259,19 @@
                     actual: actualBodyStride
                 )
             }
-            guard let source = factory.loadKernelSource() else {
-                throw MetalBackendError.kernelSourceUnavailable
-            }
-
             let library: any MTLLibrary
-            do {
-                library = try factory.makeLibrary(device, source)
-            } catch {
-                throw MetalBackendError.kernelCompilationFailed(message: error.localizedDescription)
+            if let source = factory.loadKernelSource() {
+                do {
+                    library = try factory.makeLibrary(device, source)
+                } catch {
+                    throw MetalBackendError.kernelCompilationFailed(
+                        message: error.localizedDescription
+                    )
+                }
+            } else if let compiledLibrary = factory.makeDefaultLibrary(device) {
+                library = compiledLibrary
+            } else {
+                throw MetalBackendError.kernelSourceUnavailable
             }
             guard let function = factory.makeFunction(library, "integrateBodies") else {
                 throw MetalBackendError.kernelFunctionUnavailable(name: "integrateBodies")

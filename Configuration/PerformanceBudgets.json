@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "baselines": [
+    {
+      "name": "p5-metal-rendering",
+      "filter": "P5MetalRendererTests/rendering",
+      "maximumSeconds": 15
+    },
+    {
+      "name": "matter-broad-phase",
+      "filter": "MatterBroadPhaseBenchmarkTests",
+      "maximumSeconds": 20
+    },
+    {
+      "name": "ml5-canonical-training",
+      "filter": "ML5CanonicalTrainingQualityTests",
+      "maximumSeconds": 45
+    }
+  ]
+}

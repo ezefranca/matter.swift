@@ -1,9 +1,4 @@
-@Metadata {
-  @DisplayName("Matter")
-  @PageColor(green)
-}
-
-# Matter
+# ``Matter``
 
 A Metal-first, native Swift foundation inspired conceptually by Matter.js.
 
@@ -30,6 +25,7 @@ For reproducible reference calculations and tests only, use
 
 ### Essentials
 
+- <doc:GettingStarted>
 - ``Engine``
 - ``World``
 - ``Body``
@@ -87,7 +83,7 @@ For reproducible reference calculations and tests only, use
 - ``Events``
 - ``MatterEventSubscription``
 - ``MatterEventBufferingPolicy``
-- <doc:Events>
+- <doc:SimulationEvents>
 - <doc:CollisionDetection>
 - <doc:CollisionResponse>
 
@@ -143,6 +139,7 @@ For reproducible reference calculations and tests only, use
 - <doc:ForceBehaviors>
 - <doc:BoundedContinuousCollision>
 
-### Architecture
+### Design
 
 - <doc:Architecture>
+- <doc:MatterCompatibility>

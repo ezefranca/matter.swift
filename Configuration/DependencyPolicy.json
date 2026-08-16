@@ -1,0 +1,19 @@
+{
+  "schemaVersion": 1,
+  "allowedLicenses": ["Apache-2.0"],
+  "dependencies": {
+    "swift-testing": {
+      "url": "https://github.com/swiftlang/swift-testing",
+      "revision": "48a471ab313e858258ab0b9b0bf2cea55a50cefb",
+      "license": "Apache-2.0",
+      "scope": "test-only"
+    },
+    "swift-syntax": {
+      "url": "https://github.com/swiftlang/swift-syntax.git",
+      "revision": "4799286537280063c85a32f09884cfbca301b1a1",
+      "license": "Apache-2.0",
+      "scope": "transitive-test-only",
+      "required": false
+    }
+  }
+}

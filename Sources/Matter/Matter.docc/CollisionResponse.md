@@ -72,7 +72,7 @@ correct penetration beyond the larger body slop according to inverse mass.
 Static and sleeping bodies contribute zero effective inverse mass and inertia.
 Sensors are returned to the caller but never receive impulses or correction.
 
-``ReferencePhysics/step(world:gravity:timeStep:solver:)`` combines the CPU
+``ReferencePhysics/step(world:gravity:timeStep:solver:constraintSolver:)`` combines the CPU
 reference integrator and the same solver for deterministic tests and tooling.
 Its stateful `stepWithEvents` overload additionally mirrors collision lifecycle,
 warm-start caching, constraints, and island sleeping in one explicit CPU tick.

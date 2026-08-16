@@ -1,0 +1,53 @@
+name: Post-release smoke tests
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Published semantic version
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+jobs:
+  external-client:
+    name: External SwiftPM client
+    runs-on: macos-26
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Resolve release tag
+        id: release
+        env:
+          EVENT_TAG: ${{ github.event.release.tag_name }}
+          INPUT_TAG: ${{ inputs.tag }}
+        run: echo "tag=${EVENT_TAG:-$INPUT_TAG}" >> "$GITHUB_OUTPUT"
+
+      - name: Build fresh external clients
+        env:
+          TAG: ${{ steps.release.outputs.tag }}
+        run: bash Scripts/validate_external_client.sh --url "https://github.com/$GITHUB_REPOSITORY" --version "$TAG"
+
+  distribution:
+    name: Documentation and SPI routes
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+
+    steps:
+      - name: Check hosted product documentation
+        run: |
+          curl --fail --location --retry 6 --retry-delay 10 https://ezefranca.com/p5.swift/documentation/p5/ >/dev/null
+          curl --fail --location --retry 6 --retry-delay 10 https://ezefranca.com/p5.swift/documentation/matter/ >/dev/null
+          curl --fail --location --retry 6 --retry-delay 10 https://ezefranca.com/p5.swift/documentation/ml5/ >/dev/null
+
+      - name: Check Swift Package Index package and documentation routes
+        run: |
+          curl --fail --location --retry 6 --retry-delay 10 https://swiftpackageindex.com/ezefranca/p5.swift >/dev/null
+          curl --fail --location --retry 6 --retry-delay 10 https://swiftpackageindex.com/ezefranca/p5.swift/documentation/p5 >/dev/null

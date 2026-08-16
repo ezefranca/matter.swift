@@ -30,6 +30,9 @@ let package = Package(
             name: "ML5",
             targets: ["ML5"]
         ),
+        .executable(name: "P5SmokeSample", targets: ["P5SmokeSample"]),
+        .executable(name: "MatterSmokeSample", targets: ["MatterSmokeSample"]),
+        .executable(name: "ML5SmokeSample", targets: ["ML5SmokeSample"]),
     ],
     dependencies: [testingPackage],
     targets: [
@@ -65,9 +68,12 @@ let package = Package(
             name: "ML5Tests",
             dependencies: ["ML5", testingProduct],
             resources: [
-                .copy("Resources/BundledModel.mlmodel")
+                .copy("Resources/BundledModel.model-fixture")
             ]
         ),
+        .executableTarget(name: "P5SmokeSample", dependencies: ["P5"]),
+        .executableTarget(name: "MatterSmokeSample", dependencies: ["Matter"]),
+        .executableTarget(name: "ML5SmokeSample", dependencies: ["ML5"]),
     ],
     swiftLanguageModes: [.v6]
 )

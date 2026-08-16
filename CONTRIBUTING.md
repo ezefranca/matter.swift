@@ -1,69 +1,105 @@
-# Contributing to p5.swift
+# Contributing
 
-Contributions should preserve familiar p5.js behavior while using clear,
-native Swift APIs.
+Thank you for improving P5, Matter, or ML5. The projects preserve familiar
+creative-coding concepts while using clear, safe Apple-platform APIs.
 
-## Before opening a pull request
+## Choose the right boundary
 
-1. Discuss substantial API additions in a GitHub issue.
-2. Link new public APIs to their corresponding p5.js reference.
-3. Document intentional platform or behavior differences.
-4. Add deterministic tests for every new production code path.
-5. Keep production line coverage at 100%.
+- P5 owns sketch lifecycle, rendering, input, media, data, persistence, and native UI.
+- Matter owns deterministic physics values, solvers, runners, and drawing snapshots.
+- ML5 owns typed model data, training, inference, model persistence, and Vision/Core ML.
+- Production targets never depend on one another. Cross-product orchestration belongs
+  in a sample or application target.
 
-## Build and test
+Discuss a substantial API or serialized-format change in an issue first. Link the
+authoritative p5.js, Matter.js, ml5.js, Apple, or research reference and describe the
+native behavior before implementation.
 
-Run the complete package suite with Xcode or standalone Command Line Tools:
+## Required quality
 
-```sh
-swift test --parallel --enable-code-coverage
-COVERAGE_JSON=$(swift test --show-codecov-path)
-python3 Scripts/check_coverage.py \
-  --coverage "$COVERAGE_JSON" \
-  --source-root Sources/P5
-python3 Scripts/check_coverage.py \
-  --coverage "$COVERAGE_JSON" \
-  --source-root Sources/Matter
-python3 Scripts/check_coverage.py \
-  --coverage "$COVERAGE_JSON" \
-  --source-root Sources/ML5
-```
+Every change must:
 
-Build the iOS variant with:
+1. follow Swift API Design Guidelines and the checked-in format policy;
+2. preserve value semantics and `Sendable` boundaries where possible;
+3. isolate mutable shared or native state with an actor or documented main-actor rule;
+4. validate nonfinite values, sizes, indices, state transitions, and decoded archives;
+5. use typed errors, structured concurrency, and cooperative cancellation;
+6. document ownership, thread safety, availability, failures, and native differences;
+7. add deterministic valid, invalid, boundary, serialization, and cancellation tests;
+8. retain 100% production line and expression-region coverage;
+9. update compatibility, performance, API baseline, privacy, and changelog artifacts
+   when affected.
 
-```sh
-xcodebuild build \
-  -scheme P5 \
-  -destination 'generic/platform=iOS Simulator' \
-  CODE_SIGNING_ALLOWED=NO
-```
+Never add a silent GPU/CPU fallback. Make the execution policy and the point at which
+fallback may occur explicit. Do not commit third-party models without license,
+provenance, ownership, and integrity metadata.
 
-Build DocC with:
+## Local validation
+
+Run the same release-quality entry point used in CI:
 
 ```sh
-xcodebuild docbuild \
-  -scheme P5 \
-  -destination 'generic/platform=macOS' \
-  CODE_SIGNING_ALLOWED=NO \
-  DOCC_HOSTING_BASE_PATH=p5.swift
+bash Scripts/validate.sh
 ```
 
-## API design
+Command Line Tools without full Xcode can run:
 
-- Follow the Swift API Design Guidelines.
-- Prefer p5.js terminology when it remains clear and grammatical in Swift.
-- Use `@MainActor` for UI and sketch lifecycle APIs.
-- Surface invalid input explicitly.
-- Avoid dependencies in the published package unless native frameworks cannot
-  provide the required capability.
-
-## Commits
-
-Use focused Conventional Commit messages such as:
-
-```text
-feat(shape): add bezier vertices
-fix(renderer): restore stroke state after pop
-docs: document Swift Playgrounds integration
-test: cover matrix transformations
+```sh
+bash Scripts/validate.sh --skip-xcode
 ```
+
+That is only the SwiftPM half of the gate; CI must still pass the macOS/iOS scheme,
+test-plan, Metal, sanitizer, documentation, and toolchain matrix jobs. To inspect
+performance and independent consumer integration:
+
+```sh
+python3 Scripts/run_performance_baselines.py
+bash Scripts/validate_external_client.sh --path .
+```
+
+## Specialized changes
+
+### Public APIs and serialized formats
+
+Add tests through the public import boundary. Regenerate the relevant API baseline
+with the command in `Documentation/APIBaselines/README.md`. Intentional source breaks
+require the documented approval trailer and migration notes. Version persisted
+envelopes before making incompatible decoding changes.
+
+### Metal
+
+Keep Swift and Metal buffer layouts synchronized, validate all resource creation, and
+test injected compilation, allocation, encoding, completion, and cancellation paths.
+Run the same shader against macOS and iOS SDKs. Record ownership for every
+`@unchecked Sendable` wrapper.
+
+### Machine-learning models
+
+Include a model card, license, source URL, SHA-256 digest, intended use, limitations,
+input/output schema, and evaluation data. Tests must be deterministic and must not
+download resources. Treat privacy, bias, memory, thermal cost, and compute-device
+selection as product behavior.
+
+### Documentation and samples
+
+Use compile-valid snippets, typed error handling, accessible UI labels, and explicit
+platform assumptions. Update local links and upstream compatibility references.
+Focused samples should teach one behavior and import only their intended product;
+exhaustive Nature of Code example ports are outside this repository's scope.
+
+### Performance
+
+Use deterministic workloads and algorithmic assertions before adding a wall-clock
+budget. Record device, architecture, OS, Swift/Xcode version, seed, workload, and
+measurement command. Do not commit Instruments traces or generated build products.
+
+## Pull requests
+
+Keep changes focused and explain behavior, tests, compatibility impact, and measured
+performance. Use clear commit subjects such as `Add collision warm starting` or
+`Document Metal resource ownership`. Before requesting review, verify a clean diff,
+run validation, and confirm that generated user state and credentials are absent.
+
+Security reports belong in GitHub private vulnerability reporting, not a public issue.
+By contributing, you agree that your contribution is licensed under this repository's
+MIT License and that you have the right to submit it.
