@@ -78,18 +78,38 @@ def probe(url: str) -> str | None:
     return None
 
 
+def should_ignore(url: str, prefixes: list[str]) -> bool:
+    return any(prefix and url.startswith(prefix) for prefix in prefixes)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--online", action="store_true")
+    parser.add_argument(
+        "--ignore-prefix",
+        action="append",
+        default=[],
+        metavar="URL",
+        help="Skip online probes for URLs beginning with this prefix; repeat as needed.",
+    )
     arguments = parser.parse_args()
     failures, external = local_failures()
+    ignored = 0
     if arguments.online:
+        probe_targets = sorted(
+            url for url in external if not should_ignore(url, arguments.ignore_prefix)
+        )
+        ignored = len(external) - len(probe_targets)
         with ThreadPoolExecutor(max_workers=8) as executor:
-            failures.extend(result for result in executor.map(probe, sorted(external)) if result)
+            failures.extend(result for result in executor.map(probe, probe_targets) if result)
     if failures:
         raise SystemExit("Broken documentation links:\n- " + "\n- ".join(failures))
     mode = "local and external" if arguments.online else "local"
-    print(f"Documentation links valid ({mode}); {len(external)} external URLs discovered.")
+    suffix = f"; {ignored} explicitly ignored" if ignored else ""
+    print(
+        f"Documentation links valid ({mode}); "
+        f"{len(external)} external URLs discovered{suffix}."
+    )
 
 
 if __name__ == "__main__":

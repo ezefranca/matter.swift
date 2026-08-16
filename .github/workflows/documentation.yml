@@ -85,7 +85,9 @@ jobs:
           test -f "$SITE/agent-context.json"
           test -f "$SITE/sitemap.xml"
       - name: Validate internal and external references
-        run: python3 Scripts/check_links.py --online
+        run: |
+          python3 Scripts/check_links.py --online \
+            --ignore-prefix "${{ steps.package.outputs.base_url }}/documentation/"
       - name: Upload GitHub Pages artifact
         uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
         with:

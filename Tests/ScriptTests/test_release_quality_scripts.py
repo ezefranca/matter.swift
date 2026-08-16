@@ -95,6 +95,18 @@ class LinkTests(unittest.TestCase):
         self.assertTrue(any("missing missing.md" in failure for failure in failures))
         self.assertEqual(external, {"https://example.com/reference"})
 
+    def test_ignores_only_explicit_online_link_prefixes(self) -> None:
+        prefixes = ["https://example.com/generated/documentation/"]
+        self.assertTrue(
+            links.should_ignore(
+                "https://example.com/generated/documentation/module/",
+                prefixes,
+            )
+        )
+        self.assertFalse(
+            links.should_ignore("https://example.com/README.md", prefixes)
+        )
+
 
 class ReleaseManifestTests(unittest.TestCase):
     def test_sha256_streams_file_contents(self) -> None:
